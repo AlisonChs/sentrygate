@@ -1,0 +1,29 @@
+.containerAbout {
+ margin: 5rem 8rem;
+
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+}
+
+.titleAbout {
+ display: flex;
+ justify-content: center;
+}
+
+.titleAbout h1 {
+ width: max-content;
+ border-bottom: 3px solid #f9943b;
+ cursor: default;
+}
+
+.mainAbout {
+ text-align: center;
+ display: flex;
+ flex-direction: column;
+ gap: 3rem;
+}
+
+.paragraph p {
+ color: white;
+}

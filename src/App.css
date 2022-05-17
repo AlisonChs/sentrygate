@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Livvic:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html svg {
+  width: none;
+  height: none;
+}
+
+body {
+  padding: 2rem 0 0 0;
+  background-color: #210D41;
+  margin: 0;
+  font-family: 'Livvic', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  text-align: center;
+}
+
+h1, h2 {
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: 500;
+}
+
+span {
+  color: orange;
+}

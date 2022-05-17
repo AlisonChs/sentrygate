@@ -1,0 +1,114 @@
+.main {
+ display: flex;
+
+ padding: 3.5rem 0;
+ justify-content: space-between;
+}
+
+.content-right svg {
+ position: relative;
+ left: 4rem;
+}
+
+.content {
+ width: 85%;
+
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+}
+
+.content-right {
+ display: flex;
+ justify-content: flex-end;
+ align-items: center;
+}
+
+.title h1 {
+ font-size: 3.5rem;
+}
+
+.description {
+ margin-top: 4rem;
+}
+
+.content .description p {
+ width: 30rem;
+ color: #fff;
+}
+
+.buttons {
+ width: 100%;
+ height: 5rem;
+ margin-top: 2rem;
+ background-color: #fff;
+
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+
+ border-radius: 0.3rem;
+ overflow: hidden;
+}
+
+.student {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.student:hover {
+ background-color: #e0e0e0;
+ cursor: pointer;
+}
+
+.text {
+ text-align: center;
+}
+
+.text h3 {
+ font-size: 1.1rem;
+ margin-bottom: 0.5rem;
+}
+
+.text p {
+ color: rgb(80, 79, 79);
+}
+
+.moreAbout {
+ width: 40%;
+ height: 40px;
+
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+
+ margin-top: 2rem;
+ padding: 0 0 0 1rem;
+ border: 4px solid #33aa9b;
+ border-radius: 0.4rem;
+}
+
+.moreAbout:hover {
+ cursor: pointer;
+}
+
+.moreAbout p {
+ color: #fff;
+ text-align: center;
+}
+
+.moreAbout .seta {
+ height: 100%;
+ color: #f9943b;
+
+ border: 6px solid #33aa9b;
+ border-radius: 0.4rem 0 0 0.4rem;
+}
+
+.separate {
+    display: grid;
+    grid-template-columns: 15% 85%;
+  }
+
+.email {
+  
+}

@@ -1,0 +1,86 @@
+.cardContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 400px 400px 400px;
+  grid-template-areas: ". a ." "k b v" "f n t";
+
+  gap: 2rem;
+}
+
+@media(max-width: 412px) {
+ .cardContainer {
+  grid-template-columns: 1fr;
+  grid-template-rows: 400px 400px 400px;
+  grid-template-areas: "a" "b" "v" "k" "t" "n" "f";
+ }
+}
+
+.card {
+ border-radius: 50px;
+ background: linear-gradient(145deg, #1e0c3b, #230e46);
+ box-shadow:  9px 9px 18px #1c0b37,
+              -9px -9px 18px #260f4b;
+
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ gap: 2rem;
+}
+
+.card img {
+ width: 8rem;
+ border-radius: 5px;
+}
+
+.card p {
+ color: #44a3a0
+}
+
+.card .links {
+ display: flex;
+ flex-direction: row;
+ text-align: center;
+ list-style: none;
+}
+
+.card li {
+ width: 45px;
+ height: 45px;
+ border-radius: 50%;
+ background-color: white;
+ margin: 1rem;
+ cursor: pointer;
+}
+
+.card li:hover {
+ background-color: #03a9f4;
+}
+
+.alison {
+  grid-area: a;
+}
+
+.bruno {
+  grid-area: b;
+}
+
+.victor {
+  grid-area: v;
+}
+
+.kayna {
+  grid-area: k;
+}
+
+.felipe {
+  grid-area: f;
+}
+
+.nicolle {
+  grid-area: n;
+}
+
+.thiago {
+  grid-area: t;
+}
