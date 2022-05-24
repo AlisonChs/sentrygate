@@ -52,9 +52,9 @@ export function Register() {
   return (
     <div className='center'>
       <div className='auth'>
-        <h1>Cadastro</h1>
         {error && <div className='auth__error'>{error}</div>}
         <form onSubmit={register} name='registration_form'>
+        <h2>Faça o seu <span>cadastro</span></h2>
           <input
             type='text'
             value={name}
@@ -94,8 +94,8 @@ export function Register() {
           <button type='submit'>Cadastrar</button>
         </form>
         <span>
-          Já possui uma conta?  
-          <Link to='/login'>login</Link>
+          Já possui uma conta?
+          <Link to='/'> Login</Link>
         </span>
       </div>
     </div>

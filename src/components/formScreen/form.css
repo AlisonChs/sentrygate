@@ -45,9 +45,6 @@ select {
   justify-content: center;
 }
 
-.a {
-}
-
 .button {
   border: none;
   padding: 0.5rem 1rem; /*#5689e8*/
@@ -68,5 +65,11 @@ select {
 }
 
 .cad {
-  background-color:#260f4b;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.cad p {
+  color: white;
 }

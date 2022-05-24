@@ -21,7 +21,7 @@ export function Main() {
           <div className="content">
             <div className="content-left">
               <div className="title">
-                <h1>Olá, Kaynã</h1>
+                <h1>Bem vindo!</h1>
                 <h1>
                   <span>Sentry Gate</span>
                 </h1>
@@ -36,7 +36,7 @@ export function Main() {
 
               <div className="email">    
                 <p>
-                  Logado em: {currentUser?.email}
+                  Logado em: <span>{currentUser?.email}</span>
                 </p>
               </div>
 

@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { auth } from '../data/firebase'
 import { sendEmailVerification } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
+import email from '../../assets/email.json'
+import Lottie from 'react-lottie'
 
 export function VerifyEmail() {
 
@@ -54,9 +56,19 @@ export function VerifyEmail() {
     })
   }
 
+  const optionEmail = {
+    loop: true,
+    autoplay: true,
+    animationData: email,
+  };
+
   return (
     <div className='center'>
       <div className='verifyEmail'>
+        <Lottie
+          options={optionEmail}
+          style={{ width: "60%", height: "60%" }}
+        />
         <h1>Verifique seu endereço de email</h1>
         <p>
           <strong>Um email de autentificação foi enviado para:</strong><br/>
@@ -66,7 +78,7 @@ export function VerifyEmail() {
         <button 
           onClick={resendEmailVerification}
           disabled={timeActive}
-          >Reenviar Email {timeActive && time}</button>
+          ><span>Reenviar Email</span> {timeActive && time}</button>
       </div>
     </div>
   )

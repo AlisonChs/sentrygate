@@ -1,29 +1,84 @@
-.containerAbout {
- margin: 5rem 8rem;
-
- display: flex;
- justify-content: center;
- flex-direction: column;
+.mainAbout p {
+ color: #fff;
+ word-wrap: break-word;
 }
 
-.titleAbout {
- display: flex;
- justify-content: center;
+.mainAbout h2 {
+ margin-bottom: 2rem
 }
 
-.titleAbout h1 {
- width: max-content;
- border-bottom: 3px solid #f9943b;
- cursor: default;
-}
+ .mainAbout img {
+  width: 100%;
+  height: 80%;
+
+  transform: scaleX(-1);
+ }
 
 .mainAbout {
- text-align: center;
+ width: 100%;
+
  display: flex;
+ justify-content: center;
+ align-items: center;
  flex-direction: column;
- gap: 3rem;
+
+ margin-top: 5rem;
 }
 
-.paragraph p {
- color: white;
+.valuesAndBeneficy {
+ width: 80%;
+
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ grid-template-rows: 1fr 1fr;
+
+ gap: 4rem;
+}
+
+.contentCust {
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+}
+
+.vision {
+ width: 80%;
+ height: auto;
+
+ margin-top: 4rem;
+
+ position: relative;
+
+ display: flex;
+ flex-direction: column;
+}
+
+.visionEmpresarial {
+ display: grid;
+ grid-template-columns: 30% 70%;
+ align-items: center;
+
+ gap: 2rem;
+ 
+}
+
+.visionEducation {
+ display: grid;
+ grid-template-columns: 60% 40%;
+ align-items: center;
+}
+
+.mission {
+ width: 80%;
+ height: auto;
+
+ margin-top: 4rem;
+
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 4rem;
+}
+
+.contentPrazo {
+ margin-top: 2rem;
 }

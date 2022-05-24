@@ -5,35 +5,52 @@
   padding: 3.5rem 0;
 }
 
-.auth{
-    width: 90%;
-    max-width: 400px;
-    border: 1px solid #dcdcdc;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .auth form{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 0 auto 10px auto;
-  }
-  
-  .auth__success{
-    padding: 10px 0;
-    background-color: hsl(147, 79%, 87%);
-    margin-bottom: 20px;
-  }
-  
-  .auth__error{
-    padding: 10px 0;
-    background-color: hsl(0, 79%, 87%);
-    margin-bottom: 20px;
-  }
-  
-  .auth form > input, button{
-    height: 40px;
-    font-size: 16px;
-    padding: 0 10px;
-  }
+.auth {
+  width: 90%;
+  max-width: 400px;
+  padding: 4rem;
+  text-align: center;
+
+  border-radius: 50px;
+  background: linear-gradient(145deg, #230e46, #1e0c3b);
+  box-shadow: 5px 5px 10px #1c0b37, -5px -5px 10px #260f4b;
+}
+
+.auth form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 auto 10px auto;
+}
+
+.auth__success {
+  padding: 10px 0;
+  background-color: hsl(147, 79%, 87%);
+  margin-bottom: 20px;
+}
+
+.auth__error {
+  padding: 10px 0;
+  background-color: hsl(0, 79%, 87%);
+  margin-bottom: 20px;
+}
+
+.auth form > input,
+button {
+  height: 40px;
+  font-size: 16px;
+
+  border: none;
+  border-radius: 0.4rem;
+
+  padding: 0 0 0 0.5rem;
+}
+
+.auth button{
+  background-color: #f9943b;
+}
+
+.auth button:hover {
+  background-color: #5689e8;
+  transition: 0.5s;
+}

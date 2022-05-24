@@ -74,8 +74,8 @@ export function Form() {
                     placeholder="Insira a senha" 
                     onChange={e => setPassword(e.target.value)} />
                     <div className='cad'>
-                        Não é cadastrado?
-                        <Link to='/register'> Crie uma conta</Link>
+                        <p>Não é cadastrado?</p>
+                        <Link to='/register'> <span>Crie uma conta</span></Link>
                     </div>
                     <button type='submit' className="button" >Entrar</button>
                 </div>
