@@ -7,7 +7,6 @@ import { Register } from '../components/registerScreen/Register';
 import { VerifyEmail } from '../components/verifyScreen/VerifyEmail'
 import { Vision } from '../components/about/vision/Vision';
 import { Mission } from '../components/about/mission/Mission';
-import { WhoWeAre } from '../components/about/who/WhoWeAre';
 import { About } from '../components/about/About';
 //import PrivateRoute from './PrivateRoute';
 
