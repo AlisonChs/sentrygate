@@ -9,7 +9,6 @@ import Lottie from 'react-lottie'
 
 export function VerifyEmail() {
 
-  const [setButtonDisabled] = useState(false)
   const [time, setTime] = useState(60)
   const {timeActive, setTimeActive} = useAuthValue()
   const {currentUser} = useAuthValue() 
@@ -42,17 +41,14 @@ export function VerifyEmail() {
       clearInterval(interval)
     }
     return () => clearInterval(interval);
-  }, [timeActive, time])
+  }, [timeActive, time, setTimeActive])
 
   const resendEmailVerification = () => {
-    setButtonDisabled(true)
     sendEmailVerification(auth.currentUser)
     .then(() => {
-      setButtonDisabled(false)
       setTimeActive(true)
     }).catch((err) => {
       alert(err.message)
-      setButtonDisabled(false)
     })
   }
 
