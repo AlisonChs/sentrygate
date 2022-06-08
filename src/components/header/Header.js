@@ -10,7 +10,7 @@ export function Header() {
   const logout = (e) => {
     signOut(auth)
       .then(() => {
-        navigate("/");
+        navigate("/form");
       })
       .catch((err) => alert(err.message));
   };
@@ -18,7 +18,7 @@ export function Header() {
   return (
     <div className="header">
       <div className="logo">
-        <Link to="/">
+        <Link to="/form">
           <h1>
             Sentry <span>Gate</span>
           </h1>
