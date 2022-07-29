@@ -1,0 +1,36 @@
+.boletimContainer {
+    width: 100%;
+    height: auto;
+
+    padding: 0 3rem;
+
+    display: flex;
+    gap: 2rem;
+}
+
+.navbarDisable {
+    background-color: #fff;
+    width: 7.5rem;
+    height: 50rem;
+
+    border-radius: 15px;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 2rem;
+    cursor: pointer;
+}
+
+.photo {
+    background-color: #fff;
+
+    width: 15rem;
+    height: max-content;
+
+    border-radius: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
