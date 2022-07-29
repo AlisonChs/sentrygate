@@ -3,7 +3,6 @@ import Lottie from "react-lottie";
 import computer from "../../../assets/computer.json";
 import { ArrowSquareRight } from "phosphor-react";
 import { Navigation } from "../navigation/Navigation";
-import { useAuthValue } from "../../../AuthContext";
 
 export function Main() {
   const defaultOptions = {
@@ -11,7 +10,6 @@ export function Main() {
     autoplay: true,
     animationData: computer,
   };
-  const {currentUser} = useAuthValue()
 
   return (
     <>
@@ -36,7 +34,7 @@ export function Main() {
 
               <div className="email">    
                 <p>
-                  Logado em: <span>{currentUser?.email}</span>
+                  Logado em: <span></span>
                 </p>
               </div>
 

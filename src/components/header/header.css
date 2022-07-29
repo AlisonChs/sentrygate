@@ -1,67 +1,54 @@
-a, button {
- text-decoration: none;
- color: aliceblue;
- font-weight: 500;
- background-color: transparent;
- border: none;
- cursor: pointer;
+a,
+button {
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .header {
- width: 100%;
- height: 5rem;
+  background-color: #1d0b3b; /*17092e*/
+  width: 100%;
+  height: 5rem;
 
- display: flex;
- justify-content: space-around;
- align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
- padding: 0 6rem;
+  border-bottom: 1px solid #301361; /*#250f4a;*/
+
+  padding: 0 0rem;
 }
 
 .topics {
- width: 45%;
+  width: 45%;
 
- display: flex;
- justify-content: space-between;
- align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.asd {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 }
 
 .logoff {
- padding: 0.5rem 1rem; 
- background-color: #f9943b; /*#5689e8*/
- border-radius: 0.4rem;
+  padding: 0.5rem 1rem;
+  background-color: #f9943b; /*#5689e8*/
+  border-radius: 0.4rem;
 }
 
 .logoff:hover {
- background-color: #5689e8;
- transition: 0.5s;
+  background-color: #5689e8;
+  transition: 0.5s;
 }
 
 .links:hover {
- color: #f9943b;
- transition: 0.5s;
-}
-
-.relative {
-    z-index: 1000;
-}
-
-.popover {
-
-    color: black; 
-
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-
-    border-radius: 0.5rem;
-
-    gap: 1rem;
-    margin-top: 10px;
-}
-
-.linkPopover {
-    padding: 0.5rem 1rem; /*#5689e8*/
-    background-color: #f9943b;
-    border-radius: 0.4rem;
+  color: #f9943b;
+  transition: 0.5s;
 }
