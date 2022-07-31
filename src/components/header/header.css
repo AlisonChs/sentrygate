@@ -10,17 +10,17 @@ button {
 
 .header {
   background-color: #1d0b3b; /*17092e*/
-  width: 100%;
+  width: 100vw;
   height: 6rem;
-
+  
   display: flex;
   justify-content: space-around;
   align-items: center;
+  
+  position: fixed;
+  z-index: 999;
+  /* border-bottom: 1px solid #301361; #250f4a; */
 
-  border-bottom: 1px solid #301361; /*#250f4a;*/
-
-  padding: 0 0rem;
-  margin-bottom: 2rem;
 }
 
 .topics {
@@ -53,3 +53,4 @@ button {
   color: #f9943b;
   transition: 0.5s;
 }
+

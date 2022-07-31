@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Navbar } from "../navbar/Navbar";
 import "./style.css";
-import { UserCircle } from "phosphor-react";
+import { Dog, UserCircle } from "phosphor-react";
 
 export function Boletim() {
   const [isNavbar, setIsNavbar] = useState(false);
 
   return (
     <div className="boletimContainer">
-      <div className="navbarDisable" onClick={() => setIsNavbar(true)}>
+      {/* <div className="navbarDisable" onClick={() => setIsNavbar(true)}>
           sad
         </div>
 
@@ -16,7 +16,7 @@ export function Boletim() {
       <div className='photo'>
           <UserCircle size={200} weight="fill" />
       </div>
-      }
+      } */}
 
       <div className="boletimContent"></div>
     </div>
