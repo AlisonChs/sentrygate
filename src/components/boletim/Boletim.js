@@ -18,9 +18,9 @@ export function Boletim() {
 
           <select name="modulo" id="modulo" onChange={e => setModulo(e.target.value)} >
             <option value="">Selecionar Modulo de Série</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="1">1 Série</option>
+            <option value="2">2 Série</option>
+            <option value="3">3 Série</option>
           </select>
         </div>
 
@@ -30,7 +30,7 @@ export function Boletim() {
         </div>
         
         <div className="boletim">
-          <table cellSpacing='0'>
+          <table cellSpacing={0}>
             <thead>
               <tr>
                 <td>Componentes Curriculares</td>
@@ -135,13 +135,101 @@ export function Boletim() {
           </table>
         </div>
         <div className="frequencia">
-          <p>frequencia</p>
+          <table cellSpacing={0}>
+            <thead>
+              <tr>
+                <td>Faltas</td>
+                <td>Frequência</td>
+                <td>Situação</td>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>100%</td>
+                <td>APROVADO</td>
+              </tr>
+
+              <tr>
+                <td>0</td>
+                <td>100%</td>
+                <td>APROVADO</td>
+              </tr>
+
+              <tr>
+                <td>0</td>
+                <td>100%</td>
+                <td>APROVADO</td>
+              </tr>
+
+              <tr>
+                <td>0</td>
+                <td>100%</td>
+                <td>APROVADO</td>
+              </tr>
+
+              <tr>
+                <td>0</td>
+                <td>100%</td>
+                <td>APROVADO</td>
+              </tr>
+
+              <tr>
+                <td>0</td>
+                <td>100%</td>
+                <td>APROVADO</td>
+              </tr>
+
+              <tr>
+                <td>0</td>
+                <td>100%</td>
+                <td>APROVADO</td>
+              </tr>
+
+              <tr>
+                <td>0</td>
+                <td>100%</td>
+                <td>APROVADO</td>
+              </tr>
+
+              <tr>
+                <td>0</td>
+                <td>100%</td>
+                <td>APROVADO</td>
+              </tr>
+
+              <tr>
+                <td>0</td>
+                <td>100%</td>
+                <td>APROVADO</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div className="observacoes">
-          <p>observações</p>
+          <p>Observação sobre o docente</p>
         </div>
         <div className="registro">
-          <p>registro</p>
+          <p>Registro de Regulamento</p>
+
+          <table cellSpacing={0}>
+            <thead>
+              <tr>
+                <td>Faltas Registra.</td>
+                <td>Faltas Permiti.</td>
+                <td>Aulas Dadas</td>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>26</td>
+                <td>300</td>
+                <td>1.200</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
