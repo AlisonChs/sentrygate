@@ -4,8 +4,6 @@ import { Header } from "../components/header/Header";
 import { Main } from "../components/mainScreen/main/Main";
 import { Form } from "../components/formScreen/Form";
 import { Register } from "../components/registerScreen/Register";
-import { Navigate } from "react-router";
-import { useState, useEffect } from "react";
 import { Boletim } from "../components/boletim/Boletim";
 import { Navbar } from "../components/navbar/Navbar";
 import "./style.css";

@@ -1,9 +1,7 @@
 import "./header.css";
-import { Link, useNavigate } from "react-router-dom";
-import { Dog } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 export function Header() {
-  const navigate = useNavigate();
   return (
       <div className="header">
         <div className="logo">

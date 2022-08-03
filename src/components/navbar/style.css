@@ -1,24 +1,30 @@
-.navbarVertical {
+.navbar {
  width: 4rem;
- height: 100vh;
- background-color: #1d0b3b;
- 
- display: flex;
- justify-content: space-around;
- flex-direction: column;
- 
- padding: 6rem 0 0 0rem;
- 
- color: #fff;
+ height: 100%;
+
+ padding: 6rem 0 0 0;
 
  position: fixed;
  left: 0;
- transition: 0.5s;
+ transition: 0.7s;
  overflow: hidden;
 }
 
-.navbarVertical:hover {
+.navbar:hover {
  width: 15rem;
+}
+
+.navbarVertical {
+ background-color: #1d0b3b; /*1d0b3b*/
+ height: 100%;
+ width: 100%;
+
+ display: flex;
+ justify-content: space-between;
+
+ padding: 1rem 0 1rem 0;
+ flex-direction: column;
+ border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .divNavbar {
@@ -29,6 +35,7 @@
 
 .divNavbar p {
  height: 1.5rem;
+ color: #fff;
 }
 
 .icon {
@@ -51,7 +58,7 @@
 }
 
 .iconDiv:hover {
- background-color: #210D41;
+ background-color: gray;
 }
 
 .iconDiv p {

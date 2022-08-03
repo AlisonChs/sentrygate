@@ -3,34 +3,88 @@
     height: 100%;
 
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
 }
 
+.boletimContent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas: 
+    "m p ."
+    "b b f"
+    "o o r";
 
+    gap: 1rem;
+}
 
-.navbarDisable {
+.modulo {
+    grid-area: m;
     background-color: #fff;
-    width: 7.5rem;
-    height: 50rem;
+    padding: 0 2rem 0 2rem;
 
-    border-radius: 15px;
+    border-radius: 0.5rem;
+}
+
+.projetar {
+    grid-area: p;
+    background-color: #fff;
 
     display: flex;
-    justify-content: center;
-
-    padding: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem 0 2rem;
+    
+    border-radius: 0.5rem;
     cursor: pointer;
 }
 
-.photo {
+.projetar p, .modulo p {
+    font-weight: bold;
+}
+
+.boletim {
+    grid-area: b;
+
     background-color: #fff;
+    height: auto;
+    width: 45rem;
+    
+    border-radius: 0.5rem 0.5rem 0 0;
+    overflow: hidden;
+}
 
-    width: 15rem;
-    height: max-content;
+.boletim table {
+    width: 100%;
+}
 
-    border-radius: 15px;
+table thead tr td, table tbody tr td {
+    padding: 0.5rem;
+    border: 0.1rem solid #e2e2e2;
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.boletim table thead tr {
+    font-size: 18px;
+}
+
+.boletim table tbody tr .nota {
+    color: #0C71AA;
+}
+
+table thead tr td,
+table tbody tr td:nth-child(2), td:nth-child(3), td:nth-child(4), td:nth-child(5), td:nth-child(6) {
+    text-align: center;
+}
+
+.frequencia {
+    grid-area: f;
+}
+
+.observacoes {
+    grid-area: o;
+}
+
+.registro {
+    grid-area: r;
 }
