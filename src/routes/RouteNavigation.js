@@ -10,8 +10,9 @@ import "./style.css";
 
 export function RouteNavigation() {
   return (
-    <div className="navbarContent">
+    <>
       <Header />
+    <div className="navbarContent">
       <Navbar />
 
       <div className="components">
@@ -26,5 +27,6 @@ export function RouteNavigation() {
 
       {/* <Footer /> */}
     </div>
+    </>
   );
 }

@@ -2,7 +2,7 @@ import "./main.css";
 import Lottie from "react-lottie";
 import computer from "../../../assets/computer.json";
 import { ArrowSquareRight } from "phosphor-react";
-import { Navigation } from "../navigation/Navigation";
+import { useNavigate } from "react-router";
 
 export function Main() {
   const defaultOptions = {
@@ -11,13 +11,19 @@ export function Main() {
     animationData: computer,
   };
 
+  const navigate = useNavigate()
+
+  function goBoletim() {
+    navigate('/boletim')
+  }
+
   return (
     <>
       <div className="main">
         <div className="mainContent">
           <div className="content-left">
             <div className="title">
-              <h1>Bem vindo!</h1>
+              <h1>Bem vindo! Thiago</h1>
               <h1>
                 <span>Sentry Gate</span>
               </h1>
@@ -30,14 +36,8 @@ export function Main() {
               </p>
             </div>
 
-            <div className="email">
-              <p>
-                Logado em: <span></span>
-              </p>
-            </div>
-
             <div className="buttons">
-              <div className="student">
+              <div className="student" onClick={goBoletim}>
                 <div className="text">
                   <h3>Boletim</h3>
                   <p>Suas notas</p>

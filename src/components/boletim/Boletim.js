@@ -148,61 +148,61 @@ export function Boletim() {
               <tr>
                 <td>0</td>
                 <td>100%</td>
-                <td>APROVADO</td>
+                <td className="nota">APROVADO</td>
               </tr>
 
               <tr>
                 <td>0</td>
                 <td>100%</td>
-                <td>APROVADO</td>
+                <td className="nota">APROVADO</td>
               </tr>
 
               <tr>
                 <td>0</td>
                 <td>100%</td>
-                <td>APROVADO</td>
+                <td className="nota">APROVADO</td>
               </tr>
 
               <tr>
                 <td>0</td>
                 <td>100%</td>
-                <td>APROVADO</td>
+                <td className="nota">APROVADO</td>
               </tr>
 
               <tr>
                 <td>0</td>
                 <td>100%</td>
-                <td>APROVADO</td>
+                <td className="nota">APROVADO</td>
               </tr>
 
               <tr>
                 <td>0</td>
                 <td>100%</td>
-                <td>APROVADO</td>
+                <td className="nota">APROVADO</td>
               </tr>
 
               <tr>
                 <td>0</td>
                 <td>100%</td>
-                <td>APROVADO</td>
+                <td className="nota">APROVADO</td>
               </tr>
 
               <tr>
                 <td>0</td>
                 <td>100%</td>
-                <td>APROVADO</td>
+                <td className="nota">APROVADO</td>
               </tr>
 
               <tr>
                 <td>0</td>
                 <td>100%</td>
-                <td>APROVADO</td>
+                <td className="nota">APROVADO</td>
               </tr>
 
               <tr>
                 <td>0</td>
                 <td>100%</td>
-                <td>APROVADO</td>
+                <td className="nota">APROVADO</td>
               </tr>
             </tbody>
           </table>

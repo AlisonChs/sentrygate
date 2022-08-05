@@ -12,7 +12,6 @@ export function Header() {
           </Link>
         </div>
         <div className="topics">
-          <div className="asd">
             <Link to="/main" className="links">
               Home
             </Link>
@@ -20,13 +19,8 @@ export function Header() {
             <Link to="/about" className="links">
               Sobre
             </Link>
-
-            <Link to="/" className="links">
-              Contato
-            </Link>
-          </div>
-        </div>
         <button className="logoff">Desconectar</button>
+        </div>
       </div>
   );
 }

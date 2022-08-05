@@ -64,10 +64,6 @@ export function Navbar() {
 
         <div className="divNavbar">
           <p></p>
-          <div className="iconDiv">
-            <Wrench size={25} weight="regular" color="white" className="icon" />
-            <p>Solicitação de suporte</p>
-          </div>
 
           <div className="iconDiv">
             <Gear size={25} weight="regular" color="white" className="icon" />

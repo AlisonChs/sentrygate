@@ -14,8 +14,10 @@ button {
   height: 6rem;
   
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+
+  padding: 0 7rem 0 7rem;
   
   position: fixed;
   z-index: 999;
@@ -24,18 +26,11 @@ button {
 }
 
 .topics {
-  width: 45%;
 
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.asd {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
+  gap: 7rem;
 }
 
 .logoff {

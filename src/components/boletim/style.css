@@ -4,7 +4,11 @@
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+
+    margin-top: 5rem;
+
+    position: relative;
+    left: -6rem;
 }
 
 .boletimContent {
@@ -29,6 +33,19 @@
     padding: 0 2rem 0 2rem;
 
     border-radius: 0.5rem;
+}
+
+.modulo p {
+    opacity: 0.7;
+    font-size: small;
+    padding-left: 0.5rem;
+}
+
+.modulo select {
+    appearance: none;
+    background: url('../../assets/arrowdown.png') no-repeat center right;
+    font-weight: bold;
+    font-size: medium;
 }
 
 .projetar {
@@ -74,9 +91,19 @@ table thead tr td, table tbody tr td {
 
 .boletim table tbody tr .nota {
     color: #0C71AA;
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 .boletim table thead tr td,
+.frequencia table thead tr td {
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+.boletim table thead tr td,
+.frequencia table thead tr td,
 .boletim table tbody tr td:nth-child(2),
 .boletim table tbody tr td:nth-child(3), 
 .boletim table tbody tr td:nth-child(4), 
@@ -90,13 +117,16 @@ table thead tr td, table tbody tr td {
     grid-area: f;
 
     background-color: #fff;
-    width: 80%;
     border-radius: 0.5rem 0.5rem 0 0;
     overflow: hidden;
 }
 
 .frequencia table {
     width: 100%;
+}
+
+.frequencia table tbody tr .nota {
+    color: #0C71AA;
 }
 
 .observacoes {
@@ -124,9 +154,17 @@ table thead tr td, table tbody tr td {
     grid-area: r;
 
     background-color: #fff;
-    width: 80%;
     height: 7rem;
     border-radius: 0.5rem;
 
     overflow: hidden;
+}
+
+.registro table {
+    height: 100%;
+}
+
+.registro table tbody tr td {
+    text-align: center;
+    padding-bottom: 1.5rem;
 }
