@@ -34,10 +34,10 @@ export function Boletim() {
             <thead>
               <tr>
                 <td>Componentes Curriculares</td>
-                <td>1ºSem</td>
-                <td>2ºSem</td>
-                <td>3ºSem</td>
-                <td>4ºSem</td>
+                <td>1º Bim.</td>
+                <td>2º Bim.</td>
+                <td>3º Bim.</td>
+                <td>4º Bim.</td>
                 <td>Média</td>
               </tr>
             </thead>
