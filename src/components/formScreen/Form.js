@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { useContext } from 'react';
 import { AuthContext } from '../../provider/Auth';
 
-
 export function Form() {
     const [text, setText] = useState('');
     const [email, setEmail] = useState('')
@@ -24,11 +23,15 @@ export function Form() {
     return(
         <div className="contentForm">
             <form className='form'>
+                <div>
+                    
+                    <h2 className='title'> Acesse a sua <span> conta</span></h2>
+                </div>
                 <div className="screen">
-                    <h2>Acesse a sua <span>conta</span></h2>
+                    
+                    
                     <div className="contentMid">
                         <select name="usuario">
-                            <option>Entrar como</option>
                             <option>Aluno</option>
                             <option>Professor</option>
                             <option>Coordenador</option>
