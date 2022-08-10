@@ -7,13 +7,17 @@ import { Register } from "../components/registerScreen/Register";
 import { Boletim } from "../components/boletim/Boletim";
 import { Navbar } from "../components/navbar/Navbar";
 import "./style.css";
+import { useContext } from "react";
+import { AuthContext } from "../provider/Auth";
 
 export function RouteNavigation() {
+  const { user, setUser } = useContext(AuthContext)
+
   return (
     <>
       <Header />
+      { user.auth ? <Navbar /> : <div></div> }
     <div className="navbarContent">
-      <Navbar />
 
       <div className="components">
         <Routes>

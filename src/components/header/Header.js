@@ -1,7 +1,17 @@
 import "./header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/Auth";
 
 export function Header() {
+  const { user, setUser } = useContext(AuthContext)
+  const navigate = useNavigate()
+  function logoff() {
+    setUser({ auth: false })
+
+    navigate('/')
+  }
+
   return (
       <div className="header">
         <div className="logo">
@@ -19,7 +29,7 @@ export function Header() {
             <Link to="/about" className="links">
               Sobre
             </Link>
-        <button className="logoff">Desconectar</button>
+        <button className="logoff" onClick={logoff} >Desconectar</button>
         </div>
       </div>
   );

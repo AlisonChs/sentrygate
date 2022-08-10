@@ -1,6 +1,8 @@
 import './form.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useContext } from 'react';
+import { AuthContext } from '../../provider/Auth';
 
 
 export function Form() {
@@ -11,7 +13,13 @@ export function Form() {
     const [error, setError] = useState('')
     const navigate = useNavigate()
 
-    console.log(text)
+    const { user, setUser } = useContext(AuthContext)
+
+    function handleSubmit() {
+        setUser({ auth: true })
+
+        navigate('/main')
+    }
 
     return(
         <div className="contentForm">
@@ -26,8 +34,7 @@ export function Form() {
                             <option>Coordenador</option>
                         </select>
                         <input 
-                            type="text" 
-                            value={code}
+                            type="text"
                             placeholder="Código" 
                             name="code" 
                         />
@@ -39,11 +46,10 @@ export function Form() {
                     />
                     <input 
                     type='password'
-                    value={password} 
                     name="password" 
                     placeholder="Insira a senha"  
                     />
-                    <button type='submit' className="button" >Entrar</button>
+                    <button type='submit' className="button" onClick={handleSubmit} >Entrar</button>
                 </div>
             </form>
         </div>
