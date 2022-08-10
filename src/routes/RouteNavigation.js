@@ -15,9 +15,9 @@ export function RouteNavigation() {
 
   return (
     <>
-      <Header />
-      { user.auth ? <Navbar /> : <div></div> }
+      { user.auth ? <Header /> : <div></div> }
     <div className="navbarContent">
+      { user.auth ? <Navbar /> : <div></div> }
 
       <div className="components">
         <Routes>

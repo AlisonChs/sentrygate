@@ -1,5 +1,6 @@
-import {useState} from 'react'
+import {useContext, useState} from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { AuthContext } from '../../provider/Auth'
 import './register.css'
 
 export function Register() {
@@ -10,9 +11,15 @@ export function Register() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const navigate = useNavigate()
+  const { user, setUser } = useContext(AuthContext)
+
+  function handleSubmit() {
+    setUser({ auth: true })
+
+    navigate('/main')
+}
 
   return (
-    <div className='center'>
       <div className='auth'>
         <form name='registration_form'>
         <h2>Faça o seu <span>cadastro</span></h2>
@@ -46,13 +53,12 @@ export function Register() {
             placeholder='Confirme sua senha'
             />
 
-          <button type='submit'>Cadastrar</button>
+          <button type='submit' onClick={handleSubmit} >Cadastrar</button>
         </form>
         <span>
           Já possui uma conta?
           <Link to='/'> Login</Link>
         </span>
       </div>
-    </div>
   )
 }

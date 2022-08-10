@@ -1,13 +1,11 @@
 .center {
   display: flex;
-  justify-content: center;
 
   padding: 3.5rem 0;
 }
 
 .auth {
-  width: 90%;
-  max-width: 400px;
+  width: 25rem;
   padding: 4rem;
   text-align: center;
 
