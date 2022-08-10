@@ -1,9 +1,9 @@
 import {useContext, useState} from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { AuthContext } from '../../provider/Auth'
-import './register.css'
+import './style.css'
 
-export function Register() {
+export function RegisterSchool() {
 
   const [name, setName] = useState('')
   const [code, setCode] = useState('')  
@@ -21,37 +21,29 @@ export function Register() {
 
   return (
       <div className='auth'>
-                <h2>Faça o seu <span>cadastro</span></h2>
+
+          
+                <h2>Faça o <span>cadastro</span> da sua <span> escola</span></h2>
+
+                
 
         <form name='registration_form'>
           <input
             type='text'
-            placeholder="Digite seu nome e sobrenome"
+            placeholder="Digite o nome da sua escola"
             required
           />
 
           <input 
             type='text' 
-            placeholder="Digite o código de sua escola"
+            placeholder="Escolha o tipo da sua escola"
             required
           />
 
           <input 
-            type='email' 
-            placeholder="Digite seu email"
+            type='tel'
             required
-            />
-
-          <input 
-            type='password'
-            required
-            placeholder='Digite sua senha'
-            />
-
-            <input 
-            type='password'
-            required
-            placeholder='Confirme sua senha'
+            placeholder='Preencha o DDD + número da sua escola'
             />
 
           <button type='submit' onClick={handleSubmit} >Cadastrar</button>

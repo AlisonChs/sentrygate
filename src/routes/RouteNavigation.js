@@ -9,6 +9,7 @@ import { Navbar } from "../components/navbar/Navbar";
 import "./style.css";
 import { useContext } from "react";
 import { AuthContext } from "../provider/Auth";
+import { RegisterSchool } from "../components/registerSchool";
 
 export function RouteNavigation() {
   const { user, setUser } = useContext(AuthContext)
@@ -25,6 +26,7 @@ export function RouteNavigation() {
           <Route exact path="/main" element={<Main />} />
           <Route path="/form" element={<Form />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/register-school" element={<RegisterSchool />} />
           <Route path="/boletim" element={<Boletim />} />
         </Routes>
       </div>
