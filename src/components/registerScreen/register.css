@@ -10,8 +10,7 @@
   text-align: center;
 
   border-radius: 50px;
-  background: linear-gradient(145deg, #230e46, #1e0c3b);
-  box-shadow: 5px 5px 10px #1c0b37, -5px -5px 10px #260f4b;
+  background-color: #120329;
 }
 
 .auth form {
@@ -19,6 +18,14 @@
   flex-direction: column;
   gap: 20px;
   margin: 0 auto 10px auto;
+}
+
+h2 {
+  margin-bottom: 15%;
+}
+
+.auth h2 {
+  font-weight: 900;
 }
 
 .auth__success {
@@ -36,7 +43,7 @@
 .auth form > input,
 button {
   height: 40px;
-  font-size: 16px;
+  font-size: 14px;
 
   border: none;
   border-radius: 0.4rem;
@@ -44,11 +51,21 @@ button {
   padding: 0 0 0 0.5rem;
 }
 
-.auth button{
-  background-color: #f9943b;
+button {
+  border: none;
+  padding: 0.5rem 1rem; /*#5689e8*/
+  background-color: #532F8B;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.5s ease-out; 
 }
 
-.auth button:hover {
-  background-color: #5689e8;
+button:hover, input:hover {
+  background-color: #5819BB;
   transition: 0.5s;
+}
+
+input, select {
+  background: #200B41;
 }
