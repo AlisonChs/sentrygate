@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ChamadaApplication<chamada>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.chamada.chs.chamada.ChamadaApplication",
+            "projectName": "chamada",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
