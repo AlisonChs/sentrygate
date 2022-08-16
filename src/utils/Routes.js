@@ -10,12 +10,12 @@ import { Form } from "../components/login/Form";
 import { RegisterStudent } from "../components/register/student/Register";
 import { Boletim } from "../components/boletim/Boletim";
 import { Navbar } from "../components/UI/navbar/Navbar";
+import { NotFound } from "../components/UI/notfound/404";
 
 // Global
-import "./style.css";
 import { AuthContext } from "../provider/Auth";
 
-export function RouteNavigation() {
+export default function Routess() {
   const { user, setUser } = useContext(AuthContext)
 
   return (
@@ -31,6 +31,7 @@ export function RouteNavigation() {
           <Route path="/form" element={<Form />} />
           <Route path="/register" element={<RegisterStudent />} />
           <Route path="/boletim" element={<Boletim />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
 
@@ -38,15 +39,3 @@ export function RouteNavigation() {
     </>
   );
 }
-
-/* 
-
-  Rotas para registro de escola e coordenador
-
-  Estao comentadas pois o grupo ainda nao decidiu se tera ambas funcoes
-
-  <Route path="/register-school" element={<RegisterSchool />} />
-  import { RegisterCoord } from "../components/register/coord"; 
-  
-*/
-
