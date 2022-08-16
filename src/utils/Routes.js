@@ -28,7 +28,7 @@ export default function Routess() {
         <Routes>
           <Route exact path="/" element={<Form />} />
           <Route exact path="/main" element={<Main />} />
-          <Route path="/form" element={<Form />} />
+          <Route path="/login" element={<Form />} />
           <Route path="/register" element={<RegisterStudent />} />
           <Route path="/boletim" element={<Boletim />} />
           <Route path="*" element={<NotFound />} />
