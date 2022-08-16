@@ -1,15 +1,19 @@
-import { Route, Routes } from "react-router-dom";
 
-import { Header } from "../components/header/Header";
-import { Main } from "../components/mainScreen/main/Main";
-import { Form } from "../components/formScreen/Form";
-import { Register } from "../components/registerScreen/Register";
-import { Boletim } from "../components/boletim/Boletim";
-import { Navbar } from "../components/navbar/Navbar";
-import "./style.css";
+// React imports
+import { Route, Routes } from "react-router-dom";
 import { useContext } from "react";
+
+// Components
+import { Header } from "../components/UI/header/Header";
+import { Main } from "../components/main/Main";
+import { Form } from "../components/login/Form";
+import { RegisterStudent } from "../components/register/student/Register";
+import { Boletim } from "../components/boletim/Boletim";
+import { Navbar } from "../components/UI/navbar/Navbar";
+
+// Global
+import "./style.css";
 import { AuthContext } from "../provider/Auth";
-import { RegisterSchool } from "../components/registerSchool";
 
 export function RouteNavigation() {
   const { user, setUser } = useContext(AuthContext)
@@ -25,14 +29,24 @@ export function RouteNavigation() {
           <Route exact path="/" element={<Form />} />
           <Route exact path="/main" element={<Main />} />
           <Route path="/form" element={<Form />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/register-school" element={<RegisterSchool />} />
+          <Route path="/register" element={<RegisterStudent />} />
           <Route path="/boletim" element={<Boletim />} />
         </Routes>
       </div>
 
-      {/* <Footer /> */}
     </div>
     </>
   );
 }
+
+/* 
+
+  Rotas para registro de escola e coordenador
+
+  Estao comentadas pois o grupo ainda nao decidiu se tera ambas funcoes
+
+  <Route path="/register-school" element={<RegisterSchool />} />
+  import { RegisterCoord } from "../components/register/coord"; 
+  
+*/
+

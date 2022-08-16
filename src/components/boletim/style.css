@@ -41,7 +41,7 @@
 
 .modulo select {
     appearance: none;
-    background: url('../../assets/arrowdown.png') no-repeat center right;
+    background: url('../../_assets/img/arrowdown.png') no-repeat center right;
     font-weight: bold;
     font-size: medium;
 }

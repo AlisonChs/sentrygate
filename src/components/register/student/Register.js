@@ -1,9 +1,9 @@
 import {useContext, useState} from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { AuthContext } from '../../provider/Auth'
+import { AuthContext } from '../../../provider/Auth'
 import './register.css'
 
-export function Register() {
+export function RegisterStudent() {
 
   const [name, setName] = useState('')
   const [code, setCode] = useState('')  
