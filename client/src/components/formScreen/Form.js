@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useContext } from 'react'
 import Axios from "axios"
-import Context from "../../Context/Context"
+
 import './form.css'
 
 export function Form() {
@@ -19,7 +19,7 @@ export function Form() {
 
     let navigate = useNavigate();
 
-    const { auth, setAuth, user, setUser } = useContext(Context)
+    
 
     const handleLogin = () => {
         let email = values.emailUsuario;

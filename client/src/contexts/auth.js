@@ -20,19 +20,47 @@ export const AuthProvider = ({ children }) => {
         }
     }, []);
 
-    const signin = (email, Password) => {
+    const signin = (email, password) => {
         const usersStorage = JSON.parse(localStorage.getItem("sentrygate"))
 
         const hasUser = usersStorage?.filter((user) => user.email === email);
 
         if (hasUser?.length) {
-            if (hasUser[0].enail === email && hasUser[0].password === password)
+            if (hasUser[0].email === email && hasUser[0].password === password)
                 setUser({ email, password });
             return;
         } else {
             return "E-mail ou senha incorretos";
         }
 
-    }
-    return <AuthContext.Provider>{children}</AuthContext.Provider>
+    };
+
+    const signup = (email, password) => {
+        const usersStorage = JSON.parse(localStorage.getItem("sentrygate"))
+
+        const hasUser = usersStorage?.filter((user) => user.email === email)
+
+        let newUser;
+
+        if (hasUser?.length) {
+            newUser = [...usersStorage, { email, password}];
+        }else {
+            newUser = [{email, password}];
+        }
+
+        localStorage.setItem("sentrygate", JSON.stringify(newUser)); 
+        
+
+    };
+
+    const signout = () => {
+        setUser(null);
+        localStorage.removeItem("sentrygate");
+    };
+
+    return <AuthContext.Provider
+        value={{user, signed: !!user, signin, signup, signout}}
+    >
+        {children}
+        </AuthContext.Provider>
 };

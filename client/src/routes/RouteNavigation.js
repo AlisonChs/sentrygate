@@ -23,6 +23,8 @@ export function RouteNavigation() {
   return (
 
     <div className="components">
+      <BrowserRouter>
+      <Fragment>
       <Routes>
         <Route exact path="/" element={<Form />} />
         <Route exact path="/main" element={<Private Item={Main} />} />
@@ -30,6 +32,9 @@ export function RouteNavigation() {
         <Route path="/register" element={<Register />} />
         <Route path="/boletim" element={<Boletim />} />
       </Routes>
+      </Fragment>
+      </BrowserRouter>
+      
     </div>
 
   );
