@@ -40,7 +40,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-.auth form > input,
+.auth form > input, form
 button {
   height: 40px;
   font-size: 14px;
@@ -51,7 +51,7 @@ button {
   padding: 0 0 0 0.5rem;
 }
 
-button {
+form button {
   border: none;
   padding: 0.5rem 1rem; /*#5689e8*/
   background-color: #532F8B;
@@ -61,7 +61,7 @@ button {
   transition: background-color 0.5s ease-out; 
 }
 
-button:hover, input:hover {
+form button:hover, input:hover {
   background-color: #5819BB;
   transition: 0.5s;
 }
