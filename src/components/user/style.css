@@ -83,8 +83,14 @@
  font-size: 18px;
 }
 
+.subjects .headerSubject p {
+ font-size: 20px;
+ font-weight: bold;
+}
+
 .subjects button {
  width: 8rem;
+ border-radius: 50px;
 }
 
 .subjects .headerSubject, .subjects p, .subjects button {
