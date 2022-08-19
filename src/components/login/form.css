@@ -6,6 +6,22 @@
   justify-content: center;
 }
 
+body {
+  font-family: 'Times New Roman', Times, serifW;
+}
+
+.backButton {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.contentMid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .flex:before {
   background-image: url(https://1.bp.blogspot.com/-gxsOcYWghHA/Xp_izTh4sFI/AAAAAAAAU8s/y637Fwg99qAuzW9na_NT_uApny8Vce95gCEwYBhgL/s1600/header-footer-gradient-bg.png);
 }
@@ -122,6 +138,7 @@ input,
 select {
   width: 100%;
   height: 2rem;
+  text-align: center;
   background: #200B41;
   border: none;
   border-radius: 0.4rem;
@@ -130,17 +147,10 @@ select {
   transition: background-color 0.5s ease-out; 
 }
 
-select {
-  
-}
-
 
 .contentMid {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  justify-content: center;
+  
 }
 
 .button {
