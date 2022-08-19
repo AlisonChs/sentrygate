@@ -2,6 +2,7 @@ import './form.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useContext } from 'react';
+import Select from 'react-select';
 import { AuthContext } from '../../provider/Auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -17,10 +18,12 @@ export function Form() {
     const navigate = useNavigate()
 
     const { user, setUser } = useContext(AuthContext)
-    const [ currentUser, setCurrentUser ] = useState('')
+
+    const [ currentUser, setCurrentUser ] = useState(null)
 
     const [currentStep, setCurrentStep] = useState(0)
     
+    // Passo a passo para o usuário preencher o FORM
     const steps = [
         {
             id: "USER",
@@ -32,10 +35,49 @@ export function Form() {
         }
     ];
 
+    const userOptions = [
+        {
+            label:"Aluno", value:"Estudante"
+        },
+        {
+            label:"Professor", value:"Professor"
+        },
+        {
+            label:"Coordenador", value:"Coordenador"
+        },
+        {
+            label:"Responsável", value:"Responsável"
+        }
+    ];
+
+    const customStyles = {
+        control: (base, state) => ({
+          ...base,
+          background: "#200B41",
+          border: 0
+        }),
+        menu: base => ({
+          ...base,
+          marginTop: 0,
+          background: "#200B41",
+          color: "white",
+          "&:hover": {
+            color: 'white'
+        }
+        }),
+        menuList: base => ({
+          ...base,
+          // kill the white space on first and last option
+          padding: 0
+        })
+      };
+
+    // Função para incrementar o contador e passar para a próxima seção
     function handleNextStep () {
         setCurrentStep((prevState) => prevState +1)
     }
 
+    // Função para decrementar o contador e passar para a seção anterior
     function handlePrevStep () {
         setCurrentStep((prevState) => prevState -1)
     }
@@ -49,6 +91,7 @@ export function Form() {
     return(
 
         <div className='flex'>
+
             <div className='stars'>
                 <div className="starsec"></div>
                 <div className="starthird"></div>
@@ -67,17 +110,21 @@ export function Form() {
                         <><><h2 className='formTitle'> Acesse a sua <span> conta</span></h2>
                         <div className="contentMid">
                             
-                                <select className="selectAluno" name="usuario" onChange={e => setCurrentUser(e.target.value)}>
-                                    <option value='Estudante'>Aluno</option>
-                                    <option value='Professor'>Professor</option>
-                                    <option  value='Coordenador'>Coordenador</option>
-                                </select>
+                                <Select 
+                                    options={userOptions} 
+                                    name="usuario"
+                                    styles={customStyles}
+                                    onChange={e => setCurrentUser(e.value)}
+                                    defaultValue={{label: "Quem você é?", value: ""}}
+                                >
+                                </Select>
                                 
                             </div></></>
 
                                 )} {steps[currentStep].id === 'LOGIN' && (
 
-                                <><h2 className='formTitle'> Olá, <span> {currentUser=='' ? <p>Estudante </p> : currentUser}</span></h2>
+                                <><h2 className='formTitle'> Olá, <span> {currentUser}</span></h2>
+                                
                                 <input
                                 type='email'
                                 name="email"
@@ -89,13 +136,14 @@ export function Form() {
                                     </>
                                     )}
 
-{currentStep < steps.length - 1 && (
-                                      <FontAwesomeIcon onClick={handleNextStep} size="xl" color='white' icon={faAngleRight} />
+{ currentStep < steps.length - 1 && (
+                                    <FontAwesomeIcon onClick={handleNextStep} size="xl" color='white' icon={faAngleRight} />
 
 )}
 
 {currentStep === steps.length - 1 && (
-                                          <><FontAwesomeIcon className="backButton" onClick={handlePrevStep} size="xl" color='white' icon={faAngleLeft} /><button type='submit' className="button" onClick={handleSubmit}>Entrar</button></>
+                                          <><FontAwesomeIcon className="backButton" onClick={handlePrevStep} size="xl" color='white' icon={faAngleLeft} />
+                                          <button type='submit' className="button" onClick={handleSubmit}>Entrar</button></>
 
 )}
 
