@@ -20,12 +20,9 @@
   margin: 0 auto 10px auto;
 }
 
-h2 {
-  margin-bottom: 15%;
-}
-
 .auth h2 {
   font-weight: 900;
+  margin-bottom: 15%;
 }
 
 .auth__success {
