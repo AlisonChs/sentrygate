@@ -16,6 +16,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "use-history": "^1.4.1",
+    "uuid": "^8.3.2",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
@@ -41,6 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {}
+  }
 }
