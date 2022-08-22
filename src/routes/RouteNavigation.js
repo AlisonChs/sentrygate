@@ -10,6 +10,7 @@ import "./style.css";
 import { useContext } from "react";
 import { AuthContext } from "../provider/Auth";
 import { RegisterSchool } from "../components/registerSchool";
+import Grading from "../components/grading/Grading";
 
 export function RouteNavigation() {
   const { user, setUser } = useContext(AuthContext)
@@ -28,6 +29,7 @@ export function RouteNavigation() {
           <Route path="/register" element={<Register />} />
           <Route path="/register-school" element={<RegisterSchool />} />
           <Route path="/boletim" element={<Boletim />} />
+          <Route path="/grading" element={<Grading />} />
         </Routes>
       </div>
 
