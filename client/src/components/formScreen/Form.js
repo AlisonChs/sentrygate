@@ -1,10 +1,18 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
+import { Button } from '../Button'
+import { Input } from '../Input'
+import useAuth from '../../hooks/useAuth'
 import Axios from "axios"
 
 import './form.css'
 
 export function Form() {
+
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+    const [error, setError] = useState("");
+
     const [values, setValues] = useState({
         emailUsuario: "",
         senhaUsuario: "",
@@ -19,7 +27,7 @@ export function Form() {
 
     let navigate = useNavigate();
 
-    
+
 
     const handleLogin = () => {
         let email = values.emailUsuario;
@@ -75,19 +83,22 @@ export function Form() {
                         />
                     </div>
                     <input
-                        type='email'
+                        type="email"
                         name="emailUsuario"
                         required=""
                         placeholder="Insira o email"
-                        onChange={handleChangeValues}
+                        value={email}
+                        onChange={(e) => [setEmail(e.target.value), setError("")]}
+                    //onChange={handleChangeValues}
                     />
                     <input
-                        type='password'
+                        type="password"
                         //value={password}
                         name="senhaUsuario"
                         required=""
                         placeholder="Insira a senha"
-                        onChange={handleChangeValues}
+                        //onChange={handleChangeValues}
+                        onChange={(e) => [setSenha(e.target.value), setError("")]}
                     />
                     <button type='submit' name="login" className="button" onClick={() => handleLogin()}>Entrar</button>
                 </div>

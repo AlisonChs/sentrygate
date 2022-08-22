@@ -6,15 +6,16 @@ import { Form } from "../components/formScreen/Form";
 import { Register } from "../components/registerScreen/Register";
 import { Boletim } from "../components/boletim/Boletim";
 import { Navbar } from "../components/navbar/Navbar";
+import useAuth from "../hooks/useAuth";
 import "./style.css";
 
-import { AuthContext } from "../provider/Auth";
+
 
 export function RouteNavigation() {
 
   const Private = ({ Item }) => {
 
-    const signed = false;
+    const { signed } = useAuth();
     return signed > 0 ? <Item /> : <Form />
 
   };
@@ -23,8 +24,7 @@ export function RouteNavigation() {
   return (
 
     <div className="components">
-      <BrowserRouter>
-      <Fragment>
+
       <Routes>
         <Route exact path="/" element={<Form />} />
         <Route exact path="/main" element={<Private Item={Main} />} />
@@ -32,9 +32,8 @@ export function RouteNavigation() {
         <Route path="/register" element={<Register />} />
         <Route path="/boletim" element={<Boletim />} />
       </Routes>
-      </Fragment>
-      </BrowserRouter>
-      
+
+
     </div>
 
   );

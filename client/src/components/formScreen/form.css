@@ -1,7 +1,7 @@
 .contentForm {
   display: flex;
   justify-content: center;
-  
+
   padding: 3.5rem 0;
 }
 
@@ -16,17 +16,17 @@
 
 .form {
   width: 25rem;
-  
+
   border-radius: 50px;
   background: linear-gradient(145deg, #230e46, #1e0c3b);
-  box-shadow:  5px 5px 10px #1c0b37,
-              -5px -5px 10px #260f4b;
+  box-shadow: 5px 5px 10px #1c0b37,
+    -5px -5px 10px #260f4b;
 
   padding: 4rem;
   backdrop-filter: blur(20px);
 }
 
-input,
+
 select {
   width: 100%;
   height: 2rem;
@@ -45,20 +45,10 @@ select {
   justify-content: center;
 }
 
-.button {
-  border: none;
-  padding: 0.5rem 1rem; /*#5689e8*/
-  background-color: #f9943b;
-  border-radius: 0.4rem;
-  cursor: pointer;
-}
+/* Aqui ficava o botão */
 
-.button:hover {
-  background-color: #5689e8;
-  transition: 0.5s;
-}
 
-.auth__error{
+.auth__error {
   padding: 10px 0;
   background-color: hsl(0, 79%, 87%);
   margin-bottom: 20px;
