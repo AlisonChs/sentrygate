@@ -1,3 +1,4 @@
+import './form.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 export function Inputs({ currentUser, setCurrentUser }) {

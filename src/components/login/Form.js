@@ -28,6 +28,8 @@ export function Form() {
 
   return (
     <div className="flex">
+      
+       {/* Animação de estrelas do fundo da tela */}
       <div className="stars">
         <div className="starsec"></div>
         <div className="starthird"></div>
@@ -38,13 +40,7 @@ export function Form() {
       <div className="contentForm">
         <form className="form">
           <div className="screen">
-            <>
-              <>
                 <div className="contentMid"></div>
-              </>
-            </>
-
-            <></>
 
             {currentUser === null ? (
               <SelectUser setCurrentUser={setCurrentUser} />
