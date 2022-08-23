@@ -7,6 +7,58 @@ import { AuthContext } from '../../provider/Auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
+function SelectUser () {
+
+    const userOptions = [
+        {
+            label:"Aluno", value:"estudante"
+        },
+        {
+            label:"Professor", value:"professor"
+        },
+        {
+            label:"Coordenador", value:"coordenador"
+        },
+        {
+            label:"Responsável", value:"responsável"
+        }
+    ];
+    
+    const customStyles = {
+        control: (base, state) => ({
+          ...base,
+          background: "#200B41",
+          border: 0
+        }),
+        menu: base => ({
+          ...base,
+          marginTop: 0,
+          background: "#200B41",
+          color: "white",
+          "&:hover": {
+            color: 'black'
+        }
+        }),
+        menuList: base => ({
+          ...base,
+          // kill the white space on first and last option
+          padding: 0
+        })
+      };
+
+
+    <Select
+        options={userOptions} 
+        name="usuario"
+        styles={customStyles}
+        onChange={e => setCurrentUser(e.value)}
+        defaultValue={{label: "Quem você é?", value: ""}}
+    >
+        
+    </Select>
+
+}
+
 
 export function Form() {
     const [text, setText] = useState('')
@@ -17,9 +69,10 @@ export function Form() {
     const [error, setError] = useState('')
     const navigate = useNavigate()
 
-    const { user, setUser } = useContext(AuthContext)
+    // const [ currentUser, setCurrentUser ] = useState(null)
 
-    const [ currentUser, setCurrentUser ] = useState(null)
+
+    const { user, setUser } = useContext(AuthContext)
 
     const [currentStep, setCurrentStep] = useState(0)
     
@@ -34,43 +87,6 @@ export function Form() {
             title: "Inserir login e senha"
         }
     ];
-
-    const userOptions = [
-        {
-            label:"Aluno", value:"Estudante"
-        },
-        {
-            label:"Professor", value:"Professor"
-        },
-        {
-            label:"Coordenador", value:"Coordenador"
-        },
-        {
-            label:"Responsável", value:"Responsável"
-        }
-    ];
-
-    const customStyles = {
-        control: (base, state) => ({
-          ...base,
-          background: "#200B41",
-          border: 0
-        }),
-        menu: base => ({
-          ...base,
-          marginTop: 0,
-          background: "#200B41",
-          color: "white",
-          "&:hover": {
-            color: 'white'
-        }
-        }),
-        menuList: base => ({
-          ...base,
-          // kill the white space on first and last option
-          padding: 0
-        })
-      };
 
     // Função para incrementar o contador e passar para a próxima seção
     function handleNextStep () {
@@ -109,15 +125,7 @@ export function Form() {
                         
                         <><><h2 className='formTitle'> Acesse a sua <span> conta</span></h2>
                         <div className="contentMid">
-                            
-                                <Select 
-                                    options={userOptions} 
-                                    name="usuario"
-                                    styles={customStyles}
-                                    onChange={e => setCurrentUser(e.value)}
-                                    defaultValue={{label: "Quem você é?", value: ""}}
-                                >
-                                </Select>
+
                                 
                             </div></></>
 
@@ -136,10 +144,6 @@ export function Form() {
                                     </>
                                     )}
 
-{ currentStep < steps.length - 1 && (
-                                    <FontAwesomeIcon onClick={handleNextStep} size="xl" color='white' icon={faAngleRight} />
-
-)}
 
 {currentStep === steps.length - 1 && (
                                           <><FontAwesomeIcon className="backButton" onClick={handlePrevStep} size="xl" color='white' icon={faAngleLeft} />

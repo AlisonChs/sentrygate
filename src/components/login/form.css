@@ -134,6 +134,7 @@ input:focus {
   background: #371E5F;
   border: 1px solid orange;
 }
+
 input,
 select {
   width: 100%;
