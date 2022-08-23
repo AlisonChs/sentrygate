@@ -1,8 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useState, useContext } from 'react'
-import { Button } from '../Button'
-import { Input } from '../Input'
-import useAuth from '../../hooks/useAuth'
+import { Button } from '../../components/Button'
+import { Input } from '../../components/Input'
+import useAuth from '../../Contexts/hooks/useAuth'
 import Axios from "axios"
 
 import './form.css'
@@ -27,7 +27,7 @@ export function Form() {
 
     let navigate = useNavigate();
 
-
+    const { auth, setAuth, user, setUser } = useContext(Context)
 
     const handleLogin = () => {
         let email = values.emailUsuario;
