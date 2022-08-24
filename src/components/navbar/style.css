@@ -9,7 +9,7 @@
  transition: 0.7s;
  overflow: hidden;
 
- z-index: 1000;
+ z-index: 999;
 }
 
 .navbar:hover {

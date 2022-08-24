@@ -15,7 +15,7 @@ export function Header() {
   return (
       <div className="header">
         <div className="logo">
-          <Link to="/">
+          <Link to="/main">
             <h1>
               Sentry <span>Gate</span>
             </h1>
