@@ -1,0 +1,68 @@
+.center {
+  display: flex;
+
+  padding: 3.5rem 0;
+}
+
+.auth {
+  width: 25rem;
+  padding: 4rem;
+  text-align: center;
+
+  border-radius: 50px;
+  background-color: #120329;
+}
+
+.auth form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 auto 10px auto;
+}
+
+.auth h2 {
+  font-weight: 900;
+  margin-bottom: 15%;
+}
+
+.auth__success {
+  padding: 10px 0;
+  background-color: hsl(147, 79%, 87%);
+  margin-bottom: 20px;
+}
+
+.auth__error {
+  padding: 10px 0;
+  background-color: hsl(0, 79%, 87%);
+  margin-bottom: 20px;
+}
+
+.auth form > input,
+button {
+  height: 40px;
+  font-size: 14px;
+
+  border: none;
+  border-radius: 0.4rem;
+
+  padding: 0 0 0 0.5rem;
+}
+
+button {
+  border: none;
+  padding: 0.5rem 1rem; /*#5689e8*/
+  background-color: #532F8B;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.5s ease-out; 
+}
+
+button:hover, input:hover {
+  background-color: #5819BB;
+  transition: 0.5s;
+}
+
+input, select {
+  background: #200B41;
+}
