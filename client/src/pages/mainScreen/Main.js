@@ -1,6 +1,6 @@
 import "./main.css";
 import Lottie from "react-lottie";
-import computer from "../../../assets/computer.json";
+import computer from "../../assets/computer.json";
 import { ArrowSquareRight } from "phosphor-react";
 import { useNavigate } from "react-router";
 

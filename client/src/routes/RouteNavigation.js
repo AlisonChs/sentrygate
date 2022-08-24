@@ -1,12 +1,12 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { useContext, Fragment } from "react";
 import { Header } from "../components/header/Header";
-import { Main } from "../components/mainScreen/main/Main";
-import { Form } from "../components/formScreen/Form";
-import { Register } from "../components/registerScreen/Register";
-import { Boletim } from "../components/boletim/Boletim";
+import { Main } from "../pages/mainScreen/Main";
+import { Form } from "../pages/formScreen/Form";
+import { Register } from "../pages/registerScreen/Register";
+import { Boletim } from "../pages/boletim/Boletim";
 import { Navbar } from "../components/navbar/Navbar";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../Contexts/hooks/useAuth";
 import "./style.css";
 
 
