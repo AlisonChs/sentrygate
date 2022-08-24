@@ -20,7 +20,7 @@ button {
   padding: 0 7rem 0 7rem;
   
   position: fixed;
-  z-index: 999;
+  z-index: 1000;
   /* border-bottom: 1px solid #301361; #250f4a; */
 
 }

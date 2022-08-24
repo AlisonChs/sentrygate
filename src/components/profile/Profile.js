@@ -1,6 +1,7 @@
-import { Circle, Student } from 'phosphor-react'
 import './style.css'
-
+import { Circle, Student } from 'phosphor-react'
+import { Avatar } from "@mui/material";
+ 
 function Subjects({ name, description1, description2 }) {
     return (
         <div className='subjects'>
@@ -16,7 +17,7 @@ function Subjects({ name, description1, description2 }) {
     )
 }
 
-export function User() {
+export function Profile() {
     return (
         <div className='containerUser'>
             <div className='contentUser'>
@@ -27,7 +28,7 @@ export function User() {
 
                     <div className='photoUser'>
                         <div className='photo'>
-                            <Student size={90} />
+                            <Avatar alt='Victor' src="https://github.com/Victor-HM.png" sx={{ width: 150, height: 150 }} />
                         </div>
 
                         <div className='nameUser'>
@@ -38,7 +39,14 @@ export function User() {
                 </div>
 
                 <div className='detailsUser'>
-
+                    <p>Habilitação Técnica: <span>Desenvolvimento de Sistemas</span></p>
+                    <p>Número do Aluno: <span>1836</span></p>
+                    <p>Habilitação Escolar: <span>Ensino Médio</span></p>
+                    <p>Número de Mátricula: <span>1288</span></p>
+                    <p>Grupo: <span>Turma B</span></p>
+                    <p>Período: <span>Manhã</span></p>
+                    <p>Situação: <span>Cursando</span></p>
+                    <p>Módulo e Série: <span>3º Ano</span></p>
                 </div>
             </div>
 
