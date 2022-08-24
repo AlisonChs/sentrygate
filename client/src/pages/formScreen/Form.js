@@ -1,17 +1,13 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import React, { useState, useContext } from 'react'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
-import useAuth from '../../Contexts/hooks/useAuth'
+import Context from '../../contexts/Context'
 import Axios from "axios"
 
 import './form.css'
 
 export function Form() {
-
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
-    const [error, setError] = useState("");
 
     const [values, setValues] = useState({
         emailUsuario: "",
@@ -52,7 +48,7 @@ export function Form() {
                     setAuth(true)
 
                     //navegar a outra rota
-                    navigate('/boletim')
+                    navigate("/main")
                 } else {
                     alert("Email ou senha invalidos");
                 }
@@ -87,18 +83,14 @@ export function Form() {
                         name="emailUsuario"
                         required=""
                         placeholder="Insira o email"
-                        value={email}
-                        onChange={(e) => [setEmail(e.target.value), setError("")]}
-                    //onChange={handleChangeValues}
+                        onChange={handleChangeValues}
                     />
                     <input
                         type="password"
-                        //value={password}
                         name="senhaUsuario"
                         required=""
                         placeholder="Insira a senha"
-                        //onChange={handleChangeValues}
-                        onChange={(e) => [setSenha(e.target.value), setError("")]}
+                        onChange={handleChangeValues}
                     />
                     <button type='submit' name="login" className="button" onClick={() => handleLogin()}>Entrar</button>
                 </div>
