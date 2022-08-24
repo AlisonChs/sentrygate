@@ -26,8 +26,8 @@
   backdrop-filter: blur(20px);
 }
 
-
-select {
+input
+,select {
   width: 100%;
   height: 2rem;
 
@@ -62,4 +62,18 @@ select {
 
 .cad p {
   color: white;
+}
+
+.button {
+  border: none;
+  padding: 0.5rem 1rem;
+  /*#5689e8*/
+  background-color: #f9943b;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #5689e8;
+  transition: 0.5s;
 }
