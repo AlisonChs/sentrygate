@@ -1,13 +1,19 @@
 import './App.css'
-import { BrowserRouter as Router } from 'react-router-dom';
-import Routess from './utils/Routes'
+import { BrowserRouter as Router } from 'react-router-dom'
+import  RouteNavigation  from './utils/routes/RouteNavigation';
+import { StoreProvider } from './contexts/provider/Provider';
 
 
 function App() {
   return (
+
     <Router>
-        <Routess />
+      <StoreProvider>
+        <RouteNavigation />
+      </StoreProvider>
     </Router>
+
+
   );
 }
 

@@ -1,0 +1,9 @@
+.navbarContent {
+ width: 100%;
+ display: flex;
+ justify-content: center
+}
+
+.components {
+ margin-top: 7rem;
+}

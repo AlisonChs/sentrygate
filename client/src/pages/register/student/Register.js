@@ -1,6 +1,6 @@
 import {useContext, useState} from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { AuthContext } from '../../../provider/Auth'
+import { StoreProvider } from '../../../contexts/provider/Provider'
 import './register.css'
 
 export function RegisterStudent() {
@@ -11,7 +11,7 @@ export function RegisterStudent() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const navigate = useNavigate()
-  const { user, setUser } = useContext(AuthContext)
+  const { user, setUser } = useContext(StoreProvider)
 
   function handleSubmit() {
     setUser({ auth: true })

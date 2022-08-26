@@ -1,10 +1,10 @@
 import "./header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../../provider/Auth";
+import { StoreProvider } from "../../../contexts/provider/Provider";
 
 export function Header() {
-  const { user, setUser } = useContext(AuthContext)
+  const { user, setUser } = useContext(StoreProvider)
   const navigate = useNavigate()
   function logoff() {
     setUser({ auth: false })
