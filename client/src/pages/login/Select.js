@@ -68,6 +68,7 @@ export function SelectUser({ setCurrentUser }) {
       </h2>
 
       <Select
+        sx={{paddingLeft: "15px"}}
         styles={customStyles}
         options={userOptions}
         name="usuario"

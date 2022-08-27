@@ -8,6 +8,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html svg {
+  width: none;
+  height: none;
+}
+
 body {
   background-color: #210D41;
   margin: 0;

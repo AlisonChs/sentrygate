@@ -23,7 +23,7 @@ export function Form() {
       <div className="contentForm">
         <form className="form">
           <div className="screen">
-                <div className="contentMid"></div>
+                <div className="contentMid">
 
             {currentUser === null ? (
               <SelectUser setCurrentUser={setCurrentUser} />
@@ -33,6 +33,7 @@ export function Form() {
                 setCurrentUser={setCurrentUser}
               />
             )}
+            </div>
           </div>
         </form>
       </div>
