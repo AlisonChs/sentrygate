@@ -1,5 +1,5 @@
 import "./form.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { SelectUser } from "./Select";
 import { Inputs } from "./Inputs";
@@ -11,8 +11,8 @@ export function Form() {
 
   return (
     <div className="flex">
-      
-       {/* Animação de estrelas do fundo da tela */}
+
+      {/* Animação de estrelas do fundo da tela */}
       <div className="stars">
         <div className="starsec"></div>
         <div className="starthird"></div>
@@ -23,7 +23,7 @@ export function Form() {
       <div className="contentForm">
         <form className="form">
           <div className="screen">
-                <div className="contentMid"></div>
+            <div className="contentMid"></div>
 
             {currentUser === null ? (
               <SelectUser setCurrentUser={setCurrentUser} />

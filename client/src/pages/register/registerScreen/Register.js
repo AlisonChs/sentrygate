@@ -20,7 +20,8 @@ export function Register() {
     }))
   }
 
-  let navigate = useNavigate()
+  let navigate = useNavigate();
+
 
   const handleRegister = () => {
     const nome = values.nomeUsuario;
@@ -41,7 +42,9 @@ export function Register() {
         let message = response.data.message
 
         if (message = 'Usuario cadastrado') {
+
           alert('Usuario cadastrado')
+          navigate("/main")
         } else {
           alert('Algo deu errado')
         }
