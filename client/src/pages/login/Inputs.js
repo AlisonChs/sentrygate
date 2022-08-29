@@ -25,7 +25,8 @@ export function Inputs({ currentUser, setCurrentUser }) {
 
   let navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault()
     let email = values.emailUsuario;
     let senha = values.senhaUsuario;
 
@@ -70,7 +71,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
         color="white"
         icon={faAngleLeft}
       /> */}
-      <button type="submit" onClick={() => handleLogin()} className="button">
+      <button type="submit" onClick={e => handleLogin(e)} className="button">
         Entrar
       </button>
     </div>
