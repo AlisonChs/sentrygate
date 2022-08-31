@@ -37,7 +37,7 @@
   margin-bottom: 20px;
 }
 
-.auth form > input,
+.auth form>input,
 button {
   height: 40px;
   font-size: 14px;
@@ -50,19 +50,22 @@ button {
 
 button {
   border: none;
-  padding: 0.5rem 1rem; /*#5689e8*/
+  padding: 0.5rem 1rem;
+  /*#5689e8*/
   background-color: #532F8B;
   border-radius: 0.4rem;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.5s ease-out; 
+  transition: background-color 0.5s ease-out;
 }
 
-button:hover, input:hover {
+button:hover,
+input:hover {
   background-color: #5819BB;
   transition: 0.5s;
 }
 
-input, select {
+input,
+select {
   background: #200B41;
 }

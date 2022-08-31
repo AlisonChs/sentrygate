@@ -20,9 +20,11 @@ export function Register() {
     }))
   }
 
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
-  const handleRegister = () => {
+
+  const handleRegister = (e) => {
+    e.preventDefault()
     const nome = values.nomeUsuario;
     const cdgescola = values.cdgescolaUsuario;
     const email = values.emailUsuario;
@@ -41,7 +43,9 @@ export function Register() {
         let message = response.data.message
 
         if (message = 'Usuario cadastrado') {
+
           alert('Usuario cadastrado')
+          navigate("/main")
         } else {
           alert('Algo deu errado')
         }
@@ -91,7 +95,7 @@ export function Register() {
             placeholder='Confirme sua senha'
           />
 
-          <button type=" submit" name="cadastrar" value="Cadastrar" onClick={() => handleRegister()}>Cadastrar</button>
+          <button type=" submit" name="cadastrar" value="Cadastrar" onClick={e => handleRegister(e)}>Cadastrar</button>
         </form>
         <span>
           Já possui uma conta?
