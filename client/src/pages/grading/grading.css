@@ -1,0 +1,86 @@
+.App {
+    display: flex;
+    justify-content: center;
+    
+    padding: 3.5rem 0;
+    background-color: #260f4b;
+  }
+  
+.screen {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+.form {
+    width: 25rem;
+    
+    border-radius: 50px;
+    background: linear-gradient(145deg, #230e46, #1e0c3b);
+    box-shadow:  5px 5px 10px #1c0b37,
+                -5px -5px 10px #260f4b;
+  
+    padding: 4rem;
+    backdrop-filter: blur(20px);
+  }
+
+  .delete {
+    border: none;
+    padding: 0.5rem 1rem; 
+    background-color: #c52407;
+    border-radius: 0.4rem;
+    cursor: pointer;
+  }
+  
+  .delete:hover {
+    background-color: #ff0000;
+    transition: 0.5s;
+  }
+
+  .add {
+    border: none;
+    padding: 0.5rem 1rem; 
+    background-color: #0ab66e;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .add:hover {
+    background-color: #0ab635;
+    transition: 0.5s;
+  }
+
+  .calc {
+    border: none;
+    padding: 0.5rem 1rem; 
+    background-color: #211ecf;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .calc:hover {
+    background-color: #380f99;
+    transition: 0.5s;
+  }
+
+  .nota {
+    width: 15%;
+    height:25px;
+  }
+
+  .ev {
+    width: 50%;
+    height: 25px;
+  }
+
+  .media {
+    color: white;
+    font-weight: bold;
+  }
+
+  
