@@ -6,6 +6,7 @@ const cors = require("cors")
 app.use(express());
 app.use(cors())
 
+//conectando com o banco
 const db = mysql.createPool ({
     host: "localhost",
     user: "root",
@@ -13,6 +14,47 @@ const db = mysql.createPool ({
     database: "sentrygate"
 });
 
+//Função de cadastro
+app.post("/register", (req, res) => {
+    const { name } = req.body;
+    const { cdgescola } = req.body;
+    const { email } = req.body;
+    const { password } = req.body;
+
+    let SQL = "INSERT INTO usuarios (nome, cdgEscola, email, senha ) VALUES (?, ?, ?, ?)";
+
+    try {
+        db.query(
+            SQL,
+            [name, cdgescola, email, password],
+            (err, result) => {
+                if (err) console.log(err);
+                else {
+                    result.message = 'Usuario cadastrado'
+                    res.send(result);
+                }
+            }
+        );
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+//Função de login
+app.post('/login', (req, res) => {
+    const { email } = req.body
+    const { password } = req.body
+
+    let SQL = "SELECT * FROM usuarios WHERE email = ? && senha = ?";
+
+    db.query(SQL, [email, password], (err, result) => {
+        if (err) console.log(err)
+        else res.send(result)
+    })
+})
+
+
+//Função de adicionar notas
 app.post("/grading", (req, res) => {
     const { avaliacao } = req.body;
     const { nota } = req.body;
