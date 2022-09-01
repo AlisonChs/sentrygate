@@ -1,0 +1,14 @@
+footer {
+ background-color: black; /*090a0a*/
+ height: auto;
+ width: 100%;
+
+ display: flex;
+ flex-direction: column;
+
+ padding: 6rem 8rem;
+}
+
+.infoFooter {
+ width: 40%;
+}

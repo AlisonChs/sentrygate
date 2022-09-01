@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import RouteNavigation from './utils/routes/RouteNavigation';
 import { StoreProvider } from './contexts/Provider';
 
-
 function App() {
   return (
 
@@ -12,7 +11,6 @@ function App() {
         <RouteNavigation />
       </StoreProvider>
     </Router>
-
 
   );
 }
