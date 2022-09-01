@@ -1,15 +1,12 @@
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
-import { AuthProvider } from "./provider/Auth";
 
 const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
+const root = createRoot(document.querySelector("#root"));
 
 root.render(
   <StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <App />
   </StrictMode>
 );
