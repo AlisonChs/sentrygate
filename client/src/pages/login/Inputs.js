@@ -46,6 +46,16 @@ export function Inputs({ currentUser, setCurrentUser }) {
       }));
     };
 
+    const CustomBackButton = {
+      position: "absolute", 
+      top: "14px", 
+      left: "5px",
+      transition: "all 0.5s ease-out",
+      "&:hover": {
+        transform: "rotateZ(360deg)"
+      },
+    }
+
     const handleLogin = () => {
         let email = values.emailUsuario;
         let senha = values.senhaUsuario;
@@ -79,7 +89,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
 
   return (
     <div>
-      <IconButton sx={{position: "absolute", top: "14px", left: "5px"}} onClick={() => setCurrentUser(null)} fontaria-label="back to select page">
+      <IconButton sx={CustomBackButton} onClick={() => setCurrentUser(null)} fontaria-label="back to select page">
         <ChevronLeftIcon sx={{color: "white"}} fontSize="large"/>
       </IconButton>   
       <div className='loginInput'>
