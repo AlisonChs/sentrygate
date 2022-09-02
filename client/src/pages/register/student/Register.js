@@ -1,23 +1,35 @@
 import {useContext, useState} from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import { StoreProvider } from '../../../contexts/provider/Provider'
+import LoadingButton from '@mui/lab/LoadingButton';
+
 import './register.css'
 
 export function RegisterStudent() {
 
-  const [name, setName] = useState('')
-  const [code, setCode] = useState('')  
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const navigate = useNavigate()
-  const { user, setUser } = useContext(StoreProvider)
+  const [isInputChanged, setIsInputChanged] = useState (true);
 
-  function handleSubmit() {
-    setUser({ auth: true })
+    const LoadingStyles = {
+      color: "white",
+      borderColor: "transparent",
+      borderRadius: "0.5rem",
+      transition: "all 0.5s ease-out",
+      fontWeight: "bold",
+      backgroundColor: "#5819BB",
+      "&:hover": {
+        borderColor: "transparent",
+        padding: "0.5rem 1rem",
+        backgroundColor: "#5819BB",
+        cursor: "pointer",
+        filter: "drop-shadow(5px 5px 0px #210D41)",
+      },
+    }
 
-    navigate('/main')
-}
+  const [values, setValues] = useState({
+    name: "",
+    code: "",
+    email: "",
+    confirmPassword: "",
+    password: "",
+  });
 
   return (
       <div className='auth'>
@@ -27,35 +39,43 @@ export function RegisterStudent() {
           <input
             type='text'
             placeholder="Digite seu nome e sobrenome"
+            name='name'
             required
           />
 
           <input 
             type='text' 
+            name='code'
             placeholder="Digite o código de sua escola"
             required
           />
 
           <input 
             type='email' 
+            name='email'
             placeholder="Digite seu email"
             required
             />
 
           <input 
             type='password'
+            name='password'
             required
             placeholder='Digite sua senha'
             />
 
             <input 
             type='password'
+            name='confirmPassword'
             required
             placeholder='Confirme sua senha'
             />
 
-          <button type='submit' onClick={handleSubmit} >Cadastrar</button>
-        </form>
+      <LoadingButton loading={isInputChanged ? true : false} sx={LoadingStyles} variant="outlined">
+       Cadastrar
+      </LoadingButton>        
+      
+      </form>
       
       </div>
   )
