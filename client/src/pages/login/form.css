@@ -117,8 +117,7 @@ body {
 }
 
 .form {
-  width: 25rem;
-  
+  width: 30rem;
   border-radius: 50px;
   background-color: #120329;
  
@@ -161,7 +160,11 @@ select {
 
 .contentMid {
   width: 100%;
-  
+}
+
+.loginInput div {
+  padding: 10px;
+
 }
 
 .p1 {

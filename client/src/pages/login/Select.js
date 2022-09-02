@@ -25,7 +25,7 @@ export function SelectUser({ setCurrentUser }) {
     ...provided,
     color: 'white',
     cursor: 'pointer',
-    padding: 20,
+    padding: 15,
     border: 0,
     backgroundColor: "#200B41",
     "&:hover": {
@@ -44,6 +44,8 @@ export function SelectUser({ setCurrentUser }) {
  control: (base, state) => ({
   ...base,
   backgroundColor: '#200B41',
+  width: 200,
+  marginLeft: 50,
   color: 'white',
   border: state.isFocused ? 0 : 0,
   // This line disable the blue border
@@ -68,7 +70,6 @@ export function SelectUser({ setCurrentUser }) {
       </h2>
 
       <Select
-        sx={{paddingLeft: "15px"}}
         styles={customStyles}
         options={userOptions}
         name="usuario"

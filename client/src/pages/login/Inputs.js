@@ -62,12 +62,19 @@ export function Inputs({ currentUser, setCurrentUser }) {
       <IconButton sx={{position: "absolute", top: "14px", left: "5px"}} onClick={() => setCurrentUser(null)} fontaria-label="back to select page">
         <ChevronLeftIcon sx={{color: "white"}} fontSize="large"/>
       </IconButton>   
-
-      <h2 className="formTitle">
-        Olá, <span> {currentUser}</span>
-      </h2>
-      <input type="email" name="emailUsuario" onChange={handleChangeValues} placeholder="Insira o Email" />
-      <input type="password" name="senhaUsuario" onChange={handleChangeValues} placeholder="Insira a senha" />
+      <div className='loginInput'>
+        <div>
+          <h2 className="formTitle">
+            Olá, <span> {currentUser}</span>
+          </h2>
+        </div>
+        <div>
+          <input type="email" name="emailUsuario" onChange={handleChangeValues} placeholder="Insira o Email" />
+        </div>
+        <div>
+          <input type="password" name="senhaUsuario" onChange={handleChangeValues} placeholder="Insira a senha" />
+        </div>
+      </div>
     
       <button type="submit" onClick={() => handleLogin()} className="button">
         Entrar 
