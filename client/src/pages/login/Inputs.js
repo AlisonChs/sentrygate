@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import Context from '../../contexts/Context'
 import Axios from 'axios';
-import { positions } from '@material-ui/system';
+import LoadingButton from '@mui/lab/LoadingButton';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
@@ -18,8 +18,28 @@ export function Inputs({ currentUser, setCurrentUser }) {
       senhaUsuario: "",
     });
 
-      
+    const [style, setStyle] = useState("");
+
+    const [isInputChanged, setIsInputChanged] = useState (true);
+
+    const LoadingStyles = {
+      color: "white",
+      borderColor: "transparent",
+      borderRadius: "0.5rem",
+      transition: "all 0.5s ease-out",
+      fontWeight: "bold",
+      backgroundColor: "#5819BB",
+      "&:hover": {
+        borderColor: "transparent",
+        padding: "0.5rem 1rem",
+        backgroundColor: "#5819BB",
+        cursor: "pointer",
+        filter: "drop-shadow(5px 5px 0px #210D41)",
+      },
+    }
+
     const handleChangeValues = (value) => {
+      setIsInputChanged(!values.emailUsuario ? false : true);
       setValues((prevValue) => ({
           ...prevValue,
           [value.target.name]: value.target.value,
@@ -76,9 +96,10 @@ export function Inputs({ currentUser, setCurrentUser }) {
         </div>
       </div>
     
-      <button type="submit" onClick={() => handleLogin()} className="button">
-        Entrar 
-      </button>
+      <LoadingButton loading={isInputChanged ? true : false} sx={LoadingStyles} variant="outlined">
+        Entrar
+      </LoadingButton>
+
     </div>
   );
 }
