@@ -10,7 +10,7 @@ import { RegisterStudent } from "../../pages/register/student/Register";
 import { RegisterSchool } from "../../pages/register/school/index";
 import { Register } from "../../pages/register/registerScreen/Register";
 import { Boletim } from "../../pages/boletim/Boletim";
-import Grading from "../../pages/grading/Grading";
+import { Grading } from "../../pages/grading/Grading";
 import { NotFound } from "../../components/UI/notfound/404";
 
 import PrivateRoute from "./PrivateRoute";
