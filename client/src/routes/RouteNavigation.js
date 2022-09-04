@@ -29,7 +29,7 @@ export function RouteNavigation() {
           <Route path="/register" element={<Register />} />
           <Route path="/register-school" element={<RegisterSchool />} />
           <Route path="/boletim" element={<Boletim />} />
-          <Route path="/grading" element={<Grading />} />
+          <Route exact path="/grading" element={<Grading />}/>
         </Routes>
       </div>
 
