@@ -3,14 +3,14 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors")
 
-app.use(express());
+app.use(express.json());
 app.use(cors())
 
 //conectando com o banco
-const db = mysql.createPool ({
+const db = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "HorusCN",
     database: "sentrygate"
 });
 
@@ -59,7 +59,7 @@ app.post("/grading", (req, res) => {
     const { avaliacao } = req.body;
     const { nota } = req.body;
 
-    let SQL = "INSERT INTO notas (avaliacao1, nota1) VALUES (?, ?)";
+    let SQL = "INSERT INTO teste (avaliacao, nota) VALUES (?, ?)";
 
     try {
         db.query(
