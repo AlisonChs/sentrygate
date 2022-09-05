@@ -26,6 +26,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
       color: "white",
       borderColor: "transparent",
       borderRadius: "0.5rem",
+      marginTop: "15px",
       transition: "all 0.5s ease-out",
       fontWeight: "bold",
       backgroundColor: "#5819BB",
