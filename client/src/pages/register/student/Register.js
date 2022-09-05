@@ -74,14 +74,37 @@ export function RegisterStudent() {
       },
     }
 
+    const customNextButton = {
+      transition: "all 0.5s ease-out",
+      borderRadius: "17%",
+      width: "35px",
+      textAlign: "center",
+      height: "35px",
+      backgroundColor: "#371E5F",
+      borderColor: "#371E5F",
+      "&:hover": {
+        borderColor: "#371E5F",
+        transform: "rotateZ(360deg)"
+      },
+    }
+
     function handleNextStep () {
-        setCurrentStep((prevState) => prevState +1)
+      setIsInputChanged(false)
+      setCurrentStep((prevState) => prevState +1)
     }
 
     function handlePrevStep () {
+      setIsInputChanged(false)
         setCurrentStep((prevState) => prevState -1)
     }
 
+    const handleChangeValues = (value) => {
+      setIsInputChanged(!values.any ? false : true);
+      setValues((prevValue) => ({
+          ...prevValue,
+          [value.target.name]: value.target.value,
+      }));
+    };
 
   return (
 
@@ -99,7 +122,7 @@ export function RegisterStudent() {
       <div className='auth'>
 
 
-{currentStep > 1 && (
+{currentStep > 0 && (
     <IconButton sx={CustomBackButton} onClick={handlePrevStep} fontaria-label="back to select page">
       <ChevronLeftIcon sx={{color: "white"}} fontSize="large"/>
     </IconButton> 
@@ -116,6 +139,7 @@ export function RegisterStudent() {
 
                 <input
                   type='text'
+                  onChange={handleChangeValues}
                   placeholder="Digite seu nome e sobrenome"
                   name='name'
                   required
@@ -130,6 +154,7 @@ export function RegisterStudent() {
                 <input 
                   type='text' 
                   name='code'
+                  onChange={handleChangeValues}
                   placeholder="Digite o código de sua escola"
                   required
                 />
@@ -145,11 +170,13 @@ export function RegisterStudent() {
             type='email' 
             name='email'
             placeholder="Digite seu email"
+            onChange={handleChangeValues}
             required
             />
 
           <input 
             type='password'
+            onChange={handleChangeValues}
             name='password'
             required
             placeholder='Digite sua senha'
@@ -163,6 +190,7 @@ export function RegisterStudent() {
                 
                 <input 
             type='password'
+            onChange={handleChangeValues}
             name='confirmPassword'
             required
             placeholder='Confirme sua senha'
@@ -171,13 +199,17 @@ export function RegisterStudent() {
         </>
       )}
 
+      {currentStep < 3 && (
 
-<Button sx={{borderRadius: "", width: "0"}} variant="outlined" onClick={handleNextStep} startIcon={<ChevronRightIcon />} />
+      !isInputChanged ? <IconButton aria-label="next" sx={{width: 0, height: 0, color: "orange", marginLeft: "49%"}}>
+      <ChevronRightIcon onClick={handleNextStep}/>
+    </IconButton> : null
+      
+      
+      )}
 
 
-      <LoadingButton loading={isInputChanged ? true : false} sx={LoadingStyles} variant="outlined">
-       Cadastrar
-      </LoadingButton>        
+      
       
       </form>
       

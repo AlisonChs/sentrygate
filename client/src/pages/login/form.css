@@ -176,10 +176,6 @@ input:hover {
   color: white;
 }
 
-.button {
-  
-}
-
 .button:hover, input:hover {
   background-color: #5819BB;
   transition: 0.5s;
