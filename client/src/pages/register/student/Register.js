@@ -88,6 +88,10 @@ export function RegisterStudent() {
       },
     }
 
+    const registerButton = {
+      
+    }
+
     function handleNextStep () {
       setIsInputChanged(false)
       setCurrentStep((prevState) => prevState +1)
@@ -205,7 +209,16 @@ export function RegisterStudent() {
       <ChevronRightIcon onClick={handleNextStep}/>
     </IconButton> : null
       
-      
+      )}
+
+      {currentStep >= 3 && (
+
+      !isInputChanged ? <IconButton aria-label="next" sx={{width: 0, height: 0, color: "orange", marginLeft: "49%"}}>
+        <Button variant="contained" sx={{registerButton}} endIcon={<SendIcon />}>
+         Registrar aluno
+        </Button>
+      </IconButton> : null
+
       )}
 
 
