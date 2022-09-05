@@ -6,6 +6,8 @@ import SendIcon from '@mui/icons-material/Send';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Slider from '@mui/material/Slider';
+
 
 import './register.css'
 
@@ -29,6 +31,7 @@ export function RegisterStudent() {
       },
     }
 
+    // Guarda os valores inseridos no INPUT
   const [values, setValues] = useState({
     name: "",
     code: "",
@@ -42,31 +45,29 @@ export function RegisterStudent() {
     const steps = [
         {
             id: "USERNAME",
-            title: "Primeiro, insira seu ",
-            span: "nome",
-        },
-        {
-            id: "SCHOOLID",
             title: "Insira o ",
-            span: "código",
-            subtitle: " da sua escola"
+            span: "nome",
+            subtitle: " do aluno"
         },
         {
             id: "USER",
-            title: "Insira o seu ",
+            title: "Insira o ",
             span: "e-mail",
-            subtitle: " e escolha uma senha"
+            subtitle: " do aluno"
+        },
+        {
+            id: "PASSWORD",
+            title: "Escreva a  ",
+            span: "senha ",
+            subtitle: " que o aluno escolheu"
         },
         {
             id: "CONFIRMPASSWORD",
-            title: "Por favor, confirme sua ",
+            title: "Por favor, confirme a ",
             span: "senha",
+            subtitle: " que o aluno escolheu"
         }
     ];
-
-    function onSubmit (e) {
-      e.preventDefault();
-  };
 
     const CustomBackButton = {
       position: "absolute", 
@@ -93,13 +94,18 @@ export function RegisterStudent() {
     }
 
     const registerButton = {
-      backgroundColor: "#210B43",
-      color: "orange",
-      "&:hover": {
+        backgroundColor: "#210B43",
         color: "orange",
-        backgroundColor: "#371E5F"
+        fontWeight: "bold",
+        "&:hover": {
+          color: "orange",
+          backgroundColor: "#371E5F"
+        }
       }
-    }
+      
+    function onSubmit (e) {
+        e.preventDefault();
+    };
 
     function handleNextStep () {
       setIsInputChanged(false)
@@ -119,9 +125,11 @@ export function RegisterStudent() {
       }));
     };
 
-    const handleSubmit = () => {
-      alert("teste")
+    const customSlider = {
+        
+        width: "100%"
     }
+    
 
   return (
 
@@ -140,6 +148,7 @@ export function RegisterStudent() {
 
 
 {currentStep > 0 && (
+
     <IconButton sx={CustomBackButton} onClick={handlePrevStep} fontaria-label="back to select page">
       <ChevronLeftIcon sx={{color: "white"}} fontSize="large"/>
     </IconButton> 
@@ -150,29 +159,18 @@ export function RegisterStudent() {
 
       <form name='registration_form' onSubmit={onSubmit}>
 
+      <Slider sx={customSlider} value={currentStep} step={1} marks min={0} max={3} disabled />
+
       {steps[currentStep].id === 'USERNAME' && (
         <>
-                <h2>{steps[currentStep].title} <span>{steps[currentStep].span}</span></h2>
+                <h2>{steps[currentStep].title} <span>{steps[currentStep].span}</span>{steps[currentStep].subtitle}</h2>
 
                 <input
                   type='text'
                   onChange={handleChangeValues}
-                  placeholder="Digite seu nome e sobrenome"
+                  value={values.name}
+                  placeholder="Digite o nome e sobrenome aqui"
                   name='name'
-                  required
-                />
-
-        </>
-      )}
-      {steps[currentStep].id === 'SCHOOLID' && (
-        <>
-                <h2>{steps[currentStep].title} <span>{steps[currentStep].span}</span>{steps[currentStep].subtitle}</h2>
-
-                <input 
-                  type='text' 
-                  name='code'
-                  onChange={handleChangeValues}
-                  placeholder="Digite o código de sua escola"
                   required
                 />
 
@@ -182,19 +180,27 @@ export function RegisterStudent() {
         <>
                 <h2>{steps[currentStep].title} <span>{steps[currentStep].span}</span>{steps[currentStep].subtitle}</h2>
 
-                
-          <input 
-            type='email' 
-            name='email'
-            placeholder="Digite seu email"
-            onChange={handleChangeValues}
-            required
-            />
+                <input 
+                  type='email' 
+                  name='email'
+                  value={values.email}
+                  onChange={handleChangeValues}
+                  placeholder="Digite o e-mail aqui"
+                  required
+                />
+
+        </>
+      )}
+      {steps[currentStep].id === 'PASSWORD' && (
+        <>
+                <h2>{steps[currentStep].title} <span>{steps[currentStep].span}</span>{steps[currentStep].subtitle}</h2>
+
 
           <input 
             type='password'
             onChange={handleChangeValues}
             name='password'
+            value={values.password}
             required
             placeholder='Digite sua senha'
             />
@@ -203,12 +209,13 @@ export function RegisterStudent() {
       )}
       {steps[currentStep].id === 'CONFIRMPASSWORD' && (
         <>
-                <h2>{steps[currentStep].title} <span>{steps[currentStep].span}</span></h2>
+                <h2>{steps[currentStep].title} <span>{steps[currentStep].span}</span>{steps[currentStep].subtitle}</h2>
                 
                 <input 
             type='password'
             onChange={handleChangeValues}
             name='confirmPassword'
+            value={values.confirmPassword}
             required
             placeholder='Confirme sua senha'
             />
@@ -220,19 +227,19 @@ export function RegisterStudent() {
 
       !isInputChanged ? <IconButton aria-label="next" sx={{width: 0, height: 0, color: "orange", marginLeft: "49%"}}>
       <ChevronRightIcon onClick={handleNextStep}/>
-    </IconButton> : null
+      </IconButton> : null
       
       )}
 
-      {currentStep >= 3 && (
+        {currentStep >= 3 && (
 
-      !isInputChanged ? <IconButton aria-label="next" sx={{backgroundColor: 0}}>
-        <Button variant="contained" onClick={handleSubmit} sx={registerButton} endIcon={<SendIcon />}>
-         Registrar aluno
+        !isInputChanged ? <IconButton aria-label="next" sx={{width:registerButton.width}}>
+        <Button variant="contained" sx={registerButton} endIcon={<SendIcon />}>
+        Registrar aluno
         </Button>
-      </IconButton> : null
+        </IconButton> : null
 
-      )}
+        )}
 
 
       
