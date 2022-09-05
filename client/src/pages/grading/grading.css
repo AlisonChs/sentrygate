@@ -69,13 +69,19 @@
   }
 
   .nota {
-    width: 15%;
+    width: 20%;
     height:25px;
   }
 
   .ev {
     width: 50%;
     height: 25px;
+  }
+
+  .final {
+      width: 70%;
+      height: 25px;
+    
   }
 
   .media {

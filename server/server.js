@@ -10,7 +10,7 @@ app.use(cors())
 const db = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "HorusCN",
+    password: "",
     database: "sentrygate"
 });
 
@@ -56,15 +56,22 @@ app.post('/login', (req, res) => {
 
 //Função de adicionar notas
 app.post("/grading", (req, res) => {
-    const { avaliacao } = req.body;
-    const { nota } = req.body;
+    const { avaliacao1 } = req.body;
+    const { mencao1 } = req.body;
+    const { avaliacao2 } = req.body;
+    const { mencao2 } = req.body;
+    const { avaliacao3 } = req.body;
+    const { mencao3 } = req.body;
+    const { avaliacao4 } = req.body;
+    const { mencao4 } = req.body;
+    const { mencaof } = req.body;
 
-    let SQL = "INSERT INTO teste (avaliacao, nota) VALUES (?, ?)";
+    let SQL = "INSERT INTO notas (avaliacao1, mencao1, avaliacao2, mencao2, avaliacao3, mencao3, avaliacao4, mencao4, mencaof) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     try {
         db.query(
             SQL,
-            [avaliacao, nota],
+            [avaliacao1, mencao1, avaliacao2, mencao2, avaliacao3, mencao3, avaliacao4, mencao4, mencaof],
             (err, result) => {
                 if (err) console.log(err);
                 else {
