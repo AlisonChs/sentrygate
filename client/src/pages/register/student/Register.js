@@ -44,22 +44,23 @@ export function RegisterStudent() {
             id: "USERNAME",
             title: "Primeiro, insira seu ",
             span: "nome",
-            
         },
         {
             id: "SCHOOLID",
-            title: "Insira o código da sua escola",
-            span: "código"
+            title: "Insira o ",
+            span: "código",
+            subtitle: " da sua escola"
         },
         {
             id: "USER",
-            title: "Insira o seu e-mail e escolha uma senha",
-            span: "e-mail"
+            title: "Insira o seu ",
+            span: "e-mail",
+            subtitle: " e escolha uma senha"
         },
         {
             id: "CONFIRMPASSWORD",
             title: "Por favor, confirme sua ",
-            span: "senha"
+            span: "senha",
         }
     ];
 
@@ -100,8 +101,8 @@ export function RegisterStudent() {
 
 {currentStep > 1 && (
     <IconButton sx={CustomBackButton} onClick={handlePrevStep} fontaria-label="back to select page">
-    <ChevronLeftIcon sx={{color: "white"}} fontSize="large"/>
-  </IconButton> 
+      <ChevronLeftIcon sx={{color: "white"}} fontSize="large"/>
+    </IconButton> 
 
 )}
 
@@ -119,11 +120,12 @@ export function RegisterStudent() {
                   name='name'
                   required
                 />
+
         </>
       )}
       {steps[currentStep].id === 'SCHOOLID' && (
         <>
-                <h2>{steps[currentStep].title} <span>{steps[currentStep].span}</span></h2>
+                <h2>{steps[currentStep].title} <span>{steps[currentStep].span}</span>{steps[currentStep].subtitle}</h2>
 
                 <input 
                   type='text' 
@@ -131,11 +133,12 @@ export function RegisterStudent() {
                   placeholder="Digite o código de sua escola"
                   required
                 />
+
         </>
       )}
-      {steps[currentStep].id === 'SCHOOLID' && (
+      {steps[currentStep].id === 'USER' && (
         <>
-                <h2>{steps[currentStep].title} <span>{steps[currentStep].span}</span></h2>
+                <h2>{steps[currentStep].title} <span>{steps[currentStep].span}</span>{steps[currentStep].subtitle}</h2>
 
                 
           <input 
@@ -151,12 +154,12 @@ export function RegisterStudent() {
             required
             placeholder='Digite sua senha'
             />
+
         </>
       )}
-      {steps[currentStep].id === 'SCHOOLID' && (
+      {steps[currentStep].id === 'CONFIRMPASSWORD' && (
         <>
                 <h2>{steps[currentStep].title} <span>{steps[currentStep].span}</span></h2>
-
                 
                 <input 
             type='password'
@@ -164,14 +167,12 @@ export function RegisterStudent() {
             required
             placeholder='Confirme sua senha'
             />
+
         </>
       )}
 
 
-
-
-
-<Button sx={{borderRadius: "1000px", width: "0"}} variant="outlined" onClick={handleNextStep} startIcon={<ChevronRightIcon />} />
+<Button sx={{borderRadius: "", width: "0"}} variant="outlined" onClick={handleNextStep} startIcon={<ChevronRightIcon />} />
 
 
       <LoadingButton loading={isInputChanged ? true : false} sx={LoadingStyles} variant="outlined">
