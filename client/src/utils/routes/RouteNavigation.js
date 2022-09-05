@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { Main } from "../../pages/main/Main";
 import { Form } from "../../pages/login/Form";
 import { RegisterStudent } from "../../pages/register/student/Register";
+import { RegisterTeacher } from "../../pages/register/teacher/Register";
 import { Boletim } from "../../pages/boletim/Boletim";
 import { NotFound } from "../../components/UI/notfound/404";
 
@@ -23,7 +24,8 @@ export default function RouteNavigation () {
           <Route exact path="/" element={<Form />} />
           <Route exact path="/main" element={<Main />} />
           <Route path="/login" element={<Form />} />
-          <Route path="/register" element={<RegisterStudent />} />
+          <Route path="/register/student" element={<RegisterStudent />} />
+          <Route path="/register/teacher" element={<RegisterTeacher />} />
           <Route path="/boletim" element={<Boletim />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -9,7 +9,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import './register.css'
 
-export function RegisterStudent() {
+export function RegisterTeacher() {
 
   const [isInputChanged, setIsInputChanged] = useState (true);
 
@@ -29,6 +29,7 @@ export function RegisterStudent() {
       },
     }
 
+    // Guarda os valores inseridos no INPUT
   const [values, setValues] = useState({
     name: "",
     code: "",
@@ -64,10 +65,6 @@ export function RegisterStudent() {
         }
     ];
 
-    function onSubmit (e) {
-      e.preventDefault();
-  };
-
     const CustomBackButton = {
       position: "absolute", 
       top: "14px", 
@@ -93,13 +90,12 @@ export function RegisterStudent() {
     }
 
     const registerButton = {
-      backgroundColor: "#210B43",
-      color: "orange",
-      "&:hover": {
-        color: "orange",
-        backgroundColor: "#371E5F"
-      }
+      
     }
+
+    function onSubmit (e) {
+        e.preventDefault();
+    };
 
     function handleNextStep () {
       setIsInputChanged(false)
@@ -118,10 +114,6 @@ export function RegisterStudent() {
           [value.target.name]: value.target.value,
       }));
     };
-
-    const handleSubmit = () => {
-      alert("teste")
-    }
 
   return (
 
@@ -226,8 +218,8 @@ export function RegisterStudent() {
 
       {currentStep >= 3 && (
 
-      !isInputChanged ? <IconButton aria-label="next" sx={{backgroundColor: 0}}>
-        <Button variant="contained" onClick={handleSubmit} sx={registerButton} endIcon={<SendIcon />}>
+      !isInputChanged ? <IconButton aria-label="next" sx={{width: 0, height: 0, color: "orange", marginLeft: "49%"}}>
+        <Button variant="contained" sx={{registerButton}} endIcon={<SendIcon />}>
          Registrar aluno
         </Button>
       </IconButton> : null
