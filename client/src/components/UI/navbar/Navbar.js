@@ -10,21 +10,30 @@ import {
   WarningCircle,
   Wrench,
 } from "phosphor-react";
+import { Avatar } from "@mui/material";
+import { useNavigate } from "react-router";
 
 export function Navbar() {
+
+  const navigate = useNavigate()
+
+  function goProfile() {
+    navigate('/profile')
+  }
+
   return (
     <div className="navbar">
       <div className="navbarVertical">
         <div className="divNavbar">
           <p></p>
           <div className="iconDiv">
-            <Layout size={25} weight="regular" color="white" className="icon" />
+            <Layout size={30} weight="regular" color="white" className="icon" />
             <p>Painel de controle</p>
           </div>
 
           <div className="iconDiv">
             <ChartLineUp
-              size={25}
+              size={30}
               weight="regular"
               color="white"
               className="icon"
@@ -37,13 +46,13 @@ export function Navbar() {
           <p></p>
 
           <div className="iconDiv">
-            <Clock size={25} weight="regular" color="white" className="icon" />
+            <Clock size={30} weight="regular" color="white" className="icon" />
             <p>Calendario de Notas</p>
           </div>
 
           <div className="iconDiv">
             <WarningCircle
-              size={25}
+              size={30}
               weight="regular"
               color="white"
               className="icon"
@@ -52,12 +61,12 @@ export function Navbar() {
           </div>
 
           <div className="iconDiv">
-            <File size={25} weight="regular" color="white" className="icon" />
+            <File size={30} weight="regular" color="white" className="icon" />
             <p>Regulamento escolar</p>
           </div>
 
           <div className="iconDiv">
-            <List size={25} weight="regular" color="white" className="icon" />
+            <List size={30} weight="regular" color="white" className="icon" />
             <p>Lista de atividades</p>
           </div>
         </div>
@@ -66,16 +75,11 @@ export function Navbar() {
           <p></p>
 
           <div className="iconDiv">
-            <Gear size={25} weight="regular" color="white" className="icon" />
+            <Gear size={30} weight="regular" color="white" className="icon" />
             <p>Averiguação do sistema</p>
           </div>
-          <div className="iconDiv">
-            <UserCircle
-              size={25}
-              weight="regular"
-              color="white"
-              className="icon"
-            />
+          <div className="iconDiv" onClick={goProfile}>
+            <Avatar alt='Victor' src="https://github.com/Victor-HM.png" sx={{ width: 30, height: 30 }} />
             <p>Perfil</p>
           </div>
         </div>
