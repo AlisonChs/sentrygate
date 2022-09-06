@@ -97,6 +97,7 @@ export function RegisterTeacher() {
         backgroundColor: "#210B43",
         color: "orange",
         fontWeight: "bold",
+        borderRadius: "15px",
         "&:hover": {
           color: "orange",
           backgroundColor: "#371E5F"
@@ -225,7 +226,7 @@ export function RegisterTeacher() {
 
       {currentStep < 3 && (
 
-      !isInputChanged ? <IconButton aria-label="next" sx={{width: 0, height: 0, color: "orange", marginLeft: "49%"}}>
+      !isInputChanged ? <IconButton aria-label="next" sx={{width: "30px", height: "30px", color: "orange", backgroundColor: "#371E5F", marginLeft: "49%"}}>
       <ChevronRightIcon onClick={handleNextStep}/>
       </IconButton> : null
       
@@ -233,10 +234,9 @@ export function RegisterTeacher() {
 
         {currentStep >= 3 && (
 
-        !isInputChanged ? <IconButton aria-label="next" sx={{width:registerButton.width}}>
-        <Button variant="contained" sx={registerButton} endIcon={<SendIcon />}>
-        Registrar aluno
-        </Button>
+        !isInputChanged ? <IconButton aria-label="next" sx={{width: "30px", height: "30px", marginLeft: "49%"}}>
+            <Button variant="contained" sx={registerButton}><SendIcon /></Button>
+            
         </IconButton> : null
 
         )}
