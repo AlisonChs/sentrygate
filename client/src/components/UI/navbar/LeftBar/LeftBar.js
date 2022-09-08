@@ -1,21 +1,26 @@
 import "./style.css";
+import { useState } from "react";
 import { Avatar } from "@mui/material";
 import OrangeLogo from "../../svg/OrangeLogo";
 import IconButton from '@mui/material/IconButton';
 
 export default function LeftBar () {
 
-  const openBar () = {
-    
-  }
+  const [svgStyle, setSvgStyle] = useState("svg");
+  const [leftBarStyle, setLeftBarStyle] = useState("leftBar");
   
+  const handleMenu = () => {
+    let isOpen = svgStyle === "svg";
+    !isOpen ? setSvgStyle("svg") : setSvgStyle("svgOpen");
+    !isOpen ? setLeftBarStyle("leftBar") : setLeftBarStyle("leftBarOpen");
+  }
 
   return (
-    <div className="leftBar">
+    <div className={leftBarStyle}>
       <div className="navbarVertical">
         <div className="divNavbar">
-        <IconButton aria-label="open menu" onClick={openBar}>
-        <OrangeLogo className="svg"/>
+        <IconButton aria-label="open menu" onClick={handleMenu}>
+        <OrangeLogo className={svgStyle}/>
 </IconButton>
 
           <div className="iconDiv">

@@ -9,6 +9,18 @@
     top: 0;
     z-index: 999;
    }
+
+   .leftBarOpen {
+    width: 16rem;
+    height: 100vh;
+    position: fixed;
+    padding: 0 0 0 0;
+    
+    left: 0;
+    transition: 0.7s;
+    top: 0;
+    z-index: 999;
+   }
    
    h1 { 
        font-weight: bold;
@@ -17,6 +29,22 @@
    .svg {
     margin-top: 1rem;
    }
+
+   .svgOpen {
+    margin-top: 1rem;
+   }
+
+   .svgOpen .cls-1 {
+    fill: #5c0ccf;
+  }
+
+  .svgOpen .cls-1, .cls-2 {
+    fill-rule: evenodd;
+  }
+
+  .svgOpen .cls-2 {
+    fill: #f9943b;
+  }
 
    .svg .cls-1 {
     fill: #f9943b;

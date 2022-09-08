@@ -4,19 +4,7 @@ import React from 'react';
 
 const OrangeLogo = ({ className }) => {
 
-    const svgStyle = `
-        .cls-1 {
-            fill: #f9943b;
-          }
-    
-          .cls-1, .cls-2 {
-            fill-rule: evenodd;
-          }
-    
-          .cls-2 {
-            fill: #fff;
-          }
-    `;
+
 
   return (
     <svg className={className} id="left" xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 720 721">
