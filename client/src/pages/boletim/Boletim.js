@@ -1,19 +1,26 @@
 import { useState } from "react";
 import "./style.css";
 import { DownloadSimple } from "phosphor-react"
+import BottomBar from "../../components/UI/navbar/BottomBar/BottomBar";
+import TopBar from "../../components/UI/navbar/TopBar/TopBar";
 
 export function Boletim() {
+
+  
+
   const [modulo, setModulo] = useState('')
 
   return (
+
+    <>
+
+    <TopBar PageTitle="Boletim" PageSpan="Escolar"></TopBar>
+
     <div className="boletimContainer">
-      <div className="boletimHeader">
-        <h1>Boletim <span>Escolar</span></h1>
-      </div>
 
       <div className="boletimContent">
 
-        <div className="modulo">
+        { /* <div className="modulo">
           <p>Status - {modulo} Série </p>
 
           <select name="modulo" id="modulo" onChange={e => setModulo(e.target.value)} >
@@ -22,12 +29,14 @@ export function Boletim() {
             <option value="2">2 Série</option>
             <option value="3">3 Série</option>
           </select>
-        </div>
+        </div> 
 
         <div className="projetar">
           <p>Projetar Boletim</p>
           <DownloadSimple size={30} color="black" weight="light" />
         </div>
+
+        */ }
         
         <div className="boletim">
           <table cellSpacing={0}>
@@ -233,5 +242,10 @@ export function Boletim() {
         </div>
       </div>
     </div>
+
+    <BottomBar  />
+
+    </>
+
   );
 }

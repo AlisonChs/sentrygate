@@ -1,42 +1,39 @@
 import "./style.css";
-import {
-  ChartLineUp,
-  Clock,
-  File,
-  Gear,
-  Layout,
-  List,
-  UserCircle,
-  WarningCircle,
-  Wrench,
-} from "phosphor-react";
 import { Avatar } from "@mui/material";
-import { useNavigate } from "react-router";
+import OrangeLogo from "../../svg/OrangeLogo";
+import IconButton from '@mui/material/IconButton';
 
-export function Navbar() {
+export default function LeftBar () {
 
-  const navigate = useNavigate()
-
-  function goProfile() {
-    navigate('/profile')
+  const openBar () = {
+    
   }
+  
 
   return (
-    <div className="navbar">
+    <div className="leftBar">
       <div className="navbarVertical">
         <div className="divNavbar">
-          <p></p>
+        <IconButton aria-label="open menu" onClick={openBar}>
+        <OrangeLogo className="svg"/>
+</IconButton>
+
           <div className="iconDiv">
-            <Layout size={30} weight="regular" color="white" className="icon" />
+            <Avatar
+              size={30}
+              weight="regular"
+              color="white"
+            
+            />
             <p>Painel de controle</p>
           </div>
 
           <div className="iconDiv">
-            <ChartLineUp
+            <Avatar
               size={30}
               weight="regular"
               color="white"
-              className="icon"
+            
             />
             <p>Desempenho</p>
           </div>
@@ -46,27 +43,27 @@ export function Navbar() {
           <p></p>
 
           <div className="iconDiv">
-            <Clock size={30} weight="regular" color="white" className="icon" />
+            <Avatar size={30} weight="regular" color="white" />
             <p>Calendario de Notas</p>
           </div>
 
           <div className="iconDiv">
-            <WarningCircle
+            <Avatar
               size={30}
               weight="regular"
               color="white"
-              className="icon"
+            
             />
             <p>Avisos e notificações</p>
           </div>
 
           <div className="iconDiv">
-            <File size={30} weight="regular" color="white" className="icon" />
+            <Avatar size={30} weight="regular" color="white" />
             <p>Regulamento escolar</p>
           </div>
 
           <div className="iconDiv">
-            <List size={30} weight="regular" color="white" className="icon" />
+            <Avatar size={30} weight="regular" color="white" />
             <p>Lista de atividades</p>
           </div>
         </div>
@@ -75,13 +72,10 @@ export function Navbar() {
           <p></p>
 
           <div className="iconDiv">
-            <Gear size={30} weight="regular" color="white" className="icon" />
+            <Avatar size={30} weight="regular" color="white" />
             <p>Averiguação do sistema</p>
           </div>
-          <div className="iconDiv" onClick={goProfile}>
-            <Avatar alt='Victor' src="https://github.com/Victor-HM.png" sx={{ width: 30, height: 30 }} />
-            <p>Perfil</p>
-          </div>
+          
         </div>
       </div>
     </div>

@@ -8,28 +8,29 @@ button {
   cursor: pointer;
 }
 
-.header {
-  background-color: #1d0b3b; /*17092e*/
+.topBar {
+  background-color: #2B1354; /*17092e*/
   width: 100vw;
   height: 6rem;
-  
+  border-radius: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-
+  top: 0;
   padding: 0 7rem 0 7rem;
   
-  position: fixed;
   z-index: 999;
   /* border-bottom: 1px solid #301361; #250f4a; */
 
 }
 
-.topics {
+.topBar h1 {
+  position: inherit;
+}
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.topics {
+  position: absolute;
+  margin-left: 95%;
   gap: 7rem;
 }
 
