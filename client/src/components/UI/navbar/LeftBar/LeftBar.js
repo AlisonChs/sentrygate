@@ -1,8 +1,12 @@
 import "./style.css";
 import { useState } from "react";
 import { Avatar } from "@mui/material";
+import SettingsIcon from '@mui/icons-material/Settings';
 import OrangeLogo from "../../svg/OrangeLogo";
 import IconButton from '@mui/material/IconButton';
+import Skeleton from '@mui/material/Skeleton';
+
+import Settings from "@mui/icons-material/Settings";
 
 export default function LeftBar () {
 
@@ -19,27 +23,19 @@ export default function LeftBar () {
     <div className={leftBarStyle}>
       <div className="navbarVertical">
         <div className="divNavbar">
-        <IconButton aria-label="open menu" onClick={handleMenu}>
+        <IconButton aria-label="open menu" onClick={handleMenu} sx={{marginBottom: "2rem"}}>
         <OrangeLogo className={svgStyle}/>
 </IconButton>
 
           <div className="iconDiv">
-            <Avatar
-              size={30}
-              weight="regular"
-              color="white"
-            
-            />
+          <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+
             <p>Painel de controle</p>
           </div>
 
           <div className="iconDiv">
-            <Avatar
-              size={30}
-              weight="regular"
-              color="white"
-            
-            />
+          <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+
             <p>Desempenho</p>
           </div>
         </div>
@@ -48,36 +44,35 @@ export default function LeftBar () {
           <p></p>
 
           <div className="iconDiv">
-            <Avatar size={30} weight="regular" color="white" />
+          <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
             <p>Calendario de Notas</p>
           </div>
 
           <div className="iconDiv">
-            <Avatar
-              size={30}
-              weight="regular"
-              color="white"
-            
-            />
+          <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+
             <p>Avisos e notificações</p>
           </div>
 
           <div className="iconDiv">
-            <Avatar size={30} weight="regular" color="white" />
+          <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
             <p>Regulamento escolar</p>
           </div>
 
-          <div className="iconDiv">
-            <Avatar size={30} weight="regular" color="white" />
-            <p>Lista de atividades</p>
-          </div>
+          
         </div>
 
         <div className="divNavbar">
           <p></p>
 
           <div className="iconDiv">
-            <Avatar size={30} weight="regular" color="white" />
+          <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+            <p>Lista de atividades</p>
+          </div>
+          
+          <div className="iconDiv">
+            <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginTop:'2.3rem'  }} width={40} height={40} />
+            { /* <SettingsIcon size={50} sx={{color:"white"}} fontSize="large" /> */ }
             <p>Averiguação do sistema</p>
           </div>
           

@@ -1,6 +1,6 @@
 import "./style.css";
 import { Link } from "react-router-dom";
-import { Avatar } from "@mui/material";
+import { Avatar, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router";
 
 export default function TopBar (props) {  
@@ -15,8 +15,8 @@ export default function TopBar (props) {
       <div className="topBar">
         <div className="logo">
           <Link to="/">
-            <h1>
-              {props.PageTitle} <span>{props.PageSpan}</span>
+            <h1><Skeleton width={300} height={70}/>
+              {/* props.PageTitle} <span>{props.PageSpan </span>*/}
             </h1>
           </Link>
         </div>

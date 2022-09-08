@@ -13,8 +13,8 @@ export function Boletim() {
   return (
 
     <>
-
-    <TopBar PageTitle="Boletim" PageSpan="Escolar"></TopBar>
+{/* PageTitle="Boletim" PageSpan="Escolar" */}
+    <TopBar  ></TopBar>
 
     <div className="boletimContainer">
 

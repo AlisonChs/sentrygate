@@ -91,6 +91,8 @@
    
    .icon {
     cursor: pointer;
+    border-radius: 50%;
+    background-color:#2B1354;
    }
    
    .iconDiv {
@@ -108,9 +110,6 @@
     transition: 0.5s;
    }
    
-   .iconDiv:hover {
-    background-color: gray;
-   }
    
    .iconDiv p {
     font-size: 0.9rem;
