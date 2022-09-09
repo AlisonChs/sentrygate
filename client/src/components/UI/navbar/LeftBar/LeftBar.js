@@ -19,13 +19,27 @@ export default function LeftBar () {
     !isOpen ? setLeftBarStyle("leftBar") : setLeftBarStyle("leftBarOpen");
   }
 
+  const logoStyle = {
+    marginBottom: "5rem",
+    marginTop: "1.5rem",
+    padding: "0"
+  }
+
+  const logoTitleStyle = {
+    marginTop: "1.5rem",
+    fontWeight: "bold"
+  }
+
   return (
     <div className={leftBarStyle}>
       <div className="navbarVertical">
         <div className="divNavbar">
-        <IconButton aria-label="open menu" onClick={handleMenu} sx={{marginBottom: "2rem"}}>
-        <OrangeLogo className={svgStyle}/>
-</IconButton>
+          <div className="iconDiv" style={logoStyle}>
+            <IconButton aria-label="open menu" onClick={handleMenu} >
+              <OrangeLogo className={svgStyle}/>
+            </IconButton> 
+            <h2 style={logoTitleStyle}>Sentry <span>Gate</span></h2>
+          </div>
 
           <div className="iconDiv">
           <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
@@ -69,7 +83,7 @@ export default function LeftBar () {
           <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
             <p>Lista de atividades</p>
           </div>
-          
+
           <div className="iconDiv">
             <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginTop:'2.3rem'  }} width={40} height={40} />
             { /* <SettingsIcon size={50} sx={{color:"white"}} fontSize="large" /> */ }

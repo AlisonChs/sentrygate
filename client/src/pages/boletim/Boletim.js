@@ -36,7 +36,9 @@ export function Boletim() {
           <DownloadSimple size={30} color="black" weight="light" />
         </div>
 
-        */ }
+        
+
+        
         
         <div className="boletim">
           <table cellSpacing={0}>
@@ -240,8 +242,12 @@ export function Boletim() {
             </tbody>
           </table>
         </div>
+
+        */ }
       </div>
     </div>
+
+    
 
     <BottomBar  />
 

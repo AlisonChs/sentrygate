@@ -15,12 +15,13 @@
     height: 100vh;
     position: fixed;
     padding: 0 0 0 0;
-    
     left: 0;
     transition: 0.7s;
     top: 0;
     z-index: 999;
    }
+
+
    
    h1 { 
        font-weight: bold;
@@ -28,14 +29,32 @@
 
    .svg {
     margin-top: 1rem;
+
    }
 
    .svgOpen {
+
+
     margin-top: 1rem;
+   }
+
+   .svg:hover .cls-1, .svgOpen:hover .cls-1{
+    transition: all 500ms linear;
+   }
+
+   /* quando refatorar, mudar para leftBarOpen svgg */
+
+   .svg:hover .cls-1 {
+    fill: white;
    }
 
    .svgOpen .cls-1 {
     fill: #5c0ccf;
+    
+  }
+
+  .svgOpen:hover .cls-1 {
+    fill: black;
   }
 
   .svgOpen .cls-1, .cls-2 {
@@ -57,12 +76,16 @@
   .svg .cls-2 {
     fill: #fff;
   }
+
+  .svg:hover .cls-2 {
+    fill: #1d0b3b;
+  }
+
    
    .navbarVertical {
     background-color: #1d0b3b; /*1d0b3b*/
     height: 100%;
     width: 100%;
-   
     display: flex;
     justify-content: space-between;
    
