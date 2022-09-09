@@ -1,5 +1,5 @@
 import "./style.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Avatar } from "@mui/material";
 import SettingsIcon from '@mui/icons-material/Settings';
 import OrangeLogo from "../../svg/OrangeLogo";
@@ -30,6 +30,15 @@ export default function LeftBar () {
     fontWeight: "bold"
   }
 
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000)
+  }, [])
+
+
   return (
     <div className={leftBarStyle}>
       <div className="navbarVertical">
@@ -42,15 +51,32 @@ export default function LeftBar () {
           </div>
 
           <div className="iconDiv">
-          <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
 
-            <p>Painel de controle</p>
+            {!isLoading ? (
+              <>
+              {/* Em vez do avatar, coloquem o icone do MUI */}
+                <Avatar alt='Victor' sx={{ width: 30, height: 30 }} />
+                <p>Painel de controle</p>
+              </>
+            ) : (     
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+            )}
+
           </div>
 
           <div className="iconDiv">
-          <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
 
-            <p>Desempenho</p>
+          {!isLoading ? (
+              <>
+              {/* Em vez do avatar, coloquem o icone do MUI */}
+                <Avatar alt='Victor' sx={{ width: 30, height: 30 }} />
+                <p>Desempenho</p>
+
+              </>
+            ) : (     
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+            )}
+
           </div>
         </div>
 
@@ -58,19 +84,45 @@ export default function LeftBar () {
           <p></p>
 
           <div className="iconDiv">
-          <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
-            <p>Calendario de Notas</p>
+
+          {!isLoading ? (
+              <>
+              {/* Em vez do avatar, coloquem o icone do MUI */}
+                <Avatar alt='Victor' sx={{ width: 30, height: 30 }} />
+                <p>Calendario de Notas</p>
+
+              </>
+            ) : (     
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+            )}
           </div>
 
           <div className="iconDiv">
-          <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+          {!isLoading ? (
+              <>
+              {/* Em vez do avatar, coloquem o icone do MUI */}
+                <Avatar alt='Victor' sx={{ width: 30, height: 30 }} />
+                <p>Avisos e notificações</p>
 
-            <p>Avisos e notificações</p>
+              </>
+            ) : (     
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+            )}
+
           </div>
 
           <div className="iconDiv">
-          <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
-            <p>Regulamento escolar</p>
+
+          {!isLoading ? (
+              <>
+              {/* Em vez do avatar, coloquem o icone do MUI */}
+                <Avatar alt='Victor' sx={{ width: 30, height: 30 }} />
+                <p>Regulamento escolar</p>
+
+              </>
+            ) : (     
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+            )}
           </div>
 
           
@@ -80,14 +132,29 @@ export default function LeftBar () {
           <p></p>
 
           <div className="iconDiv">
-          <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
-            <p>Lista de atividades</p>
+          {!isLoading ? (
+              <>
+              {/* Em vez do avatar, coloquem o icone do MUI */}
+                <Avatar alt='Victor' sx={{ width: 30, height: 30 }} />
+                <p>Lista de atividades</p>
+
+              </>
+            ) : (     
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+            )}
           </div>
 
           <div className="iconDiv">
-            <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginTop:'2.3rem'  }} width={40} height={40} />
-            { /* <SettingsIcon size={50} sx={{color:"white"}} fontSize="large" /> */ }
-            <p>Averiguação do sistema</p>
+            {isLoading ? (
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginTop:'2.3rem'  }} width={40} height={40} />
+            ) : (
+              <>
+                <SettingsIcon size={50} sx={{color:"white"}} fontSize="large" />
+                <p>Averiguação do sistema</p>
+              </>
+            )}
+            { /*  */ }
+            
           </div>
           
         </div>
