@@ -21,7 +21,8 @@ export default function TopBar (props) {
           </Link>
         </div>
         <div className="topics">
-            <Avatar alt='Victor' onClick={goProfile} src="https://github.com/Victor-HM.png" sx={{ width: 30, height: 30 }} />
+            { /* <Avatar alt='Victor' onClick={goProfile} src="https://github.com/Victor-HM.png" sx={{ width: 30, height: 30 }} /> */}
+            <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
 
        
         </div>
