@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./style.css";
-import { DownloadSimple } from "phosphor-react"
+import { DownloadSimple } from "phosphor-react";
+import Skeleton from '@mui/material/Skeleton';
 import BottomBar from "../../components/UI/navbar/BottomBar/BottomBar";
 import TopBar from "../../components/UI/navbar/TopBar/TopBar";
 
@@ -16,9 +17,14 @@ export function Boletim() {
 {/* PageTitle="Boletim" PageSpan="Escolar" */}
     <TopBar  ></TopBar>
 
+    
+
     <div className="boletimContainer">
 
       <div className="boletimContent">
+
+      <Skeleton variant="rounded" width={700} height={300} />
+    <Skeleton variant="rounded" width={500} height={300} />
 
         { /* <div className="modulo">
           <p>Status - {modulo} Série </p>
@@ -41,6 +47,7 @@ export function Boletim() {
         
         
         <div className="boletim">
+        
           <table cellSpacing={0}>
             <thead>
               <tr>
