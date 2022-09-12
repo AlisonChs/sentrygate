@@ -14,12 +14,12 @@ button {
   height: 6rem;
   
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   bottom: 0;
   padding: 0 7rem 0 7rem;
   
-  position: fixed;
+  position: relative;
   /* border-bottom: 1px solid #301361; #250f4a; */
 
 }
