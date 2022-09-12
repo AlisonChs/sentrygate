@@ -1,12 +1,18 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 import { Avatar } from "@mui/material";
-import SettingsIcon from '@mui/icons-material/Settings';
 import OrangeLogo from "../../svg/OrangeLogo";
 import IconButton from '@mui/material/IconButton';
-import Skeleton from '@mui/material/Skeleton';
+// Icones do MATERIAL ICONS
 
+import Skeleton from '@mui/material/Skeleton';
+import HomeIcon from "@mui/icons-material/Home"
 import Settings from "@mui/icons-material/Settings";
+import School from "@mui/icons-material/School";
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 export default function LeftBar () {
 
@@ -35,7 +41,7 @@ export default function LeftBar () {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 3000)
+    }, 2800)
   }, [])
 
 
@@ -55,11 +61,11 @@ export default function LeftBar () {
             {!isLoading ? (
               <>
               {/* Em vez do avatar, coloquem o icone do MUI */}
-                <Avatar alt='Victor' sx={{ width: 30, height: 30 }} />
+                <HomeIcon alt='homepage' sx={{ width: 28, height: 28, color: "white" }} />
                 <p>Painel de controle</p>
               </>
             ) : (     
-              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={28} height={28} />
             )}
 
           </div>
@@ -69,12 +75,12 @@ export default function LeftBar () {
           {!isLoading ? (
               <>
               {/* Em vez do avatar, coloquem o icone do MUI */}
-                <Avatar alt='Victor' sx={{ width: 30, height: 30 }} />
+                <TrendingUpIcon alt='desempenho' sx={{ width: 28, height: 28, color: "white" }} />
                 <p>Desempenho</p>
 
               </>
             ) : (     
-              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={28} height={28} />
             )}
 
           </div>
@@ -88,12 +94,12 @@ export default function LeftBar () {
           {!isLoading ? (
               <>
               {/* Em vez do avatar, coloquem o icone do MUI */}
-                <Avatar alt='Victor' sx={{ width: 30, height: 30 }} />
+                <CalendarMonthIcon alt='calendario de notas' sx={{ width: 28, height: 28, color: "white" }} />
                 <p>Calendario de Notas</p>
 
               </>
             ) : (     
-              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={28} height={28} />
             )}
           </div>
 
@@ -101,12 +107,12 @@ export default function LeftBar () {
           {!isLoading ? (
               <>
               {/* Em vez do avatar, coloquem o icone do MUI */}
-                <Avatar alt='Victor' sx={{ width: 30, height: 30 }} />
+                <NotificationsIcon alt='notificações' sx={{ width: 28, height: 28, color: "white"  }} />
                 <p>Avisos e notificações</p>
 
               </>
             ) : (     
-              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={28} height={28} />
             )}
 
           </div>
@@ -116,12 +122,12 @@ export default function LeftBar () {
           {!isLoading ? (
               <>
               {/* Em vez do avatar, coloquem o icone do MUI */}
-                <Avatar alt='Victor' sx={{ width: 30, height: 30 }} />
+                <PostAddIcon alt='regulamento escolar' sx={{ width: 28, height: 28, color: "white" }} />
                 <p>Regulamento escolar</p>
 
               </>
             ) : (     
-              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={28} height={28} />
             )}
           </div>
 
@@ -135,21 +141,21 @@ export default function LeftBar () {
           {!isLoading ? (
               <>
               {/* Em vez do avatar, coloquem o icone do MUI */}
-                <Avatar alt='Victor' sx={{ width: 30, height: 30 }} />
+                <School alt='Tarefas' sx={{ width: 28, height: 28, color:"white" }} />
                 <p>Lista de atividades</p>
 
               </>
             ) : (     
-              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={28} height={28} />
             )}
           </div>
 
           <div className="iconDiv">
             {isLoading ? (
-              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginTop:'2.3rem'  }} width={40} height={40} />
+              <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginTop:'2.3rem'  }} width={28} height={28} />
             ) : (
               <>
-                <SettingsIcon size={50} sx={{color:"white"}} fontSize="large" />
+                <Settings sx={{ width: 28, height: 28, color:"white" }} />
                 <p>Averiguação do sistema</p>
               </>
             )}
