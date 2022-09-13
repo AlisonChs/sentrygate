@@ -21,7 +21,7 @@ export default function RouteNavigation () {
   return (
   
       <div className="components">
-        <LeftBar></LeftBar>
+        <LeftBar />
         <Routes>
           <Route exact path="/" element={<Form />} />
           <Route exact path="/main" element={<Main />} />
