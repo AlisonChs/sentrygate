@@ -157,14 +157,20 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     e.preventDefault();
   }
 
-  function handleNextStep() {
+  function handleStep(to) {
     setIsInputChanged(false);
-    setCurrentStep((prevState) => prevState + 1);
-  }
 
-  function handlePrevStep() {
-    setIsInputChanged(false);
-    setCurrentStep((prevState) => prevState - 1);
+    if (to === "next") {
+      setCurrentStep((prevState) => prevState + 1);
+    }
+
+    else if (to === "back") {
+      setCurrentStep((prevState) => prevState - 1);    
+    }
+
+    else {
+      alert("Houve um erro ao avancar de página")
+    }
   }
 
   const handleChangeValues = (value) => {
@@ -193,7 +199,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
         {currentStep > 0 && (
           <IconButton
             sx={CustomBackButton}
-            onClick={handlePrevStep}
+            onClick={() => handleStep("back")}
             fontaria-label="back to select page"
           >
             <ChevronLeftIcon sx={{ color: "white" }} fontSize="large" />
@@ -333,7 +339,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                   marginLeft: "49%",
                 }}
               >
-                <ChevronRightIcon onClick={handleNextStep} />
+                <ChevronRightIcon onClick={() => handleStep("next")} />
               </IconButton>
             ) : null)}
 

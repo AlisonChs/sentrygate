@@ -110,14 +110,20 @@ export function RegisterTeacher() {
         e.preventDefault();
     };
 
-    function handleNextStep () {
-      setIsInputChanged(false)
-      setCurrentStep((prevState) => prevState +1)
-    }
+    function handleStep(to) {
+      setIsInputChanged(false);
+  
+      if (to === "next") {
+        setCurrentStep((prevState) => prevState + 1);
+      }
+  
+      else if (to === "back") {
+        setCurrentStep((prevState) => prevState - 1);    
+      }
 
-    function handlePrevStep () {
-      setIsInputChanged(false)
-        setCurrentStep((prevState) => prevState -1)
+      else {
+        alert("Houve um erro ao avancar de página")
+      }
     }
 
     const handleChangeValues = (value) => {
@@ -152,7 +158,7 @@ export function RegisterTeacher() {
 
 {currentStep > 0 && (
 
-    <IconButton sx={CustomBackButton} onClick={handlePrevStep} fontaria-label="back to select page">
+    <IconButton sx={CustomBackButton} onClick={() => handleStep("back")} fontaria-label="back to select page">
       <ChevronLeftIcon sx={{color: "white"}} fontSize="large"/>
     </IconButton> 
 
@@ -229,7 +235,7 @@ export function RegisterTeacher() {
       {currentStep < 3 && (
 
       !isInputChanged ? <IconButton aria-label="next" sx={{width: "30px", height: "30px", color: "orange", backgroundColor: "#371E5F", marginLeft: "49%"}}>
-      <ChevronRightIcon onClick={handleNextStep}/>
+      <ChevronRightIcon onClick={() => handleStep("next")}/>
       </IconButton> : null
       
       )}

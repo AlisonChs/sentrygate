@@ -40,7 +40,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
     }
 
     const handleChangeValues = (value) => {
-      setIsInputChanged(!values.emailUsuario ? false : true);
+      setIsInputChanged((!values.emailUsuario && !values.senhaUsuario) || (!values.senhaUsuario) ? false : true);
       setValues((prevValue) => ({
           ...prevValue,
           [value.target.name]: value.target.value,
@@ -107,7 +107,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
         </div>
       </div>
     
-      <Button variant="contained" disabled={isInputChanged ? true : false} sx={loginBTN} >
+      <Button variant="contained" onClick={handleLogin} disabled={isInputChanged ? true : false} sx={loginBTN} >
         Entrar
       </Button>
 
