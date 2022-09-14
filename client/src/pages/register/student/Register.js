@@ -7,13 +7,23 @@ import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Slider from "@mui/material/Slider";
+import Divider from '@mui/material/Divider';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import SexModal from './SexModal';
+import FormLabel from '@mui/material/FormLabel';
 import Select from "react-select";
 
 import "./register.css";
+import GlobalDivider from "../../../components/UI/divider/GlobalDivider";
 
 export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
   const [values, setValues] = useState({
     nameAluno: "",
+    sexAluno: "",
     dataNascAluno: "",
     cpfAluno: "",
     rgAluno: "",
@@ -25,63 +35,8 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     rgResponsavel: "",
   });
 
-  const [sexo, setSexo] = useState('')
 
   const [isInputChanged, setIsInputChanged] = useState(true);
-
-  const userOptions = [
-    {
-      label: "Masculino",
-      value: "Masculino",
-    },
-    {
-      label: "Feminino",
-      value: "Feminino",
-    },
-  ];
-
-  const customStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      color: "white",
-      cursor: "pointer",
-      padding: 15,
-      border: 0,
-      backgroundColor: "#200B41",
-      "&:hover": {
-        backgroundColor: "#5819BB",
-      },
-    }),
-    defaultValue: (provided, state) => ({
-      ...provided,
-      color: "white",
-    }),
-    menuList: (provided, state) => ({
-      ...provided,
-      paddingTop: 0,
-      paddingBottom: 0,
-    }),
-    control: (base, state) => ({
-      ...base,
-      backgroundColor: "#200B41",
-      width: 200,
-      marginLeft: 50,
-      color: "white",
-      border: state.isFocused ? 0 : 0,
-      // This line disable the blue border
-      boxShadow: state.isFocused ? 0 : 0,
-      "&:hover": {
-        border: state.isFocused ? 0 : 0,
-      },
-    }),
-
-    singleValue: (provided, state) => {
-      const opacity = state.isDisabled ? 0.5 : 1;
-      const transition = "opacity 300ms";
-
-      return { ...provided, opacity, transition };
-    },
-  };
 
   const LoadingStyles = {
     color: "white",
@@ -102,6 +57,10 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
   console.log(values);
 
   const [currentStep, setCurrentStep] = useState(0);
+
+  const [gender, setGender] = useState('')
+  const [personalizedSex, setPersonalizedSex] = useState("Personalizado");
+
 
   const steps = [
     {
@@ -181,6 +140,18 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     }));
   };
 
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  function handleClose () {
+    setGender(personalizedSex);
+    setOpen(false);
+  };
+
+  const hr = {
+    color: "white",
+    borderColor: "white",
+  };
+
   const customSlider = {
     width: "100%",
   };
@@ -194,6 +165,8 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
         <div className="starfourth"></div>
         <div className="starfifth"></div>
       </div>
+
+      {open ? <SexModal setPersonalizedSex={setPersonalizedSex} setOpen={setOpen} personalizedSex={personalizedSex} open={open} /> : null}
 
       <div className="auth">
         {currentStep > 0 && (
@@ -221,6 +194,8 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
             <>
               <h2>{steps[currentStep].title}</h2>
 
+              <GlobalDivider text="Nome completo" />
+
               <input
                 type="text"
                 onChange={handleChangeValues}
@@ -229,6 +204,24 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 name="nameAluno"
                 required
               />
+
+            <GlobalDivider text="Gênero" />
+
+
+            <FormControl>
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                  >
+                    <FormControlLabel value="Feminino" control={<Radio />} label="Feminino" />
+                    <FormControlLabel value="Masculino" control={<Radio />} label="Masculino" />
+                    <FormControlLabel value={personalizedSex} onChange={handleOpen} control={<Radio />} label={personalizedSex}/>
+                    
+                  </RadioGroup>
+                </FormControl>
+
+                <GlobalDivider text="Nascimento" />
 
               <input
                 type="date"
@@ -239,14 +232,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 required
               />
 
-              <input
-                type="text"
-                onChange={handleChangeValues}
-                value={values.cpfAluno}
-                placeholder="Digite o seu CPF. Ex: xxx.xxx.xxx.x"
-                name="cpfAluno"
-                required
-              />
+            <GlobalDivider text="Registro Geral" />
 
               <input
                 type="text"
@@ -264,6 +250,8 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 {steps[currentStep].title}{" "}
               </h2>
 
+              <GlobalDivider text="Nome completo" />
+
               <input
                 type="text"
                 onChange={handleChangeValues}
@@ -272,6 +260,9 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 name="nameResponsavel"
                 required
               />
+
+                <GlobalDivider text="Nascimento" />
+
 
               <input
                 type="date"
@@ -282,6 +273,9 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 required
               />
 
+              <GlobalDivider text="CPF" />
+
+
               <input
                 type="text"
                 onChange={handleChangeValues}
@@ -290,6 +284,9 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 name="cpfResponsavel"
                 required
               />
+
+            <GlobalDivider text="Registro geral" />
+
 
               <input
                 type="text"
@@ -307,6 +304,8 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 {steps[currentStep].title}{" "}
               </h2>
 
+              <GlobalDivider text="E-mail" />
+
               <input
                 type="text"
                 onChange={handleChangeValues}
@@ -315,6 +314,9 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 required
                 placeholder="Digite o seu email"
               />
+
+<GlobalDivider text="Senha" />
+
 
               <input
                 type="password"
