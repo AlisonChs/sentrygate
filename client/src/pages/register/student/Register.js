@@ -35,6 +35,58 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     rgResponsavel: "",
   });
 
+  const handleRegister = (e) => {
+    e.preventDefault()
+    const nome = values.nameAluno;
+    const dataNasc = values.dataNascAluno;
+    const cpfAluno = values.cpfAluno;
+    const rgAluno = values.rgAluno;
+    const emailAluno = values.emailAluno;
+    const passwordAluno = values.passwordAluno;
+    const nameResponsavel = values.nameResponsavel;
+    const dataNascResponsavel = values.dataNascResponsavel;
+    const cpfResponsavel = values.cpfResponsavel;
+    const rgResponsavel = values.rgResponsavel;
+
+    if (nome === '' ||
+      dataNasc === '' ||
+      cpfAluno === '' ||
+      rgAluno === '' ||
+      emailAluno === '' ||
+      passwordAluno === '' ||
+      nameResponsavel === '' ||
+      dataNascResponsavel === '' ||
+      cpfResponsavel === '' ||
+      rgResponsavel === '') {
+      alert('Preencha todos os campos');
+    } else {
+      Axios.post("http://localhost:3001/aluno", {
+        nome: nome,
+        data_nasc: dataNasc,
+        cpf: cpfAluno,
+        rg: rgAluno,
+        email: emailAluno,
+        senha: passwordAluno,
+      }).then(Axios.post("http://localhost:3001/responsavel", {
+        nome: nameResponsavel,
+        data_nasc: dataNascResponsavel,
+        cpf: cpfResponsavel,
+        rg: rgResponsavel,
+      })).then((response) => {
+
+        let message = response.data.message
+
+        if (message = 'Usuario cadastrado') {
+
+          alert('Usuario cadastrado')
+
+        } else {
+          alert('Algo deu errado')
+        }
+      });
+    }
+  }
+
 
   const [isInputChanged, setIsInputChanged] = useState(true);
 
@@ -124,7 +176,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     }
 
     else if (to === "back") {
-      setCurrentStep((prevState) => prevState - 1);    
+      setCurrentStep((prevState) => prevState - 1);
     }
 
     else {
@@ -142,7 +194,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  function handleClose () {
+  function handleClose() {
     setGender(personalizedSex);
     setOpen(false);
   };
@@ -205,23 +257,23 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 required
               />
 
-            <GlobalDivider text="Gênero" />
+              <GlobalDivider text="Gênero" />
 
 
-            <FormControl>
-                  <RadioGroup
-                    row
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="row-radio-buttons-group"
-                  >
-                    <FormControlLabel value="Feminino" control={<Radio />} label="Feminino" />
-                    <FormControlLabel value="Masculino" control={<Radio />} label="Masculino" />
-                    <FormControlLabel value={personalizedSex} onChange={handleOpen} control={<Radio />} label={personalizedSex}/>
-                    
-                  </RadioGroup>
-                </FormControl>
+              <FormControl>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                  <FormControlLabel value="Feminino" control={<Radio />} label="Feminino" />
+                  <FormControlLabel value="Masculino" control={<Radio />} label="Masculino" />
+                  <FormControlLabel value={personalizedSex} onChange={handleOpen} control={<Radio />} label={personalizedSex} />
 
-                <GlobalDivider text="Nascimento" />
+                </RadioGroup>
+              </FormControl>
+
+              <GlobalDivider text="Nascimento" />
 
               <input
                 type="date"
@@ -232,7 +284,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 required
               />
 
-            <GlobalDivider text="Registro Geral" />
+              <GlobalDivider text="Registro Geral" />
 
               <input
                 type="text"
@@ -261,7 +313,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 required
               />
 
-                <GlobalDivider text="Nascimento" />
+              <GlobalDivider text="Nascimento" />
 
 
               <input
@@ -285,7 +337,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 required
               />
 
-            <GlobalDivider text="Registro geral" />
+              <GlobalDivider text="Registro geral" />
 
 
               <input
@@ -315,7 +367,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 placeholder="Digite o seu email"
               />
 
-<GlobalDivider text="Senha" />
+              <GlobalDivider text="Senha" />
 
 
               <input
@@ -351,7 +403,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 aria-label="next"
                 sx={{ width: "30px", height: "30px", marginLeft: "49%" }}
               >
-                <Button variant="contained" sx={registerButton}>
+                <Button variant="contained" sx={registerButton} onClick={e => (handleRegister(e))}>
                   <SendIcon />
                 </Button>
               </IconButton>
