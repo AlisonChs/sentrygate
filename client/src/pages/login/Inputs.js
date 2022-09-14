@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import Context from '../../contexts/Context'
 import Axios from 'axios';
-import LoadingButton from '@mui/lab/LoadingButton';
+import Button from '@mui/lab/LoadingButton';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
@@ -22,7 +22,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
 
     const [isInputChanged, setIsInputChanged] = useState (true);
 
-    const LoadingStyles = {
+    const loginBTN = {
       color: "white",
       borderColor: "transparent",
       borderRadius: "0.5rem",
@@ -30,7 +30,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
       transition: "all 0.5s ease-out",
       fontWeight: "bold",
       backgroundColor: "#5819BB",
-      "&:hover": {
+      "&:disabled": {
         borderColor: "transparent",
         padding: "0.5rem 1rem",
         backgroundColor: "#5819BB",
@@ -107,9 +107,9 @@ export function Inputs({ currentUser, setCurrentUser }) {
         </div>
       </div>
     
-      <LoadingButton loading={isInputChanged ? true : false} sx={LoadingStyles} variant="outlined">
+      <Button variant="contained" disabled={isInputChanged ? true : false} sx={loginBTN} >
         Entrar
-      </LoadingButton>
+      </Button>
 
     </div>
   );
