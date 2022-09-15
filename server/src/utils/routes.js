@@ -4,7 +4,7 @@ const ResponsavelController = require('../controllers/ResponsavelController');
 
 const routes = express.Router();
 
-routes.get('/alunos', AlunoController.index);
+routes.post('/alunos', AlunoController.index);
 routes.post('/aluno', AlunoController.store);
 
 routes.get('/responsaveis', ResponsavelController.index);

@@ -1,10 +1,26 @@
+const { findOne } = require('../models/Aluno');
 const Aluno = require('../models/Aluno');
 
 module.exports = {
     async index(req, res) {
-        const alunos = await Aluno.findAll();
+        const { email, senha } = req.body;
 
-        return res.json(alunos);
+
+        const user = await Aluno.findOne({
+            where: {
+                email: email ,
+                senha: senha 
+            }
+        });
+        if(!user){
+            res.status(402).json({
+                success: false
+            })
+        }else {
+            res.status(200).json({
+                success: true
+            })
+        }
     },
     async store(req, res) {
         const { nome, data_nasc, cpf, rg, email, senha } = req.body;

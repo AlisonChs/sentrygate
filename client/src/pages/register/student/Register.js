@@ -16,6 +16,7 @@ import TextField from '@mui/material/TextField';
 import SexModal from './SexModal';
 import FormLabel from '@mui/material/FormLabel';
 import Select from "react-select";
+import Axios from "axios";
 
 import "./register.css";
 import GlobalDivider from "../../../components/UI/divider/GlobalDivider";
@@ -25,7 +26,6 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     nameAluno: "",
     sexAluno: "",
     dataNascAluno: "",
-    cpfAluno: "",
     rgAluno: "",
     emailAluno: "",
     passwordAluno: "",
@@ -39,7 +39,6 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     e.preventDefault()
     const nome = values.nameAluno;
     const dataNasc = values.dataNascAluno;
-    const cpfAluno = values.cpfAluno;
     const rgAluno = values.rgAluno;
     const emailAluno = values.emailAluno;
     const passwordAluno = values.passwordAluno;
@@ -50,7 +49,6 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
 
     if (nome === '' ||
       dataNasc === '' ||
-      cpfAluno === '' ||
       rgAluno === '' ||
       emailAluno === '' ||
       passwordAluno === '' ||
@@ -63,7 +61,6 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
       Axios.post("http://localhost:3001/aluno", {
         nome: nome,
         data_nasc: dataNasc,
-        cpf: cpfAluno,
         rg: rgAluno,
         email: emailAluno,
         senha: passwordAluno,

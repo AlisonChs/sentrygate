@@ -64,9 +64,9 @@ export function Inputs({ currentUser, setCurrentUser }) {
         if (email === "" || senha === "") {
             alert("Preencha todos os campos");
         } else {
-            Axios.post("http://localhost:3001/login", {
+            Axios.post("http://localhost:3001/alunos", {
                 email: email,
-                password: senha,
+                senha: senha,
             }).then((response) => {
 
                 let userObj = response.data;
@@ -107,7 +107,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
         </div>
       </div>
     
-      <Button variant="contained" onClick={handleLogin} disabled={isInputChanged ? true : false} sx={loginBTN} >
+      <Button variant="contained" onClick={handleLogin} sx={loginBTN} >
         Entrar
       </Button>
 
