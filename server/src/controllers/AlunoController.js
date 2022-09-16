@@ -12,15 +12,17 @@ module.exports = {
                 senha: senha 
             }
         });
-        if(!user){
-            res.status(402).json({
-                success: false
-            })
-        }else {
+        if(user){
             res.status(200).json({
                 success: true
             })
+        }else {
+            res.status(402).json({
+                success: false
+            })
         }
+
+
     },
     async store(req, res) {
         const { nome, data_nasc, cpf, rg, email, senha } = req.body;

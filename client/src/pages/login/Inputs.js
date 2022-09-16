@@ -70,21 +70,27 @@ export function Inputs({ currentUser, setCurrentUser }) {
             }).then((response) => {
 
                 let userObj = response.data;
+                console.log(userObj)
 
-                if (userObj.length === 1) {
+                let isSucess = userObj ? true : false;
+
+                console.log(userObj)
+                console.log(isSucess)
+
+                if (isSucess) {
                     alert("Login feito com sucesso");
-
-                    setUser(userObj[0]);
-
                     //alterando a autenticação
-                    setAuth(true)
+                   
 
                     //navegar a outra rota
                     // navigate("/main")
-                } else {
+                  } else if (!isSucess) {
                     alert("Email ou senha invalidos");
-                }
-            });
+                  } else {
+                    
+                  }
+
+                });
         }
     };
 
