@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useLayoutEffect, useRef, useState, useEffect} from 'react';
 import "./style.css";
 import { DownloadSimple } from "phosphor-react";
 import Skeleton from '@mui/material/Skeleton';
@@ -8,6 +8,8 @@ import PostAddIcon from '@mui/icons-material/PostAdd';
 import BarElement from "../../components/UI/navbar/BottomBar/BarElement";
 
 export function Boletim() {
+
+  // const myRef = useRef(null);
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -50,7 +52,10 @@ export function Boletim() {
         
       {!isLoading ? (
 
-        <><div className="boletim">
+        <>
+
+          {/*ref={myRef}*/}
+          <div className="boletim">
 
               <table cellSpacing={0}>
                 <thead>
@@ -257,15 +262,16 @@ export function Boletim() {
 
                variant="rounded"
                width={700} 
-               height={300} 
+               height={350}
+               sx={{marginLeft: '10rem'}} 
               
               />
               
               <Skeleton 
 
                 variant="rounded" 
-                width={500} 
-                height={300} 
+                width={350} 
+                height={350} 
               
               />
 

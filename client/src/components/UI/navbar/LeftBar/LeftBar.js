@@ -1,8 +1,10 @@
 import "./style.css";
 import { useState, useEffect } from "react";
-import { Avatar, Tooltip } from "@mui/material";
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import OrangeLogo from "../../svg/OrangeLogo";
+import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
+
 // Icones do MATERIAL ICONS
 
 import Skeleton from '@mui/material/Skeleton';
@@ -13,6 +15,16 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+
+const LightTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: '#654C8F',
+    color: 'white',
+    fontSize: 11,
+  },
+}));
 
 export default function LeftBar () {
 
@@ -60,9 +72,9 @@ export default function LeftBar () {
 
             {!isLoading ? (
               <>
-              <Tooltip placement="right" arrow title="Painel de controle">
+              <LightTooltip placement="right" followCursor title="Painel de controle">
                 <HomeIcon alt='homepage' sx={{ width: 28, height: 28, color: "white" }} />
-              </Tooltip>
+              </LightTooltip>
               
               <p>Painel de controle</p>
               
@@ -77,9 +89,9 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              <Tooltip placement="right" arrow title="Desempenho escolar">
+              <LightTooltip placement="right" followCursor title="Desempenho escolar">
                 <TrendingUpIcon alt='desempenho' sx={{ width: 28, height: 28, color: "white" }} />
-              </Tooltip>
+              </LightTooltip>
               
               <p>Desempenho</p>
 
@@ -98,9 +110,9 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              <Tooltip placement="right" arrow title="Calendário de notas">
+              <LightTooltip placement="right" followCursor title="Calendário de notas">
                 <CalendarMonthIcon alt='calendario de notas' sx={{ width: 28, height: 28, color: "white" }} />
-              </Tooltip>
+              </LightTooltip>
               <p>Calendario de Notas</p>
 
               </>
@@ -112,9 +124,9 @@ export default function LeftBar () {
           <div className="iconDiv">
           {!isLoading ? (
               <>
-              <Tooltip placement="right" arrow title="Painel de notificações">
+              <LightTooltip placement="right" followCursor title="Painel de notificações">
                 <NotificationsIcon alt='notificações' sx={{ width: 28, height: 28, color: "white"  }} />
-              </Tooltip>
+              </LightTooltip>
 
               <p>Avisos e notificações</p>
 
@@ -129,9 +141,9 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              <Tooltip placement="right" arrow title="Regulamento escolar">
+              <LightTooltip placement="right" followCursor title="Regulamento escolar">
                 <PostAddIcon alt='regulamento escolar' sx={{ width: 28, height: 28, color: "white" }} />
-              </Tooltip>
+              </LightTooltip>
 
               <p>Regulamento escolar</p>
 
@@ -150,9 +162,9 @@ export default function LeftBar () {
           <div className="iconDiv">
           {!isLoading ? (
               <>
-              <Tooltip placement="right" arrow title="Tarefas">
+              <LightTooltip placement="right" followCursor title="Tarefas">
                 <School alt='Tarefas' sx={{ width: 28, height: 28, color:"white" }} />
-              </Tooltip>
+              </LightTooltip>
                 <p>Lista de atividades</p>
 
               </>
@@ -166,9 +178,9 @@ export default function LeftBar () {
               <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginTop:'2.3rem'  }} width={28} height={28} />
             ) : (
               <>
-              <Tooltip placement="right" arrow title="Averiguação do sistema">
+              <LightTooltip placement="right" followCursor title="Averiguação do sistema">
                 <Settings sx={{ width: 28, height: 28, color:"white" }} />
-              </Tooltip>
+              </LightTooltip>
                 <p>Averiguação do sistema</p>
               </>
             )}
