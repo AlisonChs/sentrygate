@@ -1,6 +1,6 @@
 import "./style.css";
 import { useState, useEffect } from "react";
-import { Avatar } from "@mui/material";
+import { Avatar, Tooltip } from "@mui/material";
 import OrangeLogo from "../../svg/OrangeLogo";
 import IconButton from '@mui/material/IconButton';
 // Icones do MATERIAL ICONS
@@ -60,9 +60,12 @@ export default function LeftBar () {
 
             {!isLoading ? (
               <>
-              {/* Em vez do avatar, coloquem o icone do MUI */}
+              <Tooltip placement="right" arrow title="Painel de controle">
                 <HomeIcon alt='homepage' sx={{ width: 28, height: 28, color: "white" }} />
-                <p>Painel de controle</p>
+              </Tooltip>
+              
+              <p>Painel de controle</p>
+              
               </>
             ) : (     
               <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={28} height={28} />
@@ -74,9 +77,11 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              {/* Em vez do avatar, coloquem o icone do MUI */}
+              <Tooltip placement="right" arrow title="Desempenho escolar">
                 <TrendingUpIcon alt='desempenho' sx={{ width: 28, height: 28, color: "white" }} />
-                <p>Desempenho</p>
+              </Tooltip>
+              
+              <p>Desempenho</p>
 
               </>
             ) : (     
@@ -93,9 +98,10 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              {/* Em vez do avatar, coloquem o icone do MUI */}
+              <Tooltip placement="right" arrow title="Calendário de notas">
                 <CalendarMonthIcon alt='calendario de notas' sx={{ width: 28, height: 28, color: "white" }} />
-                <p>Calendario de Notas</p>
+              </Tooltip>
+              <p>Calendario de Notas</p>
 
               </>
             ) : (     
@@ -106,9 +112,11 @@ export default function LeftBar () {
           <div className="iconDiv">
           {!isLoading ? (
               <>
-              {/* Em vez do avatar, coloquem o icone do MUI */}
+              <Tooltip placement="right" arrow title="Painel de notificações">
                 <NotificationsIcon alt='notificações' sx={{ width: 28, height: 28, color: "white"  }} />
-                <p>Avisos e notificações</p>
+              </Tooltip>
+
+              <p>Avisos e notificações</p>
 
               </>
             ) : (     
@@ -121,9 +129,11 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              {/* Em vez do avatar, coloquem o icone do MUI */}
+              <Tooltip placement="right" arrow title="Regulamento escolar">
                 <PostAddIcon alt='regulamento escolar' sx={{ width: 28, height: 28, color: "white" }} />
-                <p>Regulamento escolar</p>
+              </Tooltip>
+
+              <p>Regulamento escolar</p>
 
               </>
             ) : (     
@@ -140,8 +150,9 @@ export default function LeftBar () {
           <div className="iconDiv">
           {!isLoading ? (
               <>
-              {/* Em vez do avatar, coloquem o icone do MUI */}
+              <Tooltip placement="right" arrow title="Tarefas">
                 <School alt='Tarefas' sx={{ width: 28, height: 28, color:"white" }} />
+              </Tooltip>
                 <p>Lista de atividades</p>
 
               </>
@@ -155,7 +166,9 @@ export default function LeftBar () {
               <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginTop:'2.3rem'  }} width={28} height={28} />
             ) : (
               <>
+              <Tooltip placement="right" arrow title="Averiguação do sistema">
                 <Settings sx={{ width: 28, height: 28, color:"white" }} />
+              </Tooltip>
                 <p>Averiguação do sistema</p>
               </>
             )}
