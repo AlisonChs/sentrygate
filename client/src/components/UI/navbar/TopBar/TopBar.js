@@ -1,4 +1,5 @@
 import "./style.css";
+import LightTooltip from "../../tip/LightToolTip";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Avatar, Skeleton } from "@mui/material";
@@ -21,8 +22,6 @@ export default function TopBar (props) {
     }, 3000)
   }, [])
 
-
-
   return (
       <div className="topBar">
         <div className="logo">
@@ -34,7 +33,9 @@ export default function TopBar (props) {
 
 
             {!isLoading ? (
+              <LightTooltip title='Minha conta'>
                <Avatar alt='Victor' onClick={goProfile} src="https://github.com/Victor-HM.png" sx={{ width: 30, height: 30 }} />
+              </LightTooltip>
               ) : (
                 <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={40} height={40} />
             )}  
