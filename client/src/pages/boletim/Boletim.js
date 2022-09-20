@@ -4,7 +4,8 @@ import { DownloadSimple } from "phosphor-react";
 import Skeleton from '@mui/material/Skeleton';
 import BottomBar from "../../components/UI/navbar/BottomBar/BottomBar";
 import TopBar from "../../components/UI/navbar/TopBar/TopBar";
-
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import BarElement from "../../components/UI/navbar/BottomBar/BarElement";
 
 export function Boletim() {
 
@@ -22,7 +23,7 @@ export function Boletim() {
 
     <>
 
-    <TopBar PageTitle="Boletim" PageSpan="Escolar"></TopBar>
+    <TopBar PageTitle="Boletim" PageSpan="escolar"></TopBar>
 
     
 
@@ -250,7 +251,28 @@ export function Boletim() {
                 </table>
               </div></>
 
-      ) : (<><Skeleton variant="rounded" width={700} height={300} /><Skeleton variant="rounded" width={500} height={300} /></>)}
+      ) : (
+            <>
+              <Skeleton
+
+               variant="rounded"
+               width={700} 
+               height={300} 
+              
+              />
+              
+              <Skeleton 
+
+                variant="rounded" 
+                width={500} 
+                height={300} 
+              
+              />
+
+            </>
+            
+            )
+        }
         
         
         
@@ -261,7 +283,12 @@ export function Boletim() {
 
     
 
-    <BottomBar  />
+    <BottomBar>
+      {
+        //<BarElement label="Informações extras" />                      
+      }
+
+    </BottomBar>
 
     </>
 
