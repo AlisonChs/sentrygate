@@ -1,7 +1,9 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 import Skeleton from '@mui/material/Skeleton';
-import { Stack } from "@mui/material";
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
 export default function BottomBar (props) {  
 
@@ -25,12 +27,17 @@ export default function BottomBar (props) {
           <Skeleton variant="circular"  sx={{ bgcolor: '#1d0b3b' }} width={40} height={40} />
         </>
       ) : (
+        <BottomNavigation
+                showLabels
+                /* value={value}
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }} */
+              >
+                
+                <BottomNavigationAction sx={{ backgroundColor: "#2B1354", color: "white" }} label="Informações extras" icon={<PostAddIcon />} />
 
-        <Stack direction="row" spacing={2}>
-
-
-
-        </Stack>
+              </BottomNavigation>
 
               /* Ideias para construir quando conseguir tempo
 
