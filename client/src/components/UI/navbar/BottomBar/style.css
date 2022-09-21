@@ -8,19 +8,18 @@ button {
   cursor: pointer;
 }
 
-.header {
-  background-color: #1d0b3b; /*17092e*/
+.bottomBar {
+  background-color: #2B1354; /*17092e*/
   width: 100vw;
   height: 6rem;
   
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-
+  bottom: 0;
   padding: 0 7rem 0 7rem;
   
-  position: fixed;
-  z-index: 999;
+  position: relative;
   /* border-bottom: 1px solid #301361; #250f4a; */
 
 }

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import Context from '../../contexts/Context'
 import Axios from 'axios';
-import LoadingButton from '@mui/lab/LoadingButton';
+import Button from '@mui/lab/LoadingButton';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
@@ -22,7 +22,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
 
     const [isInputChanged, setIsInputChanged] = useState (true);
 
-    const LoadingStyles = {
+    const loginBTN = {
       color: "white",
       borderColor: "transparent",
       borderRadius: "0.5rem",
@@ -30,7 +30,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
       transition: "all 0.5s ease-out",
       fontWeight: "bold",
       backgroundColor: "#5819BB",
-      "&:hover": {
+      "&:disabled": {
         borderColor: "transparent",
         padding: "0.5rem 1rem",
         backgroundColor: "#5819BB",
@@ -40,7 +40,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
     }
 
     const handleChangeValues = (value) => {
-      setIsInputChanged(!values.emailUsuario ? false : true);
+      setIsInputChanged((!values.emailUsuario && !values.senhaUsuario) || (!values.senhaUsuario) ? false : true);
       setValues((prevValue) => ({
           ...prevValue,
           [value.target.name]: value.target.value,
@@ -64,27 +64,33 @@ export function Inputs({ currentUser, setCurrentUser }) {
         if (email === "" || senha === "") {
             alert("Preencha todos os campos");
         } else {
-            Axios.post("http://localhost:3001/login", {
+            Axios.post("http://localhost:3001/alunos", {
                 email: email,
-                password: senha,
+                senha: senha,
             }).then((response) => {
 
                 let userObj = response.data;
+                console.log(userObj)
 
-                if (userObj.length === 1) {
+                let isSucess = userObj ? true : false;
+
+                console.log(userObj)
+                console.log(isSucess)
+
+                if (isSucess) {
                     alert("Login feito com sucesso");
-
-                    setUser(userObj[0]);
-
                     //alterando a autenticação
-                    setAuth(true)
+                   
 
                     //navegar a outra rota
                     // navigate("/main")
-                } else {
+                  } else if (!isSucess) {
                     alert("Email ou senha invalidos");
-                }
-            });
+                  } else {
+                    
+                  }
+
+                });
         }
     };
 
@@ -107,9 +113,9 @@ export function Inputs({ currentUser, setCurrentUser }) {
         </div>
       </div>
     
-      <LoadingButton loading={isInputChanged ? true : false} sx={LoadingStyles} variant="outlined">
+      <Button variant="contained" onClick={handleLogin} sx={loginBTN} >
         Entrar
-      </LoadingButton>
+      </Button>
 
     </div>
   );

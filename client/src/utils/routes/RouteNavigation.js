@@ -12,6 +12,7 @@ import { Boletim } from "../../pages/boletim/Boletim";
 import { NotFound } from "../../components/UI/notfound/404";
 
 import PrivateRoute from "./PrivateRoute";
+import LeftBar from "../../components/UI/navbar/LeftBar/LeftBar";
 
 // Global
 
@@ -20,6 +21,7 @@ export default function RouteNavigation () {
   return (
   
       <div className="components">
+        <LeftBar />
         <Routes>
           <Route exact path="/" element={<Form />} />
           <Route exact path="/main" element={<Main />} />
