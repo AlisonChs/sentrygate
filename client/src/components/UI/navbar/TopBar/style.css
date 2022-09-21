@@ -24,6 +24,11 @@ button {
 
 }
 
+.navIcon:hover {
+  color: orange;
+  transition: all 1s;
+}
+
 .topBar h1 {
   position: inherit;
 }

@@ -62,10 +62,10 @@ export default function LeftBar () {
             {!isLoading ? (
               <>
               <LightToolTip placement="right" followCursor title="Painel de controle">
-                <HomeIcon alt='homepage' sx={{ width: 28, height: 28, color: "white" }} />
+                <HomeIcon className='navIcon' alt='homepage' sx={{ width: 28, height: 28, color: "white" }} />
               </LightToolTip>
               
-              <p>Painel de controle</p>
+              <p className="bold">Painel de controle</p>
               
               </>
             ) : (     
@@ -79,10 +79,10 @@ export default function LeftBar () {
           {!isLoading ? (
               <>
               <LightToolTip placement="right" followCursor title="Desempenho escolar">
-                <TrendingUpIcon alt='desempenho' sx={{ width: 28, height: 28, color: "white" }} />
+                <TrendingUpIcon className='navIcon' alt='desempenho' sx={{ width: 28, height: 28, color: "white" }} />
               </LightToolTip>
               
-              <p>Desempenho</p>
+              <p className="bold">Desempenho</p>
 
               </>
             ) : (     
@@ -93,16 +93,16 @@ export default function LeftBar () {
         </div>
 
         <div className="divNavbar">
-          <p></p>
+          <p className="bold"></p>
 
           <div className="iconDiv">
 
           {!isLoading ? (
               <>
               <LightToolTip placement="right" followCursor title="Calendário de notas">
-                <CalendarMonthIcon alt='calendario de notas' sx={{ width: 28, height: 28, color: "white" }} />
+                <CalendarMonthIcon className='navIcon' alt='calendario de notas' sx={{ width: 28, height: 28, color: "white" }} />
               </LightToolTip>
-              <p>Calendario de Notas</p>
+              <p className="bold">Calendario de Notas</p>
 
               </>
             ) : (     
@@ -114,10 +114,10 @@ export default function LeftBar () {
           {!isLoading ? (
               <>
               <LightToolTip placement="right" followCursor title="Painel de notificações">
-                <NotificationsIcon alt='notificações' sx={{ width: 28, height: 28, color: "white"  }} />
+                <NotificationsIcon className='navIcon' alt='notificações' sx={{ width: 28, height: 28, color: "white"  }} />
               </LightToolTip>
 
-              <p>Avisos e notificações</p>
+              <p className="bold">Avisos e notificações</p>
 
               </>
             ) : (     
@@ -131,10 +131,10 @@ export default function LeftBar () {
           {!isLoading ? (
               <>
               <LightToolTip placement="right" followCursor title="Regulamento escolar">
-                <PostAddIcon alt='regulamento escolar' sx={{ width: 28, height: 28, color: "white" }} />
+                <PostAddIcon className='navIcon' alt='regulamento escolar' sx={{ width: 28, height: 28, color: "white" }} />
               </LightToolTip>
 
-              <p>Regulamento escolar</p>
+              <p className="bold">Regulamento escolar</p>
 
               </>
             ) : (     
@@ -146,15 +146,15 @@ export default function LeftBar () {
         </div>
 
         <div className="divNavbar">
-          <p></p>
+          <p className="bold"></p>
 
           <div className="iconDiv">
           {!isLoading ? (
               <>
               <LightToolTip placement="right" followCursor title="Tarefas">
-                <School alt='Tarefas' sx={{ width: 28, height: 28, color:"white" }} />
+                <School className='navIcon' alt='Tarefas' sx={{ width: 28, height: 28, color:"white" }} />
               </LightToolTip>
-                <p>Lista de atividades</p>
+                <p className="bold">Lista de atividades</p>
 
               </>
             ) : (     
@@ -168,9 +168,9 @@ export default function LeftBar () {
             ) : (
               <>
               <LightToolTip placement="right" followCursor title="Averiguação do sistema">
-                <Settings sx={{ width: 28, height: 28, color:"white" }} />
+                <Settings className="navIcon" sx={{ width: 28, height: 28, color:"white" }} />
               </LightToolTip>
-                <p>Averiguação do sistema</p>
+                <p className="bold">Averiguação do sistema</p>
               </>
             )}
             { /*  */ }
