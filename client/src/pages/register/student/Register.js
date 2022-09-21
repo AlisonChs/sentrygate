@@ -35,10 +35,13 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     rgResponsavel: "",
   });
 
+  console.log(values)
+
   const handleRegister = (e) => {
     e.preventDefault()
     const nome = values.nameAluno;
     const dataNasc = values.dataNascAluno;
+    const sexAluno = values.sexAluno;
     const rgAluno = values.rgAluno;
     const emailAluno = values.emailAluno;
     const passwordAluno = values.passwordAluno;
@@ -49,6 +52,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
 
     if (nome === '' ||
       dataNasc === '' ||
+      sexAluno === '' ||
       rgAluno === '' ||
       emailAluno === '' ||
       passwordAluno === '' ||
@@ -60,6 +64,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     } else {
       Axios.post("http://localhost:3001/aluno", {
         nome: nome,
+        sexAluno: sexAluno,
         data_nasc: dataNasc,
         rg: rgAluno,
         email: emailAluno,
@@ -106,10 +111,6 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
   console.log(values);
 
   const [currentStep, setCurrentStep] = useState(0);
-
-  const [gender, setGender] = useState('')
-  const [personalizedSex, setPersonalizedSex] = useState("Personalizado");
-
 
   const steps = [
     {
@@ -189,12 +190,13 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     }));
   };
 
+  /* SexModal (usar para deficiente)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   function handleClose() {
     setGender(personalizedSex);
     setOpen(false);
-  };
+  }; */
 
   const hr = {
     color: "white",
@@ -215,7 +217,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
         <div className="starfifth"></div>
       </div>
 
-      {open ? <SexModal setPersonalizedSex={setPersonalizedSex} setOpen={setOpen} personalizedSex={personalizedSex} open={open} /> : null}
+      {/* open ? <SexModal setPersonalizedSex={setPersonalizedSex} setOpen={setOpen} personalizedSex={personalizedSex} open={open} /> : null */}
 
       <div className="auth">
         {currentStep > 0 && (
@@ -257,15 +259,16 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
               <GlobalDivider text="Gênero" />
 
 
-              <FormControl>
+              <FormControl onChange={handleChangeValues}>
                 <RadioGroup
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
                   name="row-radio-buttons-group"
                 >
-                  <FormControlLabel value="Feminino" control={<Radio />} label="Feminino" />
-                  <FormControlLabel value="Masculino" control={<Radio />} label="Masculino" />
-                  <FormControlLabel value={personalizedSex} onChange={handleOpen} control={<Radio />} label={personalizedSex} />
+                  <FormControlLabel name='sexAluno' value="Feminino" control={<Radio />} label="Feminino" />
+                  <FormControlLabel name='sexAluno' value="Masculino" control={<Radio />} label="Masculino" />
+                  <FormControlLabel name='sexAluno' value="Não-binário" control={<Radio />} label="Não-binário" />
+                  {/* <FormControlLabel name='sexAluno' value={personalizedSex} onChange={handleOpen} control={<Radio />} label={personalizedSex} /> */}
 
                 </RadioGroup>
               </FormControl>
