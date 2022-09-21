@@ -1,15 +1,12 @@
-import {useLayoutEffect, useRef, useState, useEffect} from 'react';
+import { useEffect, useState } from "react";
 import "./style.css";
 import { DownloadSimple } from "phosphor-react";
 import Skeleton from '@mui/material/Skeleton';
 import BottomBar from "../../components/UI/navbar/BottomBar/BottomBar";
 import TopBar from "../../components/UI/navbar/TopBar/TopBar";
-import PostAddIcon from '@mui/icons-material/PostAdd';
-import BarElement from "../../components/UI/navbar/BottomBar/BarElement";
+
 
 export function Boletim() {
-
-  // const myRef = useRef(null);
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -25,7 +22,7 @@ export function Boletim() {
 
     <>
 
-    <TopBar PageTitle="Boletim" PageSpan="escolar"></TopBar>
+    <TopBar PageTitle="Boletim" PageSpan="Escolar"></TopBar>
 
     
 
@@ -52,10 +49,7 @@ export function Boletim() {
         
       {!isLoading ? (
 
-        <>
-
-          {/*ref={myRef}*/}
-          <div className="boletim">
+        <><div className="boletim">
 
               <table cellSpacing={0}>
                 <thead>
@@ -256,29 +250,7 @@ export function Boletim() {
                 </table>
               </div></>
 
-      ) : (
-            <>
-              <Skeleton
-
-               variant="rounded"
-               width={700} 
-               height={350}
-               sx={{marginLeft: '10rem'}} 
-              
-              />
-              
-              <Skeleton 
-
-                variant="rounded" 
-                width={350} 
-                height={350} 
-              
-              />
-
-            </>
-            
-            )
-        }
+      ) : (<><Skeleton variant="rounded" width={700} height={300} /><Skeleton variant="rounded" width={500} height={300} /></>)}
         
         
         
@@ -289,12 +261,7 @@ export function Boletim() {
 
     
 
-    <BottomBar>
-      {
-        //<BarElement label="Informações extras" />                      
-      }
-
-    </BottomBar>
+    <BottomBar  />
 
     </>
 
