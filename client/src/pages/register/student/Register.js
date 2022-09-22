@@ -285,8 +285,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 required
               />
 
-            <GlobalDivider text="Registro geral" />
-
+              <GlobalDivider text="Registro geral" />
 
               <input
                 type="text"

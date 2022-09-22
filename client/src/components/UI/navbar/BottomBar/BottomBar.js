@@ -9,6 +9,23 @@ export default function BottomBar (props) {
 
   const [isLoading, setIsLoading] = useState(true)
 
+  const ArraySkeletons = [];
+  const ArrayBottomNavigationAction = [];
+
+  const numberOfElements = props.numberOfElements;
+
+  function Skeletons () {
+
+    
+
+    for (let index = 0; index <= numberOfElements; index++) {
+      ArraySkeletons.push(<Skeleton variant="circular"  sx={{ bgcolor: '#1d0b3b' }} width={40} height={40} />)
+      ArrayBottomNavigationAction.push(<BottomNavigationAction sx={{ backgroundColor: "#2B1354", color: "white" }} label="Informações extras" icon={<PostAddIcon />} />)
+    }
+
+    return isLoading ? ArraySkeletons : ArrayBottomNavigationAction;
+  }
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -18,15 +35,6 @@ export default function BottomBar (props) {
   return (
       <div className="bottomBar">
 
-      {isLoading ? (
-        <>
-          <Skeleton variant="circular"  sx={{ bgcolor: '#1d0b3b' }} width={40} height={40} />
-          <Skeleton variant="circular"  sx={{ bgcolor: '#1d0b3b' }} width={40} height={40} />
-          <Skeleton variant="circular"  sx={{ bgcolor: '#1d0b3b' }} width={40} height={40} />
-          <Skeleton variant="circular"  sx={{ bgcolor: '#1d0b3b' }} width={40} height={40} />
-          <Skeleton variant="circular"  sx={{ bgcolor: '#1d0b3b' }} width={40} height={40} />
-        </>
-      ) : (
         <BottomNavigation
                 showLabels
                 /* value={value}
@@ -35,23 +43,9 @@ export default function BottomBar (props) {
                 }} */
               >
                 
-                <BottomNavigationAction sx={{ backgroundColor: "#2B1354", color: "white" }} label="Informações extras" icon={<PostAddIcon />} />
+                {Skeletons}
 
               </BottomNavigation>
-
-              /* Ideias para construir quando conseguir tempo
-
-                Criar um componente separado, e sempre que o bottomBar() for invocado, especificar o número de ferramentas,
-                o icone de cada e a label, tudo através das props.
-
-              */
-      )}
-
-      
-        
-        
-
-    
       </div>
   );
 }

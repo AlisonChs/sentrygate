@@ -261,7 +261,7 @@ export function Boletim() {
 
     
 
-    <BottomBar  />
+    <BottomBar  numberOfElements={6}/>
 
     </>
 
