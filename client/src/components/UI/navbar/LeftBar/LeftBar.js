@@ -61,7 +61,7 @@ export default function LeftBar () {
 
             {!isLoading ? (
               <>
-              <LightToolTip placement="right" followCursor title="Painel de controle">
+              <LightToolTip placement="right" arrow title="Painel de controle">
                 <HomeIcon className='navIcon' alt='homepage' sx={{ width: 28, height: 28, color: "white" }} />
               </LightToolTip>
               
@@ -78,7 +78,7 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              <LightToolTip placement="right" followCursor title="Desempenho escolar">
+              <LightToolTip placement="right" arrow title="Desempenho escolar">
                 <TrendingUpIcon className='navIcon' alt='desempenho' sx={{ width: 28, height: 28, color: "white" }} />
               </LightToolTip>
               
@@ -99,7 +99,7 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              <LightToolTip placement="right" followCursor title="Calendário de notas">
+              <LightToolTip placement="right" arrow title="Calendário de notas">
                 <CalendarMonthIcon className='navIcon' alt='calendario de notas' sx={{ width: 28, height: 28, color: "white" }} />
               </LightToolTip>
               <p className="bold">Calendario de Notas</p>
@@ -113,7 +113,7 @@ export default function LeftBar () {
           <div className="iconDiv">
           {!isLoading ? (
               <>
-              <LightToolTip placement="right" followCursor title="Painel de notificações">
+              <LightToolTip placement="right" arrow title="Painel de notificações">
                 <NotificationsIcon className='navIcon' alt='notificações' sx={{ width: 28, height: 28, color: "white"  }} />
               </LightToolTip>
 
@@ -130,7 +130,7 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              <LightToolTip placement="right" followCursor title="Regulamento escolar">
+              <LightToolTip placement="right" arrow title="Regulamento escolar">
                 <PostAddIcon className='navIcon' alt='regulamento escolar' sx={{ width: 28, height: 28, color: "white" }} />
               </LightToolTip>
 
@@ -151,7 +151,7 @@ export default function LeftBar () {
           <div className="iconDiv">
           {!isLoading ? (
               <>
-              <LightToolTip placement="right" followCursor title="Tarefas">
+              <LightToolTip placement="right" arrow title="Tarefas">
                 <School className='navIcon' alt='Tarefas' sx={{ width: 28, height: 28, color:"white" }} />
               </LightToolTip>
                 <p className="bold">Lista de atividades</p>
@@ -167,7 +167,7 @@ export default function LeftBar () {
               <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginTop:'2.3rem'  }} width={28} height={28} />
             ) : (
               <>
-              <LightToolTip placement="right" followCursor title="Averiguação do sistema">
+              <LightToolTip placement="right" arrow title="Averiguação do sistema">
                 <Settings className="navIcon" sx={{ width: 28, height: 28, color:"white" }} />
               </LightToolTip>
                 <p className="bold">Averiguação do sistema</p>
