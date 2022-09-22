@@ -1,16 +1,48 @@
 import { useEffect, useState } from "react";
 import "./style.css";
-import { DownloadSimple } from "phosphor-react";
 import Skeleton from '@mui/material/Skeleton';
 import BottomBar from "../../components/UI/navbar/BottomBar/BottomBar";
 import TopBar from "../../components/UI/navbar/TopBar/TopBar";
-
+import PostAddIcon from '@mui/icons-material/PostAdd';
 
 export function Boletim() {
 
   const [isLoading, setIsLoading] = useState(true)
 
-  const [modulo, setModulo] = useState('')
+  // const [modulo, setModulo] = useState('')
+
+  const consoleTest = () => {
+    alert('oiiii lindo');
+  }
+
+  const ArrayActions = [
+    {
+      label: 'Teste 1',
+      icon: <PostAddIcon />,
+      event: consoleTest   
+    },
+    {
+      label: 'Teste 2',
+      icon: <PostAddIcon />,
+      event: consoleTest 
+    },
+    {
+      label: 'Teste 3',
+      icon: <PostAddIcon />,
+      event: consoleTest
+    },
+    {
+      label: 'Teste 4',
+      icon: <PostAddIcon />,
+      event: consoleTest
+    },
+    {
+      label: 'Teste 5',
+      icon: <PostAddIcon />,
+      event: consoleTest
+    },
+
+  ]
 
   useEffect(() => {
     setTimeout(() => {
@@ -261,7 +293,7 @@ export function Boletim() {
 
     
 
-    <BottomBar  numberOfElements={6}/>
+    <BottomBar objects={ArrayActions} numberOfSkeletons={4}/>
 
     </>
 

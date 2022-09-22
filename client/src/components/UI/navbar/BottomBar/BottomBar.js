@@ -1,7 +1,6 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 import Skeleton from '@mui/material/Skeleton';
-import PostAddIcon from '@mui/icons-material/PostAdd';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
@@ -12,15 +11,15 @@ export default function BottomBar (props) {
   const ArraySkeletons = [];
   const ArrayBottomNavigationAction = [];
 
-  const numberOfElements = props.numberOfElements;
+  const objects = props.objects;
+
+  const numberOfSkeletons = props.numberOfSkeletons;
 
   function Skeletons () {
 
-    
-
-    for (let index = 0; index <= numberOfElements; index++) {
+    for (let index = 0; index <= numberOfSkeletons; index++) {
       ArraySkeletons.push(<Skeleton variant="circular"  sx={{ bgcolor: '#1d0b3b' }} width={40} height={40} />)
-      ArrayBottomNavigationAction.push(<BottomNavigationAction sx={{ backgroundColor: "#2B1354", color: "white" }} label="Informações extras" icon={<PostAddIcon />} />)
+      ArrayBottomNavigationAction.push(<BottomNavigationAction sx={{ backgroundColor: "#2B1354", color: "white" }} label={objects[index].label} icon={objects[index].icon} onClick={objects[index].event} />)
     }
 
     return isLoading ? ArraySkeletons : ArrayBottomNavigationAction;
@@ -36,6 +35,7 @@ export default function BottomBar (props) {
       <div className="bottomBar">
 
         <BottomNavigation
+                sx={{backgroundColor: 'transparent', display: 'flex', justifyContent: 'space-between', width: '100vw'}}
                 showLabels
                 /* value={value}
                 onChange={(event, newValue) => {
@@ -43,7 +43,7 @@ export default function BottomBar (props) {
                 }} */
               >
                 
-                {Skeletons}
+                {Skeletons()}
 
               </BottomNavigation>
       </div>
