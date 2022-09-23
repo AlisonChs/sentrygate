@@ -7,9 +7,9 @@ module.exports = {
         return res.json(responsaveis);
     },
     async store(req, res) {
-        const { nome, data_nasc, cpf, rg } = req.body;
+        const { nome, sobrenome, data_nasc, cpf, rg, tel } = req.body;
 
-        const responsaveis = await Responsavel.create({ nome, data_nasc, cpf, rg });
+        const responsaveis = await Responsavel.create({ nome, sobrenome, data_nasc, cpf, rg, tel });
 
         return res.json(responsaveis);
     }

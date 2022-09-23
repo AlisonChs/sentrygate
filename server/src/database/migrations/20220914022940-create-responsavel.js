@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      sobrenome: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       data_nasc: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -22,6 +26,10 @@ module.exports = {
         allowNull: false,
       },
       rg: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      tel: {
         type: Sequelize.STRING,
         allowNull: false,
       },

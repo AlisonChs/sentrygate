@@ -65,9 +65,9 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
       clearTimeout(timer.current);
     };
   }, []);
-    
 
-  function checkCEP () {
+
+  function checkCEP() {
 
     if (!loading) {
       setSuccess(false);
@@ -86,15 +86,15 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
           // Mudando o estado
           setValues({
             ruaAluno: rua
-          , bairroAluno: bairro
-          , cidadeAluno: cidade
-          , estadoAluno: estado
+            , bairroAluno: bairro
+            , cidadeAluno: cidade
+            , estadoAluno: estado
           })
         })
       }, 4000);
     }
-    
-    
+
+
   }
 
   const handleRegister = (e) => {
@@ -138,6 +138,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
       cidadeAluno === '' ||
       bairroAluno === '' ||
       ruaAluno === '' ||
+      complementoCasaAluno === '' ||
       nomeResponsavel === '' ||
       sobrenomeResponsavel === '' ||
       dataNascResponsavel === '' ||
@@ -152,19 +153,26 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
       Axios.post("http://localhost:3001/aluno", {
         nome: nomeAluno,
         sobrenome: sobrenomeAluno,
-        genero: generoAluno,
         data_nasc: dataNascAluno,
-        tel: telAluno,
+        genero: generoAluno,
+        cpf: cpfAluno,
         rg: rgAluno,
+        cep: cepAluno,
+        cidade: cidadeAluno,
+        bairro: bairroAluno,
+        rua: ruaAluno,
+        complemento: complementoCasaAluno,
+        tel: telAluno,
         email: emailAluno,
         senha: passwordAluno,
       }).then(Axios.post("http://localhost:3001/responsavel", {
         nome: nomeResponsavel,
-        tel: telResponsavel,
-        tel_opcional: telOpcional ? telOpcional : 'Não inserido',
+        sobrenome: sobrenomeResponsavel,
         data_nasc: dataNascResponsavel,
+        //tel_opcional: telOpcional ? telOpcional : 'Não inserido',
         cpf: cpfResponsavel,
         rg: rgResponsavel,
+        tel: telResponsavel,
       })).then((response) => {
 
         let message = response.data.message
@@ -443,7 +451,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                     marginLeft: '-12px',
                   }}
                 />
-               )}
+              )}
 
               <GlobalDivider text="Cidade" />
 
@@ -477,7 +485,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 disabled
               />
 
-              
+
 
               <GlobalDivider text="Complemento" />
 
@@ -557,36 +565,36 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
 
               <GlobalDivider text="Número do aluno" />
 
-                <input
-                  type="text"
-                  onChange={handleChangeValues}
-                  value={values.telAluno}
-                  placeholder="Insira um número de até 11 dígitos"
-                  name="telAluno"
-                  required
-                />
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                value={values.telAluno}
+                placeholder="Insira um número de até 11 dígitos"
+                name="telAluno"
+                required
+              />
 
-                <GlobalDivider text="Número do responsável" />
+              <GlobalDivider text="Número do responsável" />
 
-                <input
-                  type="text"
-                  onChange={handleChangeValues}
-                  value={values.telResponsavel}
-                  placeholder="Insira um número de até 11 dígitos"
-                  name="telResponsavel"
-                  required
-                />
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                value={values.telResponsavel}
+                placeholder="Insira um número de até 11 dígitos"
+                name="telResponsavel"
+                required
+              />
 
-                <GlobalDivider text="Número reserva (opcional)" />
+              <GlobalDivider text="Número reserva (opcional)" />
 
-                <input
-                  type="text"
-                  onChange={handleChangeValues}
-                  value={values.telOpcional}
-                  placeholder="Insira um número de até 11 dígitos"
-                  name="telOpcional"
-                />
-              </>
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                value={values.telOpcional}
+                placeholder="Insira um número de até 11 dígitos"
+                name="telOpcional"
+              />
+            </>
           )}
           {steps[currentStep].id === "CONTA" && (
             <>

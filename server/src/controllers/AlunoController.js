@@ -8,15 +8,15 @@ module.exports = {
 
         const user = await Aluno.findOne({
             where: {
-                email: email ,
-                senha: senha 
+                email: email,
+                senha: senha
             }
         });
-        if(user){
+        if (user) {
             res.status(200).json({
                 success: true
             })
-        }else {
+        } else {
             res.status(402).json({
                 success: false
             })
@@ -25,9 +25,9 @@ module.exports = {
 
     },
     async store(req, res) {
-        const { nome, data_nasc, cpf, rg, email, senha } = req.body;
+        const { nome, sobrenome, data_nasc, genero, rg, cpf, cep, cidade, bairro, rua, complemento, tel, email, senha } = req.body;
 
-        const aluno = await Aluno.create({ nome, data_nasc, cpf, rg, email, senha });
+        const aluno = await Aluno.create({ nome, sobrenome, data_nasc, genero, rg, cpf, cep, cidade, bairro, rua, complemento, tel, email, senha });
 
         return res.json(aluno);
     }
