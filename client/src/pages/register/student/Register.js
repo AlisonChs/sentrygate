@@ -146,6 +146,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
       telResponsavel === '' ||
       telAluno === '' ||
       emailAluno === '' ||
+      complementoCasaAluno === '' ||
       passwordAluno === '') {
       alert('Preencha todos os campos');
     } else {
@@ -154,6 +155,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
         sobrenome: sobrenomeAluno,
         genero: generoAluno,
         data_nasc: dataNascAluno,
+        complemento: complementoCasaAluno,
         tel: telAluno,
         rg: rgAluno,
         email: emailAluno,
@@ -485,8 +487,9 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 type="text"
                 onChange={handleChangeValues}
                 value={values.complementoCasaAluno}
-                placeholder="Insira um complemento aqui (caso haja)"
+                placeholder="Insira o n e o complemento aqui"
                 name="complementoCasaAluno"
+                aria-required
               />
 
             </>
