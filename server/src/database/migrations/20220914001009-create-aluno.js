@@ -13,7 +13,19 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      sobrenome: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       data_nasc: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      genero: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      rg: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -21,7 +33,27 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      rg: {
+      cep: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      cidade: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      bairro: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      rua: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      complemento: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      tel: {
         type: Sequelize.STRING,
         allowNull: false,
       },
