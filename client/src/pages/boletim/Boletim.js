@@ -16,26 +16,28 @@ export function Boletim() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // const [modulo, setModulo] = useState('')
-
-    
+  const [modulo, setModulo] = useState('')
+  const [hasObservation, setHasObservation] = useState(true)
 
 
   const ArrayActions = [
     {
       label: 'Selecionar módulo',
       icon: <PostAddIcon className='navIcon' sx={{width: '2rem', height: '2rem'}} />,
-      event: null   
+      event: null,
+      showAction: 'flex'
     },
     {
       label: 'Projetar boletim',
       icon: <DownloadForOfflineIcon className='navIcon' sx={{width: '2rem', height: '2rem'}} />,
-      event: null
+      event: null,
+      showAction: 'flex'
     },
     {
       label: 'Observar informações sobre o docente',
       icon: <CommentIcon className='navIcon' sx={{width: '2rem', height: '2rem'}} />,
-      event: handleOpen
+      event: handleOpen,
+      showAction: hasObservation ? 'flex' : 'none'
     }
   ]
 

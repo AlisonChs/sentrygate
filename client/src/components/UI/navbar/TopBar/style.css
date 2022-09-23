@@ -11,7 +11,7 @@ button {
 .topBar {
   background-color: #2B1354; /*17092e*/
   width: 100vw;
-  height: 6rem;
+  height: 4rem;
   border-radius: 0;
   display: flex;
   justify-content: center;

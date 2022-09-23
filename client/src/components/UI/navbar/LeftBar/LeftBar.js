@@ -51,9 +51,13 @@ export default function LeftBar () {
       <div className="navbarVertical">
         <div className="divNavbar">
           <div className="iconDiv" style={logoStyle}>
+          {!isLoading ? (
             <IconButton aria-label="open menu" onClick={handleMenu} >
               <OrangeLogo className={svgStyle}/>
             </IconButton> 
+          ) : (
+            <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginLeft:  '0.6rem'}} width={45} height={45} />
+          )}
             <h2 style={logoTitleStyle}>Sentry <span>Gate</span></h2>
           </div>
 
