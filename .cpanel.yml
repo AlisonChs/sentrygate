@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home1/sentry47/repositories/sentrygate
+    - export DEPLOYPATH=/home/sentry47/repositories/sentrygate
     - /bin/cp index.html $DEPLOYPATH
 
