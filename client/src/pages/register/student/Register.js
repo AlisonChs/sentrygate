@@ -163,8 +163,6 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
         rua: ruaAluno,
         complemento: complementoCasaAluno,
         tel: telAluno,
-        email: emailAluno,
-        senha: passwordAluno,
       }).then(Axios.post("http://localhost:3001/responsavel", {
         nome: nomeResponsavel,
         sobrenome: sobrenomeResponsavel,
@@ -173,6 +171,9 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
         cpf: cpfResponsavel,
         rg: rgResponsavel,
         tel: telResponsavel,
+      })).then(Axios.post("http://localhost:3001/conta", {
+        email: emailAluno,
+        senha: passwordAluno,
       })).then((response) => {
 
         let message = response.data.message

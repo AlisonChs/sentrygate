@@ -7,9 +7,24 @@ module.exports = {
         return res.json(responsaveis);
     },
     async store(req, res) {
-        const { nome, sobrenome, data_nasc, cpf, rg, tel } = req.body;
+        //Recebe os valores do corpo do frontend
+        const {
+            nome,
+            sobrenome,
+            data_nasc,
+            cpf,
+            rg,
+            tel } = req.body;
 
-        const responsaveis = await Responsavel.create({ nome, sobrenome, data_nasc, cpf, rg, tel });
+        //Cria os valores e os insere na tabela
+        const responsaveis = await Responsavel.create({
+            nome,
+            sobrenome,
+            data_nasc,
+            cpf,
+            rg,
+            tel
+        });
 
         return res.json(responsaveis);
     }

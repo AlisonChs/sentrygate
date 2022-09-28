@@ -9,6 +9,13 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
+      responsavel_id: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        references: { model: 'responsaveis', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
       nome: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -54,14 +61,6 @@ module.exports = {
         allowNull: false,
       },
       tel: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      senha: {
         type: Sequelize.STRING,
         allowNull: false,
       },

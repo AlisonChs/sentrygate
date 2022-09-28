@@ -15,13 +15,18 @@ class Aluno extends Model {
             rua: DataTypes.STRING,
             complemento: DataTypes.STRING,
             tel: DataTypes.STRING,
-            email: DataTypes.STRING,
-            senha: DataTypes.STRING,
         }, {
-            sequelize: connection
+            sequelize: connection,
+            tableName: 'alunos',
         })
     }
 
+    static associate(models) {
+        //Um aluno tem varios responsaveis
+        this.belongsTo(models.Responsavel, { foreignKey: 'responsavel_id', as: 'responsaveis' });
+        //Um aluno tem apenas uma conta
+        //this.hasOne(models.Conta, { foreignKey: 'aluno_id', as: 'contas' });
+    }
 }
 
 module.exports = Aluno;
