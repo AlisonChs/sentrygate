@@ -9,13 +9,6 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      responsavel_id: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        references: { model: 'responsaveis', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
-      },
       nome: {
         type: Sequelize.STRING,
         allowNull: false,

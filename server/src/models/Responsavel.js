@@ -16,7 +16,7 @@ class Responsavel extends Model {
     }
     static associate(models) {
         //Um responsavel tem varios alunos
-        this.hasMany(models.Aluno, { foreignKey: 'responsavel_id', as: 'alunos' });
+        this.belongsTo(models.Aluno, { foreignKey: 'aluno_id', as: 'alunos' });
         //Um responsavel tem apenas uma conta
         //this.hasOne(models.Conta, { foreignKey: 'responsavel_id', as: 'contas' });
     }

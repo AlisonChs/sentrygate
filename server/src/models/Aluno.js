@@ -23,7 +23,7 @@ class Aluno extends Model {
 
     static associate(models) {
         //Um aluno tem varios responsaveis
-        this.belongsTo(models.Responsavel, { foreignKey: 'responsavel_id', as: 'responsaveis' });
+        this.hasMany(models.Responsavel, { foreignKey: 'aluno_id', as: 'responsaveis' });
         //Um aluno tem apenas uma conta
         //this.hasOne(models.Conta, { foreignKey: 'aluno_id', as: 'contas' });
     }
