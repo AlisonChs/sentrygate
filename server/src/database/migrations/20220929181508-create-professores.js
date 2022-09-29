@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('alunos', {
+  async up (queryInterface, Sequelize) {
+    await queryInterface.createTable('professores', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -16,6 +16,10 @@ module.exports = {
       sobrenome: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      nome_social: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       data_nasc: {
         type: Sequelize.STRING,
@@ -33,6 +37,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      sexo: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       cep: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -49,21 +57,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      complemento: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       tel: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      senha: {
-        type: Sequelize.STRING,
-        allowNull: false,
+      matricula: {
+        type: Sequelize.INTEGER
       },
       created_at: {
         type: Sequelize.DATE,
@@ -72,12 +71,10 @@ module.exports = {
       updated_at: {
         type: Sequelize.DATE,
         allowNull: false,
-      },
+      }
     });
-
   },
-
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('alunos');
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('professores');
   }
 };
