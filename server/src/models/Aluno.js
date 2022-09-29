@@ -21,11 +21,11 @@ class Aluno extends Model {
         })
     }
 
+    //Relacionamento entre as tabelas
     static associate(models) {
-        //Um aluno tem varios responsaveis
+
+        //Um aluno tem apenas um responsavel
         this.hasMany(models.Responsavel, { foreignKey: 'aluno_id', as: 'responsaveis' });
-        //Um aluno tem apenas uma conta
-        //this.hasOne(models.Conta, { foreignKey: 'aluno_id', as: 'contas' });
     }
 }
 

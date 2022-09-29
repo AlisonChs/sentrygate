@@ -9,13 +9,6 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      aluno_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: 'alunos', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
-      },
       nome: {
         type: Sequelize.STRING,
         allowNull: false,

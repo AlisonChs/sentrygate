@@ -1,27 +1,31 @@
 const { Model, DataTypes } = require('sequelize');
 
-class Responsavel extends Model {
+class Professor extends Model {
     static init(connection) {
         super.init({
             nome: DataTypes.STRING,
             sobrenome: DataTypes.STRING,
+            nome_social: DataTypes.STRING,
             data_nasc: DataTypes.STRING,
-            cpf: DataTypes.STRING,
+            genero: DataTypes.STRING,
             rg: DataTypes.STRING,
+            cpf: DataTypes.STRING,
+            cep: DataTypes.STRING,
+            cidade: DataTypes.STRING,
+            bairro: DataTypes.STRING,
+            rua: DataTypes.STRING,
+            complemento: DataTypes.STRING,
             tel: DataTypes.STRING,
         }, {
             sequelize: connection,
-            tableName: 'responsaveis'
+            tableName: 'professores',
         })
     }
 
     //Relacionamento entre as tabelas
     static associate(models) {
 
-        //Um responsavel tem varios alunos
-        this.belongsTo(models.Aluno, { foreignKey: 'aluno_id', as: 'alunos' });
     }
-
 }
 
-module.exports = Responsavel;
+module.exports = Professor;
