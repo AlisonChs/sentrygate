@@ -10,7 +10,7 @@ npx sequelize db:create
 
 -- Cria uma nova migration 
 (exemplo)
-npx sequelize migration:create --name=add-age-field-to-users
+npx sequelize migration:create --name=conta
 
 -- Cria as migrations existentes 
 npx sequelize db:migrate
