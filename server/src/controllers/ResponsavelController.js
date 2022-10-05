@@ -18,7 +18,8 @@ module.exports = {
             data_nasc,
             cpf,
             rg,
-            tel } = req.body;
+            tel 
+        } = req.body;
 
         //Procura o aluno por meio da chave primaria
         const aluno = await Aluno.findByPk(id_aluno);
@@ -29,7 +30,7 @@ module.exports = {
         }
 
         //Cria os valores e os insere na tabela
-        const [responsaveis] = await Responsavel.findOrCreate({
+        const [ responsavel ] = await Responsavel.findOrCreate({
             where: {
                 cpf,
             },
@@ -37,14 +38,13 @@ module.exports = {
                 nome,
                 sobrenome,
                 data_nasc,
-                cpf,
                 rg,
                 tel
             }
         });
 
-        await responsaveis.addResponsavel(responsaveis);
+        await aluno.addResponsaveis(responsavel);
 
-        return res.json();
+        return res.json(responsavel);
     }
 }
