@@ -5,11 +5,11 @@ const ResponsavelController = require('../controllers/ResponsavelController');
 
 const routes = express.Router();
 
+//Função de cadastrar usuarios
 routes.get('/alunos', AlunoController.index);
-routes.post('/aluno', AlunoController.store);
-
+routes.post('/cadastro/aluno', AlunoController.store);
 routes.get('/responsaveis', ResponsavelController.index);
-routes.post('/:aluno_id/responsavel', ResponsavelController.store);
+routes.post('/cadastro/:id_aluno/responsavel', ResponsavelController.store);
 
 
 

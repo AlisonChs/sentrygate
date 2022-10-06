@@ -9,15 +9,7 @@ module.exports = {
     },
     async store(req, res) {
         //Cria um parametro para a rota
-        const { aluno_id } = req.params;
-
-        //Procura o aluno por meio da chave primaria
-        const aluno = await Aluno.findByPk(aluno_id);
-
-        //Caso não ache o aluno envia uma mensagem de erro
-        if (!aluno) {
-            return res.status(400).json({msg: 'Aluno inexistente ou não encontrado'});
-        }
+        const { id_aluno } = req.params;
 
         //Recebe os valores do corpo do frontend
         const {
@@ -26,19 +18,33 @@ module.exports = {
             data_nasc,
             cpf,
             rg,
-            tel } = req.body;
+            tel 
+        } = req.body;
+
+        //Procura o aluno por meio da chave primaria
+        const aluno = await Aluno.findByPk(id_aluno);
+
+        //Caso não ache o aluno envia uma mensagem de erro
+        if (!aluno) {
+            return res.status(400).json({ msg: 'Aluno inexistente ou não encontrado' });
+        }
 
         //Cria os valores e os insere na tabela
-        const responsaveis = await Responsavel.create({
-            aluno_id,
-            nome,
-            sobrenome,
-            data_nasc,
-            cpf,
-            rg,
-            tel
+        const [ responsavel ] = await Responsavel.findOrCreate({
+            where: {
+                cpf,
+            },
+            defaults: {
+                nome,
+                sobrenome,
+                data_nasc,
+                rg,
+                tel
+            }
         });
 
-        return res.json(responsaveis);
+        await aluno.addResponsaveis(responsavel);
+
+        return res.json(responsavel);
     }
 }

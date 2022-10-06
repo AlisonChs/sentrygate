@@ -25,7 +25,11 @@ class Aluno extends Model {
     static associate(models) {
 
         //Um aluno tem apenas um responsavel
-        this.hasMany(models.Responsavel, { foreignKey: 'aluno_id', as: 'responsaveis' });
+        this.belongsToMany(models.Responsavel, {
+            foreignKey: 'id_aluno',
+            through: 'responsaveis_alunos',
+            as: 'responsaveis'
+        });
     }
 }
 
