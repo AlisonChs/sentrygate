@@ -18,7 +18,7 @@ module.exports = {
             data_nasc,
             cpf,
             rg,
-            tel 
+            tel
         } = req.body;
 
         //Procura o aluno por meio da chave primaria
@@ -26,11 +26,11 @@ module.exports = {
 
         //Caso não ache o aluno envia uma mensagem de erro
         if (!aluno) {
-            return res.status(400).json({ msg: 'Aluno inexistente ou não encontrado' });
+            return res.status(404).json({ msg: 'Aluno inexistente ou não encontrado' });
         }
 
         //Cria os valores e os insere na tabela
-        const [ responsavel ] = await Responsavel.findOrCreate({
+        const [responsavel] = await Responsavel.findOrCreate({
             where: {
                 cpf,
             },

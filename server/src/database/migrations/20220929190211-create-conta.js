@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('contas', {
       id: {
         type: Sequelize.INTEGER,
@@ -10,33 +10,33 @@ module.exports = {
         allowNull: false,
       },
       id_aluno: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
         reference: {
           model: "alunos",
           key: "id"
         },
-        onUpdate: 'cascade', 
-        onDelete: 'cascade'
+        onUpdate: 'restrict',
+        onDelete: 'restrict'
       },
       id_responsavel: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
         reference: {
           model: "responsaveis",
           key: "id"
         },
-        onUpdate: 'cascade', 
+        onUpdate: 'cascade',
         onDelete: 'cascade'
       },
       id_professor: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
         reference: {
           model: "professores",
           key: "id"
         },
-        onUpdate: 'cascade', 
+        onUpdate: 'cascade',
         onDelete: 'cascade'
       },
       email: {
