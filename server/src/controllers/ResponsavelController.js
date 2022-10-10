@@ -1,5 +1,6 @@
 const Responsavel = require('../models/Responsavel');
 const Aluno = require('../models/Aluno');
+const ResponsavelAluno = require('../models/ResponsavelAluno');
 
 module.exports = {
     async index(req, res) {
@@ -29,22 +30,29 @@ module.exports = {
             return res.status(404).json({ msg: 'Aluno inexistente ou não encontrado' });
         }
 
-        //Cria os valores e os insere na tabela
-        const [responsavel] = await Responsavel.findOrCreate({
-            where: {
-                cpf,
-            },
-            defaults: {
-                nome,
-                sobrenome,
-                data_nasc,
-                rg,
-                tel
-            }
+        const responsavel_aluno = await ResponsavelAluno.findOne({
+            where: { id_aluno }
         });
+        if (!responsavel_aluno) {
+            //Cria os valores e os insere na tabela
+            const [responsavel] = await Responsavel.findOrCreate({
+                where: {
+                    cpf,
+                },
+                defaults: {
+                    nome,
+                    sobrenome,
+                    data_nasc,
+                    rg,
+                    tel
+                }
+            });
 
-        await aluno.addResponsaveis(responsavel);
+            await aluno.addResponsaveis(responsavel);
 
-        return res.json(responsavel);
-    }
-}
+            return res.json(responsavel);
+        } else {
+            return res.status(404).json({ msg: 'Aluno já possui responsável' });    
+        }
+
+    }}

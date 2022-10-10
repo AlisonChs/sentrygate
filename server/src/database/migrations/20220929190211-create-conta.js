@@ -12,7 +12,7 @@ module.exports = {
       id_aluno: {
         allowNull: true,
         type: Sequelize.INTEGER,
-        reference: {
+        references: {
           model: "alunos",
           key: "id"
         },
@@ -22,7 +22,7 @@ module.exports = {
       id_responsavel: {
         allowNull: true,
         type: Sequelize.INTEGER,
-        reference: {
+        references: {
           model: "responsaveis",
           key: "id"
         },
@@ -32,7 +32,7 @@ module.exports = {
       id_professor: {
         allowNull: true,
         type: Sequelize.INTEGER,
-        reference: {
+        references: {
           model: "professores",
           key: "id"
         },
