@@ -4,9 +4,15 @@ const ResponsavelAluno = require('../models/ResponsavelAluno');
 
 module.exports = {
     async index(req, res) {
-        const { cpf } = req.body
-        const aluno = await Aluno.findByPk({ where: { cpf } });
-        return res.json(aluno)
+        const { id_relacionamento } = req.params;
+        const responsaveis = await Aluno.findByPk(id_relacionamento, {
+            include: {
+                association: 'contas',
+                attributes: ['id_responsavel']
+            }
+        })
+
+        return res.json(responsaveis);
     },
     async store(req, res) {
         //Cria um parametro para a rota
@@ -28,7 +34,7 @@ module.exports = {
 
         //Caso não ache o aluno envia uma mensagem de erro
         if (!aluno) {
-            return res.status(302).json({ msg: 'Aluno inexistente ou não encontrado' });
+            return res.status(404).json({ msg: 'Aluno inexistente ou não encontrado' });
         }
         const responsavel_aluno = await ResponsavelAluno.findOne({
             where: { id_aluno }

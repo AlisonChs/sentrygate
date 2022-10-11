@@ -18,31 +18,45 @@ module.exports = {
             senha,
         } = req.body;
 
+        //Verifica se existe este usuario no banco de dados
         const aluno = await Aluno.findByPk(id_aluno);
 
         if (!aluno) {
             return res.status(404).json({ msg: 'Aluno inexistente ou não encontrado' });
-        }
-        
-        //Criando os valores recebidos na tabela        
-        const [ conta ] = await Conta.findOrCreate({
-            where: {
-                id_aluno
-            },
-            defaults: {
-                senha,
-                email,
+        };
+
+        //Procura se o usuario ja possui uma conta
+        const conta_aluno = await Conta.findOne({
+            where: { id_aluno }
+        })
+
+        //Se o usuario não possuir conta, ira ser criada
+        if (!conta_aluno) {
+
+            //Procura se ja existe um email igual
+            const [conta, created] = await Conta.findOrCreate({
+                where: {
+                    email,
+                },
+                defaults: {
+                    senha,
+                    email,
+                    id_aluno
+                }
+            });
+
+            //Se existir um email citado no banco de dados sera notificado
+            if (!created) {
+                return res.status(302).json({ msg: "Este endereço de email ja esta sendo utilizado" })
+            } else {
+                return res.json(conta);
             }
-        });
 
-        //Recebendo a respostada da requisição
-        return res.json(conta);
+            //Se não existir um email se
 
-
-
-
-
-
-
+            //Se o usuario ja possui uma conta, ira ser notificado
+        } else {
+            return res.status(302).json({ msg: " Este usuario já possui uma conta" })
+        }
     }
 }

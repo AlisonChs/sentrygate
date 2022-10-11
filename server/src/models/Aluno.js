@@ -32,7 +32,7 @@ class Aluno extends Model {
         });
 
         //Um aluno trm apenas uma conta
-        this.hasOne(models.Conta, {
+        this.hasMany(models.Conta, {
             foreignKey: 'id_aluno',
             as: 'contas'
         })
