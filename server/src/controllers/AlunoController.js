@@ -25,20 +25,27 @@ module.exports = {
         } = req.body;
 
         //Criando os valores recebidos na tabela        
-        const aluno = await Aluno.create({
-            nome,
-            sobrenome,
-            data_nasc,
-            genero,
-            rg,
-            cpf,
-            cep,
-            cidade,
-            bairro,
-            rua,
-            complemento,
-            tel,
+        const [aluno, created] = await Aluno.findOrCreate({
+            where: { cpf },
+            defaults: {
+                nome,
+                sobrenome,
+                data_nasc,
+                genero,
+                rg,
+                cpf,
+                cep,
+                cidade,
+                bairro,
+                rua,
+                complemento,
+                tel,
+            }
         });
+
+        if (!created) {
+            return res.status(302).json({ msg: "Aluno ja cadastrado" });
+        }
 
         //Recebendo a respostada da requisição
         return res.json(aluno);

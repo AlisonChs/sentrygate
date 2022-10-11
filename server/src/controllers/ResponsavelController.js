@@ -4,14 +4,13 @@ const ResponsavelAluno = require('../models/ResponsavelAluno');
 
 module.exports = {
     async index(req, res) {
-        const responsaveis = await Responsavel.findAll();
-
-        return res.json(responsaveis);
+        const { cpf } = req.body
+        const aluno = await Aluno.findByPk({ where: { cpf } });
+        return res.json(aluno)
     },
     async store(req, res) {
         //Cria um parametro para a rota
         const { id_aluno } = req.params;
-
         //Recebe os valores do corpo do frontend
         const {
             nome,
@@ -22,14 +21,15 @@ module.exports = {
             tel
         } = req.body;
 
+
+
         //Procura o aluno por meio da chave primaria
         const aluno = await Aluno.findByPk(id_aluno);
 
         //Caso não ache o aluno envia uma mensagem de erro
         if (!aluno) {
-            return res.status(404).json({ msg: 'Aluno inexistente ou não encontrado' });
+            return res.status(302).json({ msg: 'Aluno inexistente ou não encontrado' });
         }
-
         const responsavel_aluno = await ResponsavelAluno.findOne({
             where: { id_aluno }
         });
@@ -52,7 +52,8 @@ module.exports = {
 
             return res.json(responsavel);
         } else {
-            return res.status(404).json({ msg: 'Aluno já possui responsável' });    
+            return res.status(302).json({ msg: 'Aluno já possui responsável' });
         }
 
-    }}
+    }
+}
