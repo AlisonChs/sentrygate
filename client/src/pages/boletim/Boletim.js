@@ -88,22 +88,6 @@ export function Boletim() {
 
       <div className="boletimContainer">
         <div className="boletimContent">
-          {/* <div className="modulo">
-          <p>Status - {modulo} Série </p>
-
-          <select name="modulo" id="modulo" onChange={e => setModulo(e.target.value)} >
-            <option value="">Selecionar Modulo de Série</option>
-            <option value="1">1 Série</option>
-            <option value="2">2 Série</option>
-            <option value="3">3 Série</option>
-          </select>
-        </div> 
-
-        <div className="projetar">
-          <p>Projetar Boletim</p>
-          <DownloadSimple size={30} color="black" weight="light" />
-        </div>
-  */}
 
           {!isLoading ? (
               <TableBoletim />
@@ -116,10 +100,10 @@ export function Boletim() {
         </div>
       </div>
 
-      <BottomBar
+      {/* <BottomBar
         objects={ArrayActions}
         numberOfSkeletons={ArrayActions.length - 1}
-      />
+          /> */}
     </>
   );
 }
