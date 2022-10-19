@@ -1,6 +1,6 @@
 
 // React imports
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { useContext } from "react";
 
 // Components
@@ -18,10 +18,14 @@ import LeftBar from "../../components/UI/navbar/LeftBar/LeftBar";
 
 export default function RouteNavigation () {
 
+  const location = useLocation();
+
   return (
   
       <div className="components">
-        <LeftBar />
+
+        {  location.pathname !== "/" ? <LeftBar /> : null }
+
         <Routes>
           <Route exact path="/" element={<Form />} />
           <Route exact path="/main" element={<Main />} />
@@ -31,6 +35,7 @@ export default function RouteNavigation () {
           <Route path="/boletim" element={<Boletim />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+
       </div>
 
   );
