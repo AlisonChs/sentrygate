@@ -64,27 +64,33 @@ export function Inputs({ currentUser, setCurrentUser }) {
         if (email === "" || senha === "") {
             alert("Preencha todos os campos");
         } else {
-            Axios.post("http://localhost:3001/login", {
+            Axios.post("http://localhost:3001/alunos", {
                 email: email,
-                password: senha,
+                senha: senha,
             }).then((response) => {
 
                 let userObj = response.data;
+                console.log(userObj)
 
-                if (userObj.length === 1) {
+                let isSucess = userObj ? true : false;
+
+                console.log(userObj)
+                console.log(isSucess)
+
+                if (isSucess) {
                     alert("Login feito com sucesso");
-
-                    setUser(userObj[0]);
-
                     //alterando a autenticação
-                    setAuth(true)
+                   
 
                     //navegar a outra rota
                     // navigate("/main")
-                } else {
+                  } else if (!isSucess) {
                     alert("Email ou senha invalidos");
-                }
-            });
+                  } else {
+                    
+                  }
+
+                });
         }
     };
 
@@ -107,7 +113,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
         </div>
       </div>
     
-      <Button variant="contained" onClick={handleLogin} disabled={isInputChanged ? true : false} sx={loginBTN} >
+      <Button variant="contained" onClick={handleLogin} sx={loginBTN} >
         Entrar
       </Button>
 

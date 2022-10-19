@@ -1,4 +1,5 @@
- /* import * as React from 'react';
+
+import * as React from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -20,7 +21,7 @@ const style = {
   p: 4,
 };
 
-export default function SexModal() {
+export default function SexModal({ personalizedSex, setPersonalizedSex, open, setOpen }) {
 
   const handleClose = () => setOpen(false);
 
@@ -81,7 +82,7 @@ export default function SexModal() {
       label: "Transexual",
       value: "Transexual",
     },
-  ]; 
+  ];
 
   const customStyles = {
   option: (provided, state) => ({
@@ -156,4 +157,4 @@ export default function SexModal() {
   );
 }
 
-*/
+
