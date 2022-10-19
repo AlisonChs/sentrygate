@@ -17,7 +17,7 @@ routes.get('/contas', ContaAlunoController.index);
 routes.post('/cadastro/:id_aluno/conta', ContaAlunoController.store);
 
 //Verifica o login
-routes.get('/login', LoginController.index);
+routes.post('/login', LoginController.index);
 
 //Cadastra um novo responsavel
 routes.get('/responsaveis/:id_relacionamento', ResponsavelController.index);

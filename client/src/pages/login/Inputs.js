@@ -18,6 +18,8 @@ export function Inputs({ currentUser, setCurrentUser }) {
       senhaUsuario: "",
     });
 
+    
+
     const [style, setStyle] = useState("");
 
     const [isInputChanged, setIsInputChanged] = useState (true);
@@ -40,7 +42,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
     }
 
     const handleChangeValues = (value) => {
-      setIsInputChanged((!values.emailUsuario && !values.senhaUsuario) || (!values.senhaUsuario) ? false : true);
+      setIsInputChanged(!values.any ? false : true)
       setValues((prevValue) => ({
           ...prevValue,
           [value.target.name]: value.target.value,
@@ -57,22 +59,27 @@ export function Inputs({ currentUser, setCurrentUser }) {
       },
     }
 
+    const email = values.emailUsuario;
+    const senha = values.senhaUsuario;
+  
+
     const handleLogin = () => {
-        let email = values.emailUsuario;
-        let senha = values.senhaUsuario;
 
         if (email === "" || senha === "") {
             alert("Preencha todos os campos");
         } else {
-            Axios.post("http://localhost:3001/alunos", {
+            Axios.post("http://localhost:3001/login", {
                 email: email,
                 senha: senha,
             }).then((response) => {
 
-                let userObj = response.data;
-                console.log(userObj)
+              
+              let userObj = response.data;
+              // let isSucess = userObj === 200 ? true : false;
+              console.log(userObj)
 
-                let isSucess = userObj ? true : false;
+/*
+
 
                 console.log(userObj)
                 console.log(isSucess)
@@ -90,6 +97,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
                     
                   }
 
+                  */
                 });
         }
     };

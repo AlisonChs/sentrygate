@@ -14,9 +14,9 @@ module.exports = {
         });
 
         if (!conta) {
-            return res.status(404).json({ msg: "email ou senha invalidos" })
+            return res.json(404)
         } else {
-            return res.status(302).json({ msg: "login feito com sucesso" })
+            return res.json(200)
         }
     },
 

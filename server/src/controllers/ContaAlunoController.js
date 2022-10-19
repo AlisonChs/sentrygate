@@ -39,8 +39,8 @@ module.exports = {
                     email,
                 },
                 defaults: {
-                    senha,
                     email,
+                    senha,
                     id_aluno
                 }
             });
