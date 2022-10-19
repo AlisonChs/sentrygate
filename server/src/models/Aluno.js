@@ -30,6 +30,12 @@ class Aluno extends Model {
             through: 'responsaveis_alunos',
             as: 'responsaveis'
         });
+
+        //Um aluno trm apenas uma conta
+        this.hasMany(models.Conta, {
+            foreignKey: 'id_aluno',
+            as: 'contas'
+        })
     }
 }
 
