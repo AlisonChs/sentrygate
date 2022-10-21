@@ -62,6 +62,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
     const email = values.emailUsuario;
     const senha = values.senhaUsuario;
   
+    
 
     const handleLogin = () => {
 
@@ -76,7 +77,28 @@ export function Inputs({ currentUser, setCurrentUser }) {
               
               let userObj = response.data;
               // let isSucess = userObj === 200 ? true : false;
-              console.log(userObj)
+
+              
+              class responseData {
+                constructor(userObj) {
+                  this.userObj = userObj;
+                }
+
+                function setResponse (userObj) {
+                  this.userObj = userObj;
+                }
+
+                showLog: () => {
+                  return console.log(this.userObj)
+                }
+                
+                function notfound () {
+                  console.log('nao achou')
+                }
+              }
+              
+
+             // console.log(responses.notfound)
 
 /*
 
