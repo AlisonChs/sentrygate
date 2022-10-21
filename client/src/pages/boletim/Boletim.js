@@ -106,7 +106,7 @@ export function Boletim() {
   */}
 
           {!isLoading ? (
-              <TableBoletim />
+            <TableBoletim />
           ) : (
             <>
               <Skeleton variant="rounded" width={700} height={300} />
