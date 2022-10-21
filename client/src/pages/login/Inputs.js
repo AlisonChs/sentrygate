@@ -6,6 +6,7 @@ import Axios from 'axios';
 import Button from '@mui/lab/LoadingButton';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import { responseData } from '../../classes/ResponseData';
 
 export function Inputs({ currentUser, setCurrentUser }) {
 
@@ -41,10 +42,6 @@ export function Inputs({ currentUser, setCurrentUser }) {
       },
     }
 
-    function notfound () {console.log('nao achou')}
-    function sucess () {console.log('achou')}
-
-
     const handleChangeValues = (value) => {
       setIsInputChanged(!values.any ? false : true)
       setValues((prevValue) => ({
@@ -65,35 +62,6 @@ export function Inputs({ currentUser, setCurrentUser }) {
 
     const email = values.emailUsuario;
     const senha = values.senhaUsuario;
-  
-
-    class responseData {
-      
-      constructor(userObj) {
-
-        const responses = {
-          response404: notfound,
-          response200: sucess
-        }
-
-        responses[userObj]()
-
-        this.userObj = userObj;
-      }
-
-      setResponse (userObj) {
-        this.userObj = userObj;
-      }
-
-      showLog () {
-        return console.log(this.userObj)
-      }
-      
-      notfound () {
-        console.log('nao achou')
-      }
-
-    }
 
     const handleLogin = () => {
 
@@ -104,13 +72,13 @@ export function Inputs({ currentUser, setCurrentUser }) {
                 email: email,
                 senha: senha,
             }).then((response) => {
-
               
               let userObj = 'response' + response.data;
 
               // let isSucess = userObj === 200 ? true : false;              
 
-              new responseData(userObj);
+              const responses = new responseData(userObj);
+              responses.showLog(response.data)
               
 /*
 
