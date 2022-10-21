@@ -18,7 +18,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
       senhaUsuario: "",
     });
 
-    
+    var notfoundd, sucess;
 
     const [style, setStyle] = useState("");
 
@@ -41,6 +41,10 @@ export function Inputs({ currentUser, setCurrentUser }) {
       },
     }
 
+    function notfound () {console.log('nao achou')}
+    function sucess () {console.log('achou')}
+
+
     const handleChangeValues = (value) => {
       setIsInputChanged(!values.any ? false : true)
       setValues((prevValue) => ({
@@ -62,7 +66,34 @@ export function Inputs({ currentUser, setCurrentUser }) {
     const email = values.emailUsuario;
     const senha = values.senhaUsuario;
   
-    
+
+    class responseData {
+      
+      constructor(userObj) {
+
+        const responses = {
+          response404: notfound,
+          response200: sucess
+        }
+
+        responses[userObj]()
+
+        this.userObj = userObj;
+      }
+
+      setResponse (userObj) {
+        this.userObj = userObj;
+      }
+
+      showLog () {
+        return console.log(this.userObj)
+      }
+      
+      notfound () {
+        console.log('nao achou')
+      }
+
+    }
 
     const handleLogin = () => {
 
@@ -75,31 +106,12 @@ export function Inputs({ currentUser, setCurrentUser }) {
             }).then((response) => {
 
               
-              let userObj = response.data;
-              // let isSucess = userObj === 200 ? true : false;
+              let userObj = 'response' + response.data;
 
+              // let isSucess = userObj === 200 ? true : false;              
+
+              new responseData(userObj);
               
-              class responseData {
-                constructor(userObj) {
-                  this.userObj = userObj;
-                }
-
-                function setResponse (userObj) {
-                  this.userObj = userObj;
-                }
-
-                showLog: () => {
-                  return console.log(this.userObj)
-                }
-                
-                function notfound () {
-                  console.log('nao achou')
-                }
-              }
-              
-
-             // console.log(responses.notfound)
-
 /*
 
 
