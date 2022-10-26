@@ -25,6 +25,7 @@ export default function Form() {
   console.log('E-mail: ' + emailInserido)
   console.log('Senha: ' + senhaInserida)
 
+  
     const handleLogin = () => {
 
         if (emailInserido === "" || senhaInserida === "") {
@@ -35,31 +36,12 @@ export default function Form() {
                 senha: senhaInserida,
             }).then((response) => {
               
-              let userObj = 'response' + response.data;
+              let userObj = 'response' + response.status;
 
               const responses = new responseData(userObj, sucess, notfound);
-              
-/*
 
-
-                console.log(userObj)
-                console.log(isSucess)
-
-                if (isSucess) {
-                    alert("Login feito com sucesso");
-                    //alterando a autenticação
-                   
-
-                    //navegar a outra rota
-                    // navigate("/main")
-                  } else if (!isSucess) {
-                    alert("Email ou senha invalidos");
-                  } else {
-                    
-                  }
-
-                  */
-
+              responses.setItem('name', response.data.nome)
+            
                 }); // Falta tratar os outros erros, vamos usar o https://axios-http.com/ptbr/docs/handling_errors
 
         }
@@ -108,7 +90,8 @@ export default function Form() {
                     email={emailInserido}
                     senha={senhaInserida}
                     setEmail={setEmailInserido}
-                    setSenha={setSenhaInserida} />
+                    setSenha={setSenhaInserida}
+                />
                     
                   <Button variant="contained" onClick={handleLogin} sx={loginBTN}>
                       Entrar
