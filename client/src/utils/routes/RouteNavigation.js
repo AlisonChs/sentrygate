@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 // Components
 import { Main } from "../../pages/main/Main";
-import { Form } from "../../pages/login/Form";
+import Form from "../../pages/login/Form";
 import { RegisterStudent } from "../../pages/register/student/Register";
 import { RegisterTeacher } from "../../pages/register/teacher/Register";
 import { Boletim } from "../../pages/boletim/Boletim";
