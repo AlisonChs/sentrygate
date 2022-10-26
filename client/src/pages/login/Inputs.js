@@ -1,11 +1,12 @@
 import './form.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from "react";
 import Context from '../../contexts/Context'
 import Axios from 'axios';
 import Button from '@mui/lab/LoadingButton';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import { responseData } from '../../classes/ResponseData';
 
 export function Inputs({ currentUser, setCurrentUser }) {
 
@@ -61,7 +62,11 @@ export function Inputs({ currentUser, setCurrentUser }) {
 
     const email = values.emailUsuario;
     const senha = values.senhaUsuario;
+
+    function sucess () {alert('Não achou')}
+    function notfound () {alert('Sucesso!')}
   
+
 
     const handleLogin = () => {
 
@@ -72,12 +77,11 @@ export function Inputs({ currentUser, setCurrentUser }) {
                 email: email,
                 senha: senha,
             }).then((response) => {
-
               
-              let userObj = response.data;
-              // let isSucess = userObj === 200 ? true : false;
-              console.log(userObj)
+              let userObj = 'response' + response.data;
 
+              const responses = new responseData(userObj, sucess, notfound);
+              
 /*
 
 
@@ -98,7 +102,9 @@ export function Inputs({ currentUser, setCurrentUser }) {
                   }
 
                   */
-                });
+
+                }); // Falta tratar os outros erros, vamos usar o https://axios-http.com/ptbr/docs/handling_errors
+
         }
     };
 
@@ -124,6 +130,8 @@ export function Inputs({ currentUser, setCurrentUser }) {
       <Button variant="contained" onClick={handleLogin} sx={loginBTN} >
         Entrar
       </Button>
+      
+
 
     </div>
   );
