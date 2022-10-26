@@ -1,8 +1,9 @@
 import "./style.css";
 import { useState, useEffect } from "react";
-import { Avatar } from "@mui/material";
 import OrangeLogo from "../../svg/OrangeLogo";
 import IconButton from '@mui/material/IconButton';
+import LightToolTip from '../../tip/LightToolTip'
+
 // Icones do MATERIAL ICONS
 
 import Skeleton from '@mui/material/Skeleton';
@@ -50,9 +51,13 @@ export default function LeftBar () {
       <div className="navbarVertical">
         <div className="divNavbar">
           <div className="iconDiv" style={logoStyle}>
+          {!isLoading ? (
             <IconButton aria-label="open menu" onClick={handleMenu} >
               <OrangeLogo className={svgStyle}/>
             </IconButton> 
+          ) : (
+            <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginLeft:  '0.6rem'}} width={45} height={45} />
+          )}
             <h2 style={logoTitleStyle}>Sentry <span>Gate</span></h2>
           </div>
 
@@ -60,9 +65,12 @@ export default function LeftBar () {
 
             {!isLoading ? (
               <>
-              {/* Em vez do avatar, coloquem o icone do MUI */}
-                <HomeIcon alt='homepage' sx={{ width: 28, height: 28, color: "white" }} />
-                <p>Painel de controle</p>
+              <LightToolTip placement="right" arrow title="Painel de controle">
+                <HomeIcon className='navIcon' alt='homepage' sx={{ width: 28, height: 28, color: "white" }} />
+              </LightToolTip>
+              
+              <p className="bold">Painel de controle</p>
+              
               </>
             ) : (     
               <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E' }} width={28} height={28} />
@@ -74,9 +82,11 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              {/* Em vez do avatar, coloquem o icone do MUI */}
-                <TrendingUpIcon alt='desempenho' sx={{ width: 28, height: 28, color: "white" }} />
-                <p>Desempenho</p>
+              <LightToolTip placement="right" arrow title="Desempenho escolar">
+                <TrendingUpIcon className='navIcon' alt='desempenho' sx={{ width: 28, height: 28, color: "white" }} />
+              </LightToolTip>
+              
+              <p className="bold">Desempenho</p>
 
               </>
             ) : (     
@@ -87,15 +97,16 @@ export default function LeftBar () {
         </div>
 
         <div className="divNavbar">
-          <p></p>
+          <p className="bold"></p>
 
           <div className="iconDiv">
 
           {!isLoading ? (
               <>
-              {/* Em vez do avatar, coloquem o icone do MUI */}
-                <CalendarMonthIcon alt='calendario de notas' sx={{ width: 28, height: 28, color: "white" }} />
-                <p>Calendario de Notas</p>
+              <LightToolTip placement="right" arrow title="Calendário de notas">
+                <CalendarMonthIcon className='navIcon' alt='calendario de notas' sx={{ width: 28, height: 28, color: "white" }} />
+              </LightToolTip>
+              <p className="bold">Calendario de Notas</p>
 
               </>
             ) : (     
@@ -106,9 +117,11 @@ export default function LeftBar () {
           <div className="iconDiv">
           {!isLoading ? (
               <>
-              {/* Em vez do avatar, coloquem o icone do MUI */}
-                <NotificationsIcon alt='notificações' sx={{ width: 28, height: 28, color: "white"  }} />
-                <p>Avisos e notificações</p>
+              <LightToolTip placement="right" arrow title="Painel de notificações">
+                <NotificationsIcon className='navIcon' alt='notificações' sx={{ width: 28, height: 28, color: "white"  }} />
+              </LightToolTip>
+
+              <p className="bold">Avisos e notificações</p>
 
               </>
             ) : (     
@@ -121,9 +134,11 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              {/* Em vez do avatar, coloquem o icone do MUI */}
-                <PostAddIcon alt='regulamento escolar' sx={{ width: 28, height: 28, color: "white" }} />
-                <p>Regulamento escolar</p>
+              <LightToolTip placement="right" arrow title="Regulamento escolar">
+                <PostAddIcon className='navIcon' alt='regulamento escolar' sx={{ width: 28, height: 28, color: "white" }} />
+              </LightToolTip>
+
+              <p className="bold">Regulamento escolar</p>
 
               </>
             ) : (     
@@ -135,14 +150,15 @@ export default function LeftBar () {
         </div>
 
         <div className="divNavbar">
-          <p></p>
+          <p className="bold"></p>
 
           <div className="iconDiv">
           {!isLoading ? (
               <>
-              {/* Em vez do avatar, coloquem o icone do MUI */}
-                <School alt='Tarefas' sx={{ width: 28, height: 28, color:"white" }} />
-                <p>Lista de atividades</p>
+              <LightToolTip placement="right" arrow title="Tarefas">
+                <School className='navIcon' alt='Tarefas' sx={{ width: 28, height: 28, color:"white" }} />
+              </LightToolTip>
+                <p className="bold">Lista de atividades</p>
 
               </>
             ) : (     
@@ -155,8 +171,10 @@ export default function LeftBar () {
               <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginTop:'2.3rem'  }} width={28} height={28} />
             ) : (
               <>
-                <Settings sx={{ width: 28, height: 28, color:"white" }} />
-                <p>Averiguação do sistema</p>
+              <LightToolTip placement="right" arrow title="Averiguação do sistema">
+                <Settings className="navIcon" sx={{ width: 28, height: 28, color:"white" }} />
+              </LightToolTip>
+                <p className="bold">Averiguação do sistema</p>
               </>
             )}
             { /*  */ }
