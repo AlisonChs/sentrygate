@@ -1,5 +1,5 @@
 import './form.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from "react";
 import Context from '../../contexts/Context'
 import Axios from 'axios';
@@ -18,8 +18,6 @@ export function Inputs({ currentUser, setCurrentUser }) {
       emailUsuario: "",
       senhaUsuario: "",
     });
-
-    var notfoundd, sucess;
 
     const [style, setStyle] = useState("");
 
@@ -63,6 +61,9 @@ export function Inputs({ currentUser, setCurrentUser }) {
     const email = values.emailUsuario;
     const senha = values.senhaUsuario;
 
+    function sucess () {alert('Não achou')}
+    function notfound () {alert('Sucesso!')}
+
     const handleLogin = () => {
 
         if (email === "" || senha === "") {
@@ -75,10 +76,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
               
               let userObj = 'response' + response.data;
 
-              // let isSucess = userObj === 200 ? true : false;              
-
-              const responses = new responseData(userObj);
-              responses.showLog(response.data)
+              const responses = new responseData(userObj, sucess, notfound);
               
 /*
 
@@ -100,7 +98,7 @@ export function Inputs({ currentUser, setCurrentUser }) {
                   }
 
                   */
-                });
+                }); // Falta tratar os outros erros, vamos usar o https://axios-http.com/ptbr/docs/handling_errors
         }
     };
 
@@ -126,6 +124,8 @@ export function Inputs({ currentUser, setCurrentUser }) {
       <Button variant="contained" onClick={handleLogin} sx={loginBTN} >
         Entrar
       </Button>
+      
+
 
     </div>
   );
