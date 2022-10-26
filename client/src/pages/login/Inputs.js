@@ -19,6 +19,8 @@ export function Inputs({ currentUser, setCurrentUser }) {
       senhaUsuario: "",
     });
 
+    
+
     const [style, setStyle] = useState("");
 
     const [isInputChanged, setIsInputChanged] = useState (true);
@@ -63,6 +65,8 @@ export function Inputs({ currentUser, setCurrentUser }) {
 
     function sucess () {alert('Não achou')}
     function notfound () {alert('Sucesso!')}
+  
+
 
     const handleLogin = () => {
 
@@ -98,7 +102,9 @@ export function Inputs({ currentUser, setCurrentUser }) {
                   }
 
                   */
+
                 }); // Falta tratar os outros erros, vamos usar o https://axios-http.com/ptbr/docs/handling_errors
+
         }
     };
 
