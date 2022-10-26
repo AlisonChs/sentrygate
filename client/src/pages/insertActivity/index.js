@@ -1,6 +1,6 @@
 import { useState } from "react";
-
 import "./activity.css";
+
 import search from '../../_assets/js/search.json'
 
 import Lottie from "lottie-react";
@@ -8,6 +8,7 @@ import TopBar from "../../components/UI/navbar/TopBar/TopBar";
 import { ListClass } from "./ListClass";
 import { ListStudent } from "./ListStudent";
 import { AddActivity } from "./AddActivity";
+
 export function InsertActivity() {
 
  const [stepSelect, setStepSelect] = useState('class')
@@ -19,6 +20,8 @@ export function InsertActivity() {
       <TopBar PageTitle="Adicionar" PageSpan="Atividade" />
       <div className="activityContainer">
         <div className="selectClass">
+
+          
 
          {
           stepSelect === 'class' 
