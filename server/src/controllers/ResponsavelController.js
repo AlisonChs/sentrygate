@@ -4,13 +4,8 @@ const ResponsavelAluno = require('../models/ResponsavelAluno');
 
 module.exports = {
     async index(req, res) {
-        const { id_relacionamento } = req.params;
-        const responsaveis = await Aluno.findByPk(id_relacionamento, {
-            include: {
-                association: 'contas',
-                attributes: ['id_responsavel']
-            }
-        })
+        const { id_aluno } = req.params;
+        const responsaveis = await Aluno.findByPk(id_aluno)
 
         return res.json(responsaveis);
     },
@@ -34,7 +29,7 @@ module.exports = {
 
         //Caso não ache o aluno envia uma mensagem de erro
         if (!aluno) {
-            return res.status(404).json({ msg: 'Aluno inexistente ou não encontrado' });
+            return res.json(404)
         }
         const responsavel_aluno = await ResponsavelAluno.findOne({
             where: { id_aluno }
@@ -56,9 +51,9 @@ module.exports = {
 
             await aluno.addResponsaveis(responsavel);
 
-            return res.json(responsavel);
+            return res.json(200);
         } else {
-            return res.status(302).json({ msg: 'Aluno já possui responsável' });
+            return res.json(302)
         }
 
     }

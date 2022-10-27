@@ -22,7 +22,7 @@ module.exports = {
         const aluno = await Aluno.findByPk(id_aluno);
 
         if (!aluno) {
-            return res.status(404).json({ msg: 'Aluno inexistente ou não encontrado' });
+            return res.json(404)
         };
 
         //Procura se o usuario ja possui uma conta
@@ -47,16 +47,16 @@ module.exports = {
 
             //Se existir um email citado no banco de dados sera notificado
             if (!created) {
-                return res.status(302).json({ msg: "Este endereço de email ja esta sendo utilizado" })
+                return res.json(302)
             } else {
-                return res.json(conta);
+                return res.json(200);
             }
 
             //Se não existir um email se
 
             //Se o usuario ja possui uma conta, ira ser notificado
         } else {
-            return res.status(302).json({ msg: " Este usuario já possui uma conta" })
+            return res.json(302)
         }
     }
 }
