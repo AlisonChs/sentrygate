@@ -90,7 +90,7 @@ export function Boletim() {
         <div className="boletimContent">
 
           {!isLoading ? (
-              <TableBoletim />
+            <TableBoletim />
           ) : (
             <>
               <Skeleton variant="rounded" width={700} height={300} />

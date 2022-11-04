@@ -1,0 +1,173 @@
+.activityContainer {
+ width: 100%;
+ height: 100%;
+
+ display: flex;
+ justify-content: center;
+ gap: 2rem;
+
+ margin-top: 1rem;
+ padding-left: 5rem;
+ padding-right: 2rem;
+}
+
+.selectClass {
+ background-color: #311B55;
+ height: 32rem;
+ width: 19.5rem;
+
+ padding: 1rem;
+ text-align: center;
+
+ border-radius: 0.8rem;
+ overflow-y: scroll;
+}
+
+.selectClass::-webkit-scrollbar {
+ display: none;
+}
+
+.List {
+ background-color: #210D41;
+ width: 100%;
+ height: 4.5rem;
+
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+
+ border-radius: 0.8rem;
+ margin-bottom: 1rem;
+ padding: 0 1rem 0 1rem;
+
+ cursor: pointer;
+}
+
+.List img {
+ width: 3rem;
+ height: 3rem;
+
+ border-radius: 100%;
+}
+
+.contentActivity {
+ width: 60%;
+ height: 100%;
+
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.containerActivity {
+ background-color: #311B55;
+ width: 100%;
+ height: 32rem;
+
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+
+ padding: 1rem;
+
+ border-radius: 0.8rem;
+}
+
+.studentContainer {
+ background-color: #210D41;
+ width: 100%;
+ height: 10rem;
+ 
+ border-radius: 0.8rem;
+}
+
+.insertActivity {
+ width: 100%;
+
+ display: grid;
+ grid-template-columns: 40% 60%;
+ gap: 1rem;
+
+ padding: 0 1rem 0 0;
+}
+
+.addActivity {
+ height: 20rem;
+ background-color: #210D41;
+ border-radius: 0.8rem;
+
+ display: flex;
+ text-align: center; 
+ align-items: center;
+ justify-content: space-between;
+ flex-direction: column;
+
+ gap: 2rem;
+ padding: 1rem;
+
+}
+
+.inputAvaliacao::-webkit-scrollbar {
+ display: none;
+}
+
+.inputAvaliacao {
+ width: 100%;
+ height: 12rem;
+
+ overflow: scroll;
+}
+
+.input {
+ height: 4rem;
+ width: 100%;
+ background-color: #311B55;
+
+ display: grid;
+ grid-template-columns: 3fr 1fr 1fr;
+ align-items: center;
+ margin-bottom: 1rem;
+ 
+ border-radius: 0.8rem;
+
+ cursor: pointer;
+}
+
+.input p {
+ width: 100%;
+ text-align: center;
+}
+
+.btnAdd {
+ background-color: #311B55;
+ width: 4rem;
+ height: 3rem;
+
+ border-radius: 1rem;
+ cursor: pointer;
+}
+
+.avaliacaoContainer {
+ height: 20rem;
+ background-color: #210D41;
+
+ 
+ display: grid;
+ grid-template-rows: 1fr 2fr 2fr;
+ 
+ padding: 1rem;
+ gap: 1rem;
+
+ border-radius: 0.8rem;
+}
+
+.avaliacaoContainer div {
+ display: grid;
+ grid-template-columns: 2fr 1fr;
+ gap: 1rem;
+}
+
+.avaliacaoContainer input {
+ height: 100%;
+ background-color: #311B55;
+}

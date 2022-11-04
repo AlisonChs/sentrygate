@@ -1,4 +1,3 @@
-
 // React imports
 import { Route, Routes } from "react-router-dom";
 import { useContext } from "react";
@@ -13,25 +12,24 @@ import { NotFound } from "../../components/UI/notfound/404";
 
 import PrivateRoute from "./PrivateRoute";
 import LeftBar from "../../components/UI/navbar/LeftBar/LeftBar";
+import { InsertActivity } from "../../pages/insertActivity";
 
 // Global
 
-export default function RouteNavigation () {
-
+export default function RouteNavigation() {
   return (
-  
-      <div className="components">
-        <LeftBar />
-        <Routes>
-          <Route exact path="/" element={<Form />} />
-          <Route exact path="/main" element={<Main />} />
-          <Route path="/login" element={<Form />} />
-          <Route path="/register/student" element={<RegisterStudent />} />
-          <Route path="/register/teacher" element={<RegisterTeacher />} />
-          <Route path="/boletim" element={<Boletim />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
-
+    <>
+      <LeftBar />
+      <Routes>
+        <Route exact path="/" element={<Form />} />
+        <Route exact path="/main" element={<Main />} />
+        <Route path="/login" element={<Form />} />
+        <Route path="/register/student" element={<RegisterStudent />} />
+        <Route path="/register/teacher" element={<RegisterTeacher />} />
+        <Route path="/boletim" element={<Boletim />} />
+        <Route path="/insert/activity" element={<InsertActivity />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
