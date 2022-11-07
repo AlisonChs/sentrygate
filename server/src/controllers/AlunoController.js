@@ -44,11 +44,11 @@ module.exports = {
         });
 
         if (!created) {
-            return res.status(302).json({ msg: "Aluno ja cadastrado" });
+            return res.json(302)
         }
 
         //Recebendo a respostada da requisição
-        return res.json(aluno);
+        return res.json(200);
 
 
 

@@ -20,7 +20,7 @@ routes.post('/cadastro/:id_aluno/conta', ContaAlunoController.store);
 routes.post('/login', LoginController.index);
 
 //Cadastra um novo responsavel
-routes.get('/responsaveis/:id_relacionamento', ResponsavelController.index);
+routes.get('/responsaveis/:id_aluno', ResponsavelController.index);
 routes.post('/cadastro/:id_aluno/responsavel', ResponsavelController.store);
 
 //Cria conta do responsavel
