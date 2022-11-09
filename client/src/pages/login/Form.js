@@ -2,16 +2,19 @@ import "./form.css";
 import { Link, useNavigate } from "react-router-dom";
 import { responseData } from '../../classes/ResponseData';
 import { AlertNotFound } from './hooks/responses/AlertNotFound';
+import { Context, useContext } from "react";
 import Axios from 'axios';
 import { useState, useEffect } from "react";
 import { SelectUser } from "./Select";
-import Inputs from "./Inputs";
+import { Inputs } from "./Inputs";
 import { Button } from "@mui/material";
 
 
 export default function Form() {
 
   let navigate = useNavigate();
+
+  // const { auth, setAuth, user, setUser } = useContext(Context)
 
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -20,13 +23,10 @@ export default function Form() {
 
   function sucess () {navigate('/main')}
   function notfound () {alert('nao achou')}
-
-  console.log('Usuário atual: ' + currentUser)
-  console.log('E-mail: ' + emailInserido)
-  console.log('Senha: ' + senhaInserida)
-
   
     const handleLogin = () => {
+
+      let userObj;
 
         if (emailInserido === "" || senhaInserida === "") {
             alert("Preencha todos os campos");
@@ -36,13 +36,17 @@ export default function Form() {
                 senha: senhaInserida,
             }).then((response) => {
               
-              let userObj = 'response' + response.status;
+              userObj = 'response' + response.status;
 
-              const responses = new responseData(userObj, sucess, notfound);
-
-              responses.setItem('name', response.data.nome)
+              new responseData(userObj, sucess, notfound).setItem('name', response.data.nome);
             
-                }); // Falta tratar os outros erros, vamos usar o https://axios-http.com/ptbr/docs/handling_errors
+                }).catch((error) => {
+
+                  userObj = 'response' + error.response.status;
+          
+                  new responseData(userObj, sucess, notfound);
+          
+                });
 
         }
     };
