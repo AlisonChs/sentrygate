@@ -29,12 +29,12 @@ module.exports = {
 
         //Caso não ache o aluno envia uma mensagem de erro
         if (!aluno) {
-            return res.json(404)
+            return res.status(404).json()
         }
         const responsavel_aluno = await ResponsavelAluno.findOne({
             where: { id_aluno }
         });
-        if (!responsavel_aluno) {
+        if (responsavel_aluno === null) {
             //Cria os valores e os insere na tabela
             const [responsavel] = await Responsavel.findOrCreate({
                 where: {
@@ -48,12 +48,12 @@ module.exports = {
                     tel
                 }
             });
-
+            
             await aluno.addResponsaveis(responsavel);
-
-            return res.json(200);
+            
+            return res.status(200).json()
         } else {
-            return res.json(302)
+            return res.status(302).json("student already has a responsible")
         }
 
     }

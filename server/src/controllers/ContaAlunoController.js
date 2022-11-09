@@ -22,7 +22,7 @@ module.exports = {
         const aluno = await Aluno.findByPk(id_aluno);
 
         if (!aluno) {
-            return res.json(404)
+            return res.status(404).json()
         };
 
         //Procura se o usuario ja possui uma conta
@@ -31,7 +31,7 @@ module.exports = {
         })
 
         //Se o usuario não possuir conta, ira ser criada
-        if (!conta_aluno) {
+        if (conta_aluno === null) {
 
             //Procura se ja existe um email igual
             const [conta, created] = await Conta.findOrCreate({
@@ -47,16 +47,16 @@ module.exports = {
 
             //Se existir um email citado no banco de dados sera notificado
             if (!created) {
-                return res.json(302)
+                return res.status(303).json("existing email")
             } else {
-                return res.json(200);
+                return res.status(200).json()
             }
 
             //Se não existir um email se
 
             //Se o usuario ja possui uma conta, ira ser notificado
         } else {
-            return res.json(302)
+            return res.status(303).json("user already has an account")
         }
     }
 }

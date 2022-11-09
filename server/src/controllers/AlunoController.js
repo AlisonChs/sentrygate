@@ -44,11 +44,12 @@ module.exports = {
         });
 
         if (!created) {
-            return res.json(302)
+            return res.status(302).json("cpf already registered")
+        } else {
+            //Recebendo a respostada da requisição
+            return res.status(200).json();
         }
 
-        //Recebendo a respostada da requisição
-        return res.json(200);
 
 
 
