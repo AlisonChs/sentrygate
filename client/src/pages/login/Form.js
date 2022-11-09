@@ -1,13 +1,12 @@
 import "./form.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { responseData } from '../../classes/ResponseData';
-import { AlertNotFound } from './hooks/responses/AlertNotFound';
-import { Context, useContext } from "react";
+// import { Context, useContext } from "react";
 import Axios from 'axios';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SelectUser } from "./Select";
 import { Inputs } from "./Inputs";
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 
 
 export default function Form() {
@@ -88,7 +87,7 @@ export default function Form() {
             {currentUser === null ? (
               <SelectUser setCurrentUser={setCurrentUser} />
             ) : (
-              <><Inputs
+              <Stack><Inputs
                     currentUser={currentUser}
                     setCurrentUser={setCurrentUser}
                     email={emailInserido}
@@ -99,7 +98,7 @@ export default function Form() {
                     
                   <Button variant="contained" onClick={handleLogin} sx={loginBTN}>
                       Entrar
-                    </Button></>
+                    </Button></Stack>
             )}
             
             </div>
