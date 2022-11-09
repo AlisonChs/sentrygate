@@ -14,17 +14,15 @@ module.exports = {
             where: { email, senha }
         });
 
-
-        if (conta) {
+        if (conta === null) {
+            return res.status(404).json()
+        } else {
             const aluno = await Aluno.findOne({
                 where: conta.id_aluno
             })
-            return res.status(200).json(aluno)
-        } else {
-            return res.status(404)
-        }
-        
 
+            return res.status(200).json(aluno)
+        }
 
     },
 
