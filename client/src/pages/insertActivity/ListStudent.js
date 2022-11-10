@@ -1,6 +1,6 @@
-export function ListStudent({ setStepSelect }) {
+export function ListStudent() {
  return (
-  <div className="List" onClick={() => setStepSelect('class')}>
+  <div className="List">
    <img src='https://github.com/Victor-HM.png' alt="Foto do aluno" />
    <div className='listInformation'>
 

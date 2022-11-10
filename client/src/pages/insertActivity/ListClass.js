@@ -1,7 +1,7 @@
-export function ListClass({ setStepSelect }) {
+export function ListClass({ setStepSelect, nameClass }) {
  return (
   <div className="List" onClick={() => setStepSelect('student')}>
-   <p>Turma</p>
+   <p>{nameClass}</p>
   </div>
  )
 }
