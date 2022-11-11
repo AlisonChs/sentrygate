@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Add } from "@mui/icons-material";
 import Divider from "@mui/material/Divider";
@@ -8,17 +8,28 @@ export function AddActivity() {
 
   function AddActivity() {
     let activity = {
+      id: Math.random(),
       nome: "",
       nota: 0,
-      description: "",
-      observation: "",
+      desc: '',
+      obs: ''
     };
     return activity;
   }
 
   const [arrayActivity, setArrayActivity] = useState([AddActivity()]);
 
-  console.log(saveActivity);
+  const changeValue = (e, id) => {
+    const actIndex = arrayActivity.findIndex((act) => {
+      return act.id === id;
+    });
+
+    const newActivity = [...arrayActivity];
+
+    newActivity[actIndex][e.target.name] = e.target.value;
+
+    setArrayActivity(newActivity);
+  }
 
   return (
     <div className="containerActivity">
@@ -31,7 +42,14 @@ export function AddActivity() {
           <div className="inputAvaliacao">
             {arrayActivity.map((list) => {
               return (
-                <div className="input" onClick={() => setSaveActivity(list)}>
+                <div
+                  key={list.id}
+                  className="input"
+                  onClick={() => {
+                    setSaveActivity({});
+                    setSaveActivity(list);
+                  }}
+                >
                   <p>{list.nome}</p>
                   <Divider orientation="vertical" flexItem />
                   <p>{list.nota}</p>
@@ -52,11 +70,34 @@ export function AddActivity() {
         {saveActivity != null ? (
           <div className="avaliacaoContainer">
             <div>
-              <input type="text" placeholder="Nome da avaliação" />
-              <input type="number" placeholder="Nota" />
+              <input
+                type="text"
+                placeholder="Nome da avaliação"
+                value={saveActivity.nome}
+                name='nome'
+                onChange={(e) => changeValue(e, saveActivity.id)}
+              />
+              <input
+                type="number"
+                placeholder="Nota"
+                value={saveActivity.nota}
+                name='nota'
+                onChange={(e) => changeValue(e, saveActivity.id)}
+              />
             </div>
-            <input type="text" placeholder="Descrição" />
-            <input type="text" placeholder="Observações" />
+            <input 
+              type="text" 
+              placeholder="Descrição"
+              value={saveActivity.desc}
+              name='desc'
+              onChange={(e) => changeValue(e, saveActivity.id)} 
+            />
+            <input 
+              type="text" 
+              placeholder="Observações"
+              value={saveActivity.obs}
+              name='obs'
+              onChange={(e) => changeValue(e, saveActivity.id)} />
           </div>
         ) : (
           <></>
