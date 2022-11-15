@@ -17,13 +17,23 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 export default function LeftBar () {
 
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false)
+
   const [svgStyle, setSvgStyle] = useState("svg");
   const [leftBarStyle, setLeftBarStyle] = useState("leftBar");
-  
-  const handleMenu = () => {
-    let isOpen = svgStyle === "svg";
-    !isOpen ? setSvgStyle("svg") : setSvgStyle("svgOpen");
-    !isOpen ? setLeftBarStyle("leftBar") : setLeftBarStyle("leftBarOpen");
+
+  const handleBar = () => {
+    
+    if (isNavbarOpen) {
+      setIsNavbarOpen(false)
+      setSvgStyle("svg")
+      setLeftBarStyle("leftBar")
+     } else {
+      setIsNavbarOpen(true);
+      setSvgStyle("svgOpen");
+      setLeftBarStyle("leftBarOpen");
+     }
+
   }
 
   const logoStyle = {
@@ -52,7 +62,7 @@ export default function LeftBar () {
         <div className="divNavbar">
           <div className="iconDiv" style={logoStyle}>
           {!isLoading ? (
-            <IconButton aria-label="open menu" onClick={handleMenu} >
+            <IconButton aria-label="open menu" onClick={handleBar} >
               <OrangeLogo className={svgStyle}/>
             </IconButton> 
           ) : (
@@ -65,7 +75,7 @@ export default function LeftBar () {
 
             {!isLoading ? (
               <>
-              <LightToolTip placement="right" arrow title="Painel de controle">
+              <LightToolTip visibility={!isNavbarOpen} placement="right" arrow title="Painel de controle">
                 <HomeIcon className='navIcon' alt='homepage' sx={{ width: 28, height: 28, color: "white" }} />
               </LightToolTip>
               
@@ -82,7 +92,7 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              <LightToolTip placement="right" arrow title="Desempenho escolar">
+              <LightToolTip visibility={!isNavbarOpen} placement="right" arrow title="Desempenho escolar">
                 <TrendingUpIcon className='navIcon' alt='desempenho' sx={{ width: 28, height: 28, color: "white" }} />
               </LightToolTip>
               
@@ -103,7 +113,7 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              <LightToolTip placement="right" arrow title="Calendário de notas">
+              <LightToolTip visibility={!isNavbarOpen} placement="right" arrow title="Calendário de notas">
                 <CalendarMonthIcon className='navIcon' alt='calendario de notas' sx={{ width: 28, height: 28, color: "white" }} />
               </LightToolTip>
               <p className="bold">Calendario de Notas</p>
@@ -117,7 +127,7 @@ export default function LeftBar () {
           <div className="iconDiv">
           {!isLoading ? (
               <>
-              <LightToolTip placement="right" arrow title="Painel de notificações">
+              <LightToolTip visibility={!isNavbarOpen} placement="right" arrow title="Painel de notificações">
                 <NotificationsIcon className='navIcon' alt='notificações' sx={{ width: 28, height: 28, color: "white"  }} />
               </LightToolTip>
 
@@ -134,7 +144,7 @@ export default function LeftBar () {
 
           {!isLoading ? (
               <>
-              <LightToolTip placement="right" arrow title="Regulamento escolar">
+              <LightToolTip visibility={!isNavbarOpen} placement="right" arrow title="Regulamento escolar">
                 <PostAddIcon className='navIcon' alt='regulamento escolar' sx={{ width: 28, height: 28, color: "white" }} />
               </LightToolTip>
 
@@ -155,7 +165,7 @@ export default function LeftBar () {
           <div className="iconDiv">
           {!isLoading ? (
               <>
-              <LightToolTip placement="right" arrow title="Tarefas">
+              <LightToolTip visibility={!isNavbarOpen} placement="right" arrow title="Tarefas">
                 <School className='navIcon' alt='Tarefas' sx={{ width: 28, height: 28, color:"white" }} />
               </LightToolTip>
                 <p className="bold">Lista de atividades</p>
@@ -171,7 +181,7 @@ export default function LeftBar () {
               <Skeleton variant="circular"  sx={{ bgcolor: '#310A6E', marginTop:'2.3rem'  }} width={28} height={28} />
             ) : (
               <>
-              <LightToolTip placement="right" arrow title="Averiguação do sistema">
+              <LightToolTip visibility={!isNavbarOpen} placement="right" arrow title="Averiguação do sistema">
                 <Settings className="navIcon" sx={{ width: 28, height: 28, color:"white" }} />
               </LightToolTip>
                 <p className="bold">Averiguação do sistema</p>
