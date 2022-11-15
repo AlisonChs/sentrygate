@@ -24,12 +24,13 @@ export default function RouteNavigation () {
   
       <div className="components">
 
-        {  location.pathname !== "/" ? <LeftBar /> : null }
-
+        { // A navbar de ferramentas (leftbar) somente aparecerá caso o user nao esteja logando
+         location.pathname !==  "/" && ( <LeftBar />)
+        }
+        
         <Routes>
           <Route exact path="/" element={<Form />} />
           <Route exact path="/main" element={<Main />} />
-          <Route path="/login" element={<Form />} />
           <Route path="/register/student" element={<RegisterStudent />} />
           <Route path="/register/teacher" element={<RegisterTeacher />} />
           <Route path="/boletim" element={<Boletim />} />
