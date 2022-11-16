@@ -1,4 +1,6 @@
-import { styled } from "@mui/material/styles";
+
+  /*
+  import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,6 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+
 
 const nota = {
   '&:hover': {
@@ -60,12 +63,7 @@ const rows = [
   createData("GEOGRAFIA", 1, 2, 3, 4),
 ];
 
-export function TableBoletim() {
-
-  const isTech = useState(true);
-
-  return (
-    <TableContainer sx={{border: 0}} component={Paper}>
+<TableContainer sx={{border: 0}} component={Paper}>
       <Table sx={{ minWidth: 700, border: 0 }} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -96,6 +94,17 @@ export function TableBoletim() {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+          </TableContainer>
+
+*/
+
+export function TableBoletim() {
+
+  // const isTech = useState(true);
+
+  return (
+
+    <p>a</p>
+    
   );
 }

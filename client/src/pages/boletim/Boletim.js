@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import "./style.css";
+
 import Skeleton from "@mui/material/Skeleton";
 import BottomBar from "../../components/UI/navbar/BottomBar/BottomBar";
-import TopBar from "../../components/UI/navbar/TopBar/TopBar";
 import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import CommentIcon from "@mui/icons-material/Comment";
-import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { TableBoletim } from "./TableBoletim";
+
+import TopBar from "../../components/UI/navbar/TopBar/TopBar";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+import { Divider } from "@mui/material";
+import Frequencia from "../../components/pages/boletim/Frequencia";
 
 export function Boletim() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,42 +23,6 @@ export function Boletim() {
 
   const [modulo, setModulo] = useState("");
   const [hasObservation, setHasObservation] = useState(true);
-
-  const ArrayActions = [
-    {
-      label: "Selecionar módulo",
-      icon: (
-        <PostAddIcon
-          className="navIcon"
-          sx={{ width: "2rem", height: "2rem" }}
-        />
-      ),
-      event: null,
-      showAction: "flex",
-    },
-    {
-      label: "Projetar boletim",
-      icon: (
-        <DownloadForOfflineIcon
-          className="navIcon"
-          sx={{ width: "2rem", height: "2rem" }}
-        />
-      ),
-      event: null,
-      showAction: "flex",
-    },
-    {
-      label: "Observar informações sobre o docente",
-      icon: (
-        <CommentIcon
-          className="navIcon"
-          sx={{ width: "2rem", height: "2rem" }}
-        />
-      ),
-      event: handleOpen,
-      showAction: hasObservation ? "flex" : "none",
-    },
-  ];
 
   const styleModalDocente = {
     position: "absolute",
@@ -75,9 +44,23 @@ export function Boletim() {
 
   return (
     <>
-      <TopBar PageTitle="Boletim" PageSpan="Escolar"></TopBar>
+      <TopBar PageTitle="Boletim" PageSpan="Escolar" />
 
-      <Modal
+      <Stack 
+        direction="row" 
+        spacing={3}
+        sx={{height: 200, backgroundColor: '#442A71'}}
+        divider={<Divider sx={{color: 'white'}} orientation="vertical" flexItem />}
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Frequencia />
+        <Frequencia />
+        <Frequencia />
+      </Stack>
+
+
+      { /* <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -100,10 +83,11 @@ export function Boletim() {
         </div>
       </div>
 
-      {/* <BottomBar
+      <BottomBar
         objects={ArrayActions}
         numberOfSkeletons={ArrayActions.length - 1}
           /> */}
+          
     </>
   );
 }
