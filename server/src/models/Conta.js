@@ -15,9 +15,10 @@ class Conta extends Model {
     static associate(models) {
 
         //Uma conta pertence apenas a um aluno
-        this.belongsTo(models.Aluno, {
-            foreignKey: 'id_aluno',
-            as: 'alunos'
+        this.belongsToMany(models.Aluno, {
+            foreignKey: 'id_conta',
+            through: 'contas_alunos',
+            as: 'aluno'
         })
     }
 

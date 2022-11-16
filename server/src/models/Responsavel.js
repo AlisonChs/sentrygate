@@ -22,7 +22,7 @@ class Responsavel extends Model {
         this.belongsToMany(models.Aluno, {
             foreignKey: 'id_responsavel',
             through: 'responsaveis_alunos',
-            as: 'alunos',
+            as: 'aluno',
         });
     }
 

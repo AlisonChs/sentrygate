@@ -25,6 +25,7 @@ module.exports = {
 
         const aluno = await Aluno.findOne({
             where: { cpf_aluno },
+       
 
         })
 
@@ -32,10 +33,15 @@ module.exports = {
             return res.status(404).json("Student not found")
         }
 
-
+        
+        
         const responsavel_aluno = await ResponsavelAluno.findOne({
-            where: aluno.id_aluno,
+            where: {id_aluno : aluno.id},
         });
+      
+      
+        
+
         if (responsavel_aluno === null) {
             //Cria os valores e os insere na tabela
             const [responsavel] = await Responsavel.findOrCreate({
@@ -52,7 +58,7 @@ module.exports = {
                 }
             });
 
-            await aluno.addResponsaveis(responsavel);
+            
 
             return res.status(200).json()
         } else {
