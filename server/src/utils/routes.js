@@ -13,15 +13,15 @@ routes.get('/alunos', AlunoController.index);
 routes.post('/cadastro/aluno', AlunoController.store);
 
 //Cria conta do aluno
-routes.get('/contas', ContaAlunoController.index);
-routes.post('/cadastro/:id_aluno/conta', ContaAlunoController.store);
+routes.get('/contas/:id_aluno', ContaAlunoController.index);
+routes.post('/cadastro/aluno/conta', ContaAlunoController.store);
 
 //Verifica o login
 routes.post('/login', LoginController.index);
 
 //Cadastra um novo responsavel
 routes.get('/responsaveis/:id_aluno', ResponsavelController.index);
-routes.post('/cadastro/:id_aluno/responsavel', ResponsavelController.store);
+routes.post('/cadastro/responsavel', ResponsavelController.store);
 
 //Cria conta do responsavel
 

@@ -12,7 +12,7 @@ class Materia extends Model {
 
     //Relacionamento entre as tabelas
     static associate(models) {
-       
+
     }
 
 }

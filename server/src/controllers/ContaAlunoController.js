@@ -5,29 +5,32 @@ const Conta = require('../models/Conta')
 
 module.exports = {
     async index(req, res) {
-        const contas = await Conta.findAll();
-        return res.json(contas);
+        const { id_aluno } = req.params;
+        const conta = await Conta.findByPk(id_aluno);
+        return res.json(conta)
     },
 
     async store(req, res) {
-        const { id_aluno } = req.params;
 
         //Recebendo os valores do frontend pelo corpo da requisição
         const {
             email,
             senha,
+            cpf_aluno,
         } = req.body;
 
         //Verifica se existe este usuario no banco de dados
-        const aluno = await Aluno.findByPk(id_aluno);
+        const aluno = await Aluno.findOne({
+            where: { cpf_aluno },
+        });
 
-        if (!aluno) {
+        if (aluno === null) {
             return res.status(404).json()
         };
 
         //Procura se o usuario ja possui uma conta
         const conta_aluno = await Conta.findOne({
-            where: { id_aluno }
+            where: aluno.id_aluno
         })
 
         //Se o usuario não possuir conta, ira ser criada
@@ -38,12 +41,14 @@ module.exports = {
                 where: {
                     email,
                 },
-                defaults: {
+                defaults:
+                {
                     email,
                     senha,
-                    id_aluno
-                }
+                },
+
             });
+
 
             //Se existir um email citado no banco de dados sera notificado
             if (!created) {
@@ -56,7 +61,8 @@ module.exports = {
 
             //Se o usuario ja possui uma conta, ira ser notificado
         } else {
-            return res.status(303).json("user already has an account")
+            return res.json(conta_aluno)
+            //return res.status(303).json("user already has an account")
         }
     }
 }

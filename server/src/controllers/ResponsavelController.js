@@ -10,47 +10,50 @@ module.exports = {
         return res.json(responsaveis);
     },
     async store(req, res) {
-        //Cria um parametro para a rota
-        const { id_aluno } = req.params;
+
+
         //Recebe os valores do corpo do frontend
         const {
-            nome,
-            sobrenome,
-            data_nasc,
-            cpf,
-            rg,
-            tel
+            nome_responsavel,
+            sobrenome_responsavel,
+            data_nasc_responsavel,
+            cpf_responsavel,
+            rg_responsavel,
+            tel_responsavel,
+            cpf_aluno,
         } = req.body;
 
+        const aluno = await Aluno.findOne({
+            where: { cpf_aluno },
 
+        })
 
-        //Procura o aluno por meio da chave primaria
-        const aluno = await Aluno.findByPk(id_aluno);
-
-        //Caso não ache o aluno envia uma mensagem de erro
-        if (!aluno) {
-            return res.status(404).json()
+        if (aluno === null) {
+            return res.status(404).json("Student not found")
         }
+
+
         const responsavel_aluno = await ResponsavelAluno.findOne({
-            where: { id_aluno }
+            where: aluno.id_aluno,
         });
         if (responsavel_aluno === null) {
             //Cria os valores e os insere na tabela
             const [responsavel] = await Responsavel.findOrCreate({
                 where: {
-                    cpf,
+                    cpf_responsavel,
                 },
                 defaults: {
-                    nome,
-                    sobrenome,
-                    data_nasc,
-                    rg,
-                    tel
+                    nome_responsavel,
+                    sobrenome_responsavel,
+                    data_nasc_responsavel,
+                    cpf_responsavel,
+                    rg_responsavel,
+                    tel_responsavel,
                 }
             });
-            
+
             await aluno.addResponsaveis(responsavel);
-            
+
             return res.status(200).json()
         } else {
             return res.status(302).json("student already has a responsible")
