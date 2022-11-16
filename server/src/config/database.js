@@ -3,7 +3,7 @@ module.exports = {
     dialect: 'mysql',
     host: 'localhost',
     username: 'root',
-    password: 'HorusCN',
+    password: '',
     database: 'sentrygate',
     define: {
         timestamps: true,

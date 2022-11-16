@@ -27,6 +27,7 @@ Aluno.associate(connection.models);
 Conta.associate(connection.models);
 Responsavel.associate(connection.models);
 ResponsavelAluno.associate(connection.models);
+Turma.associate(connection.models);
 
 
 

@@ -3,6 +3,9 @@ const AlunoController = require('../controllers/AlunoController');
 const ResponsavelController = require('../controllers/ResponsavelController');
 const ContaAlunoController = require('../controllers/ContaAlunoController');
 const LoginController = require('../controllers/LoginController');
+const ProfessorController = require('../controllers/ProfessorController');
+const TurmaController = require('../controllers/TurmaController');
+const MateriaController = require('../controllers/MateriaController')
 
 const routes = express.Router();
 
@@ -25,7 +28,17 @@ routes.post('/cadastro/responsavel', ResponsavelController.store);
 
 //Cria conta do responsavel
 
+// Cadastra um novo professor
+routes.get('/professores', ProfessorController.index);
+routes.post('/cadastro/professor', ProfessorController.store);
 
+// Cadastra uma nova turma
+routes.get('/turmas', TurmaController.index);
+routes.post('/cadastro/turma', TurmaController.store);
+
+// Cadastra uma nova matéria
+routes.get('/materias', MateriaController.index);
+routes.post('/cadastro/materia', MateriaController.store);
 
 
 
