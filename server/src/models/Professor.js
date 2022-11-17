@@ -14,8 +14,9 @@ class Professor extends Model {
             cidade_professor: DataTypes.STRING,
             bairro_professor: DataTypes.STRING,
             rua_professor: DataTypes.STRING,
+            complemento_professor: DataTypes.STRING,
             tel_professor: DataTypes.STRING,
-            matricula_professor: DataTypes.INTEGER
+
         }, {
             sequelize: connection,
             tableName: 'professores',

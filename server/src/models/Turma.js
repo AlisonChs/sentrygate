@@ -4,8 +4,9 @@ class Turma extends Model {
     static init(connection) {
         super.init({
             nome_turma: DataTypes.STRING,
-            horario: DataTypes.STRING,
-            ano: DataTypes.INTEGER,
+            horario_turma: DataTypes.STRING,
+            ano_turma: DataTypes.STRING,
+
         }, {
             sequelize: connection,
             tableName: 'turmas'

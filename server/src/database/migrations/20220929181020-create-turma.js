@@ -13,11 +13,11 @@ module.exports = {
         allowNull:false,
         type: Sequelize.STRING
       },
-      horario: {
+      horario_turma: {
         allowNull:false,
         type: Sequelize.STRING
       },
-      ano: {
+      ano_turma: {
         allowNull:false,
         type: Sequelize.INTEGER
       },

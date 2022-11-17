@@ -9,15 +9,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      titulo: {
+      titulo_tarefa: {
         allowNull:false,
         type: Sequelize.STRING
       },
-      descricao: {
+      descricao_tarefa: {
         allowNull:false,
         type: Sequelize.STRING
       },
-      dataDeEntrega: {
+      entrega_tarefa: {
         allowNull:false,
         type: Sequelize.DATE
       },
