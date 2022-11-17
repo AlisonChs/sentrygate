@@ -14,6 +14,15 @@ import Box from "@mui/material/Box";
 import { Divider } from "@mui/material";
 import Progresso from "../../components/pages/boletim/Progresso";
 import Frequencia from "../../components/pages/boletim/Frequencia";
+import Overall from "../../components/pages/boletim/Overall";
+
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import PrintIcon from '@mui/icons-material/Print';
+import ShareIcon from '@mui/icons-material/Share';
 
 export function Boletim() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +45,14 @@ export function Boletim() {
     p: 4,
   };
 
+  const actions = [
+    { icon: <FileCopyIcon />, name: 'Copiar notas' },
+    { icon: <SaveIcon />, name: 'Salvar boletim' },
+    { icon: <PrintIcon />, name: 'Printar boletim' },
+    { icon: <ShareIcon />, name: 'Compartilhe seu boletim' },
+  ];
+  
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -46,19 +63,27 @@ export function Boletim() {
     <Stack>
       <TopBar PageTitle="Boletim" PageSpan="Escolar" />
 
-      <Stack 
-        direction="row" 
-        spacing={3}
-        sx={{height: 200, width: '100%', backgroundColor: '#442A71'}}
-        divider={<Divider sx={{color: 'white'}} orientation="vertical" flexItem />}
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Progresso />
-        <Progresso />
-        <Frequencia />
-      </Stack>
-
+      {!isLoading ? (
+        <Stack 
+          direction="row" 
+          sx={{height: 200, width: '100%', backgroundColor: '#442A71'}}
+          divider={<Divider sx={{color: 'white'}} orientation="vertical" flexItem />}
+        >
+          <Progresso />
+          <Overall />
+          <Frequencia />
+        </Stack>
+      ) : (
+        <Stack 
+          direction="row" 
+          sx={{height: 200, width: '100%', backgroundColor: '#442A71'}}
+          divider={<Divider sx={{color: 'white'}} orientation="vertical" flexItem />}
+        >
+          <Skeleton sx={{ width: '100%', height: '100%'}} />
+          <Skeleton sx={{ width: '100%', height: '100%'}} />
+          <Skeleton sx={{ width: '100%', height: '100%'}} />
+        </Stack>
+      )}
 
       { /* <Modal
         open={open}
@@ -87,6 +112,22 @@ export function Boletim() {
         objects={ArrayActions}
         numberOfSkeletons={ArrayActions.length - 1}
           /> */}
+
+    <Box sx={{ color: 'white', position: 'absolute', bottom: 0, right: 30, height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
+        <SpeedDial
+        
+          ariaLabel="Actions buttom"
+          icon={<SpeedDialIcon sx={{color: 'white'}}/>}
+        >
+          {actions.map((action) => (
+            <SpeedDialAction
+              key={action.name}
+              icon={action.icon}
+              tooltipTitle={action.name}
+            />
+          ))}
+        </SpeedDial>
+      </Box>
           
     </Stack>
   );

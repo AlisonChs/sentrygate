@@ -3,7 +3,7 @@ import './stylesheet/style.css'
 
 import { Slider, Stack } from "@mui/material";
 import { Box } from "@mui/system";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { styled } from '@mui/material/styles';
 
 const CustomizedSlider = styled(Slider)`
@@ -83,26 +83,32 @@ export default function Progresso () {
 
       const [curso, setCurso] = useState(`Análise e desenvolvimento de sistemas`);
       const [progresso, setProgresso] = useState(57);
+      const [progressValue, setProgressValue] = useState(0);
 
       function valuetext(value) {
         return `${value}%`;
       }
 
+      useEffect(() => {
+        setProgressValue(progresso);
+      }, []);
+    
+
       return (
-        <Box sx={{ width: 500, height: 150}}>
-          <Stack justifyContent="center" alignItems="center" sx={{ width: 500, height: 150}}>
+        <Box sx={{ width: '100%', height: '100%'}}>
+          <Stack justifyContent="center" alignItems="center" sx={{ width: "100%", height: "100%"}}> 
             <p className='progresso_title'> {curso} - em progresso </p>
-            <CustomizedSlider
-              aria-label="progresso escolar"
-              sx={{width: 400, marginTop: 4}}
-              color='secondary'
-              value={progresso}
-              getAriaValueText={valuetext}
-              step={10}
-              marks={marks}
-              valueLabelDisplay="on"
-            />
-          </Stack>
+              <CustomizedSlider
+                aria-label="progresso escolar"
+                sx={{width: 400, marginTop: 4}}
+                color='secondary'
+                value={progressValue}
+                getAriaValueText={valuetext}
+                step={10}
+                marks={marks}
+                valueLabelDisplay="on"
+              />
+            </Stack>
       </Box>
       )
 
