@@ -31,11 +31,19 @@ class Aluno extends Model {
             as: 'responsavel'
         });
 
-        //Um aluno trm apenas uma conta
+
+        //Um aluno tem apenas uma conta
         this.belongsToMany(models.Conta, {
             foreignKey: 'id_aluno',
             through: 'contas_alunos',
             as: 'conta'
+        })
+
+        // Um aluno tem muitas turma
+        this.belongsToMany(models.Turma, {
+            foreignKey: 'id_aluno',
+            through: 'alunos_turmas',
+            as: 'turmas'
         })
     }
 }

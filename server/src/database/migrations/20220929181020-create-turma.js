@@ -15,17 +15,17 @@ module.exports = {
       },
       horario_turma: {
         allowNull:false,
-        type: Sequelize.TIME
+        type: Sequelize.STRING
       },
       ano_turma: {
         allowNull:false,
         type: Sequelize.INTEGER
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }

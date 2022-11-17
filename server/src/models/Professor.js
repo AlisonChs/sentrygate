@@ -16,6 +16,7 @@ class Professor extends Model {
             rua_professor: DataTypes.STRING,
             complemento_professor: DataTypes.STRING,
             tel_professor: DataTypes.STRING,
+
         }, {
             sequelize: connection,
             tableName: 'professores',
