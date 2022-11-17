@@ -1,4 +1,3 @@
-const { findOne } = require('../models/Professor');
 const Professor = require('../models/Professor');
 
 
@@ -21,8 +20,8 @@ module.exports = {
             cidade_professor,
             bairro_professor,
             rua_professor,
+            complemento_professor,
             tel_professor,
-            matricula_professor
         } = req.body;
 
         //Criando os valores recebidos na tabela        
@@ -40,8 +39,9 @@ module.exports = {
                 cidade_professor,
                 bairro_professor,
                 rua_professor,
+                complemento_professor,
                 tel_professor,
-                matricula_professor
+                
             }
         });
 

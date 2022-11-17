@@ -37,10 +37,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      sexo_professor: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       cep_professor: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -57,13 +53,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      complemento_professor: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       tel_professor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      matricula_professor: {
-        type: Sequelize.INTEGER
-      },
+      
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

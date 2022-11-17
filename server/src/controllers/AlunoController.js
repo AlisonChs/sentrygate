@@ -1,4 +1,3 @@
-const { findOne } = require('../models/Aluno');
 const Aluno = require('../models/Aluno');
 
 
