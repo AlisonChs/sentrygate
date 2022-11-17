@@ -3,8 +3,8 @@ const { Model, DataTypes } = require('sequelize');
 class Conta extends Model {
     static init(connection) {
         super.init({
-            email: DataTypes.STRING,
-            senha: DataTypes.STRING,
+            email_conta: DataTypes.STRING,
+            senha_conta: DataTypes.STRING,
         }, {
             sequelize: connection,
             tableName: 'contas'

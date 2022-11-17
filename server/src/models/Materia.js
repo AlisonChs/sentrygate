@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 class Materia extends Model {
     static init(connection) {
         super.init({
-            nome: DataTypes.STRING,
+            nome_materia: DataTypes.STRING,
         }, {
             sequelize: connection,
             tableName: 'materias'

@@ -3,9 +3,9 @@ const { Model, DataTypes } = require('sequelize');
 class Turma extends Model {
     static init(connection) {
         super.init({
-            nome: DataTypes.STRING,
-            sobrenome: DataTypes.STRING,
-            ano: DataTypes.STRING,
+            nome_turma: DataTypes.STRING,
+            horario_turma: DataTypes.STRING,
+            ano_turma: DataTypes.STRING,
         }, {
             sequelize: connection,
             tableName: 'responsaveis'

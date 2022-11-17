@@ -49,15 +49,15 @@ module.exports = {
         onUpdate: 'cascade', 
         onDelete: 'cascade'
       },
-      nome: {
+      titulo_nota: {
         allowNull:false,
         type: Sequelize.STRING
       },
-      nota: {
+      avaliacao_nota: {
         allowNull:false,
         type: Sequelize.DOUBLE
       },
-      bimestre: {
+      bimestre_nota: {
         allowNull:false,
         type: Sequelize.INTEGER
       },

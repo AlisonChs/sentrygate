@@ -9,15 +9,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nome: {
+      nome_turma: {
         allowNull:false,
         type: Sequelize.STRING
       },
-      horario: {
+      horario_turma: {
         allowNull:false,
         type: Sequelize.TIME
       },
-      ano: {
+      ano_turma: {
         allowNull:false,
         type: Sequelize.INTEGER
       },
