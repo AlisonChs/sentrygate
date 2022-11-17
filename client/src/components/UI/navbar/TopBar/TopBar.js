@@ -64,7 +64,7 @@ export default function TopBar (props) {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
                 alt='Victor'
-                sx={{ width: 30, height: 30 }} 
+                sx={{ width: 30, height: 30, position: 'absolute', top: -15 }} 
                 />
               </LightTooltip>
               ) : (

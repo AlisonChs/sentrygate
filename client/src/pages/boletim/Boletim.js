@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./style.css";
 
 import Skeleton from "@mui/material/Skeleton";
-import BottomBar from "../../components/UI/navbar/BottomBar/BottomBar";
 import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import CommentIcon from "@mui/icons-material/Comment";
@@ -13,6 +12,7 @@ import TopBar from "../../components/UI/navbar/TopBar/TopBar";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import { Divider } from "@mui/material";
+import Progresso from "../../components/pages/boletim/Progresso";
 import Frequencia from "../../components/pages/boletim/Frequencia";
 
 export function Boletim() {
@@ -43,19 +43,19 @@ export function Boletim() {
   }, []);
 
   return (
-    <>
+    <Stack>
       <TopBar PageTitle="Boletim" PageSpan="Escolar" />
 
       <Stack 
         direction="row" 
         spacing={3}
-        sx={{height: 200, backgroundColor: '#442A71'}}
+        sx={{height: 200, width: '100%', backgroundColor: '#442A71'}}
         divider={<Divider sx={{color: 'white'}} orientation="vertical" flexItem />}
         justifyContent="center"
         alignItems="center"
       >
-        <Frequencia />
-        <Frequencia />
+        <Progresso />
+        <Progresso />
         <Frequencia />
       </Stack>
 
@@ -88,6 +88,6 @@ export function Boletim() {
         numberOfSkeletons={ArrayActions.length - 1}
           /> */}
           
-    </>
+    </Stack>
   );
 }

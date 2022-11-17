@@ -10,7 +10,7 @@ button {
 
 .topBar {
   background-color: #2B1354; /*17092e*/
-  width: 100vw;
+  width: 100%;
   height: 4rem;
   border-radius: 0;
   display: flex;

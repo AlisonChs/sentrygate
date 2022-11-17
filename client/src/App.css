@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Livvic:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap%27');
 
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Overpass'!important;
 }
 
 body {

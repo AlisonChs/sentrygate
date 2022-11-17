@@ -15,23 +15,29 @@ import PrivateRoute from "./PrivateRoute";
 import LeftBar from "../../components/UI/navbar/LeftBar/LeftBar";
 
 // Global
+import { Stack } from "@mui/material";
 
 export default function RouteNavigation () {
 
   return (
   
-      <div className="components">
-        <LeftBar />
+    <Stack sx={{flexDirection: 'row', width: '100vw'}}>
+
+      <LeftBar />
+      
+      <Stack sx={{width: '100%'}}>
         <Routes>
           <Route exact path="/" element={<Form />} />
           <Route exact path="/main" element={<Main />} />
           <Route path="/login" element={<Form />} />
           <Route path="/register/student" element={<RegisterStudent />} />
           <Route path="/register/teacher" element={<RegisterTeacher />} />
-          <Route path="/boletim" element={<Boletim />} />
+          <Route path="/report" element={<Boletim />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
+      </Stack>
+
+    </Stack>
 
   );
 }
