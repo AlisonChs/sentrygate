@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const dbConfig = require('../config/database');
 
 const Aluno = require('../models/Aluno');
+const Aula = require('../models/Aula');
 const Conta = require('../models/Conta');
 const ContaAluno = require('../models/ContaAluno');
 const Materia = require('../models/Materia');
@@ -23,11 +24,14 @@ Responsavel.init(connection);
 ResponsavelAluno.init(connection);
 Tarefa.init(connection);
 Turma.init(connection);
+Aula.init(connection);
 
 
 Aluno.associate(connection.models);
 Conta.associate(connection.models);
 Responsavel.associate(connection.models);
+Turma.associate(connection.models);
+Aula.associate(connection.models);
 
 
 

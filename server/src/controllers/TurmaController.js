@@ -13,8 +13,8 @@ module.exports = {
         //Recebendo os valores do frontend pelo corpo da requisição
         const {
             nome_turma,
-            horario,
-            ano,
+            horario_turma,
+            ano_turma,
             cpf_aluno
         } = req.body;
 
@@ -27,8 +27,8 @@ module.exports = {
             where: { nome_turma },
             defaults: {
                 nome_turma,
-                horario,
-                ano
+                horario_turma,
+                ano_turma
             }
         });
 

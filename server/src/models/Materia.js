@@ -12,7 +12,17 @@ class Materia extends Model {
 
     //Relacionamento entre as tabelas
     static associate(models) {
-        
+        this.belongsToMany(models.Turma, {
+            foreignKey: 'id_materia',
+            through: 'horario',
+            as: 'turma'
+        })
+
+        this.belongsToMany(models.Professor, {
+            foreignKey: 'id_materia',
+            through: 'horario',
+            as: 'professor'
+        })   
     }
 
 }

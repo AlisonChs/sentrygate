@@ -6,6 +6,7 @@ const LoginController = require('../controllers/LoginController');
 const ProfessorController = require('../controllers/ProfessorController');
 const TurmaController = require('../controllers/TurmaController');
 const MateriaController = require('../controllers/MateriaController')
+const AulaController = require('../controllers/AulaController');
 
 const routes = express.Router();
 
@@ -40,6 +41,9 @@ routes.post('/cadastro/turma', TurmaController.store);
 routes.get('/materias', MateriaController.index);
 routes.post('/cadastro/materia', MateriaController.store);
 
+// Cadastra uma nova aula
+routes.get('/aula', AulaController.index);
+routes.post('/cadastro/aula', AulaController.store);
 
 
 module.exports = routes;
