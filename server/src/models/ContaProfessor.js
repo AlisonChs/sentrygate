@@ -1,20 +1,18 @@
 const { Model, DataTypes } = require('sequelize');
 
-class Materia extends Model {
+class ContaProfessor extends Model {
     static init(connection) {
         super.init({
-            nome_materia: DataTypes.STRING,
+            
         }, {
             sequelize: connection,
-            tableName: 'materias'
+            tableName: 'contas_professores',
         })
     }
 
     //Relacionamento entre as tabelas
     static associate(models) {
-        
     }
-
 }
 
-module.exports = Materia;
+module.exports = ContaProfessor;

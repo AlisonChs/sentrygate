@@ -3,18 +3,18 @@ const { Model, DataTypes } = require('sequelize');
 class Aluno extends Model {
     static init(connection) {
         super.init({
-            nome: DataTypes.STRING,
-            sobrenome: DataTypes.STRING,
-            data_nasc: DataTypes.STRING,
-            genero: DataTypes.STRING,
-            rg: DataTypes.STRING,
-            cpf: DataTypes.STRING,
-            cep: DataTypes.STRING,
-            cidade: DataTypes.STRING,
-            bairro: DataTypes.STRING,
-            rua: DataTypes.STRING,
-            complemento: DataTypes.STRING,
-            tel: DataTypes.STRING,
+            nome_aluno: DataTypes.STRING,
+            sobrenome_aluno: DataTypes.STRING,
+            data_nasc_aluno: DataTypes.STRING,
+            genero_aluno: DataTypes.STRING,
+            rg_aluno: DataTypes.STRING,
+            cpf_aluno: DataTypes.STRING,
+            cep_aluno: DataTypes.STRING,
+            cidade_aluno: DataTypes.STRING,
+            bairro_aluno: DataTypes.STRING,
+            rua_aluno: DataTypes.STRING,
+            complemento_aluno: DataTypes.STRING,
+            tel_aluno: DataTypes.STRING,
         }, {
             sequelize: connection,
             tableName: 'alunos',
@@ -28,13 +28,22 @@ class Aluno extends Model {
         this.belongsToMany(models.Responsavel, {
             foreignKey: 'id_aluno',
             through: 'responsaveis_alunos',
-            as: 'responsaveis'
+            as: 'responsavel'
         });
 
-        //Um aluno trm apenas uma conta
-        this.hasMany(models.Conta, {
+
+        //Um aluno tem apenas uma conta
+        this.belongsToMany(models.Conta, {
             foreignKey: 'id_aluno',
-            as: 'contas'
+            through: 'contas_alunos',
+            as: 'conta'
+        })
+
+        // Um aluno tem muitas turma
+        this.belongsToMany(models.Turma, {
+            foreignKey: 'id_aluno',
+            through: 'alunos_turmas',
+            as: 'turmas'
         })
     }
 }

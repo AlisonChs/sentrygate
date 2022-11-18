@@ -3,8 +3,8 @@ const { Model, DataTypes } = require('sequelize');
 class Conta extends Model {
     static init(connection) {
         super.init({
-            email: DataTypes.STRING,
-            senha: DataTypes.STRING,
+            email_conta: DataTypes.STRING,
+            senha_conta: DataTypes.STRING,
         }, {
             sequelize: connection,
             tableName: 'contas'
@@ -15,9 +15,10 @@ class Conta extends Model {
     static associate(models) {
 
         //Uma conta pertence apenas a um aluno
-        this.belongsTo(models.Aluno, {
-            foreignKey: 'id_aluno',
-            as: 'alunos'
+        this.belongsToMany(models.Aluno, {
+            foreignKey: 'id_conta',
+            through: 'contas_alunos',
+            as: 'aluno'
         })
     }
 

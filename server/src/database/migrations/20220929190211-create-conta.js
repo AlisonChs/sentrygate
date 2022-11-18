@@ -9,41 +9,11 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      id_aluno: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        references: {
-          model: "alunos",
-          key: "id"
-        },
-        onUpdate: 'restrict',
-        onDelete: 'restrict'
-      },
-      id_responsavel: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        references: {
-          model: "responsaveis",
-          key: "id"
-        },
-        onUpdate: 'cascade',
-        onDelete: 'cascade'
-      },
-      id_professor: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        references: {
-          model: "professores",
-          key: "id"
-        },
-        onUpdate: 'cascade',
-        onDelete: 'cascade'
-      },
-      email: {
+      email_conta: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      senha: {
+      senha_conta: {
         type: Sequelize.STRING,
         allowNull: false,
       },

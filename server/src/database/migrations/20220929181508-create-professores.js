@@ -9,59 +9,59 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      nome: {
+      nome_professor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      sobrenome: {
+      sobrenome_professor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      nome_social: {
+      nome_social_professor: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      data_nasc: {
+      data_nasc_professor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      genero: {
+      genero_professor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      rg: {
+      rg_professor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      cpf: {
+      cpf_professor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      sexo: {
+      sexo_professor: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      cep: {
+      cep_professor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      cidade: {
+      cidade_professor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      bairro: {
+      bairro_professor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      rua: {
+      rua_professor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      tel: {
+      tel_professor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      matricula: {
+      matricula_professor: {
         type: Sequelize.INTEGER
       },
       created_at: {

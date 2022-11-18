@@ -9,51 +9,51 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      nome: {
+      nome_aluno: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      sobrenome: {
+      sobrenome_aluno: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      data_nasc: {
+      data_nasc_aluno: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      genero: {
+      genero_aluno: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      rg: {
+      rg_aluno: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      cpf: {
+      cpf_aluno: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      cep: {
+      cep_aluno: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      cidade: {
+      cidade_aluno: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      bairro: {
+      bairro_aluno: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      rua: {
+      rua_aluno: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      complemento: {
+      complemento_aluno: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      tel: {
+      tel_aluno: {
         type: Sequelize.STRING,
         allowNull: false,
       },
