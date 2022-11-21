@@ -7,6 +7,7 @@ const ProfessorController = require('../controllers/ProfessorController');
 const TurmaController = require('../controllers/TurmaController');
 const MateriaController = require('../controllers/MateriaController')
 const AulaController = require('../controllers/AulaController');
+const ChamadaController = require('../controllers/ChamadaController');
 
 const routes = express.Router();
 
@@ -36,14 +37,19 @@ routes.post('/cadastro/professor', ProfessorController.store);
 // Cadastra uma nova turma
 routes.get('/turmas', TurmaController.index);
 routes.post('/cadastro/turma', TurmaController.store);
+routes.post('/cadastro/turma/horario', TurmaController.storeHorario);
 
 // Cadastra uma nova matéria
 routes.get('/materias', MateriaController.index);
 routes.post('/cadastro/materia', MateriaController.store);
 
 // Cadastra uma nova aula
-routes.get('/aula', AulaController.index);
-routes.post('/cadastro/aula', AulaController.store);
+routes.get('/aulas', AulaController.index);
+routes.post('/cadastro/materia/:id_materia/aula', AulaController.store);
+
+// Cadastra uma nova chamada
+routes.get('/chamadas', ChamadaController.index);
+routes.post('/cadastro/aluno/:id_aluno/aula/:id_aula/chamada', ChamadaController.store);
 
 
 module.exports = routes;

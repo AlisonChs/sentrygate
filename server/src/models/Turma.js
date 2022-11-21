@@ -25,13 +25,13 @@ class Turma extends Model {
        this.belongsToMany(models.Materia, {
         foreignKey: 'id_turma',
         through: 'horarios',
-        as: 'materia'
+        as: 'materias'
         })
 
         this.belongsToMany(models.Professor, {
         foreignKey: 'id_turma',
         through: 'horarios',
-        as: 'professor'
+        as: 'professores'
         })
     }
 

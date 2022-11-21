@@ -45,6 +45,11 @@ class Aluno extends Model {
             through: 'alunos_turmas',
             as: 'turmas'
         })
+
+        this.hasOne(models.Chamada, {
+            foreignKey: 'id_aula',
+            as: 'chamadas'
+        })
     }
 }
 

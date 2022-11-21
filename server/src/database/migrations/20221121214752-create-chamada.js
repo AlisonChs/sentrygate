@@ -2,29 +2,29 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('aulas', {
+    return queryInterface.createTable('chamadas', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
-      id_materia: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: "materias",
-          key: "id"
-        },
-        onUpdate: 'cascade',
-        onDelete: 'cascade'
-      },
-      quantidade_aula: {
+      id_aluno: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: { model: 'alunos', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
-      data_aula: {
-        type: Sequelize.DATE,
+      id_aula: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'aulas', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+      falta: {
+        type: Sequelize.BOOLEAN,
         allowNull: false,
       },
       created_at: {
@@ -39,7 +39,7 @@ module.exports = {
 
   },
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('aulas');
+  down (queryInterface, Sequelize) {
+    return queryInterface.dropTable('chamadas');
   }
 };
