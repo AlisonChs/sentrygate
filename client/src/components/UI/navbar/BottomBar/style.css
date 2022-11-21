@@ -19,7 +19,7 @@ button {
   bottom: 0;
   padding: 0 7rem 0 7rem;
   
-  position: absolute;
+  position: fixed;
   /* border-bottom: 1px solid #301361; #250f4a; */
 
 }

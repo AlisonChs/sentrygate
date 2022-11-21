@@ -1,8 +1,8 @@
 .leftBar {
     width: 4.5rem;
     height: 100vh;
-    position: fixed;
-padding: 0;    
+    position: relative;
+    padding: 0;    
 
     left: 0;
     transition: 0.7s;
@@ -13,7 +13,7 @@ padding: 0;
    .leftBarOpen {
     width: 16rem;
     height: 100vh;
-    position: fixed;
+    position: relative;
     padding: 0 0 0 0;
     left: 0;
     transition: 0.7s;

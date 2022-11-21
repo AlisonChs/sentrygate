@@ -15,6 +15,7 @@ import PrivateRoute from "./PrivateRoute";
 import LeftBar from "../../components/UI/navbar/LeftBar/LeftBar";
 
 // Global
+import { Stack } from "@mui/material";
 
 export default function RouteNavigation () {
 
@@ -22,22 +23,29 @@ export default function RouteNavigation () {
 
   return (
   
-      <div className="components">
+    <Stack sx={{flexDirection: 'row', overflow: 'hidden'}}>
+
+      <LeftBar />
+      
 
         { // A navbar de ferramentas (leftbar) somente aparecerá caso o user nao esteja logando
          location.pathname !==  "/" && ( <LeftBar />)
         }
-        
+
         <Routes>
           <Route exact path="/" element={<Form />} />
           <Route exact path="/main" element={<Main />} />
           <Route path="/register/student" element={<RegisterStudent />} />
           <Route path="/register/teacher" element={<RegisterTeacher />} />
-          <Route path="/boletim" element={<Boletim />} />
+          <Route path="/report" element={<Boletim />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        
+      </Stack>
 
-      </div>
+
 
   );
+  
 }
+

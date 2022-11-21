@@ -25,6 +25,8 @@ import ApiCep from "../../../services/ApiCep";
 
 import "./register.css";
 import GlobalDivider from "../../../components/UI/divider/GlobalDivider";
+import TopBar from "../../../components/UI/navbar/TopBar/TopBar";
+import { Box, Stack } from "@mui/material";
 
 export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
   const [values, setValues] = useState({
@@ -316,7 +318,12 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
   };
 
   return (
-    <div className="flex">
+    <Stack width="100%" height="100%" >
+
+    <TopBar PageTitle="Registrar" PageSpan="estudante" />
+
+
+    <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
       {/* Animação de estrelas do fundo da tela */}
       <div className="stars">
         <div className="starsec"></div>
@@ -656,6 +663,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
             ) : null)}
         </form>
       </div>
-    </div>
+    </Box>
+    </Stack>
   );
 }
