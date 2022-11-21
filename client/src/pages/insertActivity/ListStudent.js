@@ -1,11 +1,10 @@
-export function ListStudent() {
- return (
-  <div className="List">
-   <img src='https://github.com/Victor-HM.png' alt="Foto do aluno" />
-   <div className='listInformation'>
+export function ListStudent({ listStudent, setSelectStudent }) {
 
-   </div>
-   <p>Aluno</p>
-  </div>
- )
+return (
+ <div className="List" onClick={() => setSelectStudent(listStudent)}>
+   <img src="https://github.com/Victor-HM.png" alt="Foto do aluno" />
+   <div className="listInformation"></div>
+   <p>{listStudent.nome}</p>
+ </div>
+);
 }

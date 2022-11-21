@@ -8,10 +8,9 @@ import TopBar from "../../components/UI/navbar/TopBar/TopBar";
 import { ListClass } from "./ListClass";
 import { ListStudent } from "./ListStudent";
 import { AddActivity } from "./AddActivity";
+import { Box, Modal, Typography } from "@mui/material";
 
 export function InsertActivity() {
-  const [stepSelect, setStepSelect] = useState({});
-
   const listClass = [
     {
       id: Math.random(),
@@ -21,33 +20,29 @@ export function InsertActivity() {
           id: Math.random(),
           nome: "Victor Hugo Carvalho Moreira dos Santos",
           rm: Math.random(),
-          dataNasc: `${new Date().getDay} - ${new Date().getMonth} - ${
-            new Date().getFullYear
-          }`,
+          presenca: "75%",
+          atividade: [],
         },
         {
           id: Math.random(),
           nome: "Thiago Henrique da Silva Santos",
           rm: Math.random(),
-          dataNasc: `${new Date().getDay} - ${new Date().getMonth} - ${
-            new Date().getFullYear
-          }`,
+          presenca: "75%",
+          atividade: [],
         },
         {
           id: Math.random(),
           nome: "Nicolle Christina Almeida de Souza",
           rm: Math.random(),
-          dataNasc: `${new Date().getDay} - ${new Date().getMonth} - ${
-            new Date().getFullYear
-          }`,
+          presenca: "75%",
+          atividade: [],
         },
         {
           id: Math.random(),
           nome: "Bruno Calvo Barbosa",
           rm: Math.random(),
-          dataNasc: `${new Date().getDay} - ${new Date().getMonth} - ${
-            new Date().getFullYear
-          }`,
+          presenca: "75%",
+          atividade: [],
         },
       ],
     },
@@ -60,33 +55,29 @@ export function InsertActivity() {
           id: Math.random(),
           nome: "Simone",
           rm: Math.random(),
-          dataNasc: `${new Date().getDay} - ${new Date().getMonth} - ${
-            new Date().getFullYear
-          }`,
+          presenca: "75%",
+          atividade: [],
         },
         {
           id: Math.random(),
           nome: "Yan Mendonça",
           rm: Math.random(),
-          dataNasc: `${new Date().getDay} - ${new Date().getMonth} - ${
-            new Date().getFullYear
-          }`,
+          presenca: "75%",
+          atividade: [],
         },
         {
           id: Math.random(),
           nome: "Bianca",
           rm: Math.random(),
-          dataNasc: `${new Date().getDay} - ${new Date().getMonth} - ${
-            new Date().getFullYear
-          }`,
+          presenca: "75%",
+          atividade: [],
         },
         {
           id: Math.random(),
           nome: "Bruno Calvo Barbosa",
           rm: Math.random(),
-          dataNasc: `${new Date().getDay} - ${new Date().getMonth} - ${
-            new Date().getFullYear
-          }`,
+          presenca: "75%",
+          atividade: [],
         },
       ],
     },
@@ -99,72 +90,186 @@ export function InsertActivity() {
           id: Math.random(),
           nome: "Victor Hugo Carvalho Moreira dos Santos",
           rm: Math.random(),
-          dataNasc: `${new Date().getDay} - ${new Date().getMonth} - ${
-            new Date().getFullYear
-          }`,
+          presenca: "75%",
+          atividade: [],
         },
         {
           id: Math.random(),
           nome: "Thiago Henrique da Silva Santos",
           rm: Math.random(),
-          dataNasc: `${new Date().getDay} - ${new Date().getMonth} - ${
-            new Date().getFullYear
-          }`,
+          presenca: "75%",
+          atividade: [],
         },
         {
           id: Math.random(),
           nome: "Nicolle Christina Almeida de Souza",
           rm: Math.random(),
-          dataNasc: `${new Date().getDay} - ${new Date().getMonth} - ${
-            new Date().getFullYear
-          }`,
+          presenca: "75%",
+          atividade: [],
         },
         {
           id: Math.random(),
           nome: "Bruno Calvo Barbosa",
           rm: Math.random(),
-          dataNasc: `${new Date().getDay} - ${new Date().getMonth} - ${
-            new Date().getFullYear
-          }`,
+          presenca: "75%",
+          atividade: [],
         },
       ],
     },
   ];
 
+  const [globalActivity, setGlobalActivity] = useState({
+    id: Math.random(),
+    nome: "",
+    nota: 0,
+    desc: "",
+    obs: "",
+  });
+  const [selectClass, setSelectClass] = useState(null);
+  const [selectStudent, setSelectStudent] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+
+  const style = {
+    width: 500,
+    height: 600,
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    bgcolor: "#210D41",
+    borderRadius: 5,
+    boxShadow: 24,
+    p: 4,
+    color: "#FFFFFF",
+    display: "flex",
+    flexDirection: "column",
+    gap: 2,
+  };
+
+  const changeValue = (value) => {
+    setGlobalActivity((prevValue) => ({
+      ...prevValue,
+      [value.target.name]: value.target.value,
+    }));
+  };
+
+  function addGlobalActivity() {
+    const newClass = [...selectClass];
+    for (let i = 0; i < selectClass.length; i++) {
+      setGlobalActivity((prevValue) => ({
+        ...prevValue,
+        id: Math.random(),
+      }));
+      newClass[i].atividade.push(globalActivity);
+    }
+    setSelectClass(newClass);
+    setOpenModal(false);
+  }
+
   return (
     <>
       <TopBar PageTitle="Adicionar" PageSpan="Atividade" />
+      <Modal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h4" component="h2">
+            Adicionar atividade
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2, opacity: 0.5 }}>
+            Essa atividade será adicionado para todos o alunos presentes nesta
+            turma
+          </Typography>
+
+          <div className="dividerActivity">
+            <input
+              type="text"
+              placeholder="Nome da atividade"
+              name="nome"
+              onChange={changeValue}
+            />
+            <input type="number" name="nota" onChange={changeValue} />
+          </div>
+
+          <input
+            type="text"
+            placeholder="Descrição"
+            name="desc"
+            onChange={changeValue}
+          ></input>
+          <input
+            type="text"
+            placeholder="Observações"
+            name="obs"
+            onChange={changeValue}
+          ></input>
+          <button type="submit" onClick={addGlobalActivity}>
+            Adicionar atividade
+          </button>
+        </Box>
+      </Modal>
       <div className="activityContainer">
-        <div className="selectClass">
-          {stepSelect === "class"
-            ? listClass.map((listClass) => (
-                <div
-                  key={listClass.id}
-                  onClick={() => setStepSelect(listClass.alunos)}
-                >
-                  <ListClass
-                    setStepSelect={setStepSelect}
-                    nameClass={listClass.nameClass}
-                  />
-                </div>
-              ))
-            : listClass.map((listClass) => (
-                <div key={listClass.toString()}>
-                  <ListStudent setStepSelect={setStepSelect} />
-                </div>
-              ))}
-        </div>
+        {selectClass !== null ? (
+          <div className="buttonAdd">
+            <button onClick={() => setOpenModal(!openModal)}>
+              Adicionar atividade para todos os alunos
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
+        <div className="areaStudent">
+          <div className="selectClass">
+            {selectClass !== null ? (
+              <div className="buttonAdd">
+                <button onClick={() => {
+                  setSelectClass(null)
+                  setSelectStudent(null)
+                }}>
+                  Escolher turma
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
+            {selectClass === null
+              ? listClass.map((listClass) => (
+                  <div key={listClass.id}>
+                    <ListClass
+                      setSelectClass={setSelectClass}
+                      listClass={listClass}
+                    />
+                  </div>
+                ))
+              : selectClass.map((listStudent) => (
+                  <div key={listStudent.id}>
+                    <ListStudent
+                      listStudent={listStudent}
+                      setSelectStudent={setSelectStudent}
+                    />
+                  </div>
+                ))}
+          </div>
 
-        <div className="contentActivity">
-          {stepSelect != {} ? (
-            <AddActivity setStepSelect={stepSelect} />
-          ) : (
-            <>
-              <h1>Selecione uma turma primeiro</h1>
+          <div className="contentActivity">
+            {selectStudent != null ? (
+              <AddActivity
+                selectClass={selectClass}
+                setSelectClass={setSelectClass}
+                selectStudent={selectStudent}
+                setSelectStudent={setSelectStudent}
+              />
+            ) : (
+              <>
+                <h1>Selecione uma turma e aluno primeiro</h1>
 
-              <Lottie animationData={search} style={{ width: "50%" }} />
-            </>
-          )}
+                <Lottie animationData={search} style={{ width: "50%" }} />
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>

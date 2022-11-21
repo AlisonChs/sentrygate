@@ -1,7 +1,8 @@
-export function ListClass({ setStepSelect, nameClass }) {
+export function ListClass({ setSelectClass, listClass }) {
  return (
-  <div className="List" onClick={() => setStepSelect('student')}>
-   <p>{nameClass}</p>
+  <div className="List" onClick={() => setSelectClass(listClass.alunos)}>
+    
+   {listClass.nameClass}
   </div>
  )
 }

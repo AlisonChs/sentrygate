@@ -1,25 +1,59 @@
 import { useEffect, useState } from "react";
 
-import { Add } from "@mui/icons-material";
+import { Add, Remove } from "@mui/icons-material";
 import Divider from "@mui/material/Divider";
+import { Avatar } from "@mui/material";
 
-export function AddActivity() {
+export function AddActivity({ selectClass, setSelectClass, selectStudent, setSelectStudent }) {
+  const [arrayActivity, setArrayActivity] = useState(selectStudent.atividade);
   const [saveActivity, setSaveActivity] = useState(null);
 
+  useEffect(() => {
+    setArrayActivity(selectStudent.atividade)
+    setSaveActivity(null)
+  }, [selectStudent])
+
+  function RemoveActivity() {
+    const newArray = arrayActivity.length > 0 ? arrayActivity.slice(0, -1) : []
+    setArrayActivity(newArray)
+
+    const newStudent = selectStudent
+    newStudent.atividade = newArray
+    setSelectStudent(newStudent)
+    setSaveActivity(null)
+  }
+  
   function AddActivity() {
-    let activity = {
+    const activity = {
       id: Math.random(),
       nome: "",
       nota: 0,
       desc: '',
       obs: ''
     };
-    return activity;
+    
+    setArrayActivity(prev => [...prev, activity])
+    
+    const newStudent = selectStudent;
+    
+    newStudent.atividade = [...newStudent.atividade, activity]
+    
+    setSelectStudent(newStudent)
+
+    const stuIndex = selectClass.findIndex((stu) => {
+      return stu.id === selectStudent.id;
+    });
+
+    const newClass = [...selectClass]
+
+    newClass[stuIndex] = selectStudent;
+
+    setSelectClass(newClass)
+    
   }
 
-  const [arrayActivity, setArrayActivity] = useState([AddActivity()]);
-
   const changeValue = (e, id) => {
+    //mudando o valor da atividade
     const actIndex = arrayActivity.findIndex((act) => {
       return act.id === id;
     });
@@ -29,18 +63,53 @@ export function AddActivity() {
     newActivity[actIndex][e.target.name] = e.target.value;
 
     setArrayActivity(newActivity);
+
+    //colocando as atividades no aluno
+    
+    const newStudent = selectStudent;
+
+    newStudent.atividade = arrayActivity
+
+    setSelectStudent(newStudent)
+
+    // 
+
+    const stuIndex = selectClass.findIndex((stu) => {
+      return stu.id === selectStudent.id;
+    });
+
+    const newClass = [...selectClass];
+
+    newClass[stuIndex] = selectStudent;
+    
+    setSelectClass(newClass);
   }
+
 
   return (
     <div className="containerActivity">
-      <div className="studentContainer"></div>
+      <div className="studentContainer">
+        <div className="photoStudent">
+          <Avatar 
+            alt="Foto do Aluno"
+            src="https://github.com/Victor-HM.png"
+            sx={{ height: 120, width: 120 }}
+          />
+        </div>
+
+        <div className="infoStudent">
+          <p>{selectStudent.nome}</p>
+          <p>RM: <span>{selectStudent.rm}</span></p>
+          <p>Presença: <span>{selectStudent.presenca}</span></p>
+        </div>
+      </div>
 
       <div className="insertActivity">
         <div className="addActivity">
           <p>Avaliações</p>
 
           <div className="inputAvaliacao">
-            {arrayActivity.map((list) => {
+            {selectStudent.atividade.map((list) => {
               return (
                 <div
                   key={list.id}
@@ -58,18 +127,30 @@ export function AddActivity() {
             })}
           </div>
 
-          <button
-            className="btnAdd"
-            onClick={() => setArrayActivity((prev) => [...prev, AddActivity()])}
-            // onClick={() => setArrayActivity((prev) => [...prev, AddActivity()])}
-          >
-            <Add />
-          </button>
+          <div className="DividerButton">
+            <button
+              className="btnAdd"
+              onClick={AddActivity}
+              // onClick={() => setArrayActivity((prev) => [...prev, AddActivity()])}
+            >
+              <Add />
+            </button>
+
+            <button
+              className="btnAdd"
+              onClick={RemoveActivity}
+              // onClick={() => setArrayActivity((prev) => [...prev, AddActivity()])}
+            >
+              <Remove />
+            </button>
+
+          </div>
+
         </div>
 
         {saveActivity != null ? (
           <div className="avaliacaoContainer">
-            <div>
+            <div className="dividerActivity">
               <input
                 type="text"
                 placeholder="Nome da avaliação"
@@ -102,15 +183,6 @@ export function AddActivity() {
         ) : (
           <></>
         )}
-
-        {/* <div className="avaliacaoContainer">
-          <div>
-            <input type="text" placeholder="Nome da avaliação" />
-            <input type="number" placeholder="Nota" />
-          </div>
-          <input type="text" placeholder="Descrição" />
-          <input type="text" placeholder="Observações" />
-        </div> */}
       </div>
     </div>
   );
