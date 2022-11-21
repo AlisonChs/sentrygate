@@ -21,11 +21,11 @@ export default function RouteNavigation () {
 
   return (
   
-    <Stack sx={{flexDirection: 'row', width: '100vw'}}>
+    <Stack sx={{flexDirection: 'row', overflow: 'hidden'}}>
 
       <LeftBar />
       
-      <Stack sx={{width: '100%'}}>
+      <Stack sx={{width: '97%', overflow: 'hidden'}}>
         <Routes>
           <Route exact path="/" element={<Form />} />
           <Route exact path="/main" element={<Main />} />
@@ -40,4 +40,6 @@ export default function RouteNavigation () {
     </Stack>
 
   );
+  
 }
+

@@ -1,5 +1,5 @@
 
-import './stylesheet/style.css'
+import '../stylesheet/style.css'
 
 import { Slider, Stack } from "@mui/material";
 import { Box } from "@mui/system";
