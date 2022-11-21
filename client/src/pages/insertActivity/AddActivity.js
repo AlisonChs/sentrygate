@@ -14,11 +14,16 @@ export function AddActivity({ selectClass, setSelectClass, selectStudent, setSel
   }, [selectStudent])
 
   function RemoveActivity() {
-    const newArray = arrayActivity.length > 0 ? arrayActivity.slice(0, -1) : []
-    setArrayActivity(newArray)
+    const removeIndex = arrayActivity.findIndex(index => {
+        return index.id === saveActivity.id
+      })
+
+      if(arrayActivity.length > 0) {
+        arrayActivity.splice(removeIndex, 1)
+      }
 
     const newStudent = selectStudent
-    newStudent.atividade = newArray
+    newStudent.atividade = arrayActivity
     setSelectStudent(newStudent)
     setSaveActivity(null)
   }
