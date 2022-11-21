@@ -1,3 +1,5 @@
+
+import React from 'react';
 import { useContext, useState } from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Button from "@mui/material/Button";
@@ -16,6 +18,10 @@ import TextField from '@mui/material/TextField';
 import SexModal from './SexModal';
 import FormLabel from '@mui/material/FormLabel';
 import Select from "react-select";
+import CircularProgress from '@mui/material/CircularProgress';
+import Fab from '@mui/material/Fab';
+import Axios from "axios";
+import ApiCep from "../../../services/ApiCep";
 
 import "./register.css";
 import GlobalDivider from "../../../components/UI/divider/GlobalDivider";
@@ -24,19 +30,167 @@ import { Box, Stack } from "@mui/material";
 
 export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
   const [values, setValues] = useState({
-    nameAluno: "",
-    sexAluno: "",
+    // Passo 1: ALUNO - Info. Pessoais
+    nomeAluno: "",
+    sobrenomeAluno: "",
+    generoAluno: "",
     dataNascAluno: "",
-    cpfAluno: "",
     rgAluno: "",
+    cpfAluno: "",
+    // Passo 2: ALUNO - Endereço
+    cepAluno: "",
+    cidadeAluno: "",
+    bairroAluno: "",
+    ruaAluno: "",
+    complementoCasaAluno: "",
+    // Passo 3: RESPONSÁVEL ALUNO 
+    nomeResponsavel: "",
+    sobrenomeResponsavel: "",
+    dataNascResponsavel: "",
+    rgResponsavel: "",
+    cpfResponsavel: "",
+    // Passo 4 - CONTATO
+    telResponsavel: "",
+    telAluno: "",
+    telOpcional: "",
+    // Passo 5: DADOS DE LOGIN 
     emailAluno: "",
     passwordAluno: "",
-    nameResponsavel: "",
-    dataNascResponsavel: "",
-    cpfResponsavel: "",
-    rgResponsavel: "",
   });
 
+  const [loading, setLoading] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+  const [blur, setBlur] = React.useState('')
+  const timer = React.useRef();
+
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(timer.current);
+    };
+  }, []);
+
+
+  function checkCEP() {
+
+    if (!loading) {
+      setSuccess(false);
+      setLoading(true);
+      setBlur('blur');
+      timer.current = window.setTimeout(() => {
+        setSuccess(true);
+        setBlur('blur');
+
+        setLoading(false);
+        ApiCep.SearchCep(values.cepAluno).then((res) => {
+          let rua = res.data.logradouro;
+          let bairro = res.data.bairro;
+          let cidade = res.data.localidade;
+          let estado = res.data.uf;
+          // Mudando o estado
+          setValues({
+            ruaAluno: rua
+            , bairroAluno: bairro
+            , cidadeAluno: cidade
+            , estadoAluno: estado
+          })
+        })
+      }, 4000);
+    }
+
+
+  }
+
+  const handleRegister = (e) => {
+    e.preventDefault()
+
+    // Passo 1: ALUNO - Info. Pessoais
+    const nomeAluno = values.nomeAluno;
+    const sobrenomeAluno = values.sobrenomeAluno;
+    const dataNascAluno = values.dataNascAluno;
+    const generoAluno = values.generoAluno;
+    const rgAluno = values.rgAluno;
+    const cpfAluno = values.cpfAluno;
+    // Passo 2: ALUNO - Endereço
+    const cepAluno = values.cepAluno;
+    const cidadeAluno = values.cidadeAluno;
+    const bairroAluno = values.bairroAluno;
+    const ruaAluno = values.ruaAluno;
+    const complementoCasaAluno = values.complementoCasaAluno;
+    // Passo 3: RESPONSÁVEL ALUNO 
+    const nomeResponsavel = values.nomeResponsavel;
+    const sobrenomeResponsavel = values.sobrenomeResponsavel;
+    const dataNascResponsavel = values.dataNascResponsavel;
+    const cpfResponsavel = values.cpfResponsavel;
+    const rgResponsavel = values.rgResponsavel;
+    // Passo 4: CONTATO
+    const telResponsavel = values.telResponsavel;
+    const telAluno = values.telAluno;
+    const telOpcional = values.telOpcional;
+    // Passo 5: DADOS DE LOGIN 
+    const emailAluno = values.emailAluno;
+    const passwordAluno = values.passwordAluno;
+
+    // Verificação básica apenas dos campos obrigatórios
+    if (nomeAluno === '' ||
+      sobrenomeAluno === '' ||
+      dataNascAluno === '' ||
+      generoAluno === '' ||
+      rgAluno === '' ||
+      cpfAluno === '' ||
+      cepAluno === '' ||
+      cidadeAluno === '' ||
+      bairroAluno === '' ||
+      ruaAluno === '' ||
+      complementoCasaAluno === '' ||
+      nomeResponsavel === '' ||
+      sobrenomeResponsavel === '' ||
+      dataNascResponsavel === '' ||
+      cpfResponsavel === '' ||
+      rgResponsavel === '' ||
+      telResponsavel === '' ||
+      telAluno === '' ||
+      emailAluno === '' ||
+      passwordAluno === '') {
+      alert('Preencha todos os campos');
+    } else {
+      Axios.post("http://localhost:3001/aluno", {
+        nome: nomeAluno,
+        sobrenome: sobrenomeAluno,
+        data_nasc: dataNascAluno,
+        genero: generoAluno,
+        rg: rgAluno,
+        cpf: cpfAluno,
+        cep: cepAluno,
+        cidade: cidadeAluno,
+        bairro: bairroAluno,
+        rua: ruaAluno,
+        complemento: complementoCasaAluno,
+        tel: telAluno,
+      }).then(Axios.post("http://localhost:3001/responsavel", {
+        nome: nomeResponsavel,
+        sobrenome: sobrenomeResponsavel,
+        data_nasc: dataNascResponsavel,
+        //tel_opcional: telOpcional ? telOpcional : 'Não inserido',
+        cpf: cpfResponsavel,
+        rg: rgResponsavel,
+        tel: telResponsavel,
+      })).then(Axios.post("http://localhost:3001/conta", {
+        email: emailAluno,
+        senha: passwordAluno,
+      })).then((response) => {
+
+        let message = response.data.message
+
+        if (message = 'Usuario cadastrado') {
+
+          alert('Usuario cadastrado')
+
+        } else {
+          alert('Algo deu errado')
+        }
+      });
+    }
+  }
 
   const [isInputChanged, setIsInputChanged] = useState(true);
 
@@ -60,18 +214,22 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
 
   const [currentStep, setCurrentStep] = useState(0);
 
-  const [gender, setGender] = useState('')
-  const [personalizedSex, setPersonalizedSex] = useState("Personalizado");
-
-
   const steps = [
     {
       id: "ALUNO",
       title: "Insira seus dados pessoais",
     },
     {
+      id: "ENDERECO",
+      title: "Nos conte seu endereço"
+    },
+    {
       id: "RESPONSAVEL",
       title: "Insira os dados do seu responsável",
+    },
+    {
+      id: "CONTATO",
+      title: "Informe o contato para nós"
     },
     {
       id: "CONTA",
@@ -126,7 +284,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     }
 
     else if (to === "back") {
-      setCurrentStep((prevState) => prevState - 1);    
+      setCurrentStep((prevState) => prevState - 1);
     }
 
     else {
@@ -142,12 +300,13 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     }));
   };
 
+  /* SexModal (usar para deficiente)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  function handleClose () {
+  function handleClose() {
     setGender(personalizedSex);
     setOpen(false);
-  };
+  }; */
 
   const hr = {
     color: "white",
@@ -173,8 +332,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
         <div className="starfifth"></div>
       </div>
 
-
-      {open ? <SexModal setPersonalizedSex={setPersonalizedSex} setOpen={setOpen} personalizedSex={personalizedSex} open={open} /> : null}
+      {/* open ? <SexModal setPersonalizedSex={setPersonalizedSex} setOpen={setOpen} personalizedSex={personalizedSex} open={open} /> : null */}
 
       <div className="auth">
         {currentStep > 0 && (
@@ -194,7 +352,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
             step={1}
             marks
             min={0}
-            max={2}
+            max={4}
             disabled
           />
 
@@ -207,29 +365,59 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
               <input
                 type="text"
                 onChange={handleChangeValues}
-                value={values.nameAluno}
-                placeholder="Digite seu nome completo"
-                name="nameAluno"
+                value={values.nomeAluno}
+                placeholder="Digite seu nome"
+                name="nomeAluno"
                 required
               />
 
-            <GlobalDivider text="Gênero" />
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                value={values.sobrenomeAluno}
+                placeholder="Digite seu sobrenome completo"
+                name="sobrenomeAluno"
+                required
+              />
+
+              <GlobalDivider text="Documentos do aluno" />
+
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                value={values.cpfAluno}
+                placeholder="Digite seu CPF"
+                name="cpfAluno"
+                required
+              />
+
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                value={values.rgAluno}
+                placeholder="Digite seu RG"
+                name="rgAluno"
+                required
+              />
+
+              <GlobalDivider text="Gênero" />
 
 
-            <FormControl>
-                  <RadioGroup
-                    row
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="row-radio-buttons-group"
-                  >
-                    <FormControlLabel value="Feminino" control={<Radio />} label="Feminino" />
-                    <FormControlLabel value="Masculino" control={<Radio />} label="Masculino" />
-                    <FormControlLabel value={personalizedSex} onChange={handleOpen} control={<Radio />} label={personalizedSex}/>
-                    
-                  </RadioGroup>
-                </FormControl>
+              <FormControl onChange={handleChangeValues}>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                  <FormControlLabel name='generoAluno' value="Feminino" control={<Radio />} label="Feminino" />
+                  <FormControlLabel name='generoAluno' value="Masculino" control={<Radio />} label="Masculino" />
+                  <FormControlLabel name='generoAluno' value="Não-binário" control={<Radio />} label="Não-binário" />
+                  {/* <FormControlLabel name='generoAluno' value={personalizedSex} onChange={handleOpen} control={<Radio />} label={personalizedSex} /> */}
 
-                <GlobalDivider text="Nascimento" />
+                </RadioGroup>
+              </FormControl>
+
+              <GlobalDivider text="Nascimento" />
 
               <input
                 type="date"
@@ -240,22 +428,90 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 required
               />
 
-            <GlobalDivider text="Registro Geral" />
+            </>
+          )}
+          {steps[currentStep].id === "ENDERECO" && (
+            <>
+              <h2>{steps[currentStep].title}</h2>
+
+              <GlobalDivider text="CEP" />
 
               <input
                 type="text"
                 onChange={handleChangeValues}
-                value={values.rgAluno}
-                placeholder="Digite o seu RG"
-                name="rgAluno"
+                value={values.cepAluno}
+                onBlur={checkCEP}
+                className={blur}
+                placeholder="Digite seu CEP"
+                name="cepAluno"
+                disabled={loading}
                 required
               />
+
+              {loading && (
+                <CircularProgress
+                  size={18}
+                  sx={{
+                    color: 'purple',
+                    position: 'absolute',
+                    top: '36%',
+                    left: '75%',
+                    marginTop: '-12px',
+                    marginLeft: '-12px',
+                  }}
+                />
+              )}
+
+              <GlobalDivider text="Cidade" />
+
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                placeholder={values.cidadeAluno}
+                name="cidadeAluno"
+                disabled
+              />
+
+              <GlobalDivider text="Rua/Distrito" />
+
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                placeholder={values.ruaAluno}
+
+                name="ruaAluno"
+                disabled
+              />
+
+              <GlobalDivider text="Bairro" />
+
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                placeholder={values.bairroAluno}
+
+                name="bairroAluno"
+                disabled
+              />
+
+
+
+              <GlobalDivider text="Complemento" />
+
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                value={values.complementoCasaAluno}
+                placeholder="Insira um complemento aqui (caso haja)"
+                name="complementoCasaAluno"
+              />
+
             </>
           )}
           {steps[currentStep].id === "RESPONSAVEL" && (
             <>
               <h2>
-                {steps[currentStep].title}{" "}
+                {steps[currentStep].title}
               </h2>
 
               <GlobalDivider text="Nome completo" />
@@ -263,13 +519,42 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
               <input
                 type="text"
                 onChange={handleChangeValues}
-                value={values.nameResponsavel}
-                placeholder="Digite seu nome completo"
-                name="nameResponsavel"
+                value={values.nomeResponsavel}
+                placeholder="Digite seu nome"
+                name="nomeResponsavel"
                 required
               />
 
-                <GlobalDivider text="Nascimento" />
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                value={values.sobrenomeResponsavel}
+                placeholder="Digite seu sobrenome"
+                name="sobrenomeResponsavel"
+                required
+              />
+
+              <GlobalDivider text="Documentos do responsável" />
+
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                value={values.cpfResponsavel}
+                placeholder="Digite seu CPF"
+                name="cpfResponsavel"
+                required
+              />
+
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                value={values.rgResponsavel}
+                placeholder="Digite seu RG"
+                name="rgResponsavel"
+                required
+              />
+
+              <GlobalDivider text="Nascimento" />
 
 
               <input
@@ -281,35 +566,48 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 required
               />
 
-              <GlobalDivider text="CPF" />
+            </>
+          )}
+          {steps[currentStep].id === "CONTATO" && (
+            <>
+              <h2>{steps[currentStep].title}</h2>
 
+              <GlobalDivider text="Número do aluno" />
 
               <input
                 type="text"
                 onChange={handleChangeValues}
-                value={values.cpfResponsavel}
-                placeholder="Digite o seu CPF. Ex: xxx.xxx.xxx.x"
-                name="cpfResponsavel"
+                value={values.telAluno}
+                placeholder="Insira um número de até 11 dígitos"
+                name="telAluno"
                 required
               />
 
-              <GlobalDivider text="Registro geral" />
+              <GlobalDivider text="Número do responsável" />
 
               <input
                 type="text"
                 onChange={handleChangeValues}
-                value={values.rgResponsavel}
-                placeholder="Digite o seu RG"
-                name="rgResponsavel"
+                value={values.telResponsavel}
+                placeholder="Insira um número de até 11 dígitos"
+                name="telResponsavel"
                 required
+              />
+
+              <GlobalDivider text="Número reserva (opcional)" />
+
+              <input
+                type="text"
+                onChange={handleChangeValues}
+                value={values.telOpcional}
+                placeholder="Insira um número de até 11 dígitos"
+                name="telOpcional"
               />
             </>
           )}
           {steps[currentStep].id === "CONTA" && (
             <>
-              <h2>
-                {steps[currentStep].title}{" "}
-              </h2>
+              <h2>{steps[currentStep].title}</h2>
 
               <GlobalDivider text="E-mail" />
 
@@ -322,7 +620,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
                 placeholder="Digite o seu email"
               />
 
-<GlobalDivider text="Senha" />
+              <GlobalDivider text="Senha" />
 
 
               <input
@@ -336,7 +634,7 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
             </>
           )}
 
-          {currentStep < 2 &&
+          {currentStep < 4 &&
             (!isInputChanged ? (
               <IconButton
                 aria-label="next"
@@ -352,13 +650,13 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
               </IconButton>
             ) : null)}
 
-          {currentStep >= 2 &&
+          {currentStep >= 4 &&
             (!isInputChanged ? (
               <IconButton
                 aria-label="next"
                 sx={{ width: "30px", height: "30px", marginLeft: "49%" }}
               >
-                <Button variant="contained" sx={registerButton}>
+                <Button variant="contained" sx={registerButton} onClick={e => (handleRegister(e))}>
                   <SendIcon />
                 </Button>
               </IconButton>

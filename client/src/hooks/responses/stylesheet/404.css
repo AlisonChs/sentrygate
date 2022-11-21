@@ -140,7 +140,6 @@
 }
 
 .message__title {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 5px;
@@ -148,34 +147,13 @@
   padding-bottom: 40px;
   max-width: 960px;
   margin: 0 auto;
-  color: #210D41;
-}
-
-.message__text {
-  font-family: 'Montserrat', sans-serif;
-  line-height: 42px;
-  font-size: 18px;
-  padding: 0 60px;
-  max-width: 680px;
-  margin: auto;
+  color:#210D41;
 }
 
 .error__nav {
   max-width: 600px;
   margin: 40px auto 0;
   text-align: center;
-}
-
-.e-nav__form {
-  position: relative;
-  height: 45px;
-  overflow: hidden;
-  width: 170px;
-  display: inline-block;
-  vertical-align: top;
-  border: 1px solid #212121;
-  padding-left: 10px;
-  padding-right: 46px;
 }
 
 .e-nav__icon {
@@ -357,7 +335,7 @@
 .light {
       width: 200px;
     height: 0px;
-    border-bottom: 900px solid rgb(44 255 255 / 24%);
+    border-bottom: 150vh solid rgb(44 255 255 / 24%);
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
     position: absolute;

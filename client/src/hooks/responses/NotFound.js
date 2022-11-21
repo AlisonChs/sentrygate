@@ -1,5 +1,4 @@
-import './404.css'
-import { Link } from 'react-router-dom'
+import './stylesheet/404.css'
 
 // this animation was used and taken from https://codepen.io/uiswarup/pen/XWdXGGV
 
@@ -29,10 +28,6 @@ export function NotFound () {
         <div className="error__content">
           <div className="error__message message">
             <h1 className="message__title">Página não encontrada</h1>
-            <p className="message__text">Pedimos perdão, mas esta página não foi encontrada</p>
-          </div>
-          <div className="error__nav e-nav">
-            <Link to="main" > Voltar </Link>
           </div>
         </div>
 

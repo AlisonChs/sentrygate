@@ -3,9 +3,10 @@ import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
 const LightToolTip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
-  ))(({ theme }) => ({
+  ))(({ theme, visibility }) => ({
     [`& .${tooltipClasses.tooltip}`]: {
       backgroundColor: '#654C8F',
+      visibility: visibility ? 'visible' : 'hidden',
       color: 'white',
       fontSize: 11,
     },
