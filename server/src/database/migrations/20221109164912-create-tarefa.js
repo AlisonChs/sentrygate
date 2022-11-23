@@ -18,6 +18,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       entrega_tarefa: {
+
         allowNull:false,
         type: Sequelize.DATE
       },

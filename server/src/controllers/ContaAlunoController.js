@@ -65,7 +65,6 @@ module.exports = {
             //Se o usuario ja possui uma conta, ira ser notificado
         } else {
             return res.status(302).json("student already has an account")
-            //return res.status(303).json("user already has an account")
         }
     }
 }

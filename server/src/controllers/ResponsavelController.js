@@ -38,9 +38,6 @@ module.exports = {
         const responsavel_aluno = await ResponsavelAluno.findOne({
             where: {id_aluno : aluno.id},
         });
-      
-      
-        
 
         if (responsavel_aluno === null) {
             //Cria os valores e os insere na tabela
@@ -57,7 +54,7 @@ module.exports = {
                     tel_responsavel,
                 }
             });
-
+            
             await aluno.addResponsavel(responsavel)
 
             return res.status(200).json()
