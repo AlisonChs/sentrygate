@@ -32,6 +32,7 @@ Chamada.init(connection);
 Aluno.associate(connection.models);
 Conta.associate(connection.models);
 Responsavel.associate(connection.models);
+ResponsavelAluno.associate(connection.models);
 Turma.associate(connection.models);
 Aula.associate(connection.models);
 Professor.associate(connection.models);

@@ -14,8 +14,8 @@ module.exports = {
 
         //Recebendo os valores do frontend pelo corpo da requisição
         const {
-            email,
-            senha,
+            email_conta,
+            senha_conta,
             cpf_aluno,
         } = req.body;
 
@@ -41,12 +41,12 @@ module.exports = {
             //Procura se ja existe um email igual
             const [conta, created] = await Conta.findOrCreate({
                 where: {
-                    email,
+                    email_conta,
                 },
                 defaults:
                 {
-                    email,
-                    senha,
+                    email_conta,
+                    senha_conta,
                 },
 
             });
