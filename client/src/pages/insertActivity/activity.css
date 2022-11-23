@@ -1,175 +1,225 @@
 .activityContainer {
- width: 100%;
- height: 100%;
+  width: 100%;
+  height: 100%;
 
- display: flex;
- justify-content: center;
- gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
- margin-top: 1rem;
- padding-left: 5rem;
- padding-right: 2rem;
+  margin-top: 1rem;
+  padding-left: 5rem;
+  padding-right: 2rem;
+}
+
+.buttonAdd button {
+  width: 100%;
+  height: 4rem;
+  background-color: #ffa500;
+
+  border-radius: 0.8rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem 0 1rem;
+}
+
+.areaStudent {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .selectClass {
- background-color: #311B55;
- height: 32rem;
- width: 19.5rem;
+  background-color: #311b55;
+  height: 32rem;
+  width: 19.5rem;
 
- padding: 1rem;
- text-align: center;
+  padding: 1rem;
+  text-align: center;
 
- border-radius: 0.8rem;
- overflow-y: scroll;
+  border-radius: 0.8rem;
+  overflow-y: scroll;
 }
 
 .selectClass::-webkit-scrollbar {
- display: none;
+  display: none;
 }
 
 .List {
- background-color: #210D41;
- width: 100%;
- height: 4.5rem;
+  background-color: #210d41;
+  width: 100%;
+  height: 4.5rem;
 
- display: flex;
- align-items: center;
- justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
- border-radius: 0.8rem;
- margin-bottom: 1rem;
- padding: 0 1rem 0 1rem;
+  border-radius: 0.8rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem 0 1rem;
 
- color: #FFFFFF;
+  color: #ffffff;
 
- cursor: pointer;
+  cursor: pointer;
 }
 
 .List img {
- width: 3rem;
- height: 3rem;
+  width: 3rem;
+  height: 3rem;
 
- border-radius: 100%;
+  border-radius: 100%;
 }
 
 .contentActivity {
- width: 60%;
- height: 100%;
+  width: 60%;
+  height: 100%;
 
- display: flex;
- flex-direction: column;
- align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .containerActivity {
- background-color: #311B55;
- width: 100%;
- height: 32rem;
+  background-color: #311b55;
+  width: 100%;
+  height: 32rem;
 
- display: flex;
- flex-direction: column;
- gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
- padding: 1rem;
+  padding: 1rem;
 
- border-radius: 0.8rem;
+  border-radius: 0.8rem;
 }
 
 .studentContainer {
- background-color: #210D41;
- width: 100%;
- height: 10rem;
- 
- border-radius: 0.8rem;
+  background-color: #210d41;
+  width: 100%;
+  height: 10rem;
+
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 1rem;
+  gap: 1rem;
+
+  border-radius: 0.8rem;
+
+  color: #ffffff;
+}
+
+.infoStudent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .insertActivity {
- width: 100%;
+  width: 100%;
 
- display: grid;
- grid-template-columns: 40% 60%;
- gap: 1rem;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: 1rem;
 
- padding: 0 1rem 0 0;
+  padding: 0 1rem 0 0;
 }
 
 .addActivity {
- height: 20rem;
- background-color: #210D41;
- border-radius: 0.8rem;
+  height: 20rem;
+  background-color: #210d41;
+  border-radius: 0.8rem;
 
- display: flex;
- text-align: center; 
- align-items: center;
- justify-content: space-between;
- flex-direction: column;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 
- gap: 2rem;
- padding: 1rem;
-
+  gap: 2rem;
+  padding: 1rem;
 }
 
 .inputAvaliacao::-webkit-scrollbar {
- display: none;
+  display: none;
 }
 
 .inputAvaliacao {
- width: 100%;
- height: 12rem;
+  width: 100%;
+  height: 12rem;
 
- overflow: scroll;
+  overflow: scroll;
 }
 
 .input {
- height: 4rem;
- width: 100%;
- background-color: #311B55;
+  height: 4rem;
+  width: 100%;
+  background-color: #311b55;
 
- display: grid;
- grid-template-columns: 3fr 1fr 1fr;
- align-items: center;
- margin-bottom: 1rem;
- 
- border-radius: 0.8rem;
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  align-items: center;
+  margin-bottom: 1rem;
 
- cursor: pointer;
+  border-radius: 0.8rem;
+
+  cursor: pointer;
 }
 
 .input p {
- width: 100%;
- text-align: center;
+  width: 100%;
+  text-align: center;
+}
+
+.DividerButton {
+  display: flex;
+  gap: 2rem;
 }
 
 .btnAdd {
- background-color: #311B55;
- width: 4rem;
- height: 3rem;
+  background-color: #311b55;
+  width: 4rem;
+  height: 3rem;
 
- border-radius: 1rem;
- cursor: pointer;
+  border-radius: 1rem;
+  cursor: pointer;
 }
 
 .avaliacaoContainer {
- height: 20rem;
- background-color: #210D41;
+  height: 20rem;
+  background-color: #210d41;
 
- 
- display: grid;
- grid-template-rows: 1fr 2fr 2fr;
- 
- padding: 1rem;
- gap: 1rem;
+  display: grid;
+  grid-template-rows: 1fr 2fr 2fr;
 
- border-radius: 0.8rem;
+  padding: 1rem;
+  gap: 1rem;
+
+  border-radius: 0.8rem;
 }
 
-.avaliacaoContainer div {
- display: grid;
- grid-template-columns: 2fr 1fr;
- gap: 1rem;
+.dividerActivity {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
 }
 
-.avaliacaoContainer input {
- height: 100%;
- background-color: #311B55;
+.dividerActivity input {
+  height: 3rem;
+  background-color: #311b55;
+}
+
+input[name="obs"],
+input[name="desc"] {
+  height: 100%;
+  background-color: #311b55;
+}
+
+button[type="submit"] {
+  width: 100%;
+  height: 10rem;
+  background-color: orange;
+  border-radius: 0.3rem;
 }
