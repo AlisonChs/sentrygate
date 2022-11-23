@@ -151,30 +151,32 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
       passwordAluno === '') {
       alert('Preencha todos os campos');
     } else {
-      Axios.post("http://localhost:3001/aluno", {
-        nome: nomeAluno,
-        sobrenome: sobrenomeAluno,
-        data_nasc: dataNascAluno,
-        genero: generoAluno,
-        rg: rgAluno,
-        cpf: cpfAluno,
-        cep: cepAluno,
-        cidade: cidadeAluno,
-        bairro: bairroAluno,
-        rua: ruaAluno,
-        complemento: complementoCasaAluno,
-        tel: telAluno,
-      }).then(Axios.post("http://localhost:3001/responsavel", {
-        nome: nomeResponsavel,
-        sobrenome: sobrenomeResponsavel,
-        data_nasc: dataNascResponsavel,
+      Axios.post("http://localhost:3001/cadastro/aluno", {
+        nome_aluno: nomeAluno,
+        sobrenome_aluno: sobrenomeAluno,
+        data_nasc_aluno: dataNascAluno,
+        genero_aluno: generoAluno,
+        rg_aluno: rgAluno,
+        cpf_aluno: cpfAluno,
+        cep_aluno: cepAluno,
+        cidade_aluno: cidadeAluno,
+        bairro_aluno: bairroAluno,
+        rua_aluno: ruaAluno,
+        complemento_aluno: complementoCasaAluno,
+        tel_aluno: telAluno,
+      }).then(Axios.post("http://localhost:3001/cadastro/responsavel", {
+        nome_responsavel: nomeResponsavel,
+        sobrenome_responsavel: sobrenomeResponsavel,
+        data_nasc_responsavel: dataNascResponsavel,
         //tel_opcional: telOpcional ? telOpcional : 'Não inserido',
-        cpf: cpfResponsavel,
-        rg: rgResponsavel,
-        tel: telResponsavel,
-      })).then(Axios.post("http://localhost:3001/conta", {
+        cpf_responsavel: cpfResponsavel,
+        rg_responsavel: rgResponsavel,
+        tel_responsavel: telResponsavel,
+        cpf_aluno: cpfAluno,
+      })).then(Axios.post("http://localhost:3001/cadastro/aluno/conta", {
         email: emailAluno,
         senha: passwordAluno,
+        cpf_aluno: cpfAluno,
       })).then((response) => {
 
         let message = response.data.message

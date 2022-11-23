@@ -9,23 +9,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nome: {
+      nome_turma: {
         allowNull:false,
         type: Sequelize.STRING
       },
-      horario: {
+      horario_turma: {
         allowNull:false,
-        type: Sequelize.TIME
+        type: Sequelize.STRING
       },
-      ano: {
+      ano_turma: {
         allowNull:false,
         type: Sequelize.INTEGER
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }

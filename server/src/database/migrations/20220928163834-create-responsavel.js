@@ -9,27 +9,27 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      nome: {
+      nome_responsavel: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      sobrenome: {
+      sobrenome_responsavel: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      data_nasc: {
+      data_nasc_responsavel: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      cpf: {
+      cpf_responsavel: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      rg: {
+      rg_responsavel: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      tel: {
+      tel_responsavel: {
         type: Sequelize.STRING,
         allowNull: false,
       },

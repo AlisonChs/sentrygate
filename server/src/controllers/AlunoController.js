@@ -1,4 +1,3 @@
-const { findOne } = require('../models/Aluno');
 const Aluno = require('../models/Aluno');
 
 
@@ -10,36 +9,36 @@ module.exports = {
     async store(req, res) {
         //Recebendo os valores do frontend pelo corpo da requisição
         const {
-            nome,
-            sobrenome,
-            data_nasc,
-            genero,
-            rg,
-            cpf,
-            cep,
-            cidade,
-            bairro,
-            rua,
-            complemento,
-            tel,
+            nome_aluno,
+            sobrenome_aluno,
+            data_nasc_aluno,
+            genero_aluno,
+            rg_aluno,
+            cpf_aluno,
+            cep_aluno,
+            cidade_aluno,
+            bairro_aluno,
+            rua_aluno,
+            complemento_aluno,
+            tel_aluno
         } = req.body;
 
         //Criando os valores recebidos na tabela        
         const [aluno, created] = await Aluno.findOrCreate({
-            where: { cpf },
+            where: { cpf_aluno },
             defaults: {
-                nome,
-                sobrenome,
-                data_nasc,
-                genero,
-                rg,
-                cpf,
-                cep,
-                cidade,
-                bairro,
-                rua,
-                complemento,
-                tel,
+                nome_aluno,
+                sobrenome_aluno,
+                data_nasc_aluno,
+                genero_aluno,
+                rg_aluno,
+                cpf_aluno,
+                cep_aluno,
+                cidade_aluno,
+                bairro_aluno,
+                rua_aluno,
+                complemento_aluno,
+                tel_aluno
             }
         });
 
