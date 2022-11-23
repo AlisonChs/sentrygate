@@ -14,7 +14,6 @@ class Professor extends Model {
             cidade_professor: DataTypes.STRING,
             bairro_professor: DataTypes.STRING,
             rua_professor: DataTypes.STRING,
-            complemento_professor: DataTypes.STRING,
             tel_professor: DataTypes.STRING,
 
         }, {
@@ -25,7 +24,17 @@ class Professor extends Model {
 
     //Relacionamento entre as tabelas
     static associate(models) {
+        this.belongsToMany(models.Materia, {
+            foreignKey: 'id_prof',
+            through: 'horarios',
+            as: 'materias'
+        })
 
+        this.belongsToMany(models.Turma, {
+            foreignKey: 'id_prof',
+            through: 'horarios',
+            as: 'turmas'
+        })
     }
 }
 

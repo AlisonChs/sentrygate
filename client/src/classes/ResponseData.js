@@ -24,7 +24,7 @@ export class responseData {
      response403: Forbidden,
      response503: Unavaiable,
      response504: GatewayTimeout,
-     response500: InternalSeverError 
+     response500: InternalSeverError
    }
 
    typesResponses[userObj]()
@@ -38,6 +38,23 @@ export class responseData {
 
  showLog(log) {
    return console.log(log)
- }
+  }
+  
+  // Local Storage FN
+  
+  setItem(name, item) {
+    return localStorage.setItem(name, item)
+  }
 
+  getItem(item) {
+    return localStorage.getItem(item)
+  }
+
+  removeItem(item) {
+    return localStorage.removeItem(item)
+  }
+  
+  clearItem() {
+    return localStorage.clear()
+  }
 }

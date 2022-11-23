@@ -10,14 +10,14 @@ module.exports = {
     async store(req, res) {
         //Recebendo os valores do frontend pelo corpo da requisição
         const {
-            nome
+            nome_materia
         } = req.body;
 
         //Criando os valores recebidos na tabela        
         const [materia, created] = await Materia.findOrCreate({
-            where: { nome },
+            where: { nome_materia },
             defaults: {
-                nome
+                nome_materia
             }
         });
 
