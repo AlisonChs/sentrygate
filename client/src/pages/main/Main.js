@@ -1,5 +1,5 @@
 import "./main.css";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 
 import computer from "../../_assets/js/computer.json";
 
@@ -7,11 +7,6 @@ import { ArrowSquareRight } from "phosphor-react";
 import { useNavigate } from "react-router";
 
 export function Main() {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: computer,
-  };
 
   const navigate = useNavigate()
 
@@ -69,10 +64,7 @@ export function Main() {
           </div>
           <div className="content-right">
             <div>
-              <Lottie
-                options={defaultOptions}
-                style={{ width: "100%", height: "100%" }}
-              />
+              <Lottie animationData={computer} style={{ width: '100%' }} />
             </div>
           </div>
         </div>

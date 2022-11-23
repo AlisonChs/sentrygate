@@ -6,61 +6,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 6rem;
+    margin-top: 3rem;
 }
 
 .boletimContent {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
-    grid-template-areas: 
-    "m p ."
-    "b b f"
-    "o o r";
-
-    gap: 1rem;
+    display: flex;
+    justify-content: center
 }
 
 .boletimHeader {
     margin-bottom: 2rem;
-}
-
-.modulo {
-    grid-area: m;
-    background-color: #fff;
-    padding: 0 2rem 0 2rem;
-
-    border-radius: 0.5rem;
-}
-
-.modulo p {
-    opacity: 0.7;
-    font-size: small;
-    padding-left: 0.5rem;
-}
-
-.modulo select {
-    appearance: none;
-    background: url('../../_assets/img/arrowdown.png') no-repeat center right;
-    font-weight: bold;
-    font-size: medium;
-}
-
-.projetar {
-    grid-area: p;
-    background-color: #fff;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem 0 2rem;
-    
-    border-radius: 0.5rem;
-    cursor: pointer;
-}
-
-.projetar p, .modulo p {
-    font-weight: bold;
 }
 
 .boletim {
