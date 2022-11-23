@@ -20,7 +20,7 @@ export function Main() {
         <div className="mainContent">
           <div className="content-left">
             <div className="title">
-              <h1>Bem vindo! Thiago</h1>
+              <h1>Bem vindo! {localStorage.getItem('name')}</h1>
               <h1>
                 <span>Sentry Gate</span>
               </h1>

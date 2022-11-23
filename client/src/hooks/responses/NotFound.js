@@ -1,4 +1,4 @@
-import './404.css'
+import './stylesheet/404.css'
 import { Link } from 'react-router-dom'
 
 // this animation was used and taken from https://codepen.io/uiswarup/pen/XWdXGGV
