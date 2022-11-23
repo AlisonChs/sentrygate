@@ -20,7 +20,7 @@ export class responseData {
    const typesResponses = {
      response404: notfound,
      response200: sucess,
-     response302: found,
+     response303: found,
      response403: Forbidden,
      response503: Unavaiable,
      response504: GatewayTimeout,
