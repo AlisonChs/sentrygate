@@ -1,13 +1,17 @@
 import { Box, Button, Typography } from "@mui/material";
+import Tab from '@mui/material/Tab';
+import { useState } from "react";
 
-export function Materia ({materia, curso, isButtonHover}) {
+export function Materia ({materia, curso, allyProps}) {
+      
+      function a11yProps(index) {
+        return {
+          id: `simple-tab-${index}`,
+          'aria-controls': `simple-tabpanel-${index}`,
+        };
+      }
 
     return (
-        <Box height='100%' width='100%' sx={{backgroundColor: isButtonHover ? '#442A71' : '#361F5C', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', padding: 3   }}>  
-
-           <Typography component='h1'> {curso} </Typography>
-           <Typography component='span'> {materia} </Typography>
-
-        </Box>
+          <Tab label={materia} sx={{fontWeight: "bold"}} {...a11yProps(allyProps)} />
     )
 }

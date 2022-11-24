@@ -5,7 +5,7 @@ export default function Frequencia () {
 
     const [isLoading, setIsLoading] = useState(true);
 
-    const [frequencia, setFrequencia] = useState(27)
+    const [frequencia, setFrequencia] = useState(80)
     const [frequencyValue, setFrequencyValue] = useState(0);
 
     useEffect(() => {

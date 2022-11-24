@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import "./style.css";
 
 import Skeleton from "@mui/material/Skeleton";
-import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
-import PostAddIcon from "@mui/icons-material/PostAdd";
-import CommentIcon from "@mui/icons-material/Comment";
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
 import Modal from "@mui/material/Modal";
 import { TableBoletim } from "./TableBoletim";
 
 import TopBar from "../../components/UI/navbar/TopBar/TopBar";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
-import { Button, Divider } from "@mui/material";
+import { Button, Divider, Tabs } from "@mui/material";
 import Progresso from "../../components/pages/boletim/Media Bar/Progresso";
 import Frequencia from "../../components/pages/boletim/Media Bar/Frequencia";
 import Overall from "../../components/pages/boletim/Media Bar/Overall";
@@ -77,6 +78,12 @@ export function Boletim() {
     },
   ]
 
+  const [value, setValue] = useState('1');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   const [isButtonHover, setIsButtonHover] = useState(false)
 
   return (
@@ -97,27 +104,44 @@ export function Boletim() {
 
           <Stack sx={{height: 30, color: 'white', justifyContent: 'center', alignItems: 'center', fontSize: 'small'}} >Selecione uma matéria</Stack>
 
+          
+          <TabContext value={value}>
+
           <Stack 
             direction="row" 
-            sx={{height: 100, width: '100%', backgroundColor: '#361F5C'}}
+            justifyContent="space-around"
+            alignItems="center" 
+            sx={{height: 50, width: '100%', backgroundColor: '#442A71'}}
             divider={<Divider sx={{color: 'white'}} orientation="vertical" flexItem />}
           >
+          
 
+          <TabList indicatorColor="secondary" onChange={handleChange}>
+          
+          
           {
             materias.map((index) => {
               return (
-                <Materia
-                  onHover={() => {setIsButtonHover(!isButtonHover)}}
-                  isButtonHover={isButtonHover}
-                  key={index.id} 
-                  curso={index.curso}
-                  materia={index.materia}
-                /> 
+                <Tab sx={{color: 'white', '&:hover': {color: 'white'}, '&:blur': {color: 'white'}, '&:focus': {color: 'white', '&:focus': {borderBottom: 'white'}}}} label={index.materia} value={index.id} />
               )
             })
           }
+          
+        </TabList>
+        </Stack>
+        {/*
+            materias.map((index) => {
+              return (
+              <TabPanel value="1">Item One</TabPanel>
+              )
+            })
+          */}
+        <TabPanel value="2">Item Twxzdsdsdsdsdsdso</TabPanel>
+        <TabPanel value="3">Item Three</TabPanel>
+      </TabContext>
 
-          </Stack>
+
+
         </>
       ) : (
         <>
@@ -142,6 +166,8 @@ export function Boletim() {
           </Stack>
         </>
       )}
+
+
 
       { /*
 

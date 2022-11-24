@@ -9,7 +9,7 @@ import { Inputs } from "./Inputs";
 import { Button, Stack } from "@mui/material";
 
 
-export default function Form() {
+export function Form() {
 
   let navigate = useNavigate();
 

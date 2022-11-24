@@ -137,7 +137,6 @@ export function Folder () {
     </React.Fragment>
   );
 
-
     return (
         <Stack sx={{flexGrow: 1}} role="presentation" >
       <Breadcrumbs sx={{color: "white"}} aria-label="breadcrumb">
@@ -164,72 +163,78 @@ export function Folder () {
         >
           {getPathname()}
         </Link>
-        <Link
-          underline="hover"
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="inherit"
-        >
 
-        <Select
-          value={values.anoSelecionado}
-          onChange={handleChange}
-          name="anoSelecionado"
-          disableUnderline
-          sx={{color: "white", boxShadow: 'none', '.MuiSelect-icon': {color: 'white'}, '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
-        >
-          <MenuItem value={2022}>2022</MenuItem>
-          <MenuItem value={2023}>2023</MenuItem>
-          <MenuItem value={2024}>2024</MenuItem>
-        </Select>
-      
+        {location.pathname === "/report" && (
+          <Stack flexDirection="row">
+            
+            <Link
+              underline="hover"
+              sx={{ display: 'flex', alignItems: 'center' }}
+              color="inherit"
+            >
 
-        </Link>
+              <Select
+                value={values.anoSelecionado}
+                onChange={handleChange}
+                name="anoSelecionado"
+                disableUnderline
+                sx={{ color: "white", boxShadow: 'none', '.MuiSelect-icon': { color: 'white' }, '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
+              >
+                <MenuItem value={2022}>2022</MenuItem>
+                <MenuItem value={2023}>2023</MenuItem>
+                <MenuItem value={2024}>2024</MenuItem>
+              </Select>
 
-        <Link
-          underline="hover"
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="inherit"
-        >
+
+            </Link>
+            
+            <Link
+              underline="hover"
+              sx={{ display: 'flex', alignItems: 'center' }}
+              color="inherit"
+            >
+
+                <Select
+                  value={values.cursoSelecionado}
+                  onChange={handleChange}
+                  name="cursoSelecionado"
+                  disableUnderline
+                  sx={{ color: "white", boxShadow: 'none', '.MuiSelect-icon': { color: 'white' }, '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
+                >
+
+                  {cursos.map((index) => {
+                    return <MenuItem value={index.curso}>{index.curso}</MenuItem>;
+                  })}
+
+                </Select>
+
+              </Link>
+              
+              <Link
+                underline="hover"
+                sx={{ display: 'flex', alignItems: 'center' }}
+                color="inherit"
+              >
+
+                <Select
+                  value={values.bimestreSelecionado}
+                  onChange={handleChange}
+                  name="bimestreSelecionado"
+                  disableUnderline
+                  sx={{ color: "white", boxShadow: 'none', '.MuiSelect-icon': { color: 'white' }, '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
+                >
+
+                  {bimestres
+                    .filter(index => index.curso === values.cursoSelecionado)
+                    .map((index) => {
+                      return <MenuItem key={index.id} label={index.curso} value={index.bimestre}>{index.bimestre}</MenuItem>;
+                    })}
+
+                </Select>
+
+              </Link></Stack>
+          )}
         
-        <Select
-          value={values.cursoSelecionado}
-          onChange={handleChange}
-          name="cursoSelecionado"
-          disableUnderline
-          sx={{color: "white", boxShadow: 'none', '.MuiSelect-icon': {color: 'white'}, '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
-        >
-          
-          {cursos.map((index) => {
-              return <MenuItem value={index.curso}>{index.curso}</MenuItem>
-          })}
-          
-        </Select>
-
-        </Link>
-
-        <Link
-          underline="hover"
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="inherit"
-        >
-        
-        <Select
-          value={values.bimestreSelecionado}
-          onChange={handleChange}
-          name="bimestreSelecionado"
-          disableUnderline
-          sx={{color: "white", boxShadow: 'none', '.MuiSelect-icon': {color: 'white'}, '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
-        >
-          
-          {bimestres
-          .filter(index => index.curso === values.cursoSelecionado)
-          .map((index) => {
-              return <MenuItem key={index.id} label={index.curso} value={index.bimestre}>{index.bimestre}</MenuItem>
-          })}
-          
-        </Select>
-
-        </Link>
 
       </Breadcrumbs>
 
