@@ -28,10 +28,10 @@ export function Inputs({ currentUser, setCurrentUser, setEmail, setSenha, email,
           </h2>
         </div>
         <div>
-          <input type="email" value={email} name="emailUsuario" onChange={e => setEmail(e.target.value)} placeholder="Insira o Email" />
+          <input className='input' type="email" value={email} name="emailUsuario" onChange={e => setEmail(e.target.value)} placeholder="Insira o Email" />
         </div>
         <div>
-          <input type="password" value={senha} name="senhaUsuario" onChange={e => setSenha(e.target.value)} placeholder="Insira a senha" />
+          <input className='input' type="password" value={senha} name="senhaUsuario" onChange={e => setSenha(e.target.value)} placeholder="Insira a senha" />
         </div>
       </div>
     </div>
