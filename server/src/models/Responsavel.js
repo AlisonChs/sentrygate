@@ -3,12 +3,12 @@ const { Model, DataTypes } = require('sequelize');
 class Responsavel extends Model {
     static init(connection) {
         super.init({
-            nome: DataTypes.STRING,
-            sobrenome: DataTypes.STRING,
-            data_nasc: DataTypes.STRING,
-            cpf: DataTypes.STRING,
-            rg: DataTypes.STRING,
-            tel: DataTypes.STRING,
+            nome_responsavel: DataTypes.STRING,
+            sobrenome_responsavel: DataTypes.STRING,
+            data_nasc_responsavel: DataTypes.STRING,
+            cpf_responsavel: DataTypes.STRING,
+            rg_responsavel: DataTypes.STRING,
+            tel_responsavel: DataTypes.STRING,
         }, {
             sequelize: connection,
             tableName: 'responsaveis'
@@ -22,7 +22,7 @@ class Responsavel extends Model {
         this.belongsToMany(models.Aluno, {
             foreignKey: 'id_responsavel',
             through: 'responsaveis_alunos',
-            as: 'alunos',
+            as: 'aluno',
         });
     }
 

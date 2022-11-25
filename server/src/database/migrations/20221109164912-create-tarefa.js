@@ -2,36 +2,37 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('turmas', {
+    await queryInterface.createTable('tarefas', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nome_turma: {
+      titulo_tarefa: {
         allowNull:false,
         type: Sequelize.STRING
       },
-      horario_turma: {
+      descricao_tarefa: {
         allowNull:false,
         type: Sequelize.STRING
       },
-      ano_turma: {
+      entrega_tarefa: {
+
         allowNull:false,
-        type: Sequelize.INTEGER
+        type: Sequelize.DATE
       },
-      created_at: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updated_at: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('turmas');
+    await queryInterface.dropTable('tarefas');
   }
 };

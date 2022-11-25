@@ -14,6 +14,7 @@ module.exports = {
             where: { email, senha }
         });
 
+
         if (conta === null) {
             return res.status(404).json()
         } else {
@@ -21,7 +22,7 @@ module.exports = {
                 where: conta.id_aluno
             })
 
-            return res.status(200).json(aluno)
+            return res.status(200).json()
         }
 
     },
