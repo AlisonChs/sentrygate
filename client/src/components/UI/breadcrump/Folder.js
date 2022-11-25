@@ -9,48 +9,56 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { Box } from '@mui/system';
 
-export function Folder () {
+export function Folder ({setHasBimestralFilter, setCourseFilter, setMateria}) {
 
   const cursos = [
     {
       id: 1,
-      curso: "Análise e desenvolvimento de sistemas",
+      curso: "ADS",
+      label: "Análise e desenvolvimento de sistemas"
     },
     {
       id: 2,
       curso: "Ensino médio",
+      label: "Ensino médio"
     },
   ]
 
   const bimestres = [
     {
       id: 1,
-      curso: "Análise e desenvolvimento de sistemas",
+      curso: "ADS",
+      label: "Análise e desenvolvimento de sistemas",
       bimestre: "1º Bimestre"
     },
     {
       id: 1,
-      curso: "Análise e desenvolvimento de sistemas",
+      curso: "ADS",
+      label: "Análise e desenvolvimento de sistemas",
       bimestre: "2º Bimestre"
     },
     {
       id: 1,
-      curso: "Análise e desenvolvimento de sistemas",
+      curso: "ADS",
+      label: "Análise e desenvolvimento de sistemas",
       bimestre: "3º Bimestre"
     },
     {
       id: 2,
       curso: "Ensino médio",
+      label: "Ensino médio",
       bimestre: "1º Bimestre"
     },
     {
       id: 2,
       curso: "Ensino médio",
+      label: "Ensino médio",
       bimestre: "2º Bimestre"
     },
     {
       id: 2,
       curso: "Ensino médio",
+      label: "Ensino médio",
       bimestre: "3º Bimestre"
     },
   ]
@@ -65,18 +73,20 @@ export function Folder () {
     }
 
     React.useEffect(() => {
+        setCourseFilter(values.cursoSelecionado)
         setPathname(location.pathname)
-    }, [location.pathname])
+    })
 
     const [valorSelecionado, setValorSelecionado] = React.useState(null)
 
     const [values, setValues] = React.useState({
       anoSelecionado: anoAtual(),
-      cursoSelecionado: null,
+      cursoSelecionado: null, 
       bimestreSelecionado: null
     })
 
     const handleChange = (value) => {
+      value.target.name === `cursoSelecionado` && (setMateria(null))
       setValorSelecionado(value.target.value)
       setOpenSnack(true)
       setValues((prevValue) => ({
@@ -123,6 +133,8 @@ export function Folder () {
     const handleCloseSnack = () => {
       setOpenSnack(false);
     };
+
+    const handleBimestralFilter = () => {setHasBimestralFilter(true)}
 
   const action = (
     <React.Fragment >
@@ -203,7 +215,7 @@ export function Folder () {
                 >
 
                   {cursos.map((index) => {
-                    return <MenuItem value={index.curso}>{index.curso}</MenuItem>;
+                    return <MenuItem value={index.curso}>{index.label}</MenuItem>;
                   })}
 
                 </Select>
@@ -227,12 +239,14 @@ export function Folder () {
                   {bimestres
                     .filter(index => index.curso === values.cursoSelecionado)
                     .map((index) => {
-                      return <MenuItem key={index.id} label={index.curso} value={index.bimestre}>{index.bimestre}</MenuItem>;
+                      return <MenuItem onClick={handleBimestralFilter} key={index.id} value={index.bimestre}>{index.bimestre}</MenuItem>;
                     })}
 
                 </Select>
 
-              </Link></Stack>
+              </Link>
+              
+              </Stack>
           )}
         
 

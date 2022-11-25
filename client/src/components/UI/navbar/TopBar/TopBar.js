@@ -11,21 +11,6 @@ export default function TopBar (props) {
 
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const styleModal = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
-
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -60,9 +45,7 @@ export default function TopBar (props) {
           </>
           )}
 
-          {!isLoading ? (
-            <Folder />
-          ) : (
+          {isLoading && (
             <Stack sx={{marginLeft: 30, flexDirection: "row"}}>
               <Skeleton variant="circular" width={30} height={30} sx={{mr: 1, mt: 1}} />
               <Skeleton width={700} height={50} />

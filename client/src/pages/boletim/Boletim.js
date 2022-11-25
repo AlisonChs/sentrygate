@@ -6,13 +6,11 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import Modal from "@mui/material/Modal";
-import { TableBoletim } from "./TableBoletim";
 
 import TopBar from "../../components/UI/navbar/TopBar/TopBar";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
-import { Button, Divider, Tabs } from "@mui/material";
+import {Divider} from "@mui/material";
 import Progresso from "../../components/pages/boletim/Media Bar/Progresso";
 import Frequencia from "../../components/pages/boletim/Media Bar/Frequencia";
 import Overall from "../../components/pages/boletim/Media Bar/Overall";
@@ -24,13 +22,11 @@ import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import PrintIcon from '@mui/icons-material/Print';
 import ShareIcon from '@mui/icons-material/Share';
-import { Materia }from "../../components/pages/boletim/Materia Bar/Materia";
+import { Card } from "../../components/pages/boletim/Notas/Card";
+import { Folder } from "../../components/UI/breadcrump/Folder";
 
 export function Boletim() {
   const [isLoading, setIsLoading] = useState(true);
-
-  const [modulo, setModulo] = useState("");
-  const [hasObservation, setHasObservation] = useState(true);
 
   const actions = [
     { icon: <FileCopyIcon />, name: 'Copiar notas' },
@@ -38,6 +34,8 @@ export function Boletim() {
     { icon: <PrintIcon />, name: 'Printar boletim' },
     { icon: <ShareIcon />, name: 'Compartilhe seu boletim' },
   ];
+
+  const [filter, setFilter] = useState(1)
 
   useEffect(() => {
     setTimeout(() => {
@@ -48,17 +46,17 @@ export function Boletim() {
   const materias = [
     {
       id: 1,
-      curso: "A.D.S",
+      curso: "ADS",
       materia: "Protocolo de internet",
     },
     {
       id: 2,
-      curso: "A.D.S",
+      curso: "ADS",
       materia: "Análise de sistemas",
     },
     {
       id: 3,
-      curso: "A.D.S",
+      curso: "ADS",
       materia: "Sistemas embarcados",
     },
     {
@@ -78,18 +76,28 @@ export function Boletim() {
     },
   ]
 
-  const [value, setValue] = useState('1');
+  const [value, setValue] = useState(null);
+  
+  const [hasBimestralFilter, setHasBimestralFilter] = useState(false)
+
+  const [courseFilter, setCourseFilter] = useState(``);
+
+  useEffect(() => { 
+    console.log(value) 
+  })
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const [isButtonHover, setIsButtonHover] = useState(false)
-
   return (
     <Stack>
       <TopBar PageTitle="Boletim" PageSpan="Escolar" />
 
+      <Stack sx={{position: `absolute`, mt: 0.5, top: 0, display: `flex`, width: `100%`, alignItems: `center`}}>
+        <Folder setMateria={setValue} setCourseFilter={setCourseFilter} setHasBimestralFilter={setHasBimestralFilter}/>
+      </Stack>
+ 
       {!isLoading ? (
         <>
           <Stack 
@@ -99,35 +107,38 @@ export function Boletim() {
           >
             <Progresso />
             <Overall />
-            <Frequencia />
-          </Stack>
+            <Frequencia /> 
+          </Stack>  
 
           <Stack sx={{height: 30, color: 'white', justifyContent: 'center', alignItems: 'center', fontSize: 'small'}} >Selecione uma matéria</Stack>
 
-          
+           
           <TabContext value={value}>
 
-          <Stack 
-            direction="row" 
-            justifyContent="space-around"
-            alignItems="center" 
-            sx={{height: 50, width: '100%', backgroundColor: '#442A71'}}
-            divider={<Divider sx={{color: 'white'}} orientation="vertical" flexItem />}
-          >
-          
+            <Stack 
+              direction="row" 
+              justifyContent="space-around"
+              alignItems="center" 
+              sx={{height: 50, width: '100%', backgroundColor: '#442A71'}}
+              divider={<Divider sx={{color: 'white'}} orientation="vertical" flexItem />}
+            >
+            
 
-          <TabList indicatorColor="secondary" onChange={handleChange}>
-          
-          
-          {
-            materias.map((index) => {
-              return (
-                <Tab sx={{color: 'white', '&:hover': {color: 'white'}, '&:blur': {color: 'white'}, '&:focus': {color: 'white', '&:focus': {borderBottom: 'white'}}}} label={index.materia} value={index.id} />
-              )
-            })
-          }
+            <TabList indicatorColor="secondary" onChange={handleChange}>
+            
+            
+            {
+              materias
+              .filter(index => index.curso === courseFilter)
+              .map((index) => {
+                return (
+                  <Tab sx={{color: 'white', '&:hover': {color: 'white'}, '&:blur': {color: 'white'}, '&:focus': {color: 'white', '&:focus': {borderBottom: 'white'}}}} label={index.materia} value={index.materia} />
+                )
+              })
+            }
           
         </TabList>
+
         </Stack>
         {/*
             materias.map((index) => {
@@ -136,10 +147,45 @@ export function Boletim() {
               )
             })
           */}
-        <TabPanel value="2">Item Twxzdsdsdsdsdsdso</TabPanel>
-        <TabPanel value="3">Item Three</TabPanel>
+
+        {
+          materias
+            .filter(index => index.curso === courseFilter)
+            .map((index) => {
+            return (
+              <TabPanel value={index.materia}>
+                <Card hasBimestralFilter={hasBimestralFilter} curso={index.curso} materia={index.materia} />
+              </TabPanel>
+            )
+          })
+        }
+
       </TabContext>
 
+        
+      
+        { 
+
+        // Caso nao tenha filtros de curso, ele retornará todos os cards.
+        // Caso tenha filtros de curso, ele retornará todos cards caso o
+        // usuario nao tenha selecionado uma materia especifica
+        
+        courseFilter === null ? (
+          materias.map((index) => {
+            return (
+              <Card hasBimestralFilter={hasBimestralFilter} curso={index.curso} materia={index.materia} />
+            )
+          })) : (
+            value === null && (
+            materias
+            .filter(index => index.curso === courseFilter)
+            .map((index) => {
+              return (
+                <Card hasBimestralFilter={hasBimestralFilter} curso={index.curso} materia={index.materia} />
+              )
+            }))
+          )
+        }
 
 
         </>
@@ -161,13 +207,18 @@ export function Boletim() {
           divider={<Divider sx={{color: 'white'}} orientation="vertical" flexItem />}
           >
 
+
           {materias.map(() => <Skeleton sx={{ width: '100%', height: '100%'}} /> )}
 
           </Stack>
+
+          { materias.map(() => {
+            return (
+              <Skeleton sx={{ width: 900, height: 130, borderRadius: 5}} />
+            )
+            })}
         </>
       )}
-
-
 
       { /*
 
