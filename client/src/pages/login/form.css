@@ -147,7 +147,7 @@ select {
   transition: all 0.5s ease-out; 
 }
 
-input:hover {
+.input:hover {
   filter: drop-shadow(5px 5px 15px #210D41)
 }
 
@@ -176,7 +176,7 @@ input:hover {
   color: white;
 }
 
-.button:hover, input:hover {
+.button:hover, .input:hover {
   background-color: #5819BB;
   transition: 0.5s;
 }

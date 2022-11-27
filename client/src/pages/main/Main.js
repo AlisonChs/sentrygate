@@ -6,17 +6,42 @@ import {useState} from "react";
 import computer from "../../_assets/js/computer.json";
 
 import { useNavigate } from "react-router";
-import { Stack, Box, Typography, Modal, Fade, Button } from "@mui/material";
+import { Stack, Box, Typography, Modal, Fade, Button, styled, FormControl, InputLabel, Select, MenuItem, ListSubheader, Divider, Grow } from "@mui/material";
 import Backdrop from '@mui/material/Backdrop';
-import TextField from '@mui/material/TextField';
+import TextField from '@mui/material/TextField'; 
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
+
+const StyledTextField = styled(TextField) ({
+  '& label.Mui-focused': {
+    color: 'white',
+  },
+  '& MuiInput-root': {
+    color: 'white',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'white',
+  },
+  '&.Mui-focused fieldset': {
+      borderColor: 'white',
+    },
+});
+
 
 export function Main() {
+
+  const [customTimePickerMT, setCustomTimePickerMT] = useState(false)
+  const [customTimePickerVP, setCustomTimePickerVP] = useState(false)
+
+  const [horarioEntrada, setHorarioEntrada] = useState(null)
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
     animationData: computer,
   };
-
+ 
   const navigate = useNavigate()
 
   function goBoletim() {
@@ -72,9 +97,9 @@ export function Main() {
     }
   }
 
-  const inputStyle = {
-    color: 'white'
-  }
+  const handleHorarioTurma = (event) => {
+
+  }   
 
   const [openTurmas, setOpenTurmas] = useState(false);
   const handleOpenTurmas = () => setOpenTurmas(true);
@@ -87,7 +112,6 @@ export function Main() {
   const [openVincularProf, setOpenVincularProf] = useState(false);
   const handleOpenVincularProf = () => setOpenVincularProf(true);
   const handleCloseVincularProf = () => setOpenVincularProf(false);
-  
 
   return (
     <>
@@ -109,14 +133,84 @@ export function Main() {
       >
         <Fade in={openTurmas}>
           <Box sx={modalStyle}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
+            <Typography id="transition-modal-title" variant="h4" component="h2">
               Criar uma turma
             </Typography>
-            <Typography id="transition-modal-description" sx={{ mt: 2, mb: 3 }}>
+            <Typography id="transition-modal-description" sx={{ mt: 2, mb: 3, color:  "white"}}>
               Insira os dados da turma que deseja criar e deixe o resto conosco!
             </Typography>
+ 
+            <StyledTextField sx={{input: {color: 'white' }}} helperText="Insira o nome da turma" id="standard-basic" label="Nome da turma" variant="standard" />
 
-            <TextField sx={inputStyle} id="standard-basic" label="Nome da turma" variant="standard" />
+          <Divider sx={{mt: 2, mb: 2}} />
+
+          <Typography id="transition-modal-description" sx={{ mt: 2, mb: 1, color:  "white"}}>
+              Insira o horário de entrada e saída da turma:
+            </Typography>
+
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+              <InputLabel htmlFor="grouped-select">Entrada</InputLabel>
+              <Select onChange={handleHorarioTurma} defaultValue=""  id="grouped-select" label="Grouping">
+                <ListSubheader>Matutino</ListSubheader>
+                <MenuItem value={1}>06h:00</MenuItem>
+                <MenuItem value={2}>07:00</MenuItem>
+                <ListSubheader>Vespertino</ListSubheader>
+                <MenuItem value={3}>13:00</MenuItem>
+                <MenuItem value={4}>14:00</MenuItem>
+                <ListSubheader></ListSubheader>
+                <MenuItem onClick={() => setCustomTimePickerMT(true)}>
+                Outro?
+                </MenuItem>
+              </Select>
+            </FormControl>
+
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+              <InputLabel htmlFor="grouped-select">Saída</InputLabel>
+              <Select onChange={handleHorarioTurma} defaultValue="" id="grouped-select" label="Grouping">
+                <ListSubheader>Matutino</ListSubheader>
+                <MenuItem value={1}>11h:00</MenuItem>
+                <MenuItem value={2}>12h:00</MenuItem>
+                <ListSubheader>Vespertino</ListSubheader>
+                <MenuItem value={3}>18:00</MenuItem>
+                <MenuItem value={4}>17:00</MenuItem>
+                <ListSubheader></ListSubheader>
+                <MenuItem onClick={() => setCustomTimePickerVP(true)}>
+                Outro?
+                </MenuItem>
+              </Select>
+            </FormControl>
+{/**/}
+
+              { customTimePickerMT ? (
+              <LocalizationProvider dateAdapter={AdapterDayjs}  sx={{position: `absolute`, left: 15}}>
+                <Fade in={true}>
+                <MobileTimePicker value={horarioEntrada}
+                onChange={(newValue) => {
+                  setHorarioEntrada(newValue);
+                }} label="Horário de entrada" open={true}
+          onChange={(newValue) => {
+            setHorarioEntrada(newValue);
+          }}
+          renderInput={(params) => <Backdrop in={true} {...params} />}/>
+          </Fade>
+      </LocalizationProvider>
+      ) : null }
+
+      { customTimePickerVP ? (
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <Fade in={true}>
+                <MobileTimePicker 
+                  value={horarioEntrada}
+                  label="Horário de saída" 
+                  open={true} 
+                  onChange={(newValue) => {
+                    setHorarioEntrada(newValue);
+                  }}
+                  renderInput={(params) => <Backdrop in={true} {...params} />}
+                />
+          </Fade>
+      </LocalizationProvider>
+      ) : null }
 
             <Button variant="outlined" sx={btnStyle}>Adicionar turma</Button>
 
