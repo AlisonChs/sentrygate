@@ -9,9 +9,13 @@ import { useNavigate } from "react-router";
 import { Stack, Box, Typography, Modal, Fade, Button, styled, FormControl, InputLabel, Select, MenuItem, ListSubheader, Divider, Grow } from "@mui/material";
 import Backdrop from '@mui/material/Backdrop';
 import TextField from '@mui/material/TextField'; 
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import {pt} from 'date-fns/locale'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
+import {format} from 'date-fns'
+
+const dateFormat = 'hh:mm'
 
 const StyledTextField = styled(TextField) ({
   '& label.Mui-focused': {
@@ -31,8 +35,8 @@ const StyledTextField = styled(TextField) ({
 
 export function Main() {
 
-  const [customTimePickerMT, setCustomTimePickerMT] = useState(false)
-  const [customTimePickerVP, setCustomTimePickerVP] = useState(false)
+  const [customTimePickerEntrada, setCustomTimePickerEntrada] = useState(false)
+  const [customTimePickerSaida, setCustomTimePickerSaida] = useState(false)
 
   const [horarioEntrada, setHorarioEntrada] = useState(null)
 
@@ -97,9 +101,13 @@ export function Main() {
     }
   }
 
-  const handleHorarioTurma = (event) => {
+  const [timePickerValue, setTimePickerValue] = useState()
 
-  }   
+  const handleHorarioTurma = (newValue) => {
+
+      setHorarioEntrada(newValue.target.value)
+   
+  }
 
   const [openTurmas, setOpenTurmas] = useState(false);
   const handleOpenTurmas = () => setOpenTurmas(true);
@@ -112,6 +120,21 @@ export function Main() {
   const [openVincularProf, setOpenVincularProf] = useState(false);
   const handleOpenVincularProf = () => setOpenVincularProf(true);
   const handleCloseVincularProf = () => setOpenVincularProf(false);
+
+  const openTimePickerEntrada = () => {setCustomTimePickerEntrada(true)}
+  const openTimePickerSaida = () => {setCustomTimePickerSaida(true)}
+
+  const [formattedTime, setFormattedTime] = useState(null)
+
+  const closeTimePickerEntrada = (dateObj) => {
+    setFormattedTime(format(dateObj, dateFormat))
+
+    setHorarioEntrada(formattedTime)
+
+    setCustomTimePickerEntrada(false)
+  }
+
+  const closeTimePickerSaida = () => {setCustomTimePickerSaida(false)}
 
   return (
     <>
@@ -152,14 +175,14 @@ export function Main() {
               <InputLabel htmlFor="grouped-select">Entrada</InputLabel>
               <Select onChange={handleHorarioTurma} defaultValue=""  id="grouped-select" label="Grouping">
                 <ListSubheader>Matutino</ListSubheader>
-                <MenuItem value={1}>06h:00</MenuItem>
-                <MenuItem value={2}>07:00</MenuItem>
+                <MenuItem value='06:00'>06h:00</MenuItem>
+                <MenuItem value='07:00'>07:00</MenuItem>
                 <ListSubheader>Vespertino</ListSubheader>
-                <MenuItem value={3}>13:00</MenuItem>
-                <MenuItem value={4}>14:00</MenuItem>
+                <MenuItem value='13:00'>13:00</MenuItem>
+                <MenuItem value='14:00'>14:00</MenuItem>
                 <ListSubheader></ListSubheader>
-                <MenuItem onClick={() => setCustomTimePickerMT(true)}>
-                Outro?
+                <MenuItem value={null} onClick={openTimePickerEntrada}>
+                {formattedTime === null ? <b>Outro?</b> : formattedTime}
                 </MenuItem>
               </Select>
             </FormControl>
@@ -168,49 +191,42 @@ export function Main() {
               <InputLabel htmlFor="grouped-select">Saída</InputLabel>
               <Select onChange={handleHorarioTurma} defaultValue="" id="grouped-select" label="Grouping">
                 <ListSubheader>Matutino</ListSubheader>
-                <MenuItem value={1}>11h:00</MenuItem>
-                <MenuItem value={2}>12h:00</MenuItem>
+                <MenuItem value='11:00'>11h:00</MenuItem>
+                <MenuItem value='12:00'>12h:00</MenuItem>
                 <ListSubheader>Vespertino</ListSubheader>
-                <MenuItem value={3}>18:00</MenuItem>
-                <MenuItem value={4}>17:00</MenuItem>
+                <MenuItem value='18:00'>18:00</MenuItem>
+                <MenuItem value='17:00'>17:00</MenuItem>
                 <ListSubheader></ListSubheader>
-                <MenuItem onClick={() => setCustomTimePickerVP(true)}>
-                Outro?
+                <MenuItem value={1} onClick={openTimePickerSaida}>
+                {formattedTime === null ? <b>Outro?</b> : formattedTime}
                 </MenuItem>
               </Select>
             </FormControl>
 {/**/}
 
-              { customTimePickerMT ? (
-              <LocalizationProvider dateAdapter={AdapterDayjs}  sx={{position: `absolute`, left: 15}}>
-                <Fade in={true}>
-                <MobileTimePicker value={horarioEntrada}
-                onChange={(newValue) => {
-                  setHorarioEntrada(newValue);
-                }} label="Horário de entrada" open={true}
-          onChange={(newValue) => {
-            setHorarioEntrada(newValue);
-          }}
-          renderInput={(params) => <Backdrop in={true} {...params} />}/>
-          </Fade>
-      </LocalizationProvider>
-      ) : null }
+          <LocalizationProvider locale={pt} dateAdapter={AdapterDateFns}  sx={{position: `absolute`, left: 15}}>
+            <Fade in={customTimePickerEntrada}> 
+              <MobileTimePicker
+                onAccept={closeTimePickerEntrada} 
+                dateFormat="h:mm"
+                label="Horário de entrada" open={customTimePickerEntrada}
+                renderInput={(params) => <Backdrop in={customTimePickerEntrada} {...params} />}
+              />
+            </Fade>
+          </LocalizationProvider>
+             
 
-      { customTimePickerVP ? (
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <Fade in={true}>
+              <LocalizationProvider locale={pt} dateAdapter={AdapterDateFns}>
+                <Fade in={customTimePickerSaida}>
                 <MobileTimePicker 
-                  value={horarioEntrada}
                   label="Horário de saída" 
-                  open={true} 
-                  onChange={(newValue) => {
-                    setHorarioEntrada(newValue);
-                  }}
-                  renderInput={(params) => <Backdrop in={true} {...params} />}
+                  open={customTimePickerSaida} 
+                  onAccept={closeTimePickerSaida}
+                  dateFormat="h:mm"
+                  renderInput={(params) => <Backdrop in={customTimePickerSaida} {...params} />}
                 />
           </Fade>
       </LocalizationProvider>
-      ) : null }
 
             <Button variant="outlined" sx={btnStyle}>Adicionar turma</Button>
 
