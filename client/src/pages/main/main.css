@@ -4,12 +4,6 @@
   margin-top: 5rem;
 }
 
-.content-right {
-  position: absolute;
-  left: 4rem;
-  top: 30%
-}
-
 .mainContent {
   width: 85%;
 
@@ -20,10 +14,10 @@
 }
 
 .content-right {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 90vw;
+  position: absolute;
+  top: 45%;
+  width: 30%;
+  left: 70%;
 }
 
 .title h1 {
