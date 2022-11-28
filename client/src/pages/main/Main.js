@@ -14,6 +14,7 @@ import {pt} from 'date-fns/locale'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
 import {format} from 'date-fns'
+import { useEffect } from "react";
 
 const dateFormat = 'hh:mm'
 
@@ -32,13 +33,13 @@ const StyledTextField = styled(TextField) ({
     },
 });
 
-
 export function Main() {
 
   const [customTimePickerEntrada, setCustomTimePickerEntrada] = useState(false)
   const [customTimePickerSaida, setCustomTimePickerSaida] = useState(false)
 
   const [horarioEntrada, setHorarioEntrada] = useState(null)
+  const [horarioSaida, setHorarioSaida] = useState(null)
 
   const defaultOptions = {
     loop: true,
@@ -101,13 +102,32 @@ export function Main() {
     }
   }
 
-  const [timePickerValue, setTimePickerValue] = useState()
+  const handleHorarioEntrada = (newValue) => {
 
-  const handleHorarioTurma = (newValue) => {
-
+    const setValues = () => {
+      setValueTimeEntrada(null)
       setHorarioEntrada(newValue.target.value)
+    }
+
+      newValue.target.value === 0 ? (
+        openTimePickerEntrada()
+      ) : (setValues())
+
    
   }
+
+  const handleHorarioSaida = (newValue) => {
+
+    const setValues = () => {
+      setValueTimeSaida(null)
+      setHorarioSaida(newValue.target.value)
+    }
+
+    newValue.target.value === 0 ? (
+      openTimePickerSaida()
+    ) : (setValues())
+ 
+}
 
   const [openTurmas, setOpenTurmas] = useState(false);
   const handleOpenTurmas = () => setOpenTurmas(true);
@@ -126,15 +146,43 @@ export function Main() {
 
   const [formattedTime, setFormattedTime] = useState(null)
 
-  const closeTimePickerEntrada = (dateObj) => {
-    setFormattedTime(format(dateObj, dateFormat))
+  const [valueTimeEntrada, setValueTimeEntrada] = useState(null)
+  const [valueTimeSaida, setValueTimeSaida] = useState(null)
+
+  const handleCustomTimeEntrada = (newValue) => {
+    setValueTimeEntrada(newValue)
+
+    setFormattedTime(format(newValue, dateFormat))
 
     setHorarioEntrada(formattedTime)
-
-    setCustomTimePickerEntrada(false)
   }
 
+  const handleCustomTimeSaida = (newValue) => {
+    
+    setValueTimeSaida(newValue)
+
+    setFormattedTime(format(newValue, dateFormat))
+
+    setHorarioSaida(formattedTime)
+  }
+
+  const closeTimePickerEntrada = () => {setCustomTimePickerEntrada(false)}
+
   const closeTimePickerSaida = () => {setCustomTimePickerSaida(false)}
+
+  const selectStyles = {
+    color: `white !important`, 
+    '&::after': {
+      borderColor: 'blueviolet',
+      color: 'white'
+    },
+    
+    '&::before': {
+      borderColor: 'none',
+      color: 'white'
+    },
+    borderColor:'none !important'
+  }
 
   return (
     <>
@@ -172,43 +220,45 @@ export function Main() {
             </Typography>
 
             <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel htmlFor="grouped-select">Entrada</InputLabel>
-              <Select onChange={handleHorarioTurma} defaultValue=""  id="grouped-select" label="Grouping">
+              <InputLabel sx={selectStyles} htmlFor="grouped-select">Entrada</InputLabel>
+              <Select sx={selectStyles} variant="filled" onChange={handleHorarioEntrada} id="grouped-select" label="Grouping">
                 <ListSubheader>Matutino</ListSubheader>
-                <MenuItem value='06:00'>06h:00</MenuItem>
-                <MenuItem value='07:00'>07:00</MenuItem>
+                <MenuItem value='06:00'>06h:00m</MenuItem>
+                <MenuItem value='07:00'>07h:00m</MenuItem>
                 <ListSubheader>Vespertino</ListSubheader>
-                <MenuItem value='13:00'>13:00</MenuItem>
-                <MenuItem value='14:00'>14:00</MenuItem>
+                <MenuItem value='13:00'>13h:00m</MenuItem>
+                <MenuItem value='14:00'>14h:00m</MenuItem>
                 <ListSubheader></ListSubheader>
-                <MenuItem value={null} onClick={openTimePickerEntrada}>
-                {formattedTime === null ? <b>Outro?</b> : formattedTime}
+                <MenuItem value={0}>
+                  {valueTimeEntrada === null ? <b>Customizar</b> : formattedTime}
                 </MenuItem>
               </Select>
             </FormControl>
 
             <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel htmlFor="grouped-select">Saída</InputLabel>
-              <Select onChange={handleHorarioTurma} defaultValue="" id="grouped-select" label="Grouping">
+              <InputLabel sx={selectStyles} htmlFor="grouped-select">Saída</InputLabel>
+              <Select sx={selectStyles} variant="filled" onChange={handleHorarioSaida} defaultValue="" id="grouped-select" label="Grouping">
                 <ListSubheader>Matutino</ListSubheader>
-                <MenuItem value='11:00'>11h:00</MenuItem>
-                <MenuItem value='12:00'>12h:00</MenuItem>
+                <MenuItem value='11:00'>11h:00m</MenuItem>
+                <MenuItem value='12:00'>12h:00m</MenuItem>
                 <ListSubheader>Vespertino</ListSubheader>
-                <MenuItem value='18:00'>18:00</MenuItem>
-                <MenuItem value='17:00'>17:00</MenuItem>
+                <MenuItem value='18:00'>18h:00m</MenuItem>
+                <MenuItem value='17:00'>17h:00m</MenuItem>
                 <ListSubheader></ListSubheader>
-                <MenuItem value={1} onClick={openTimePickerSaida}>
-                {formattedTime === null ? <b>Outro?</b> : formattedTime}
+                <MenuItem value={0}>
+                  {valueTimeSaida === null ? <b>Customizar</b> : formattedTime}
                 </MenuItem>
               </Select>
             </FormControl>
 {/**/}
 
-          <LocalizationProvider locale={pt} dateAdapter={AdapterDateFns}  sx={{position: `absolute`, left: 15}}>
+          <LocalizationProvider locale={pt} dateAdapter={AdapterDateFns}>
             <Fade in={customTimePickerEntrada}> 
               <MobileTimePicker
                 onAccept={closeTimePickerEntrada} 
                 dateFormat="h:mm"
+                onChange={handleCustomTimeEntrada}
+                value={valueTimeEntrada}
                 label="Horário de entrada" open={customTimePickerEntrada}
                 renderInput={(params) => <Backdrop in={customTimePickerEntrada} {...params} />}
               />
@@ -219,8 +269,9 @@ export function Main() {
               <LocalizationProvider locale={pt} dateAdapter={AdapterDateFns}>
                 <Fade in={customTimePickerSaida}>
                 <MobileTimePicker 
+                  onChange={handleCustomTimeSaida}
                   label="Horário de saída" 
-                  open={customTimePickerSaida} 
+                  value={valueTimeSaida}
                   onAccept={closeTimePickerSaida}
                   dateFormat="h:mm"
                   renderInput={(params) => <Backdrop in={customTimePickerSaida} {...params} />}
