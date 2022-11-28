@@ -12,10 +12,6 @@ import { Turmas } from "../../components/pages/Coordinator /Turmas";
 
 import { Materias } from "../../components/pages/Coordinator /Materias";
 import { Vincular } from "../../components/pages/Coordinator /Vincular";
-import { Professor } from "../../components/pages/Coordinator /Professor";
-
-
-
 
 export function Main() {
 
@@ -26,10 +22,6 @@ export function Main() {
   };
  
   const navigate = useNavigate()
-
-  function goBoletim() {
-    navigate('/boletim')
-  }
 
   const boxStyle = {
     color: 'white',
@@ -67,8 +59,7 @@ export function Main() {
   const [openVincularProf, setOpenVincularProf] = useState(false);
   const handleOpenVincularProf = () => setOpenVincularProf(true);
 
-  const [openCriarProf, setOpenCriarProf] = useState(false);
-  const handleOpenCriarProf = () => setOpenCriarProf(true);
+  const handleProf = () => navigate("/register/teacher/");
 
   return (
     <Stack>
@@ -88,11 +79,6 @@ export function Main() {
       }
 
       <Vincular setOpenVincularProf={setOpenVincularProf} openVincularProf={openVincularProf} />
-
-      {// Modal - Criar professores
-      }
-
-      <Professor setOpenCriarProf={setOpenCriarProf} openCriarProf={openCriarProf} />
 
         {/* Animação de estrelas do fundo da tela */}
       <div className="stars">
@@ -115,7 +101,7 @@ export function Main() {
             >
               <Box onClick={handleOpenTurmas} sx={boxStyle}>Inserir uma turma</Box>
               <Box onClick={handleOpenMaterias} sx={boxStyle}>Inserir uma matéria</Box>
-              <Box onClick={handleOpenCriarProf} sx={boxStyle}>Inserir um professor</Box>
+              <Box onClick={handleProf} sx={boxStyle}>Inserir um professor</Box>
               <Box onClick={handleOpenVincularProf} sx={boxStyle}>Vincular professor com uma turma</Box>
 
 
