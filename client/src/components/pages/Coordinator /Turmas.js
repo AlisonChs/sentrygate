@@ -10,9 +10,11 @@ import {useState} from "react";
 import {Box, Typography, Modal, styled, Fade, Button, FormControl, InputLabel, Select, MenuItem, ListSubheader, Divider } from "@mui/material";
 import Backdrop from '@mui/material/Backdrop';
 import TextField from '@mui/material/TextField'; 
+ import Axios from 'axios';
 
 
 const StyledTextField = styled(TextField) ({
+    color: 'white !important',
     '& label.Mui-focused': {
       color: 'white',
     },
@@ -20,9 +22,11 @@ const StyledTextField = styled(TextField) ({
       color: 'white',
     },
     '& .MuiInput-underline:after': {
+        color: 'white !important',
       borderBottomColor: 'white',
     },
     '&.Mui-focused fieldset': {
+        color: 'white !important',
         borderColor: 'white',
       },
   });
@@ -70,6 +74,7 @@ export function Turmas ({openTurmas, setOpenTurmas}) {
   const dateFormat = 'hh:mm'
 
   const [anoSelecionado, setAnoSelecionado] = useState()
+  const [nomeTurma, setAnoTurma] = useState()
 
   const [customTimePickerEntrada, setCustomTimePickerEntrada] = useState(false)
   const [customTimePickerSaida, setCustomTimePickerSaida] = useState(false)
@@ -139,6 +144,25 @@ export function Turmas ({openTurmas, setOpenTurmas}) {
 
   const handleCloseTurmas = () => setOpenTurmas(false);
 
+  const handleAPI = () => {
+    let userObj;
+
+    Axios.post("http://localhost:3001/cadastro/turma", {
+                nome_turma: nomeTurma,
+                horario_turma: horarioEntrada,
+                ano_turma: anoSelecionado,
+                cpf_aluno: null
+            }).then((response) => {
+              
+              userObj = response;
+
+              console.log(userObj)
+            
+                }).catch((error) => {
+                    alert(error)
+                })
+  }
+
     return (
         <Modal
         aria-labelledby="transition-modal-title"
@@ -153,101 +177,103 @@ export function Turmas ({openTurmas, setOpenTurmas}) {
       >
         <Fade in={openTurmas}>
           <Box sx={modalStyle}>
-            <Typography id="transition-modal-title" variant="h4" component="h2">
-              Criar uma turma
-            </Typography>
-            <Typography id="transition-modal-description" sx={{ mt: 2, mb: 3, color:  "white"}}>
-              Insira os dados da turma que deseja criar e deixe o resto conosco!
-            </Typography>
- 
-            <StyledTextField sx={{color: 'white' }} helperText="Insira o nome da turma" id="standard-basic" label="Nome da turma" variant="standard" />
+            <form>
+                <Typography id="transition-modal-title" variant="h4" component="h2">
+                Criar uma turma
+                </Typography>
+                <Typography id="transition-modal-description" sx={{ mt: 2, mb: 3, color:  "white"}}>
+                Insira os dados da turma que deseja criar e deixe o resto conosco!
+                </Typography>
+    
+                <StyledTextField sx={{color: 'white' }} value={nomeTurma} onChange={(newValue) => alert(newValue)} helperText="Insira o nome da turma" id="standard-basic" label="Nome da turma" variant="standard" />
 
-          <Divider sx={{mt: 2, mb: 2}} />
+            <Divider sx={{mt: 2, mb: 2}} />
 
-          <Typography id="transition-modal-description" sx={{ mt: 2, mb: 1, color:  "white"}}>
-              Insira o horário de entrada e saída da turma:
-            </Typography>
+            <Typography id="transition-modal-description" sx={{ mt: 2, mb: 1, color:  "white"}}>
+                Insira o horário de entrada e saída da turma:
+                </Typography>
 
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel sx={selectStyles} htmlFor="grouped-select">Entrada</InputLabel>
-              <Select sx={selectStyles} variant="filled" onChange={handleHorarioEntrada} id="grouped-select" label="Grouping">
-                <ListSubheader>Matutino</ListSubheader>
-                <MenuItem value='06:00'>06h:00m</MenuItem>
-                <MenuItem value='07:00'>07h:00m</MenuItem>
-                <ListSubheader>Vespertino</ListSubheader>
-                <MenuItem value='13:00'>13h:00m</MenuItem>
-                <MenuItem value='14:00'>14h:00m</MenuItem>
-                <ListSubheader></ListSubheader>
-                <MenuItem value={0}>
-                  {valueTimeEntrada === null ? <b>Customizar</b> : formattedTime}
-                </MenuItem>
-              </Select>
-            </FormControl>
+                <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <InputLabel sx={selectStyles} htmlFor="grouped-select">Entrada</InputLabel>
+                <Select sx={selectStyles} variant="filled" onChange={handleHorarioEntrada} id="grouped-select" label="Grouping">
+                    <ListSubheader>Matutino</ListSubheader>
+                    <MenuItem value='06:00'>06h:00m</MenuItem>
+                    <MenuItem value='07:00'>07h:00m</MenuItem>
+                    <ListSubheader>Vespertino</ListSubheader>
+                    <MenuItem value='13:00'>13h:00m</MenuItem>
+                    <MenuItem value='14:00'>14h:00m</MenuItem>
+                    <ListSubheader></ListSubheader>
+                    <MenuItem value={0}>
+                    {valueTimeEntrada === null ? <b>Customizar</b> : formattedTime}
+                    </MenuItem>
+                </Select>
+                </FormControl>
 
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel sx={selectStyles} htmlFor="grouped-select">Saída</InputLabel>
-              <Select sx={selectStyles} variant="filled" onChange={handleHorarioSaida} defaultValue="" id="grouped-select" label="Grouping">
-                <ListSubheader>Matutino</ListSubheader>
-                <MenuItem value='11:00'>11h:00m</MenuItem>
-                <MenuItem value='12:00'>12h:00m</MenuItem>
-                <ListSubheader>Vespertino</ListSubheader>
-                <MenuItem value='18:00'>18h:00m</MenuItem>
-                <MenuItem value='17:00'>17h:00m</MenuItem>
-                <ListSubheader></ListSubheader>
-                <MenuItem value={0}>
-                  {valueTimeSaida === null ? <b>Customizar</b> : formattedTime}
-                </MenuItem>
-              </Select>
-            </FormControl>
-{/**/}
+                <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <InputLabel sx={selectStyles} htmlFor="grouped-select">Saída</InputLabel>
+                <Select sx={selectStyles} variant="filled" onChange={handleHorarioSaida} defaultValue="" id="grouped-select" label="Grouping">
+                    <ListSubheader>Matutino</ListSubheader>
+                    <MenuItem value='11:00'>11h:00m</MenuItem>
+                    <MenuItem value='12:00'>12h:00m</MenuItem>
+                    <ListSubheader>Vespertino</ListSubheader>
+                    <MenuItem value='18:00'>18h:00m</MenuItem>
+                    <MenuItem value='17:00'>17h:00m</MenuItem>
+                    <ListSubheader></ListSubheader>
+                    <MenuItem value={0}>
+                    {valueTimeSaida === null ? <b>Customizar</b> : formattedTime}
+                    </MenuItem>
+                </Select>
+                </FormControl>
+    {/**/}
 
-          <LocalizationProvider locale={pt} dateAdapter={AdapterDateFns}>
-            <Fade in={customTimePickerEntrada}> 
-              <MobileTimePicker
-                onAccept={closeTimePickerEntrada} 
-                dateFormat="h:mm"
-                onChange={handleCustomTimeEntrada}
-                value={valueTimeEntrada}
-                label="Horário de entrada" open={customTimePickerEntrada}
-                renderInput={(params) => <Backdrop in={customTimePickerEntrada} {...params} />}
-              />
-            </Fade>
-          </LocalizationProvider>
-             
-
-              <LocalizationProvider locale={pt} dateAdapter={AdapterDateFns}>
-                <Fade in={customTimePickerSaida}>
-                <MobileTimePicker 
-                  onChange={handleCustomTimeSaida}
-                  label="Horário de saída" 
-                  value={valueTimeSaida}
-                  onAccept={closeTimePickerSaida}
-                  dateFormat="h:mm"
-                  renderInput={(params) => <Backdrop in={customTimePickerSaida} {...params} />}
+            <LocalizationProvider locale={pt} dateAdapter={AdapterDateFns}>
+                <Fade in={customTimePickerEntrada}> 
+                <MobileTimePicker
+                    onAccept={closeTimePickerEntrada} 
+                    dateFormat="h:mm"
+                    onChange={handleCustomTimeEntrada}
+                    value={valueTimeEntrada}
+                    label="Horário de entrada" open={customTimePickerEntrada}
+                    renderInput={(params) => <Backdrop in={customTimePickerEntrada} {...params} />}
                 />
-          </Fade>
-      </LocalizationProvider>
+                </Fade>
+            </LocalizationProvider>
+                
 
-      <Divider sx={{mt: 2, mb: 2}} />
+                <LocalizationProvider locale={pt} dateAdapter={AdapterDateFns}>
+                    <Fade in={customTimePickerSaida}>
+                    <MobileTimePicker 
+                    onChange={handleCustomTimeSaida}
+                    label="Horário de saída" 
+                    value={valueTimeSaida}
+                    onAccept={closeTimePickerSaida}
+                    dateFormat="h:mm"
+                    renderInput={(params) => <Backdrop in={customTimePickerSaida} {...params} />}
+                    />
+            </Fade>
+        </LocalizationProvider>
 
-      <Typography id="transition-modal-description" sx={{ mt: 2, mb: 3, color:  "white"}}>
-              Insira o ano que a turma iniciará seu trajeto:
-            </Typography>
+        <Divider sx={{mt: 2, mb: 2}} />
 
-      <LocalizationProvider locale={pt} dateAdapter={AdapterDateFns}>
-        <DatePicker
-            views={['year']}
-            label="Ano inicial"
-            value={anoSelecionado}
-            onChange={(newValue) => {
-              setAnoSelecionado(newValue);
-            }}
-            renderInput={(params) => <TextField variant="filled" sx={{backgroundColor: "white !important", borderRadius: 2, mb: 3}} {...params} helperText={null} />}
-          />
-      </LocalizationProvider>
+        <Typography id="transition-modal-description" sx={{ mt: 2, mb: 3, color:  "white"}}>
+                Insira o ano que a turma iniciará seu trajeto:
+                </Typography>
 
-          <Button variant="outlined" sx={btnStyle}>Adicionar turma</Button>
+        <LocalizationProvider locale={pt} dateAdapter={AdapterDateFns}>
+            <DatePicker
+                views={['year']}
+                label="Ano inicial"
+                value={anoSelecionado}
+                onChange={(newValue) => {
+                setAnoSelecionado(newValue);
+                }}
+                renderInput={(params) => <TextField variant="filled" sx={{backgroundColor: "white !important", borderRadius: 2, mb: 3}} {...params} helperText={null} />}
+            />
+        </LocalizationProvider>
 
+            <Button variant="outlined" onClick={handleAPI} sx={btnStyle}>Adicionar turma</Button>
+
+            </form>
           </Box>
         </Fade>
       </Modal>

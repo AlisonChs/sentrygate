@@ -8,10 +8,10 @@ import computer from "../../_assets/js/computer.json";
 import { useNavigate } from "react-router";
 import { Stack, Box, Typography } from "@mui/material";
 
-import { Turmas } from "../../components/pages/Coordinator /Turmas";
+import { Turmas } from "../../components/pages/Coordinator/Turmas";
 
-import { Materias } from "../../components/pages/Coordinator /Materias";
-import { Vincular } from "../../components/pages/Coordinator /Vincular";
+import { Materias } from "../../components/pages/Coordinator/Materias";
+import { Vincular } from "../../components/pages/Coordinator/Vincular";
 
 export function Main() {
 
