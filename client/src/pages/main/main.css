@@ -4,9 +4,10 @@
   margin-top: 5rem;
 }
 
-.content-right svg {
-  position: relative;
+.content-right {
+  position: absolute;
   left: 4rem;
+  top: 30%
 }
 
 .mainContent {
