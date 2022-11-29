@@ -3,6 +3,7 @@ import Context from "../../contexts/Context";
 import "./main.css";
 import { MainCoordinator } from "./MainCoordinator";
 import { MainStudent } from "./MainStudent";
+import { MainTeacher } from "./MainTeacher";
 
 export function Main() {
 
@@ -12,7 +13,7 @@ export function Main() {
     if(typeUser === 'coordenador') {
       return <MainCoordinator />
     } else if(typeUser === 'professor') {
-      return <MainStudent />
+      return <MainTeacher />
     } else {
       return <MainStudent />
     }

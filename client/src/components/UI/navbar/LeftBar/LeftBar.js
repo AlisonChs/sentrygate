@@ -1,5 +1,5 @@
 import "./style.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import OrangeLogo from "../../svg/OrangeLogo";
 import IconButton from '@mui/material/IconButton';
 import LightToolTip from '../../tip/LightToolTip'
@@ -14,6 +14,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import Context from "../../../../contexts/Context";
+import { useNavigate } from "react-router-dom";
 
 export default function LeftBar () {
 
@@ -21,6 +23,10 @@ export default function LeftBar () {
 
   const [svgStyle, setSvgStyle] = useState("svg");
   const [leftBarStyle, setLeftBarStyle] = useState("leftBar");
+
+  const { auth, setAuth, user, setUser, setTypeUSer } = useContext(Context)
+
+  const navigate = useNavigate();
 
   const handleBar = () => {
     
@@ -182,7 +188,9 @@ export default function LeftBar () {
             ) : (
               <>
               <LightToolTip visibility={!isNavbarOpen} placement="right" arrow title="Averiguação do sistema">
-                <Settings className="navIcon" sx={{ width: 28, height: 28, color:"white" }} />
+                <Settings onClick={() => {
+                  setAuth(false)
+                  navigate(`/`)}} className="navIcon" sx={{ width: 28, height: 28, color:"white" }} />
               </LightToolTip>
                 <p className="bold">Averiguação do sistema</p>
               </>

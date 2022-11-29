@@ -1,5 +1,5 @@
 // React imports
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 // Components
 import { Main } from "../../pages/main/Main";
@@ -26,61 +26,43 @@ import { InsertActivity } from "../../pages/insertActivity";
 export default function RouteNavigation () {
 
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const { auth, setAuth, user, setUser, setTypeUSer } = useContext(Context)
   
   return (
   
     <Stack sx={{flexDirection: 'row', width: '95%'}}>
 
-      { location.pathname !== `/` && <LeftBar />}
+      { (location.pathname !== `/`) && (auth) ? <LeftBar /> : null}
       
       <Stack sx={{width: '100%', height: 'auto', alignItems: 'center'}}>
         <Routes>
-          <Route exact path="/" element={<Form />} />
-          <Route exact path="/main" element={<Main />} />
-          <Route path="/login" element={<Form />} />
 
-          <Route
-          path="/register/student"
-          element={
-            <PrivateRouteCoordinator redirectTo="*">
-              <RegisterStudent />
-            </PrivateRouteCoordinator>
-          }
-        />
+        <Route exact path="/" element={<Form />} />
 
-        <Route
-        path="/insert/activity"
-        element={
-          <PrivateRouteTeacher redirecTo="*">
-            <InsertActivity />
-          </PrivateRouteTeacher>
-        } />
+          <><Route exact path="/main" element={<Main />} /><Route path="/login" element={<Form />} /><Route
+              path="/register/student"
+              element={<PrivateRouteCoordinator redirectTo="*">
+                <RegisterStudent />
+              </PrivateRouteCoordinator>} /><Route
+                path="/insert/activity"
+                element={<PrivateRouteTeacher redirecTo="*">
+                  <InsertActivity />
+                </PrivateRouteTeacher>} /><Route
+                path="/register/teacher"
+                element={<PrivateRouteCoordinator redirectTo="*">
+                  <RegisterTeacher />
+                </PrivateRouteCoordinator>} /><Route
+                path="/report"
+                element={<PrivateRouteStudent redirectTo="*">
+                  <Boletim />
+                </PrivateRouteStudent>} /><Route
+                path="/quest"
+                element={<PrivateRouteTeacher redirectTo="*">
+                  <Call />
+                </PrivateRouteTeacher>} /></>
 
-        <Route
-          path="/register/teacher"
-          element={
-            <PrivateRouteCoordinator redirectTo="*">
-              <RegisterTeacher />
-            </PrivateRouteCoordinator>
-          }
-        />
-
-        <Route
-          path="/report"
-          element={
-            <PrivateRouteStudent redirectTo="*">
-              <Boletim />
-            </PrivateRouteStudent>
-          }
-        />
-        <Route
-          path="/quest"
-          element={
-            <PrivateRouteTeacher redirectTo="*">
-              <Call />
-            </PrivateRouteTeacher>
-          }
-        />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Stack>

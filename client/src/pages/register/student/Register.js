@@ -27,6 +27,7 @@ import "./register.css";
 import GlobalDivider from "../../../components/UI/divider/GlobalDivider";
 import TopBar from "../../../components/UI/navbar/TopBar/TopBar";
 import { Box, Stack } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 
 export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
   const [values, setValues] = useState({
@@ -68,7 +69,6 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
       clearTimeout(timer.current);
     };
   }, []);
-
 
   function checkCEP() {
 
@@ -130,67 +130,11 @@ export function RegisterStudent() {  // Guarda os valores inseridos no INPUT
     const emailAluno = values.emailAluno;
     const passwordAluno = values.passwordAluno;
 
-    // Verificação básica apenas dos campos obrigatórios
-    if (nomeAluno === '' ||
-      sobrenomeAluno === '' ||
-      dataNascAluno === '' ||
-      generoAluno === '' ||
-      rgAluno === '' ||
-      cpfAluno === '' ||
-      cepAluno === '' ||
-      cidadeAluno === '' ||
-      bairroAluno === '' ||
-      ruaAluno === '' ||
-      complementoCasaAluno === '' ||
-      nomeResponsavel === '' ||
-      sobrenomeResponsavel === '' ||
-      dataNascResponsavel === '' ||
-      cpfResponsavel === '' ||
-      rgResponsavel === '' ||
-      telResponsavel === '' ||
-      telAluno === '' ||
-      emailAluno === '' ||
-      passwordAluno === '') {
-      alert('Preencha todos os campos');
-    } else {
-      Axios.post("http://localhost:3001/aluno", {
-        nome: nomeAluno,
-        sobrenome: sobrenomeAluno,
-        data_nasc: dataNascAluno,
-        genero: generoAluno,
-        rg: rgAluno,
-        cpf: cpfAluno,
-        cep: cepAluno,
-        cidade: cidadeAluno,
-        bairro: bairroAluno,
-        rua: ruaAluno,
-        complemento: complementoCasaAluno,
-        tel: telAluno,
-      }).then(Axios.post("http://localhost:3001/responsavel", {
-        nome: nomeResponsavel,
-        sobrenome: sobrenomeResponsavel,
-        data_nasc: dataNascResponsavel,
-        //tel_opcional: telOpcional ? telOpcional : 'Não inserido',
-        cpf: cpfResponsavel,
-        rg: rgResponsavel,
-        tel: telResponsavel,
-      })).then(Axios.post("http://localhost:3001/conta", {
-        email: emailAluno,
-        senha: passwordAluno,
-      })).then((response) => {
+    localStorage.setItem(`estudante`, JSON.stringify(values))
 
-        let message = response.data.message
+    console.log(JSON.parse(localStorage.getItem(`estudante`)))
 
-        if (message = 'Usuario cadastrado') {
-
-          alert('Usuario cadastrado')
-
-        } else {
-          alert('Algo deu errado')
-        }
-      });
     }
-  }
 
   const [isInputChanged, setIsInputChanged] = useState(true);
 

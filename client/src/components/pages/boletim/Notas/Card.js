@@ -81,9 +81,9 @@ export function Card ({curso, materia, hasBimestralFilter, bimestralValue}) {
             </ClickAwayListener>
 
                 <Collapse in={open && !hasBimestralFilter}>
-                    <Box sx={{backgroundColor: 'white', width: 900, ml: 1, height: 100}} >
+                    <Box sx={{backgroundColor: 'primary', width: 900, ml: 1, height: 100}} >
               
-                            <p>tem filtro nao kk</p>
+                            <p>Nota: 5</p>
                         
                     </Box>
                 </Collapse>

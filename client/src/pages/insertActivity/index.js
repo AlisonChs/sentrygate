@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./activity.css";
 
 import search from "../../_assets/js/search.json";
@@ -21,8 +21,8 @@ export function InsertActivity() {
           nome: "Victor Hugo Carvalho",
           photo: "https://avatars.githubusercontent.com/u/73660002?v=4",
           rm: Math.random(),
-
           presenca: "75%",
+          presencaToday: true,
           atividade: [],
         },
         {
@@ -31,14 +31,16 @@ export function InsertActivity() {
           photo: "https://prnt.sc/0ZcZ9fSvZrtK",
           rm: Math.random(),
           presenca: "75%",
+          presencaToday: true,
           atividade: [],
         },
         {
           id: Math.random(),
           nome: "Nicolle Christina",
-                    photo: "https://prnt.sc/c-8DZR6tFkV-",
+          photo: "https://prnt.sc/c-8DZR6tFkV-",
           rm: Math.random(),
           presenca: "75%",
+          presencaToday: true,
           atividade: [],
         },
         {
@@ -46,6 +48,7 @@ export function InsertActivity() {
           nome: "Bruno Barbosa",
           rm: Math.random(),
           presenca: "75%",
+          presencaToday: true,
           atividade: [],
         },
       ],
@@ -61,6 +64,7 @@ export function InsertActivity() {
           photo: "https://prnt.sc/0ZcZ9fSvZrtK",
           rm: Math.random(),
           presenca: "75%",
+          presencaToday: true,
           atividade: [],
         },
         {
@@ -68,6 +72,7 @@ export function InsertActivity() {
           nome: "Yan Mendonça",
           rm: Math.random(),
           presenca: "75%",
+          presencaToday: true,
           atividade: [],
         },
         {
@@ -75,6 +80,7 @@ export function InsertActivity() {
           nome: "Bianca",
           rm: Math.random(),
           presenca: "75%",
+          presencaToday: true,
           atividade: [],
         },
         {
@@ -82,6 +88,7 @@ export function InsertActivity() {
           nome: "Bruno Barbosa",
           rm: Math.random(),
           presenca: "75%",
+          presencaToday: true,
           atividade: [],
         },
       ],
@@ -97,6 +104,7 @@ export function InsertActivity() {
           photo: "https://avatars.githubusercontent.com/u/73660002?v=4",
           rm: Math.random(),
           presenca: "75%",
+          presencaToday: true,
           atividade: [],
         },
         {
@@ -105,6 +113,7 @@ export function InsertActivity() {
           photo: "https://prnt.sc/0ZcZ9fSvZrtK",
           rm: Math.random(),
           presenca: "75%",
+          presencaToday: true,
           atividade: [],
         },
         {
@@ -113,6 +122,7 @@ export function InsertActivity() {
           photo: "https://prnt.sc/c-8DZR6tFkV-",
           rm: Math.random(),
           presenca: "75%",
+          presencaToday: true,
           atividade: [],
         },
         {
@@ -120,6 +130,7 @@ export function InsertActivity() {
           nome: "Bruno Barbosa",
           rm: Math.random(),
           presenca: "75%",
+          presencaToday: true,
           atividade: [],
         },
       ],
@@ -133,10 +144,15 @@ export function InsertActivity() {
     desc: "",
     obs: "",
   });
+
+  const classList = JSON.parse(localStorage.getItem('classes'))
+
+  const [arrayClass, setArrayClass] = useState(classList ? classList : listClass)
   const [selectClass, setSelectClass] = useState(null);
   const [selectStudent, setSelectStudent] = useState(null);
   const [openModal, setOpenModal] = useState(false);
 
+  
   const style = {
     width: 500,
     height: 600,
@@ -173,6 +189,25 @@ export function InsertActivity() {
     setSelectClass(newClass);
     setOpenModal(false);
   }
+
+  function saveClass() {
+    const indexClass = arrayClass.findIndex((index) => {
+      return index.alunos.id === selectClass.id
+    })
+
+    const newClass = [...arrayClass]
+
+    newClass[indexClass].alunos = selectClass;
+    
+    setArrayClass(newClass)
+    
+    setSelectClass(null)
+    setSelectStudent(null)
+  }
+
+  useEffect(() => {
+    localStorage.setItem('classes', JSON.stringify(arrayClass))
+  }, [arrayClass])
 
   return (
     <>
@@ -220,6 +255,7 @@ export function InsertActivity() {
           </button>
         </Box>
       </Modal>
+
       <div className="activityContainer">
         {selectClass !== null ? (
           <div className="buttonAdd">
@@ -234,10 +270,7 @@ export function InsertActivity() {
           <Box sx={{display: `flex`, flexDirection: `column`}} className="selectClass">
             {selectClass !== null ? (
               <div className="buttonAdd">
-                <button onClick={() => {
-                  setSelectClass(null)
-                  setSelectStudent(null)
-                }}>
+                <button onClick={saveClass}>
                   Escolher turma
                 </button>
               </div>
@@ -245,7 +278,7 @@ export function InsertActivity() {
               <></>
             )}
             {selectClass === null
-              ? listClass.map((listClass) => (
+              ? arrayClass.map((listClass) => (
                   <Box sx={{alignItems: `center`, display: `flex`, justifyContent: `center`}} key={listClass.id}>
                     <ListClass
                       setSelectClass={setSelectClass}

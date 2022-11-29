@@ -37,7 +37,7 @@ export function MainCoordinator() {
   const boxTitleStyle = {
     color: "white",
     backgroundColor: "blueviolet",
-    width: 600,
+    width: 700,
     height: 100,
     borderRadius: 5,
     fontSize: "0.1rem",
@@ -54,6 +54,7 @@ export function MainCoordinator() {
   const handleOpenVincularProf = () => setOpenVincularProf(true);
 
   const handleProf = () => navigate("/register/teacher/");
+  const handleStudent = () => navigate("/register/student/");
 
   return (
     <Stack>
@@ -93,13 +94,13 @@ export function MainCoordinator() {
         <div className="mainContent">
           <div className="content-left">
             <Box sx={boxTitleStyle} className="title">
-              <Typography component="h1">
+              <Typography sx={{display: `flex`, flexDirection: `row`}} component="h1">
                 <b>
                   Bem vindo!{" "}
                   {localStorage.getItem("name") === "" ? (
                     localStorage.getItem("name")
                   ) : (
-                    <span>Professor</span>
+                    <span>Coordenador</span>
                   )}
                 </b>
               </Typography>
@@ -119,9 +120,13 @@ export function MainCoordinator() {
               <Box onClick={handleProf} sx={boxStyle}>
                 Inserir um professor
               </Box>
+              <Box onClick={handleStudent} sx={boxStyle}>
+                Inserir um aluno
+              </Box>
               <Box onClick={handleOpenVincularProf} sx={boxStyle}>
                 Vincular professor com uma turma
               </Box>
+              
             </Stack>
           </div>
             <div className="content-right">

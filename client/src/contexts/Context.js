@@ -1,10 +1,15 @@
 import { createContext } from "react";
 
+const type = localStorage.getItem('typeUser')
+const auth = JSON.parse(localStorage.getItem('auth'))
+
 const Context = createContext({
-    auth: false,
+    auth: auth ? auth : false,
     setAuth: () => { },
     user: {},
-    setUser: () => { }
+    setUser: () => { },
+    typeUser: type ? type : '',
+    setTypeUser: () => { }
 })
 
 export default Context;

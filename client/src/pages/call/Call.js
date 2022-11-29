@@ -10,6 +10,7 @@ import TopBar from "../../components/UI/navbar/TopBar/TopBar";
 import './call.css'
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
+import { useNavigate } from "react-router-dom";
 
 export function Call() {
 
@@ -61,7 +62,7 @@ export function Call() {
           id: 0,
           nome: "Simone",
           rm: Math.random(),
-          photo: "https://github.com/AlisonChs.png",
+          photo: "",
           presenca: true,
           atividade: [],
         },
@@ -69,21 +70,21 @@ export function Call() {
           id: 1,
           nome: "Yan Mendonça",
           rm: Math.random(),
-          photo: "https://github.com/AlisonChs.png",
+          photo: "",
           presenca: true,
           atividade: [],
         },
         {
           id: 2,
-          nome: "Bianca",
+          nome: "Victor Hugo Carvalho",
           rm: Math.random(),
-          photo: "https://github.com/AlisonChs.png",
+          photo: "https://github.com/Victor-HM.png",
           presenca: true,
           atividade: [],
         },
         {
           id: 3,
-          nome: "Bruno Calvo Barbosa",
+          nome: "Alison Christian",
           rm: Math.random(),
           photo: "https://github.com/AlisonChs.png",
           presenca: true,
@@ -114,15 +115,15 @@ export function Call() {
         },
         {
           id: 2,
-          nome: "Felipe Dourado",
+          nome: "Victor Hugo Carvalho",
           rm: Math.random(),
-          photo: "https://github.com/FS-Dourado.png",
+          photo: "https://github.com/Victor-HM.png",
           presenca: true,
           atividade: [],
         },
         {
           id: 3,
-          nome: "Bruno Calvo Barbosa",
+          nome: "Bruno Barbosa",
           rm: Math.random(),
           photo: "https://github.com/BrunoDeSP.png",
           presenca: true,
@@ -229,6 +230,12 @@ export function Call() {
 
   const [isLoading, setIsLoading] = useState(true)
 
+  const navigate = useNavigate();
+
+  const toMain = () => {
+    navigate(`/main`)
+  }
+
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -303,7 +310,7 @@ export function Call() {
   
   </Box>
 
-  <Button variant="contained" sx={sendBTN}>
+  <Button variant="contained" onClick={toMain} sx={sendBTN}>
     Salvar chamada
   </Button>
 

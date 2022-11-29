@@ -33,7 +33,7 @@ export default function TopBar (props) {
             </>
 
             ) : (
-          <Stack sx={{flexDirection: `row`, ml: 4}}>
+          <Stack sx={{flexDirection: `row`, ml: `5%`}}>
             <Typography variant="h6" component="div" sx={{fontWeight: 'bold'}}>
               {props.PageTitle}
             </Typography>

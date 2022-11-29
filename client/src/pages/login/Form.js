@@ -1,9 +1,9 @@
+import { useContext, useState } from "react";
+
 import "./form.css";
 import { useNavigate } from "react-router-dom";
 import { responseData } from '../../classes/ResponseData';
-// import { Context, useContext } from "react";
 import Axios from 'axios';
-import { useContext, useState } from "react";
 import { SelectUser } from "./Select";
 import { Inputs } from "./Inputs";
 import { Button, Stack } from "@mui/material";
@@ -14,16 +14,18 @@ export function Form() {
 
   let navigate = useNavigate();
 
-  const { auth, setAuth, user, setUser } = useContext(Context)
+  const { setAuth, user, setUser, typeUser, setTypeUser } = useContext(Context)
 
   const [currentUser, setCurrentUser] = useState(null);
 
   const [emailInserido, setEmailInserido] = useState('')
   const [senhaInserida, setSenhaInserida] = useState('')
+  
+  console.log(typeUser)
 
   function sucess () {
     setAuth(true)
-    setUser(`coordenador`)
+    setTypeUser(currentUser)
     navigate('/main')
   }
 
@@ -31,31 +33,12 @@ export function Form() {
   
     const handleLogin = () => {
 
-      sucess()
-
-      let userObj;
-
-        if (emailInserido === "" || senhaInserida === "") {
-            alert("Preencha todos os campos");
-        } else {
-            Axios.post("http://localhost:3001/login", {
-                email: emailInserido,
-                senha: senhaInserida,
-            }).then((response) => {
-              
-              userObj = 'response' + response.status;
-
-              new responseData(userObj, sucess, notfound).setItem('name', response.data.nome);
-            
-                }).catch((error) => {
-
-                  userObj = 'response' + error.response.status;
-          
-                  new responseData(userObj, sucess, notfound);
-          
-                });
-
-        }
+      if (emailInserido === `admin@admin`) {
+        sucess()
+      } else {
+        notfound()
+      }
+        
     };
 
     
@@ -106,7 +89,9 @@ export function Form() {
                     
                   <Button variant="contained" onClick={handleLogin} sx={loginBTN}>
                       Entrar
-                    </Button></Stack>
+                  </Button>
+                  
+                </Stack>
             )}
             
             </div>
