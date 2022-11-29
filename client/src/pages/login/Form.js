@@ -3,25 +3,25 @@ import { useNavigate } from "react-router-dom";
 import { responseData } from '../../classes/ResponseData';
 // import { Context, useContext } from "react";
 import Axios from 'axios';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { SelectUser } from "./Select";
 import { Inputs } from "./Inputs";
 import { Button, Stack } from "@mui/material";
+import Context from "../../contexts/Context";
 
 
 export default function Form() {
 
   let navigate = useNavigate();
 
-  // const { auth, setAuth, user, setUser } = useContext(Context)
+  const { auth, setAuth, typeUser, setTypeUser } = useContext(Context)
 
   const [currentUser, setCurrentUser] = useState(null);
 
   const [emailInserido, setEmailInserido] = useState('')
   const [senhaInserida, setSenhaInserida] = useState('')
 
-  function sucess () {navigate('/main')}
-  function notfound () {alert('nao achou')}
+  console.log(typeUser)
   
     const handleLogin = () => {
 
@@ -31,19 +31,22 @@ export default function Form() {
             alert("Preencha todos os campos");
         } else {
             Axios.post("http://localhost:3001/login", {
-                email: emailInserido,
-                senha: senhaInserida,
+                email_conta: emailInserido,
+                senha_conta: senhaInserida,
             }).then((response) => {
-              
-              userObj = 'response' + response.status;
 
-              new responseData(userObj, sucess, notfound).setItem('name', response.data.nome);
+              alert('deu certo')
+
+              localStorage.setItem('typeUser', currentUser);
+              localStorage.setItem('auth', true);
+
+              setTypeUser(currentUser)
+
+              setAuth(true)
+
+              // navigate('/main')
             
                 }).catch((error) => {
-
-                  userObj = 'response' + error.response.status;
-          
-                  new responseData(userObj, sucess, notfound);
           
                 });
 

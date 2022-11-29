@@ -6,6 +6,7 @@ export function StoreProvider({ children }) {
 
     const [auth, setAuth] = useState(ctx.auth)
     const [user, setUser] = useState(ctx.user)
+    const [typeUser, setTypeUser] = useState(ctx.typeUser)
 
     return (
         <Context.Provider
@@ -13,7 +14,9 @@ export function StoreProvider({ children }) {
                 auth,
                 setAuth,
                 user,
-                setUser
+                setUser,
+                typeUser,
+                setTypeUser
             }}
         >
             {children}

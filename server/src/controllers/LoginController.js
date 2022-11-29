@@ -6,12 +6,12 @@ const Aluno = require('../models/Aluno')
 module.exports = {
     async index(req, res) {
         const {
-            email,
-            senha
+            email_conta,
+            senha_conta
         } = req.body;
 
         const conta = await Conta.findOne({
-            where: { email, senha }
+            where: { email_conta, senha_conta }
         });
 
 
@@ -22,7 +22,7 @@ module.exports = {
                 where: conta.id_aluno
             })
 
-            return res.status(200).json()
+            return res.status(200).json(conta)
         }
 
     },
