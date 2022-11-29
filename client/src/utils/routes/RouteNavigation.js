@@ -43,3 +43,34 @@ export default function RouteNavigation () {
 
   );
 }
+
+const student = [
+  {
+    id: 0,
+    name: "Alison Leão",
+    rm: "10841267",
+    photo: "https://github.com/AlisonChs.png",
+    presenca: true
+  },
+  {
+    id: 1,
+    name: "Victor Hugo",
+    rm: "10347",
+    photo: "https://github.com/Victor-HM.png",
+    presenca: true
+  },
+  {
+    id: 2,
+    name: "Bruno Clavo",
+    rm: "10847",
+    photo: "https://github.com/BrunoDeSP.png",
+    presenca: true
+  },
+  {
+    id: 3,
+    name: "Felipe Dourado",
+    rm: "101147",
+    photo: "https://github.com/FS-Dourado.png",
+    presenca: true
+  },
+];

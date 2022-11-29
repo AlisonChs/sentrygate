@@ -1808,10 +1808,10 @@
     prop-types "^15.8.1"
     react-is "^18.2.0"
 
-"@mui/x-data-grid@^5.17.12":
-  version "5.17.12"
-  resolved "https://registry.yarnpkg.com/@mui/x-data-grid/-/x-data-grid-5.17.12.tgz#b57c32605f1964c2eb8b25136fe51d7165e22112"
-  integrity sha512-Q7lFxapa9oc8j3LVm3JAS+jmJftcaSLYcvhApYLKYWej9LKMQYov8hUPdIjzSta3E0WTINfiHaTcO1b6W4UMvQ==
+"@mui/x-data-grid@^5.17.13":
+  version "5.17.13"
+  resolved "https://registry.yarnpkg.com/@mui/x-data-grid/-/x-data-grid-5.17.13.tgz#efee3b9ebbb868cc4a174da4a0db08c75e46a194"
+  integrity sha512-Z2DSQA8O2ZPKat6URO9nEpKn8Wszuiz/OJQq5aW3so3KPunb8IJV30h94Kc+Su9ng6mdknCpimrnN2EBibznFA==
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@mui/utils" "^5.10.3"
@@ -3245,6 +3245,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==
+
+bootstrap@^5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.2.3.tgz#54739f4414de121b9785c5da3c87b37ff008322b"
+  integrity sha512-cEKPM+fwb3cT8NzQZYEu4HilJ3anCrWqh3CHAok1p9jXqMPsPTBhU25fBckEJHJ/p+tTxTFTsFQGM+gaHpi3QQ==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
