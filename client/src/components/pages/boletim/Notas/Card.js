@@ -27,7 +27,7 @@ export function Card ({curso, materia, hasBimestralFilter, bimestralValue}) {
 
     return (
         <Stack
-            
+        sx={{ml: 55}}
         >
             <ClickAwayListener
                 mouseEvent="onMouseDown"

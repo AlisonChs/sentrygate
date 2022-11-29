@@ -19,13 +19,16 @@ export function InsertActivity() {
         {
           id: Math.random(),
           nome: "Victor Hugo Carvalho",
+          photo: "https://avatars.githubusercontent.com/u/73660002?v=4",
           rm: Math.random(),
+
           presenca: "75%",
           atividade: [],
         },
         {
           id: Math.random(),
           nome: "Thiago Henrique da Silva",
+          photo: "https://prnt.sc/0ZcZ9fSvZrtK",
           rm: Math.random(),
           presenca: "75%",
           atividade: [],
@@ -33,6 +36,7 @@ export function InsertActivity() {
         {
           id: Math.random(),
           nome: "Nicolle Christina",
+                    photo: "https://prnt.sc/c-8DZR6tFkV-",
           rm: Math.random(),
           presenca: "75%",
           atividade: [],
@@ -53,7 +57,8 @@ export function InsertActivity() {
       alunos: [
         {
           id: Math.random(),
-          nome: "Simone",
+          nome: "Felipe Dourado",
+          photo: "https://prnt.sc/0ZcZ9fSvZrtK",
           rm: Math.random(),
           presenca: "75%",
           atividade: [],
@@ -89,6 +94,7 @@ export function InsertActivity() {
         {
           id: Math.random(),
           nome: "Victor Hugo Carvalho",
+          photo: "https://avatars.githubusercontent.com/u/73660002?v=4",
           rm: Math.random(),
           presenca: "75%",
           atividade: [],
@@ -96,6 +102,7 @@ export function InsertActivity() {
         {
           id: Math.random(),
           nome: "Thiago Henrique da Silva",
+          photo: "https://prnt.sc/0ZcZ9fSvZrtK",
           rm: Math.random(),
           presenca: "75%",
           atividade: [],
@@ -103,6 +110,7 @@ export function InsertActivity() {
         {
           id: Math.random(),
           nome: "Nicolle Christina",
+          photo: "https://prnt.sc/c-8DZR6tFkV-",
           rm: Math.random(),
           presenca: "75%",
           atividade: [],

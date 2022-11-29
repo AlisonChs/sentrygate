@@ -21,7 +21,7 @@ export default function TopBar (props) {
 
   return (
 
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, width: `100vw` }}>
       
       <AppBar position="static" sx={{backgroundColor:"#2B1354"}}>
         <Toolbar>
@@ -33,7 +33,7 @@ export default function TopBar (props) {
             </>
 
             ) : (
-          <>
+          <Stack sx={{flexDirection: `row`, ml: 4}}>
             <Typography variant="h6" component="div" sx={{fontWeight: 'bold'}}>
               {props.PageTitle}
             </Typography>
@@ -42,7 +42,7 @@ export default function TopBar (props) {
               {props.PageSpan}
               </Typography>
 
-          </>
+          </Stack>
           )}
 
           {isLoading && (

@@ -3,27 +3,35 @@ import { useNavigate } from "react-router-dom";
 import { responseData } from '../../classes/ResponseData';
 // import { Context, useContext } from "react";
 import Axios from 'axios';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { SelectUser } from "./Select";
 import { Inputs } from "./Inputs";
 import { Button, Stack } from "@mui/material";
+import Context from "../../contexts/Context";
 
 
 export function Form() {
 
   let navigate = useNavigate();
 
-  // const { auth, setAuth, user, setUser } = useContext(Context)
+  const { auth, setAuth, user, setUser } = useContext(Context)
 
   const [currentUser, setCurrentUser] = useState(null);
 
   const [emailInserido, setEmailInserido] = useState('')
   const [senhaInserida, setSenhaInserida] = useState('')
 
-  function sucess () {navigate('/main')}
-  function notfound () {alert('nao achou')}
+  function sucess () {
+    setAuth(true)
+    setUser(`coordenador`)
+    navigate('/main')
+  }
+
+  function notfound () {alert('E-mail ou senha incorreta!')}
   
     const handleLogin = () => {
+
+      sucess()
 
       let userObj;
 

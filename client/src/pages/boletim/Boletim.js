@@ -91,7 +91,7 @@ export function Boletim() {
   };
 
   return (
-    <Stack>
+    <Stack width="100vw">
       <TopBar PageTitle="Boletim" PageSpan="Escolar" />
 
       <Stack sx={{position: `absolute`, mt: 0.5, top: 0, display: `flex`, width: `100%`, alignItems: `center`}}>

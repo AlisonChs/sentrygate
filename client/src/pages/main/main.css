@@ -4,24 +4,22 @@
   margin-top: 5rem;
 }
 
-.content-right svg {
-  position: relative;
-  left: 4rem;
-}
-
 .mainContent {
-  width: 85%;
+  width: 90%;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-  position: absolute;
 }
 
 .content-right {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+
+  position: relative;
+  top: 3rem;
+  right: -2rem
 }
 
 .title h1 {
