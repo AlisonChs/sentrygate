@@ -9,6 +9,7 @@ import { RegisterStudent } from "../../pages/register/student/Register";
 import { RegisterTeacher } from "../../pages/register/teacher/Register";
 import { Boletim } from "../../pages/boletim/Boletim";
 import { NotFound } from "../../hooks/responses/NotFound";
+import { Call } from "../../pages/call/Call";
 
 import LeftBar from "../../components/UI/navbar/LeftBar/LeftBar";
 
@@ -30,6 +31,7 @@ export default function RouteNavigation () {
           <Route path="/login" element={<Form />} />
           <Route path="/register/student" element={<RegisterStudent />} />
           <Route path="/register/teacher" element={<RegisterTeacher />} />
+          <Route path="/quest" element={<Call />} />
           <Route path="/report" element={<Boletim />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
